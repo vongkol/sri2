@@ -82,6 +82,29 @@
                                        </div>
                                    </div>
                                    <div class="col">
+                                   <div class="form-group row">
+                                           <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                           <div class="col-sm-8">
+                                              <select name="ngo" id="ngo" class="form-control">
+                                                @foreach($ngos as $ngo)
+                                                    <option value="{{$ngo->id}}" {{$user->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
+                                                @endforeach
+                                              </select>
+                                           </div>
+                                       </div>
+                                       
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col">
+                                       <div class="form-group row">
+                                           <label for="password" class="control-label col-sm-4 lb">Password</label>
+                                           <div class="col-sm-8">
+                                               <input type="password" name="password" id="password" class="form-control">
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="col">
                                        <div class="form-group row">
                                            <label for="component" class="control-label col-sm-4 lb">Component</label>
                                            <div class="col-sm-8">
@@ -98,14 +121,15 @@
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="password" class="control-label col-sm-4 lb">Password</label>
+                                           <label for="cpassword" class="control-label col-sm-4 lb">Confirm Password</label>
                                            <div class="col-sm-8">
-                                               <input type="password" name="password" id="password" class="form-control">
+                                               <input type="password" name="cpassword" id="cpassword" class="form-control">
+                                               
                                            </div>
                                        </div>
                                    </div>
                                    <div class="col">
-                                       <div class="form-group row">
+                                   <div class="form-group row">
                                            <label for="role" class="control-label col-sm-4 lb">User Role <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <select name="role" id="role" class="form-control sl">
@@ -115,14 +139,15 @@
                                                </select>
                                            </div>
                                        </div>
+                                       
                                    </div>
                                </div>
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="cpassword" class="control-label col-sm-4 lb">Confirm Password</label>
+                                           <label for="position" class="control-label col-sm-4 lb">Position</label>
                                            <div class="col-sm-8">
-                                               <input type="password" name="cpassword" id="cpassword" class="form-control">
+                                               <input type="password" name="position" id="position" class="form-control" value="{{$user->position}}">
                                                <br>
                                                <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
                                                <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
@@ -130,19 +155,13 @@
                                        </div>
                                    </div>
                                    <div class="col">
-                                       <div class="form-group row">
-                                           <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                   <div class="form-group row">
+                                           <label  class="control-label col-sm-4 lb">&nbsp;</label>
                                            <div class="col-sm-8">
-                                              <select name="ngo" id="ngo" class="form-control">
-                                                @if(Auth::user()->ngo_id<=0)
-                                                    <option value="0">All NGO</option>
-                                                @endif
-                                                @foreach($ngos as $ngo)
-                                                    <option value="{{$ngo->id}}" {{$user->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
-                                                @endforeach
-                                              </select>
+                                               
                                            </div>
                                        </div>
+                                       
                                    </div>
                                </div>
                                <div class="row">
@@ -178,6 +197,32 @@
             });
             $("#siderbar li a").removeClass("current");
             $("#user").addClass("current");
+            $("#ngo").change(function(){
+                $.ajax({
+                    type: "GET",
+                    url: burl + "/user/getrole/" + this.value,
+                    success: function(sms){
+                        var opt = "";
+                        for(var i=0; i<sms.length; i++)
+                        {
+                            opt += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+                        }
+                        $("#role").html(opt);
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: burl + "/user/getcomponent/" + this.value,
+                    success: function(sms){
+                        var opt = "<option value='0'>Select a component</option>";
+                        for(var i=0; i<sms.length; i++)
+                        {
+                            opt += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+                        }
+                        $("#component").html(opt);
+                    }
+                });
+            });
         });
     </script>
 @endsection

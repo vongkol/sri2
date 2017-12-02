@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use Validator;
+use Session;
 class UserController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            app()->setLocale(Session::get("lang"));
+             return $next($request);
+         });
     }
     // function to load profile view
     public  function index()
@@ -61,7 +66,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $data['user'] = DB::table('users')->where('id', $id)->first();
-        $data['roles'] = DB::table('roles')->get();
+        $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id',0)->get();
 
         if(Auth::user()->ngo_id>0)
         {
@@ -70,7 +75,7 @@ class UserController extends Controller
         else{
             $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
         }
-        $data['components'] = DB::table('components')->where('active',1)->orderBy('name')->get();
+        $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
         return view('users.edit', $data);
     }
     // delete a user by his/her id

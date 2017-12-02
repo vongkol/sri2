@@ -41,6 +41,19 @@
             </li>
         </ul>
         <ul class="navbar-nav">
+             <li class="nav-item">
+                <a href="#" class="nav-link" onclick="chLang(event,'km')">
+                    <img src="{{asset('img/khmer.png')}}" alt="" width="35" style="border:1px solid #ababab"> ខ្មែរ
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="chLang(event,'en')">
+                    <img src="{{asset('img/english.png')}}" alt="" width="35" style="border:1px solid #ababab"> English
+                </a>
+            </li>
+            <li class="nav-item" style="margin-left:27px">
+                &nbsp;
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="nav1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{Auth::user()->email}}
@@ -66,6 +79,22 @@
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{asset('js/tether.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script>
+        function chLang(evt, ln)
+        {
+            evt.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: "{{url('/')}}" + "/language/" + ln,
+                success: function(sms){
+                    if(sms>0)
+                    {
+                        location.reload();
+                    }
+                }
+            });
+        }
+    </script>
 @yield('js')
 </body>
 </html>

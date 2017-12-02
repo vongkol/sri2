@@ -62,3 +62,5 @@ Route::get('/component/edit/{id}', "ComponentController@edit");
 Route::post('/component/save', "ComponentController@save");
 Route::post('/component/update', "ComponentController@update");
 Route::get('/component/delete/{id}', "ComponentController@delete");
+// language
+Route::get('/language/{id}', "LanguageController@index");

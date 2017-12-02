@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Session;
 class NgoController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            app()->setLocale(Session::get("lang"));
+             return $next($request);
+         });
     }
     public function index(Request $r)
     {
@@ -48,6 +53,13 @@ class NgoController extends Controller
         }
         if ($i)
         {
+            // create default user role for new NGO
+            $data = array(
+                'name' => "Admin",
+                'create_by' => Auth::user()->id,
+                'ngo_id' => $i
+            );
+            $x = DB::table('roles')->insert($data);
             $r->session()->flash("sms", "New ngo has been created successfully!");
             return redirect("/ngo/create");
         }
