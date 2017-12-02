@@ -15,7 +15,7 @@
                             <th>Full Name</th>
                             <th>Username</th>
                             <th>Gender</th>
-                            <th>Position</th>
+                            <th>NGO Name</th>
                             <th>Phone</th>
                             <th>Email</th>
                             <th>User Role</th>
@@ -35,7 +35,7 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->username}}</td>
                                 <td>{{$user->gender}}</td>
-                                <td>{{$user->position}}</td>
+                                <td>{{$user->ngo_name}}</td>
                                 <td>{{$user->phone}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->role_name}}</td>

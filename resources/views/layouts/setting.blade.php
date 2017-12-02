@@ -76,7 +76,7 @@
                     <a class="nav-link" href="{{url('/user')}}" id="user">User Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/role')}}" id="role">User Role</a>
+                    <a class="nav-link" href="{{url('/role')}}" id="menu_role">User Role</a>
                 </li>
             </ul>
         </nav>

@@ -17,16 +17,18 @@ class UserController extends Controller
     {
         $data['users'] = DB::table('users')
             ->join("roles", "users.role_id","=", "roles.id")
+            ->leftJoin('ngos', "users.ngo_id", "ngos.id")
             ->where('users.active',1)
-            ->select("users.*", "roles.name as role_name")
+            ->select("users.*", "roles.name as role_name", "ngos.name as ngo_name")
             ->paginate(12);
         if(Auth::user()->ngo_id>0)
         {
             $data['users'] = DB::table('users')
             ->join("roles", "users.role_id","=", "roles.id")
+            ->leftJoin('ngos', "users.ngo_id", "ngos.id")
             ->where('users.active',1)
             ->where('users.ngo_id', Auth::user()->ngo_id)
-            ->select("users.*", "roles.name as role_name")
+            ->select("users.*", "roles.name as role_name", "ngos.name as ngo_name")
             ->paginate(12);
         }
         return view("users.index", $data);
@@ -146,10 +148,8 @@ class UserController extends Controller
     // save user
     public function save(Request $r)
     {
-        $validator = Validator::make($r->all(), [
-            'username' => 'unique'
-        ]);
-        if($validator->fails())
+        $count = DB::table('users')->where('username', $r->username)->count();
+        if($count>0)
         {
             $r->session()->flash('sms1', "Username already exist. Please use a different one!");
             return redirect('/user/create')->withInput();
@@ -314,5 +314,9 @@ class UserController extends Controller
     {
         $i = DB::table('user_branches')->where('id', $id)->delete();
         return $i;
+    }
+    public function getRole($id)
+    {
+        return DB::table('roles')->where('active',1)->where('ngo_id', $id)->get();
     }
 }

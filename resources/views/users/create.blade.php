@@ -81,7 +81,33 @@
                                        </div>
                                    </div>
                                    <div class="col">
+                                    <div class="form-group row">
+                                           <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                           <div class="col-sm-8">
+                                              <select name="ngo" id="ngo" class="form-control">
+                                                @if(Auth::user()->ngo_id<=0)
+                                                    <option value="0">CCC</option>
+                                                @endif
+                                                @foreach($ngos as $ngo)
+                                                    <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                                @endforeach
+                                              </select>
+                                           </div>
+                                       </div>
+                                       
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col">
                                        <div class="form-group row">
+                                           <label for="password" class="control-label col-sm-4 lb">Password <span class="text-danger">*</span></label>
+                                           <div class="col-sm-8">
+                                               <input type="password" required name="password" id="password" class="form-control" value="{{old('password')}}">
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="col">
+                                      <div class="form-group row">
                                            <label for="component" class="control-label col-sm-4 lb">Component</label>
                                            <div class="col-sm-8">
                                                <select name="component" id="component" class="form-control sl">
@@ -97,37 +123,10 @@
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="password" class="control-label col-sm-4 lb">Password <span class="text-danger">*</span></label>
-                                           <div class="col-sm-8">
-                                               <input type="password" required name="password" id="password" class="form-control" value="{{old('password')}}">
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div class="col">
-                                       <div class="form-group row">
-                                           <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
-                                           <div class="col-sm-8">
-                                              <select name="ngo" id="ngo" class="form-control">
-                                                @if(Auth::user()->ngo_id<=0)
-                                                    <option value="0">CCC</option>
-                                                @endif
-                                                @foreach($ngos as $ngo)
-                                                    <option value="{{$ngo->id}}">{{$ngo->name}}</option>
-                                                @endforeach
-                                              </select>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               <div class="row">
-                                   <div class="col">
-                                       <div class="form-group row">
                                            <label for="cpassword" class="control-label col-sm-4 lb">Confirm Password <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <input type="password" required name="cpassword" id="cpassword" class="form-control">
-                                               <br>
-                                               <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                                               <button class="btn btn-danger btn-flat" type="reset" id="btnCancel">Cancel</button>
+                                               
                                            </div>
                                        </div>
                                    </div>
@@ -146,11 +145,32 @@
                                    </div>
                                </div>
                                <div class="row">
+                                    <div class="col">
+                                       <div class="form-group row">
+                                           <label for="position" class="control-label col-sm-4 lb">Position</label>
+                                           <div class="col-sm-8">
+                                               <input type="text" name="position" id="position" class="form-control">
+                                               <br>
+                                               <button class="btn btn-primary btn-flat" type="submit">Save</button>
+                                               <button class="btn btn-danger btn-flat" type="reset" id="btnCancel">Cancel</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="col">
+                                   <div class="form-group row">
+                                           <label class="control-label col-sm-4 lb">&nbsp;</label>
+                                           <div class="col-sm-8">
+                                              
+                                           </div>
+                                       </div>
+                                       
+                                   </div>
+                               </div>
+                               <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
                                            <label class="control-label col-sm-4 lb">&nbsp;</label>
                                            <div class="col-sm-8">
-
                                            </div>
                                        </div>
                                    </div>
@@ -175,7 +195,22 @@
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
             $("#user").addClass("current");
-        })
+            $("#ngo").change(function(){
+                $.ajax({
+                    type: "GET",
+                    url: burl + "/user/getrole/" + this.value,
+                    success: function(sms){
+                        var opt = "";
+                        for(var i=0; i<sms.length; i++)
+                        {
+                            opt += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+                        }
+                        $("#role").html(opt);
+                    }
+                });
+            });
+        });
+       
     </script>
 
 @endsection

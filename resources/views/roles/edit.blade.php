@@ -62,7 +62,7 @@
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
-            $("#role").addClass("current");
+            $("#menu_role").addClass("current");
         });
     </script>
 
