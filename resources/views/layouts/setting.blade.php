@@ -70,7 +70,7 @@
                     <a class="nav-link" href="{{url('/ngo')}}" id="menu_ngo">NGO</a>
                 </li>
                 @endif
-                <li class="nav-item"><a href="#" class="nav-link">Component</a></li>
+                <li class="nav-item"><a href="{{url('/component')}}" class="nav-link" id="component">Component</a></li>
                 <li class="nav-item"><strong>User and Security</strong></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/user')}}" id="user">User Account</a>

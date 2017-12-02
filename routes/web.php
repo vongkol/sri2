@@ -53,4 +53,10 @@ Route::get('/ngo/edit/{id}', "NgoController@edit");
 Route::post('/ngo/save', "NgoController@save");
 Route::post('/ngo/update', "NgoController@update");
 
-
+/// component
+Route::get('/component', "ComponentController@index");
+Route::get('/component/create', "ComponentController@create");
+Route::get('/component/edit/{id}', "ComponentController@edit");
+Route::post('/component/save', "ComponentController@save");
+Route::post('/component/update', "ComponentController@update");
+Route::get('/component/delete/{id}', "ComponentController@delete");
