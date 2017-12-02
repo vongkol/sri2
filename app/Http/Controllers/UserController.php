@@ -55,7 +55,7 @@ class UserController extends Controller
             $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id',0)->get();
         
         }
-        $data['components'] = DB::table('components')->where('active',1)->orderBy('name')->get();
+        $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
         return view('users.create', $data);
     }
     public function edit($id)
@@ -317,6 +317,10 @@ class UserController extends Controller
     }
     public function getRole($id)
     {
-        return DB::table('roles')->where('active',1)->where('ngo_id', $id)->get();
+        return DB::table('roles')->where('active',1)->where('ngo_id', $id)->orderBy('name')->get();
+    }
+    public function getComponent($id)
+    {
+        return DB::table('components')->where('active',1)->where('ngo_id',$id)->orderBy('name')->get();
     }
 }

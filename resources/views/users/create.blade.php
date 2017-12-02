@@ -85,9 +85,6 @@
                                            <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                               <select name="ngo" id="ngo" class="form-control">
-                                                @if(Auth::user()->ngo_id<=0)
-                                                    <option value="0">CCC</option>
-                                                @endif
                                                 @foreach($ngos as $ngo)
                                                     <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                                 @endforeach
@@ -206,6 +203,18 @@
                             opt += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
                         }
                         $("#role").html(opt);
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: burl + "/user/getcomponent/" + this.value,
+                    success: function(sms){
+                        var opt = "<option value='0'>Select a component</option>";
+                        for(var i=0; i<sms.length; i++)
+                        {
+                            opt += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+                        }
+                        $("#component").html(opt);
                     }
                 });
             });
