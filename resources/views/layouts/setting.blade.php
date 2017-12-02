@@ -71,6 +71,7 @@
                 </li>
                 @endif
                 <li class="nav-item"><a href="{{url('/component')}}" class="nav-link" id="component">Component</a></li>
+                <li class="nav-item"><a href="{{url('/project')}}" class="nav-link" id="project">Project</a></li>
                 <li class="nav-item"><strong>User and Security</strong></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/user')}}" id="user">User Account</a>
