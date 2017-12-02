@@ -29,6 +29,7 @@ Route::post('/user/update', "UserController@update");
 Route::get('/user/update-password/{id}', "UserController@load_password");
 Route::post('/user/save-password', "UserController@update_password");
 Route::get('/user/getrole/{id}', "UserController@getRole");
+Route::get('/user/getcomponent/{id}', "UserController@getComponent");
 // role
 Route::get("/role", "RoleController@index");
 Route::get("/role/create", "RoleController@create");

@@ -80,7 +80,7 @@
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
-            $("#component").addClass("current");
+            $("#menu_component").addClass("current");
         });
     </script>
 
