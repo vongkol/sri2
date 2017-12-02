@@ -42,13 +42,16 @@ class UserController extends Controller
     // load create user form
     public function create()
     {
-        $data['roles'] = DB::table('roles')->get();
+
         if(Auth::user()->ngo_id>0)
         {
             $data['ngos'] = DB::table('ngos')->where("id", Auth::user()->ngo_id)->get();
+            $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id', Auth::user()->ngo_id)->get();            
         }
         else{
             $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+            $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id',0)->get();
+        
         }
         $data['components'] = DB::table('components')->where('active',1)->orderBy('name')->get();
         return view('users.create', $data);
