@@ -1,0 +1,94 @@
+﻿ul#siderbar li.nav-item a.nav-link{
+    padding: 1px 1em;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+ul#siderbar li.nav-item strong{
+    padding-left: 5px;
+}
+ul#siderbar li.nav-item a.nav-link:hover{
+    background: #ddd;
+}
+.fixed-top{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.navbar-nav a {
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.sidebar{
+    top: 32px;
+}
+.dropdown-menu{
+    right: 9px!important;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.current{
+    background: #ddd;
+    color: #333;
+}
+ul#siderbar>li>a{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.card-header{
+    padding: 4px 3px 2px 21px;
+}
+.btn-flat{
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.lb{
+    font-size: 14px;
+    padding-top: 8px;
+    padding-left: 18px;
+}
+.sl{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.btn{
+    font-size: 13px;
+}
+.form-control{
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    font-size: 13px;
+}
+.fa{
+    font-size: 13px;
+}
+ul.pagination{
+    margin-top: 9px;
+}
+ul.pagination li{
+    padding-left: 4px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+}
+ul.pagination li a, ul.pagination li span{
+    padding: 5px 9px;
+}
+.form-group {
+    margin-bottom: 2px;
+}
+.card-header a{
+    margin: 0 5px 0 8px;
+}
+.alert{
+    padding: 5px 9px;
+    font-size: 13px;
+    border-radius: 0;
+}
+.bg-blue
+{
+    background: #1807b8;
+}
+.navbar-inverse .navbar-nav .nav-link {
+    color: #bababa;
+}
