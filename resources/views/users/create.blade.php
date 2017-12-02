@@ -105,13 +105,16 @@
                                    </div>
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="role" class="control-label col-sm-4 lb">User Role <span class="text-danger">*</span></label>
+                                           <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
-                                               <select name="role" id="role" class="form-control sl">
-                                                   @foreach($roles as $role)
-                                                       <option value="{{$role->id}}">{{$role->name}}</option>
-                                                   @endforeach
-                                               </select>
+                                              <select name="ngo" id="ngo" class="form-control">
+                                                @if(Auth::user()->ngo_id<=0)
+                                                    <option value="0">CCC</option>
+                                                @endif
+                                                @foreach($ngos as $ngo)
+                                                    <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                                @endforeach
+                                              </select>
                                            </div>
                                        </div>
                                    </div>
@@ -129,19 +132,17 @@
                                        </div>
                                    </div>
                                    <div class="col">
-                                       <div class="form-group row">
-                                           <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                   <div class="form-group row">
+                                           <label for="role" class="control-label col-sm-4 lb">User Role <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
-                                              <select name="ngo" id="ngo" class="form-control">
-                                                @if(Auth::user()->ngo_id<=0)
-                                                    <option value="0">All NGO</option>
-                                                @endif
-                                                @foreach($ngos as $ngo)
-                                                    <option value="{{$ngo->id}}">{{$ngo->name}}</option>
-                                                @endforeach
-                                              </select>
+                                               <select name="role" id="role" class="form-control sl">
+                                                   @foreach($roles as $role)
+                                                       <option value="{{$role->id}}">{{$role->name}}</option>
+                                                   @endforeach
+                                               </select>
                                            </div>
                                        </div>
+                                       
                                    </div>
                                </div>
                                <div class="row">
