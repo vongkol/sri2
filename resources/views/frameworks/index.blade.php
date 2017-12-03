@@ -4,8 +4,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header text-bold">
-                    <strong>Project List</strong>&nbsp;&nbsp;
-                    <a href="{{url('/project/create')}}"><i class="fa fa-plus"></i> New</a>
+                    <strong>Framework List</strong>&nbsp;&nbsp;
+                    <a href="{{url('/framework/create')}}"><i class="fa fa-plus"></i> New</a>
                 </div>
                 <div class="card-block">
                     <table class="tbl">
@@ -13,7 +13,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Acronym</th>
                             <th>NGO Name</th>
                             <th>Actions</th>
                         </tr>
@@ -27,16 +26,15 @@
                             $i = 12 * ($pagex - 1) + 1;
                         ?>
 
-                        @foreach($projects as $project)
+                        @foreach($frameworks as $framework)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$project->name}}</td>
-                                <td>{{$project->acronym}}</td>
-                                <td>{{$project->ngo_name==null?'CCC':$project->ngo_name}}</td>
+                                <td>{{$framework->name}}</td>
+                                <td>{{$framework->ngo_name==null?'CCC':$framework->ngo_name}}</td>
                                 <td>
                                     
-                                    <a href="{{url('/project/edit/'.$project->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/project/delete/'.$project->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                    <a href="{{url('/framework/edit/'.$framework->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
+                                    <a href="{{url('/framework/delete/'.$framework->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
                                        title="Delete"><i class="fa fa-remove text-danger"></i></a>
                                 </td>
                             </tr>
@@ -44,7 +42,7 @@
                         </tbody>
                     </table>
                     <nav>
-                        {{$projects->links()}}
+                        {{$frameworks->links()}}
                     </nav>
                 </div>
             </div>
@@ -55,7 +53,7 @@
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
-            $("#project").addClass("current");
+            $("#framework").addClass("current");
         })
     </script>
 @endsection

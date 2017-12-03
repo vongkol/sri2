@@ -74,6 +74,13 @@
                 <li class="nav-item"><a href="{{url('/project')}}" class="nav-link" id="project">Project</a></li>
 
                 <li class="nav-item"><a href="{{url('/component')}}" class="nav-link" id="menu_component">Component</a></li>
+                <li class="nav-item"><a href="{{url('/activity_type')}}" class="nav-link" id="activity_type">Activity Type</a></li>
+                <li class="nav-item"><a href="{{url('/framework')}}" class="nav-link" id="framework">Framework</a></li>
+                <li class="nav-item"><a href="{{url('/level')}}" class="nav-link" id="level">Level</a></li>
+                <li class="nav-item"><a href="{{url('/activity_category')}}" class="nav-link" id="activity_category">Activity Category</a></li>
+                <li class="nav-item"><a href="{{url('/event')}}" class="nav-link" id="event">Event</a></li>
+                <li class="nav-item"><a href="{{url('/venue_type')}}" class="nav-link" id="venue_type">Venue Type</a></li>
+                <li class="nav-item"><a href="{{url('/event_organizor')}}" class="nav-link" id="event_organizor">Event Organizor</a></li>
 
                 <li class="nav-item"><strong>User and Security</strong></li>
                 <li class="nav-item">

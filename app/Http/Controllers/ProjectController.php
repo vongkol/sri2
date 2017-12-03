@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Auth;
 
 class ProjectController extends Controller
 {
@@ -22,22 +24,101 @@ class ProjectController extends Controller
     public function index()
     {
         $x = Auth::user()->ngo_id;
-        $data['components'] = DB::table("components")
-            ->leftJoin('ngos', 'components.ngo_id', 'ngos.id')
-            ->where("components.active",1)
-            ->orderBy("components.name")
-            ->select('components.*', 'ngos.name as ngo_name')
+        $data['projects'] = DB::table("projects")
+            ->Join('ngos', 'projects.ngo_id', 'ngos.id')
+            ->where("projects.active",1)
+            ->orderBy("projects.name")
+            ->select('projects.*', 'ngos.name as ngo_name')
             ->paginate(12); 
         if($x>0)
         {
-            $data['components'] = DB::table("components")
-                ->leftJoin('ngos', 'components.ngo_id', 'ngos.id')
-                ->where("components.active",1)
-                ->where('components.ngo_id', Auth::user()->ngo_id)
-                ->orderBy("components.name")
-                ->select('components.*', 'ngos.name as ngo_name')
+            $data['projects'] = DB::table("projects")
+                ->Join('ngos', 'projects.ngo_id', 'ngos.id')
+                ->where("projects.active",1)
+                ->where('projects.ngo_id', Auth::user()->ngo_id)
+                ->orderBy("projects.name")
+                ->select('projects.*', 'ngos.name as ngo_name')
                 ->paginate(12); 
         }
-        return view("components.index", $data);
+        return view("projects.index", $data);
+    }
+
+    // create
+    public function create()
+    {
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        if(Auth::user()->ngo_id>0)
+        {
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id', Auth::user()->ngo_id)->get();
+        }
+        return view("projects.create", $data);
+    }
+
+    // edit
+    public function edit($id)
+    {
+    	$data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        if(Auth::user()->ngo_id>0)
+        {
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id', Auth::user()->ngo_id)->get();
+        }
+
+        $data['projects'] = DB::table("projects")->where("id", $id)->first();
+        return view("projects.edit", $data);
+    }
+
+    // insert
+    public function save(Request $r)
+    {
+        $data = array(
+            "name" => $r->name,
+            "acronym" => $r->acronym,
+            'ngo_id' => $r->ngo,
+            "create_by" => Auth::user()->id
+        );
+        $i = DB::table('projects')->insert($data);
+        if($i)
+        {
+            $r->session()->flash("sms", "New project has been created successfully!");
+            return redirect("/project/create");
+        }
+        else{
+            $r->session()->flash("sms1", "Fail to create new project!");
+            return redirect("/project/create")->withInput();
+        }
+    }
+
+    // update
+    public function update(Request $r)
+    {
+       
+        $data = array(
+            "name" => $r->name,
+            'ngo_id' => $r->ngo,
+            "acronym" => $r->acronym
+
+        );
+        $i = DB::table('projects')->where("id", $r->id)->update($data);
+        if($i)
+        {
+            $r->session()->flash("sms", "All changes have been saved successfully!");
+            return redirect("/project/edit/".$r->id);
+        }
+        else{
+            $r->session()->flash("sms1", "Fail to save change. You might not change any thing!");
+            return redirect("/project/edit/".$r->id);
+        }
+    }
+
+    // delete
+    public function delete($id)
+    {
+        DB::table('projects')->where('id', $id)->update(["active"=>0]);
+        $page = @$_GET['page'];
+        if ($page>0)
+        {
+            return redirect('/project?page='.$page);
+        }
+        return redirect('/project');
     }
 }
