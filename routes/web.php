@@ -64,6 +64,7 @@ Route::post('/component/save', "ComponentController@save");
 Route::post('/component/update', "ComponentController@update");
 
 
+
 /// project
 Route::get('/project', "ProjectController@index");
 Route::get('/project/create', "ProjectController@create");
@@ -127,3 +128,8 @@ Route::get('/event_organizor/edit/{id}', "EventOrganizorController@edit");
 Route::get('/event_organizor/delete/{id}', "EventOrganizorController@delete");
 Route::post('/event_organizor/save', "EventOrganizorController@save");
 Route::post('/event_organizor/update', "EventOrganizorController@update");
+
+Route::get('/component/delete/{id}', "ComponentController@delete");
+// language
+Route::get('/language/{id}', "LanguageController@index");
+

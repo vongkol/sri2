@@ -30,17 +30,30 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/home')}}">Home</a>
+                <a class="nav-link" href="{{url('/home')}}">{{trans('labels.home')}}</a>
             </li>
-            <li class="nav-item"><a href="#" class="nav-link">Activity</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">{{trans('labels.activity')}}</a></li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{url('/setting')}}">Administration <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
+                <a class="nav-link" href="#">{{trans('labels.help')}}</a>
             </li>
         </ul>
         <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="chLang(event,'km')">
+                    <img src="{{asset('img/khmer.png')}}" alt="" width="35" style="border:1px solid #ababab"> ខ្មែរ
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="chLang(event,'en')">
+                    <img src="{{asset('img/english.png')}}" alt="" width="35" style="border:1px solid #ababab"> English
+                </a>
+            </li>
+            <li class="nav-item" style="margin-left:27px">
+                &nbsp;
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="nav1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{Auth::user()->username}}
@@ -50,7 +63,7 @@
                     <a href="{{url('/user/reset-password')}}" class="dropdown-item"><i class="fa fa-key text-warning"></i> &nbsp;Reset Password</a>
                     <a href="{{ route('logout') }}" class="dropdown-item"
                        onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out text-success"></i> &nbsp;Logout</a>
+                            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out text-success"></i> &nbsp;{{trans('labels.logout')}}</a>
                 </div>
             </li>
         </ul>
@@ -100,6 +113,22 @@
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{asset('js/tether.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script>
+        function chLang(evt, ln)
+        {
+            evt.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: "{{url('/')}}" + "/language/" + ln,
+                success: function(sms){
+                    if(sms>0)
+                    {
+                        location.reload();
+                    }
+                }
+            });
+        }
+    </script>
 <script>
     var burl = "{{url('/')}}";
 </script>

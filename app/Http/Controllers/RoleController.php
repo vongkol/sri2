@@ -5,17 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Session;
 class RoleController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
         $this->middleware(function ($request, $next) {
-            if (Auth::user()==null)
-            {
-                return redirect("/login");
-            }
-            return $next($request);
-        });
+            app()->setLocale(Session::get("lang"));
+             return $next($request);
+         });
     }
     // index
     public function index()
