@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
 use DB;
+use Auth;
 use Session;
-class SettingController extends Controller
+class ActivityController extends Controller
 {
     public function __construct()
     {
@@ -16,10 +16,8 @@ class SettingController extends Controller
              return $next($request);
          });
     }
-    // index
     public function index()
     {
-       
-        return view("settings.index");
+        return view('activities.index');
     }
 }

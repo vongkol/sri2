@@ -8,6 +8,9 @@ return [
     'home' => "Home",
     "activity" => "Activity",
     "help" => "Help",
-    "administration" => "Administration"
+    "administration" => "Administration",
+
+    'profile' => "Profile",
+    'reset_password' => "Reset Password"
 
 ];

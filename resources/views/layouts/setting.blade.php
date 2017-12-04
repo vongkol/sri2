@@ -32,7 +32,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/home')}}">{{trans('labels.home')}}</a>
             </li>
-            <li class="nav-item"><a href="#" class="nav-link">{{trans('labels.activity')}}</a></li>
+            <li class="nav-item"><a href="{{url('/activity')}}" class="nav-link">{{trans('labels.activity')}}</a></li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}} <span class="sr-only">(current)</span></a>
             </li>
@@ -59,8 +59,8 @@
                     {{Auth::user()->username}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="nav1">
-                    <a class="dropdown-item" href="{{url('/user/edit/'.Auth::user()->id)}}"><i class="fa fa-user text-primary"></i> &nbsp;Profile</a>
-                    <a href="{{url('/user/reset-password')}}" class="dropdown-item"><i class="fa fa-key text-warning"></i> &nbsp;Reset Password</a>
+                    {{--  <a class="dropdown-item" href="{{url('/user/edit/'.Auth::user()->id)}}"><i class="fa fa-user text-primary"></i> &nbsp;{{trans('labels.profile')}}</a>  --}}
+                    <a href="{{url('/user/reset-password')}}" class="dropdown-item"><i class="fa fa-key text-warning"></i> &nbsp;{{trans('labels.reset_password')}}</a>
                     <a href="{{ route('logout') }}" class="dropdown-item"
                        onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"><i class="fa fa-sign-out text-success"></i> &nbsp;{{trans('labels.logout')}}</a>
@@ -69,7 +69,7 @@
         </ul>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
-        </form>
+        </form>~
     </div>
 </nav>
 <div class="container-fluid">
@@ -88,6 +88,8 @@
 
                 <li class="nav-item"><a href="{{url('/component')}}" class="nav-link" id="menu_component">Component</a></li>
 
+                <li class="nav-item"><strong>Dynamic Field</strong></li>
+                <li class="nav-item"><a href="#" class="nav-link">Activity Setting</a></li>
                 <li class="nav-item"><strong>User and Security</strong></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/user')}}" id="user">User Account</a>
