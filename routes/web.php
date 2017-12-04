@@ -134,3 +134,11 @@ Route::get('/component/delete/{id}', "ComponentController@delete");
 Route::get('/language/{id}', "LanguageController@index");
 // activity
 Route::get('/activity', "ActivityController@index");
+// indicator setting
+Route::get('/indicator', "IndicatorController@index");
+Route::get('/indicator/create', "IndicatorController@create");
+Route::get('/indicator/edit/{id}', "IndicatorController@edit");
+Route::get('/indicator/delete/{id}', "IndicatorController@delete");
+Route::get('/indicator/detail/{id}', "IndicatorController@detail");
+Route::post('/indicator/save', "IndicatorController@save");
+Route::post('/indicator/update', "IndicatorController@update");

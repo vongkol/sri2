@@ -1,12 +1,3 @@
-<?php
-$images = array(
-    "beach.jpg","berlin_autumn.jpg","blue_mountains.jpg","denali_national_park.jpg","dolry.jpg","dream_village_hd.jpg","dreamy_landscape.jpg","fish.jpg","frankfurt_germany.jpg","frog.jpg","galaxy.jpg",
-    "grass.jpg","hancock_center_illinois.jpg","hawaii_islands_waterfall.jpg","HD-Nature-Wallpaper.jpg","hd-nature-wallpapers.jpg","high-resolution-wallpaper.jpg","lake_dream.jpg",
-    "magic_path.jpg","mountain.jpg","night.jpg","orca-animal.jpg","sea-bed.jpg","sky_field_planet.jpg","summer-day.jpg", "sunny_shore.jpg","Sunshine-Wallpapers.jpg","xp.jpg"
-);
-$index = rand(0, 27);
-$img = $images[$index];
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,7 +9,7 @@ $img = $images[$index];
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <style>
         body {
-            background: url("{{asset('img/'.$img)}}") no-repeat center center fixed;
+            background: url("{{asset('img/bg.png')}}") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -102,6 +93,7 @@ $img = $images[$index];
         <div class="box-body">
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                 {{csrf_field()}}
+               
                 <p>
                     <input type="text" id="username" name="username" value="{{old('username')}}" placeholder="Username" required autofocus>
                 </p>

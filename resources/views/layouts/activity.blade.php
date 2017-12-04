@@ -82,7 +82,7 @@
                 <li class="nav-item"><a href="#" class="nav-link">Narrative Achieved</a></li>
                 <li class="nav-item"><strong>Setting</strong></li>
                 <li class="nav-item"><a href="#" class="nav-link">Activity Setting</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Indicator Setting</a></li>
+                <li class="nav-item"><a href="{{url('/indicator')}}" class="nav-link" id="menu_indicator_setting">Indicator Setting</a></li>
             </ul>
         </nav>
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2">

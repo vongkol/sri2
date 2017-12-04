@@ -76,13 +76,9 @@
     <div class="row">
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
             <ul class="nav nav-pills flex-column" id="siderbar">
-                <li class="nav-item"><strong>General Setting</strong></li>
+                <li class="nav-item"><strong>Configuration</strong></li>
                
-                @if(Auth::user()->ngo_id<=0)
-                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/ngo')}}" id="menu_ngo">NGO</a>
-                </li>
-                @endif
+                
 
                 <li class="nav-item"><a href="{{url('/project')}}" class="nav-link" id="project">Project</a></li>
 
@@ -97,13 +93,19 @@
 
                 <li class="nav-item"><strong>Dynamic Field</strong></li>
                 <li class="nav-item"><a href="#" class="nav-link">Activity Setting</a></li>
-                <li class="nav-item"><strong>User and Security</strong></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('/user')}}" id="user">User Account</a>
+                <li class="nav-item"><strong>User Management</strong></li>
+                @if(Auth::user()->ngo_id<=0)
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{url('/ngo')}}" id="menu_ngo">NGO</a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/role')}}" id="menu_role">User Role</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/user')}}" id="user">User Account</a>
+                </li>
+                
             </ul>
         </nav>
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2">
