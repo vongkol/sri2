@@ -16,4 +16,8 @@ class ActivitySettingController extends Controller
     {
         return view('activity-settings.index');
     }
+    public function create()
+    {
+        return view('activity-settings.create');
+    }
 }
