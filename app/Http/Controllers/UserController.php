@@ -54,12 +54,12 @@ class UserController extends Controller
         {
             $data['ngos'] = DB::table('ngos')->where("id", Auth::user()->ngo_id)->get();
             $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id', Auth::user()->ngo_id)->get();    
-            $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',Auth::user()->ngo_id)->orderBy('name')->get();        
+            //$data['components'] = DB::table('components')->where('active',1)->where('ngo_id',Auth::user()->ngo_id)->orderBy('name')->get();        
         }
         else{
             $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
             $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id',0)->get();
-            $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
+            //$data['components'] = DB::table('components')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
         }
         
         return view('users.create', $data);
@@ -76,7 +76,7 @@ class UserController extends Controller
         else{
             $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
         }
-        $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
+       // $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
         return view('users.edit', $data);
     }
     // delete a user by his/her id
@@ -175,7 +175,7 @@ class UserController extends Controller
             'gender' => $r->gender,
             'phone' => $r->phone,
             'position' => $r->position,
-            'component' => $r->component,
+            // 'component' => $r->component,
             'ngo_id' => $r->ngo,
             'password' => bcrypt($r->password),
             'role_id' => $r->role,
@@ -203,7 +203,7 @@ class UserController extends Controller
             'gender' => $r->gender,
             'phone' => $r->phone,
             'position' => $r->position,
-            'component' => $r->component,
+            // 'component' => $r->component,
             'ngo_id' => $r->ngo,
             'role_id' => $r->role
         );

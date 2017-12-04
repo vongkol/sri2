@@ -106,14 +106,10 @@
                                    </div>
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="component" class="control-label col-sm-4 lb">Component</label>
+                                           <label for="position" class="control-label col-sm-4 lb">Position</label>
                                            <div class="col-sm-8">
-                                               <select name="component" id="component" class="form-control sl">
-                                                   <option value="0">Select a component</option>
-                                                   @foreach($components as $com)
-                                                    <option value="{{$com->id}}" {{$user->component==$com->id?'selected':''}}>{{$com->name}}</option>
-                                                   @endforeach
-                                               </select>
+                                               <input type="text" name="position" id="position" class="form-control" value="{{$user->position}}">
+                                              
                                            </div>
                                        </div>
                                    </div>
@@ -124,7 +120,9 @@
                                            <label for="cpassword" class="control-label col-sm-4 lb">Confirm Password</label>
                                            <div class="col-sm-8">
                                                <input type="password" name="cpassword" id="cpassword" class="form-control">
-                                               
+                                                <br>
+                                               <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
+                                               <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
                                            </div>
                                        </div>
                                    </div>
@@ -142,28 +140,7 @@
                                        
                                    </div>
                                </div>
-                               <div class="row">
-                                   <div class="col">
-                                       <div class="form-group row">
-                                           <label for="position" class="control-label col-sm-4 lb">Position</label>
-                                           <div class="col-sm-8">
-                                               <input type="password" name="position" id="position" class="form-control" value="{{$user->position}}">
-                                               <br>
-                                               <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
-                                               <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div class="col">
-                                   <div class="form-group row">
-                                           <label  class="control-label col-sm-4 lb">&nbsp;</label>
-                                           <div class="col-sm-8">
-                                               
-                                           </div>
-                                       </div>
-                                       
-                                   </div>
-                               </div>
+                              
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
@@ -210,6 +187,7 @@
                         $("#role").html(opt);
                     }
                 });
+                /*
                 $.ajax({
                     type: "GET",
                     url: burl + "/user/getcomponent/" + this.value,
@@ -222,6 +200,7 @@
                         $("#component").html(opt);
                     }
                 });
+                */
             });
         });
     </script>

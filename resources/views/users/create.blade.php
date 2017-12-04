@@ -104,15 +104,11 @@
                                        </div>
                                    </div>
                                    <div class="col">
-                                      <div class="form-group row">
-                                           <label for="component" class="control-label col-sm-4 lb">Component</label>
+                                       <div class="form-group row">
+                                           <label for="position" class="control-label col-sm-4 lb">Position</label>
                                            <div class="col-sm-8">
-                                               <select name="component" id="component" class="form-control sl">
-                                                   <option value="0">Select a component</option>
-                                                   @foreach($components as $com)
-                                                    <option value="{{$com->id}}">{{$com->name}}</option>
-                                                   @endforeach
-                                               </select>
+                                               <input type="text" name="position" id="position" class="form-control">
+                                              
                                            </div>
                                        </div>
                                    </div>
@@ -123,7 +119,9 @@
                                            <label for="cpassword" class="control-label col-sm-4 lb">Confirm Password <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <input type="password" required name="cpassword" id="cpassword" class="form-control">
-                                               
+                                                <br>
+                                               <button class="btn btn-primary btn-flat" type="submit">Save</button>
+                                               <button class="btn btn-danger btn-flat" type="reset" id="btnCancel">Cancel</button>
                                            </div>
                                        </div>
                                    </div>
@@ -141,28 +139,7 @@
                                        
                                    </div>
                                </div>
-                               <div class="row">
-                                    <div class="col">
-                                       <div class="form-group row">
-                                           <label for="position" class="control-label col-sm-4 lb">Position</label>
-                                           <div class="col-sm-8">
-                                               <input type="text" name="position" id="position" class="form-control">
-                                               <br>
-                                               <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                                               <button class="btn btn-danger btn-flat" type="reset" id="btnCancel">Cancel</button>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div class="col">
-                                   <div class="form-group row">
-                                           <label class="control-label col-sm-4 lb">&nbsp;</label>
-                                           <div class="col-sm-8">
-                                              
-                                           </div>
-                                       </div>
-                                       
-                                   </div>
-                               </div>
+                               
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
@@ -205,7 +182,8 @@
                         $("#role").html(opt);
                     }
                 });
-                $.ajax({
+                /*
+                  $.ajax({
                     type: "GET",
                     url: burl + "/user/getcomponent/" + this.value,
                     success: function(sms){
@@ -216,7 +194,8 @@
                         }
                         $("#component").html(opt);
                     }
-                });
+                });  
+                */
             });
         });
        
