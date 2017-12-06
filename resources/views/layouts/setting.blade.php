@@ -77,11 +77,7 @@
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
             <ul class="nav nav-pills flex-column" id="siderbar">
                 <li class="nav-item"><strong>Configuration</strong></li>
-               
-                
-
                 <li class="nav-item"><a href="{{url('/project')}}" class="nav-link" id="project">Project</a></li>
-
                 <li class="nav-item"><a href="{{url('/component')}}" class="nav-link" id="menu_component">Component</a></li>
                 <li class="nav-item"><a href="{{url('/activity_type')}}" class="nav-link" id="activity_type">Activity Type</a></li>
                 <li class="nav-item"><a href="{{url('/framework')}}" class="nav-link" id="framework">Framework</a></li>
@@ -91,7 +87,7 @@
                 <li class="nav-item"><a href="{{url('/venue_type')}}" class="nav-link" id="venue_type">Venue Type</a></li>
                 <li class="nav-item"><a href="{{url('/event_organizor')}}" class="nav-link" id="event_organizor">Event Organizor</a></li>
 
-                <li class="nav-item"><strong>Dynamic Field</strong></li>
+                <li class="nav-item"><strong>Custom Field</strong></li>
                 <li class="nav-item"><a href="#" class="nav-link">Activity Setting</a></li>
                 <li class="nav-item"><strong>User Management</strong></li>
                 @if(Auth::user()->ngo_id<=0)

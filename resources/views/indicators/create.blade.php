@@ -56,6 +56,24 @@
                                     <input type="text" class="form-control" value="{{old('indicator_name')}}" id="indicator_name" name="indicator_name">
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{old('result_framework_structure')}}" id="result_framework_structure" name="result_framework_structure">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="calculation_method" class="control-label col-sm-4 lb">Calculation Method</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{old('calculation_method')}}" id="calculation_method" name="calculation_method">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="indicator_definition" class="control-label col-sm-4 lb">Indicator Definition</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{old('indicator_definition')}}" id="indicator_definition" name="indicator_definition">
+                                </div>
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -74,6 +92,24 @@
                                 <label for="data_source" class="control-label col-sm-4 lb">Data Source</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('data_source')}}" id="data_source" name="description">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="indicator_unit" class="control-label col-sm-4 lb">Indicator Unit</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{old('indicator_unit')}}" id="indicator_unit" name="indicator_unit">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="component_responsible" class="control-label col-sm-4 lb">Component Responsible</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{old('component_responsible')}}" id="component_responsible" name="component_responsible">
+                                </div>
+                            </div>
+                             <div class="form-group row">
+                                <label for="responsible_person" class="control-label col-sm-4 lb">Responsible Person</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{old('responsible_person')}}" id="responsible_person" name="responsible_person">
                                 </div>
                             </div>
                             <div class="form-group row">
