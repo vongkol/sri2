@@ -92,3 +92,6 @@ ul.pagination li a, ul.pagination li span{
 .navbar-inverse .navbar-nav .nav-link {
     color: #bababa;
 }
+.nav-tabs {
+    font-size: 14px;
+}

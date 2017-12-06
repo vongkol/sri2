@@ -62,12 +62,7 @@
                                     <input type="text" class="form-control" value="{{old('activity_definition')}}" id="activity_definition" name="activity_definition">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="location" class="control-label col-sm-4 lb">Location</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('location')}}" id="location" name="location">
-                                </div>
-                            </div>
+                           
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -95,15 +90,35 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-md-4"></div>
+                                <label for="location" class="control-label col-sm-4 lb">Location</label>
                                 <div class="col-sm-8">
-                                    <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                                    <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
+                                    <input type="text" class="form-control" value="{{old('location')}}" id="location" name="location">
                                 </div>
                             </div>
+                        </div>                  
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 text-center ">
+                            <button class="btn btn-primary btn-flat" type="submit">Save</button>
+                            <button class="btn btn-warning btn-flat" type="submit">Save and Continue</button>
+                            <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
                         </div>
                     </div>
                 </form>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home" role="tabpanel">fist</div>
+                    <div class="tab-pane" id="profile" role="tabpanel">profile</div>
+                </div>
             </div>
         </div>
     </div>
