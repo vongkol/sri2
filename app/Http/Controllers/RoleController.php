@@ -51,10 +51,10 @@ class RoleController extends Controller
     // edit
     public function edit($id)
     {
-        $data['companies'] = null;
-        if(Auth::user()->role_id==1)
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        if(Auth::user()->ngo_id>0)
         {
-            $data['companies'] = DB::table("companies")->where("active",1)->orderBy("name")->get();
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id', Auth::user()->ngo_id)->get();
         }
         $data['role'] = DB::table("roles")->where("id", $id)->first();
         return view("roles.edit", $data);

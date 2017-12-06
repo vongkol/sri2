@@ -39,6 +39,24 @@
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" value="{{$role->name}}" id="name" name="name" required>
                                         <input type="hidden" name="id" value="{{$role->id}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="ngo" class="control-label col-sm-3 lb">NGO <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select name="role" id="role" class="form-control">
+                                        @foreach($ngos as $ngo)
+                                            <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                        @endforeach
+                                        </select>
+                                        
                                          <br>
                                         <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
                                         <button class="btn btn-danger btn-flat" type="button" onclick="location.reload()">Cancel</button>
