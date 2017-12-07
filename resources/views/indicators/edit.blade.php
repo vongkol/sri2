@@ -124,7 +124,7 @@
                     <div class="tab-pane active" id="target" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="text-primary" id="btnAddTarget"><i class="fa fa-plus"></i> New Target</a>
+                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Target</a>
                         </p>
                         <table class="tbl">
                             <thead>
@@ -148,9 +148,85 @@
                             </thead>
                         </table>
                     </div>
-                    <div class="tab-pane" id="other1" role="tabpanel">profile</div>
-                    <div class="tab-pane" id="other2" role="tabpanel">profile</div>
-                    <div class="tab-pane" id="other3" role="tabpanel">profile</div>
+                    <div class="tab-pane" id="other1" role="tabpanel">
+                        <p>
+                        <br>
+                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg-2"><i class="fa fa-plus"></i> New Target 2</a>
+                        </p>
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>&numero;</th>
+                                    <th>Year</th>
+                                    <th>Jan</th>
+                                    <th>Feb</th>
+                                    <th>Mar</th>
+                                    <th>Apr</th>
+                                    <th>May</th>
+                                    <th>Jun</th>
+                                    <th>Jul</th>
+                                    <th>Aug</th>
+                                    <th>Sep</th>
+                                    <th>Oct</th>
+                                    <th>Nov</th>
+                                    <th>Dec</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+            
+                    <div class="tab-pane" id="other2" role="tabpanel"><p>
+                        <br>
+                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg-3"><i class="fa fa-plus"></i> New Target 3</a>
+                        </p>
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>&numero;</th>
+                                    <th>Year</th>
+                                    <th>Jan</th>
+                                    <th>Feb</th>
+                                    <th>Mar</th>
+                                    <th>Apr</th>
+                                    <th>May</th>
+                                    <th>Jun</th>
+                                    <th>Jul</th>
+                                    <th>Aug</th>
+                                    <th>Sep</th>
+                                    <th>Oct</th>
+                                    <th>Nov</th>
+                                    <th>Dec</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="other3" role="tabpanel"><p>
+                        <br>
+                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg-4"><i class="fa fa-plus"></i> New Target 4</a>
+                        </p>
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>&numero;</th>
+                                    <th>Year</th>
+                                    <th>Jan</th>
+                                    <th>Feb</th>
+                                    <th>Mar</th>
+                                    <th>Apr</th>
+                                    <th>May</th>
+                                    <th>Jun</th>
+                                    <th>Jul</th>
+                                    <th>Aug</th>
+                                    <th>Sep</th>
+                                    <th>Oct</th>
+                                    <th>Nov</th>
+                                    <th>Dec</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                        </table></div>
                 </div>
             </div>
         </div>
@@ -216,3 +292,492 @@
         });
     </script>
 @endsection
+
+<div class="modal fade bd-target-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content btn-flat">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Target Management</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="col-md-4"></div>
+                        <div class="form-group row col-md-4 text-center">
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <div class="col-sm-6 col-md-6">
+                                <select id="year" class="form-control text-center">
+                                    <option selected>2018</option>
+                                    <option>2019</option>
+                                    <option>2013</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <br>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jan" name="jan">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="feb" class=" col-sm-6 col-md-6 lb text-right">Feb</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="feb" name="feb">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="mar" class="col-sm-6 col-md-6 lb text-right">Mar</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="mar" name="mar">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="apr" class=" col-sm-6 col-md-6 lb text-right">Apr</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="apr" name="apr">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="may" class="col-sm-6 col-md-6 lb text-right">May</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="may" name="may">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="jun" class="col-sm-6 col-md-6 lb text-right">Jun</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jun" name="jun">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="jul" class="col-sm-6 col-md-6 lb text-right">Jul</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jul" name="jul">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="aug" class="col-sm-6 col-md-6 lb text-right">Aug</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="aug" name="aug">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="sep" class=" col-sm-6 col-md-6 lb text-right">Sep</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="sep" name="sep">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="oct" class="col-sm-6 col-md-6 lb text-right">Oct</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="oct" name="oct">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="nov" class="col-sm-6 col-md-6 lb text-right">Nov</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="nov" name="nov">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="dec" class="col-sm-6 col-md-6 lb text-right">Dec</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="dec" name="dec">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary btn-flat">Submit</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-target-modal-lg-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content btn-flat">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Target Management 2</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="col-md-4"></div>
+                        <div class="form-group row col-md-4 text-center">
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <div class="col-sm-6 col-md-6">
+                                <select id="year" class="form-control text-center">
+                                    <option selected>2018</option>
+                                    <option>2019</option>
+                                    <option>2013</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <br>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jan" name="jan">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="feb" class=" col-sm-6 col-md-6 lb text-right">Feb</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="feb" name="feb">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="mar" class="col-sm-6 col-md-6 lb text-right">Mar</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="mar" name="mar">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="apr" class=" col-sm-6 col-md-6 lb text-right">Apr</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="apr" name="apr">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="may" class="col-sm-6 col-md-6 lb text-right">May</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="may" name="may">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="jun" class="col-sm-6 col-md-6 lb text-right">Jun</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jun" name="jun">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="jul" class="col-sm-6 col-md-6 lb text-right">Jul</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jul" name="jul">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="aug" class="col-sm-6 col-md-6 lb text-right">Aug</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="aug" name="aug">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="sep" class=" col-sm-6 col-md-6 lb text-right">Sep</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="sep" name="sep">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="oct" class="col-sm-6 col-md-6 lb text-right">Oct</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="oct" name="oct">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="nov" class="col-sm-6 col-md-6 lb text-right">Nov</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="nov" name="nov">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="dec" class="col-sm-6 col-md-6 lb text-right">Dec</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="dec" name="dec">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary btn-flat">Submit</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-target-modal-lg-3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content btn-flat">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Target Management 3</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="col-md-4"></div>
+                        <div class="form-group row col-md-4 text-center">
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <div class="col-sm-6 col-md-6">
+                                <select id="year" class="form-control text-center">
+                                    <option selected>2018</option>
+                                    <option>2019</option>
+                                    <option>2013</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <br>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jan" name="jan">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="feb" class=" col-sm-6 col-md-6 lb text-right">Feb</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="feb" name="feb">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="mar" class="col-sm-6 col-md-6 lb text-right">Mar</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="mar" name="mar">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="apr" class=" col-sm-6 col-md-6 lb text-right">Apr</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="apr" name="apr">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="may" class="col-sm-6 col-md-6 lb text-right">May</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="may" name="may">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="jun" class="col-sm-6 col-md-6 lb text-right">Jun</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jun" name="jun">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="jul" class="col-sm-6 col-md-6 lb text-right">Jul</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jul" name="jul">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="aug" class="col-sm-6 col-md-6 lb text-right">Aug</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="aug" name="aug">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="sep" class=" col-sm-6 col-md-6 lb text-right">Sep</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="sep" name="sep">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="oct" class="col-sm-6 col-md-6 lb text-right">Oct</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="oct" name="oct">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="nov" class="col-sm-6 col-md-6 lb text-right">Nov</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="nov" name="nov">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="dec" class="col-sm-6 col-md-6 lb text-right">Dec</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="dec" name="dec">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary btn-flat">Submit</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-target-modal-lg-4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content btn-flat">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Target Management 4</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="col-md-4"></div>
+                        <div class="form-group row col-md-4 text-center">
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <div class="col-sm-6 col-md-6">
+                                <select id="year" class="form-control text-center">
+                                    <option selected>2018</option>
+                                    <option>2019</option>
+                                    <option>2013</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <br>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jan" name="jan">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="feb" class=" col-sm-6 col-md-6 lb text-right">Feb</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="feb" name="feb">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="mar" class="col-sm-6 col-md-6 lb text-right">Mar</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="mar" name="mar">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="apr" class=" col-sm-6 col-md-6 lb text-right">Apr</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="apr" name="apr">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="may" class="col-sm-6 col-md-6 lb text-right">May</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="may" name="may">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="jun" class="col-sm-6 col-md-6 lb text-right">Jun</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jun" name="jun">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="jul" class="col-sm-6 col-md-6 lb text-right">Jul</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="jul" name="jul">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="aug" class="col-sm-6 col-md-6 lb text-right">Aug</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="aug" name="aug">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="sep" class=" col-sm-6 col-md-6 lb text-right">Sep</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="sep" name="sep">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="oct" class="col-sm-6 col-md-6 lb text-right">Oct</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="oct" name="oct">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12 text-center">
+                        <div class="form-group row col-md-6">
+                            <label for="nov" class="col-sm-6 col-md-6 lb text-right">Nov</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="nov" name="nov">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="dec" class="col-sm-6 col-md-6 lb text-right">Dec</label>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="text" class="form-control" value="" id="dec" name="dec">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary btn-flat">Submit</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
