@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 @endif
-                <form action="{{url('/indicator/save')}}" class="form-horizontal" method="post" onsubmit="return confirm('You want to save?')">
+                <form action="{{url('/indicator/save')}}" class="form-horizontal" method="post" name="frm">
                     {{csrf_field()}}
                     <div class="row">
                         <div class="col-sm-6">
@@ -91,7 +91,7 @@
                             <div class="form-group row">
                                 <label for="data_source" class="control-label col-sm-4 lb">Data Source</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('data_source')}}" id="data_source" name="description">
+                                    <input type="text" class="form-control" value="{{old('data_source')}}" id="data_source" name="data_source">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -116,29 +116,36 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 text-center ">
-                            <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                            <button class="btn btn-warning btn-flat" type="submit">Save and Continue</button>
+                        <br>
+                            <input type="hidden" name="save_status" value="0" id="save_status">
+                            <button class="btn btn-primary btn-flat" type="button" id="btnSave">Save</button>
+                            <button class="btn btn-success btn-flat" type="button" id="btnSave1">Save and Continue</button>
                             <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
 
                         </div>
                     </div>
                 </form>
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
-                    </li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="home" role="tabpanel">fist</div>
-                    <div class="tab-pane" id="profile" role="tabpanel">profile</div>
-                </div>
+               
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script>
+    $(document).ready(function(){
+        $("#siderbar li a").removeClass("current");
+        $("#menu_indicator_setting").addClass("current");
+        
+         $("#btnSave").click(function(){
+            $("#save_status").val("0");
+            frm.submit();
+        });
+        $("#btnSave1").click(function(){
+            $("#save_status").val("1");
+            frm.submit();
+        });
+
+    });
+</script>
 @endsection

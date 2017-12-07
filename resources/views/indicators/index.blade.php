@@ -29,23 +29,31 @@
                                 $pagex = 1;
                             $i = 12 * ($pagex - 1) + 1;
                         ?>
+                            @foreach($indicator_settings as $indicator)
                             <tr>
-                                <td>001</td>
-                                <td>P002</td>
-                                <td>Test Project</td>
-                                <td>IND01</td>
-                                <td>Main Indicator</td>
-                                <td>Starting</td>
-                                <td>BLNM</td>
-                                <td>Sample</td>
+                                <td>{{$indicator->id}}</td>
                                 <td>
-                                    <a href="#"></a>
+                                    <a href="{{url('/indicator/edit/'.$indicator->id)}}">{{$indicator->project_code}}</a>
+                                </td>
+                                <td>
+                                    <a href="{{url('/indicator/edit/'.$indicator->id)}}">{{$indicator->project_name}}</a>
+                                </td>
+                                <td>{{$indicator->indicator_code}}</td>
+                                <td>{{$indicator->indicator_name}}</td>
+                                <td>{{$indicator->indicator_level}}</td>
+                                <td>{{$indicator->baseline}}</td>
+                                <td>{{$indicator->data_source}}</td>
+                                <td>
+                                    <a href="{{url('/indicator/edit/'.$indicator->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
+                                    <a href="{{url('/indicator/delete/'.$indicator->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                       title="Delete"><i class="fa fa-remove text-danger"></i></a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav>
-                        {{--  {{$ngos->links()}}  --}}
+                        {{$indicator_settings->links()}}
                     </nav>
                 </div>
             </div>
@@ -56,7 +64,7 @@
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
-            $("#menu_ngo").addClass("current");
+            $("#menu_indicator_setting").addClass("current");
         })
     </script>
 @endsection

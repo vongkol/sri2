@@ -95,3 +95,9 @@ ul.pagination li a, ul.pagination li span{
 .nav-tabs {
     font-size: 14px;
 }
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
