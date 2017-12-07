@@ -188,7 +188,7 @@
                     indicator_level: $("#indicator_level").val(),
                     result_framework_structure: $("#result_framework_structure").val(),
                     baseline: $("#baseline").val(),
-                    data_source: $("#baseline").val(),
+                    data_source: $("#data_source").val(),
                     calculation_method: $("#calculation_method").val(),
                     indicator_definition: $("#indicator_definition").val(),
                     indicator_unit: $("#indicator_unit").val(),

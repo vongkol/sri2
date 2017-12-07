@@ -81,7 +81,7 @@ class IndicatorController extends Controller
             'indicator_definition' => $r->indicator_definition,
             'indicator_unit' => $r->indicator_unit,
             'component_responsible' => $r->component_responsible,
-            'person_responsible' => $r->responsible_person
+            'person_responsible' => $r->person_responsible
         );
         $i = DB::table('indicator_settings')->where('id', $r->id)->update($data);
         return $i;
