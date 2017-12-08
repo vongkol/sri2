@@ -11,6 +11,12 @@ return [
     "administration" => "Administration",
 
     'profile' => "Profile",
-    'reset_password' => "Reset Password"
+    'reset_password' => "Reset Password",
+    // new words
+    'project_list' => "Project List",
+    'new' => "New",
+    'project' => "Project",
+    'id' => "&numero;",
+
 
 ];
