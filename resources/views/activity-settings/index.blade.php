@@ -16,11 +16,7 @@
                             <th>Project Name</th>
                             <th>Activity Code</th>
                             <th>Activity Name</th>
-                            <th>Activity Type</th>
-                            <th>Result Framework Structure</th>
-                            <th>Component Responsible</th>
                             <th>Data Source</th>
-                            <th>Deliverable / Unit</th>
                             <th>Activity Definition</th>
                             <th>Location</th>
                             <th>Actions</th>
@@ -33,23 +29,6 @@
                                 $pagex = 1;
                             $i = 12 * ($pagex - 1) + 1;
                         ?>
-                            <tr>
-                                <td>001</td>
-                                <td>P002</td>
-                                <td>Test Project</td>
-                                <td>IND01</td>
-                                <td>Main Indicator</td>
-                                <td>Starting</td>
-                                <td>BLNM</td>
-                                <td>Sample</td>
-                                <td>Sample</td>
-                                <td>Sample</td>
-                                <td>Sample</td>
-                                <td>Sample</td>
-                                <td>
-                                    <a href="#"></a>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                     <nav>
@@ -59,4 +38,12 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $("#siderbar li a").removeClass("current");
+            $("#menu_activity_setting").addClass("current");
+        })
+    </script>
 @endsection

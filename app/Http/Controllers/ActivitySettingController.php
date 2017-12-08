@@ -14,6 +14,8 @@ class ActivitySettingController extends Controller
     }
     public function index()
     {
+        $x = Auth::user()->ngo_id;
+       // $data['settings'] = DB::table('activity_settings')->where('active',1)->get();
         return view('activity-settings.index');
     }
     public function create()

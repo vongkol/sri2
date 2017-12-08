@@ -32,6 +32,14 @@
                     {{csrf_field()}}
                     <div class="row">
                         <div class="col-sm-6">
+                             <div class="form-group row">
+                                <label for="ngo" class="control-label col-sm-4 lb">User NGO</label>
+                                <div class="col-sm-8">
+                                    <select name="ngo" id="ngo" class="form-control">
+                                    
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="project_code" class="control-label col-sm-4 lb">Project Code</label>
                                 <div class="col-sm-8">
@@ -105,22 +113,17 @@
                         </div>
                     </div>
                 </form>
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
-                    </li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="home" role="tabpanel">fist</div>
-                    <div class="tab-pane" id="profile" role="tabpanel">profile</div>
-                </div>
+               
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $("#siderbar li a").removeClass("current");
+            $("#menu_activity_setting").addClass("current");
+        })
+    </script>
 @endsection

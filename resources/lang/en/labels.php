@@ -18,5 +18,4 @@ return [
     'project' => "Project",
     'id' => "&numero;",
 
-
 ];
