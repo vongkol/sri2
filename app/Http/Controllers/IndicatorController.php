@@ -27,7 +27,13 @@ class IndicatorController extends Controller
     }
     public function create()
     {
-        return view('indicators.create');
+        $x = Auth::user()->ngo_id;
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        if($x>0)
+        {
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id',$x)->get();
+        }
+        return view('indicators.create', $data);
     }
     public function save(Request $r)
     {
@@ -46,7 +52,7 @@ class IndicatorController extends Controller
             'component_responsible' => $r->component_responsible,
             'person_responsible' => $r->responsible_person,
             'create_by' => Auth::user()->id,
-            'ngo_id' => Auth::user()->ngo_id
+            'ngo_id' => $r->ngo
         );
         $id = DB::table('indicator_settings')->insertGetId($data);
         if($r->save_status>0)
@@ -64,6 +70,14 @@ class IndicatorController extends Controller
     public function edit($id)
     {
         $data['indicator_setting'] = DB::table('indicator_settings')->where('id', $id)->first();
+        $data['years'] = DB::table('years')->where('active',1)->orderBy('id')->get();
+        $x = Auth::user()->ngo_id;
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        if($x>0)
+        {
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id',$x)->get();
+        }
+        $data['targets'] = DB::table('indicator_targets')->where('indicator_setting_id', $id)->get();
         return view('indicators.edit', $data);
     }
     public function update(Request $r)
@@ -81,7 +95,8 @@ class IndicatorController extends Controller
             'indicator_definition' => $r->indicator_definition,
             'indicator_unit' => $r->indicator_unit,
             'component_responsible' => $r->component_responsible,
-            'person_responsible' => $r->person_responsible
+            'person_responsible' => $r->person_responsible,
+            'ngo_id' => $r->ngo_id
         );
         $i = DB::table('indicator_settings')->where('id', $r->id)->update($data);
         return $i;
@@ -95,5 +110,42 @@ class IndicatorController extends Controller
             return redirect('/indicator?page='.$page);
         }
         return redirect('/indicator');
+    }
+    // save target
+    public function add_target(Request $r)
+    {
+        $id = $r->target_id;
+        $data = array(
+            'year' => $r->year,
+            'm1' => $r->jan,
+            'm2' => $r->feb,
+            'm3' => $r->mar,
+            'm4' => $r->apr,
+            'm5' => $r->may,
+            'm6' => $r->jun,
+            'm7' => $r->jul,
+            'm8' => $r->aug,
+            'm9' => $r->sep,
+            'm10' => $r->oct,
+            'm11' => $r->nov,
+            'm12' => $r->dec,
+            'indicator_setting_id' => $r->id
+        );
+        if($id>0)
+        {
+            $i = DB::table("indicator_targets")->where('id', $id)->update($data);
+            return $id;
+        }
+        else{
+            $i = DB::table("indicator_targets")->insertGetId($data);
+            return $i;
+        }
+        
+    }
+    // delete target
+    public function delete_target($id)
+    {
+        $i = DB::table('indicator_targets')->where('id', $id)->delete();
+        return $i;
     }
 }

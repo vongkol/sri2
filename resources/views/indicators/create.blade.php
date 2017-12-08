@@ -106,10 +106,20 @@
                                     <input type="text" class="form-control" value="{{old('component_responsible')}}" id="component_responsible" name="component_responsible">
                                 </div>
                             </div>
-                             <div class="form-group row">
+                            <div class="form-group row">
                                 <label for="responsible_person" class="control-label col-sm-4 lb">Responsible Person</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('responsible_person')}}" id="responsible_person" name="responsible_person">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ngo" class="control-label col-sm-4 lb">User NGO</label>
+                                <div class="col-sm-8">
+                                    <select name="ngo" id="ngo" class="form-control">
+                                    @foreach($ngos as $ngo)
+                                        <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

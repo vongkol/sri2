@@ -14,58 +14,92 @@
                    <div class="row">
                        <div class="col-sm-6">
                            <div class="form-group row">
-                               <label for="name" class="control-label col-sm-3 lb">ID</label>
-                               <div class="col-sm-8">
+                               <label class="control-label col-sm-5 lb">ID</label>
+                               <div class="col-sm-7">
                                    <input type="text" class="form-control" value="{{$ngo->id}}" readonly>
                                </div>
                            </div>
                            <div class="form-group row">
-                               <label for="name" class="control-label col-sm-3 lb">code</label>
-                               <div class="col-sm-8">
-                                   <input type="text" class="form-control" value="{{$ngo->code}}" readonly>
+                               <label  class="control-label col-sm-5 lb">Focal Person Name</label>
+                               <div class="col-sm-7">
+                                   <input type="text" class="form-control" value="{{$ngo->person_name}}" readonly>
                                </div>
                            </div>
                            <div class="form-group row">
-                               <label for="name" class="control-label col-sm-3 lb">Name</label>
-                               <div class="col-sm-8">
+                               <label  class="control-label col-sm-5 lb">Focal Person Gender</label>
+                               <div class="col-sm-7">
+                                   <input type="text" class="form-control" value="{{$ngo->gender}}" readonly>
+                               </div>
+                           </div>
+                           <div class="form-group row">
+                               <label class="control-label col-sm-5 lb">Focal Person Phone</label>
+                               <div class="col-sm-7">
+                                   <input type="text" class="form-control" value="{{$ngo->person_phone}}" readonly>
+                               </div>
+                           </div>
+                           <div class="form-group row">
+                               <label class="control-label col-sm-5 lb">Focal Person Position</label>
+                               <div class="col-sm-7">
+                                   <input type="text" class="form-control" value="{{$ngo->person_position}}" readonly>
+                               </div>
+                           </div>
+                           <div class="form-group row">
+                               <label class="control-label col-sm-5 lb">Focal Person Email</label>
+                               <div class="col-sm-7">
+                                   <input type="text" class="form-control" value="{{$ngo->person_email}}" readonly>
+                               </div>
+                           </div>
+                           <div class="form-group row">
+                               <label class="control-label col-sm-5 lb">Organization Name</label>
+                               <div class="col-sm-7">
                                    <input type="text" class="form-control" value="{{$ngo->name}}" readonly>
                                </div>
                            </div>
                            <div class="form-group row">
-                               <label for="name" class="control-label col-sm-3 lb">Email</label>
+                               <label class="control-label col-sm-5 lb">Organization Acronym</label>
+                               <div class="col-sm-7">
+                                   <input type="text" class="form-control" value="{{$ngo->acronym}}" readonly>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-sm-6">
+                            <div class="form-group row">
+                               <label class="control-label col-sm-4 lb">Organization Type</label>
                                <div class="col-sm-8">
-                                   <input type="text" class="form-control" value="{{$ngo->email}}" readonly>
+                                   <input type="text" class="form-control" value="{{$ngo->type}}" readonly>
                                </div>
                            </div>
                            <div class="form-group row">
-                               <label for="name" class="control-label col-sm-3 lb">Phone</label>
+                               <label class="control-label col-sm-4 lb">Office Phone</label>
                                <div class="col-sm-8">
                                    <input type="text" class="form-control" value="{{$ngo->phone}}" readonly>
                                </div>
                            </div>
                            <div class="form-group row">
-                               <label for="name" class="control-label col-sm-3 lb">Address</label>
+                               <label class="control-label col-sm-4 lb">Office Email</label>
                                <div class="col-sm-8">
-                                   <input type="text" class="form-control" value="{{$ngo->address}}" readonly>
+                                   <input type="text" class="form-control" value="{{$ngo->email}}" readonly>
+                               </div>
+                           </div>
+                            <div class="form-group row">
+                               <label class="control-label col-sm-4 lb">Sector</label>
+                               <div class="col-sm-8">
+                                   <input type="text" class="form-control" value="{{$ngo->sector}}" readonly>
                                </div>
                            </div>
                            <div class="form-group row">
-                               <label for="name" class="control-label col-sm-3 lb">Tax Code</label>
+                               <label class="control-label col-sm-4 lb">Office Based</label>
                                <div class="col-sm-8">
-                                   <input type="text" class="form-control" value="{{$ngo->tax_no}}" readonly>
+                                   <input type="text" class="form-control" value="{{$ngo->base}}" readonly>
                                </div>
                            </div>
                            <div class="form-group row">
-                               <label for="name" class="control-label col-sm-3 lb">Description</label>
+                               <label class="control-label col-sm-4 lb">&nbsp;</label>
                                <div class="col-sm-8">
-                                   <input type="text" class="form-control" value="{{$ngo->description}}" readonly>
+                                   <img src="{{asset("uploads/ngos/".$ngo->logo)}}" alt="Logo" width="127">
                                </div>
                            </div>
-                       </div>
-                       <div class="col-sm-6">
-                           <div class="form-group row">
-                               <img src="{{asset("uploads/ngos/".$ngo->logo)}}" alt="Logo">
-                           </div>
+                          
                        </div>
                        </div>
                    </div>

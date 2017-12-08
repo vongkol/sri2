@@ -34,13 +34,18 @@ class NgoController extends Controller
     public function save(Request $r)
     {
         $data = array(
-            "code" => $r->code,
+            "person_name" => $r->person_name,
+            'gender' => $r->gender,
+            'person_phone' => $r->person_phone,
+            'person_email' => $r->person_email,
+            'person_position' => $r->person_position,
             "name" => $r->name,
+            'acronym' => $r->acronym,
+            'type' => $r->type,
+            'sector' => $r->sector,
             "email" => $r->email,
             "phone" => $r->phone,
-            "address" => $r->address,
-            "tax_no" => $r->tax_code,
-            "description" => $r->description
+            'base' => $r->base
         );
         $i = DB::table("ngos")->insertGetId($data);
         if ($r->hasFile("logo"))
@@ -77,13 +82,18 @@ class NgoController extends Controller
     public function update(Request $r)
     {
         $data = array(
-            "code" => $r->code,
+            "person_name" => $r->person_name,
+            'gender' => $r->gender,
+            'person_phone' => $r->person_phone,
+            'person_email' => $r->person_email,
+            'person_position' => $r->person_position,
             "name" => $r->name,
+            'acronym' => $r->acronym,
+            'type' => $r->type,
+            'sector' => $r->sector,
             "email" => $r->email,
             "phone" => $r->phone,
-            "address" => $r->address,
-            "tax_no" => $r->tax_code,
-            "description" => $r->description
+            'base' => $r->base
         );
         // if user choose to change logo, upload it first
         if ($r->hasFile("logo"))
@@ -95,15 +105,10 @@ class NgoController extends Controller
             $data["logo"] = $file_name;
         }
         $i = DB::table("ngos")->where("id", $r->id)->update($data);
-        if ($i)
-        {
-            $r->session()->flash("sms", "All changes have been saved successfully!");
-            return redirect("/ngo/edit/". $r->id);
-        }
-        else{
-            $r->session()->flash("sms1", "Fail to save change. It seems you don't make any change!");
-            return redirect("/ngo/edit/". $r->id);
-        }
+  
+        $r->session()->flash("sms", "All changes have been saved successfully!");
+        return redirect("/ngo/edit/". $r->id);
+       
     }
     public function delete($id)
     {

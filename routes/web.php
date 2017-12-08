@@ -142,6 +142,8 @@ Route::get('/indicator/delete/{id}', "IndicatorController@delete");
 Route::get('/indicator/detail/{id}', "IndicatorController@detail");
 Route::post('/indicator/save', "IndicatorController@save");
 Route::post('/indicator/update', "IndicatorController@update");
+Route::post('/indicator/target/save', "IndicatorController@add_target");
+Route::get('/indicator/target/delete/{id}', "IndicatorController@delete_target");
 // activity setting
 Route::get('/activity-setting', "ActivitySettingController@index");
 Route::get('/activity-setting/create', "ActivitySettingController@create");

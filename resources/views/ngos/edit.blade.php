@@ -32,55 +32,91 @@
                     @endif
                     <form action="{{url('/ngo/update')}}" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit="return confirm('You want to save changes?')">
                         {{csrf_field()}}
+                        <input type="hidden" name="id" value="{{$ngo->id}}">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="code" class="control-label col-sm-3 lb">code</label>
+                                    <label  class="control-label col-sm-4 lb">Focal Person Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$ngo->code}}" name="code" id="code">
-                                        <input type="hidden" name="id" value="{{$ngo->id}}">
+                                        <input type="text" class="form-control" name="person_name" required value="{{$ngo->person_name}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="name" class="control-label col-sm-3 lb">Name <span class="text-danger">*</span></label>
+                                    <label  class="control-label col-sm-4 lb">Focal Person Gender</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$ngo->name}}" id="name" name="name" required>
+                                        <select name="gender" id="gender" class="form-control">
+                                                <option value="Male" {{$ngo->gender=='Male'?'selected':''}}>Male</option>
+                                                <option value="Female" {{$ngo->gender=='Female'?'selected':''}}>Female</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="email" class="control-label col-sm-3 lb">Email</label>
+                                    <label class="control-label col-sm-4 lb">Focal Person Phone</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$ngo->email}}" id="email" name="email">
+                                        <input type="text" class="form-control" name="person_phone" value="{{$ngo->person_phone}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="phone" class="control-label col-sm-3 lb">Phone</label>
+                                    <label class="control-label col-sm-4 lb">Focal Person Position</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$ngo->phone}}" id="phone" name="phone">
+                                        <input type="text" class="form-control" name="person_position" value="{{$ngo->person_position}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="address" class="control-label col-sm-3 lb">Address</label>
+                                    <label class="control-label col-sm-4 lb">Focal Person Email</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$ngo->address}}" id="address" name="address">
+                                        <input type="text" class="form-control" name="person_email" value="{{$ngo->person_email}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="tax_code" class="control-label col-sm-3 lb">Tax Code</label>
+                                    <label class="control-label col-sm-4 lb">Organization Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$ngo->tax_no}}" id="tax_code" name="tax_code">
+                                        <input type="text" class="form-control" name="name" required value="{{$ngo->name}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="description" class="control-label col-sm-3 lb">Description</label>
+                                    <label class="control-label col-sm-4 lb">Organization Acronym</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$ngo->description}}" id="description" name="description">
+                                        <input type="text" class="form-control" name="acronym" value="{{$ngo->acronym}}">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4 lb">Organization Type</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="type" value="{{$ngo->type}}"> 
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4 lb">Office Phone</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="phone" value="{{$ngo->phone}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4 lb">Office Email</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="email" value="{{$ngo->email}}">
+                                    </div>
+                                </div>
+                                <p class="text-success">
+                                    <br>
+                                    All fields with <span class="text-danger">*</span> are required!
+                                </p>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <div class="form-group row">
+                                    <label class="control-label col-sm-3 lb">Sector</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="sector" value="{{$ngo->sector}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-3 lb">Office Based</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="base" value="{{$ngo->base}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                         <label for="logo" class="control-label col-sm-3 lb">Logo</label>
                                         <div class="col-sm-8">
                                             <input type="file" class="form-control" id="logo" name="logo" onchange="loadFile(event)">
@@ -92,7 +128,6 @@
                                             </p>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </form>

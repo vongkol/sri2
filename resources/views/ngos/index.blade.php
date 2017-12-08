@@ -12,11 +12,14 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Code</th>
-                            <th>NGO Name</th>
-                            <th>Email Address</th>
-                            <th>Phone Number</th>
-                            <th>Address</th>
+                            <th>Organization Name</th>
+                            <th>Focal Person Name</th>
+                            <th>Focal Person Gender</th>
+                            <th>Focal Person Phone</th>
+                            <th>Organization Type</th>
+                            <th>Office Phone</th>
+                            <th>Office Email</th>
+                            <th>Office Based</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -30,13 +33,17 @@
                         @foreach($ngos as $ngo)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$ngo->code}}</td>
+                                
                                 <td>
                                     <a href="{{url('/ngo/detail/'.$ngo->id)}}">{{$ngo->name}}</a>
                                 </td>
-                                <td>{{$ngo->email}}</td>
+                                <td>{{$ngo->person_name}}</td>
+                                <td>{{$ngo->gender}}</td>
+                                <td>{{$ngo->person_phone}}</td>
+                                <td>{{$ngo->type}}</td>
                                 <td>{{$ngo->phone}}</td>
-                                <td>{{$ngo->address}}</td>
+                                <td>{{$ngo->email}}</td>
+                                <td>{{$ngo->base}}</td>
                                 <td>
                                     <a href="{{url('/ngo/edit/'.$ngo->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
                                     <a href="{{url('/ngo/delete/'.$ngo->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"

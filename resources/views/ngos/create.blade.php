@@ -34,51 +34,88 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="code" class="control-label col-sm-3 lb">code</label>
+                                    <label  class="control-label col-sm-4 lb">Focal Person Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('code')}}" name="code" id="code">
+                                        <input type="text" class="form-control" name="person_name" required >
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="name" class="control-label col-sm-3 lb">Name <span class="text-danger">*</span></label>
+                                    <label  class="control-label col-sm-4 lb">Focal Person Gender</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('name')}}" id="name" name="name" required>
+                                        <select name="gender" id="gender" class="form-control">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="email" class="control-label col-sm-3 lb">Email</label>
+                                    <label class="control-label col-sm-4 lb">Focal Person Phone</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('email')}}" id="email" name="email">
+                                        <input type="text" class="form-control" name="person_phone">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="phone" class="control-label col-sm-3 lb">Phone</label>
+                                    <label class="control-label col-sm-4 lb">Focal Person Position</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('phone')}}" id="phone" name="phone">
+                                        <input type="text" class="form-control" name="person_position">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="address" class="control-label col-sm-3 lb">Address</label>
+                                    <label class="control-label col-sm-4 lb">Focal Person Email</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('address')}}" id="address" name="address">
+                                        <input type="text" class="form-control" name="person_email">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="tax_code" class="control-label col-sm-3 lb">Tax Code</label>
+                                    <label class="control-label col-sm-4 lb">Organization Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('tax_no')}}" id="tax_code" name="tax_code">
+                                        <input type="text" class="form-control" name="name" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="description" class="control-label col-sm-3 lb">Description</label>
+                                    <label class="control-label col-sm-4 lb">Organization Acronym</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('description')}}" id="description" name="description">
+                                        <input type="text" class="form-control" name="acronym">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4 lb">Organization Type</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="type"> 
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4 lb">Office Phone</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="phone">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4 lb">Office Email</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="email">
+                                    </div>
+                                </div>
+                                <p class="text-success">
+                                    <br>
+                                    All fields with <span class="text-danger">*</span> are required!
+                                </p>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group row">
-                                    <div class="form-group row">
+                            
+                            <div class="form-group row">
+                               <label class="control-label col-sm-3 lb">Sector</label>
+                               <div class="col-sm-8">
+                                   <input type="text" class="form-control" name="sector">
+                               </div>
+                           </div>
+                           <div class="form-group row">
+                               <label class="control-label col-sm-3 lb">Office Based</label>
+                               <div class="col-sm-8">
+                                   <input type="text" class="form-control" name="base">
+                               </div>
+                           </div>
+                           <div class="form-group row">
                                         <label for="logo" class="control-label col-sm-3 lb">Logo</label>
                                         <div class="col-sm-8">
                                             <input type="file" class="form-control" id="logo" name="logo" onchange="loadFile(event)">
@@ -91,7 +128,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </form>
