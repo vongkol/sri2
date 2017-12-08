@@ -77,29 +77,30 @@
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
             <ul class="nav nav-pills flex-column" id="siderbar">
                 <li class="nav-item"><strong>Configuration</strong></li>
-                <li class="nav-item"><a href="{{url('/project')}}" class="nav-link" id="project">Project</a></li>
-                <li class="nav-item"><a href="{{url('/component')}}" class="nav-link" id="menu_component">Component</a></li>
-                <li class="nav-item"><a href="{{url('/activity_type')}}" class="nav-link" id="activity_type">Activity Type</a></li>
-                <li class="nav-item"><a href="{{url('/framework')}}" class="nav-link" id="framework">Framework</a></li>
-                <li class="nav-item"><a href="{{url('/level')}}" class="nav-link" id="level">Level</a></li>
-                <li class="nav-item"><a href="{{url('/activity_category')}}" class="nav-link" id="activity_category">Activity Category</a></li>
-                <li class="nav-item"><a href="{{url('/event')}}" class="nav-link" id="event">Event</a></li>
-                <li class="nav-item"><a href="{{url('/venue_type')}}" class="nav-link" id="venue_type">Venue Type</a></li>
-                <li class="nav-item"><a href="{{url('/event_organizor')}}" class="nav-link" id="event_organizor">Event Organizor</a></li>
+                <li class="nav-item"><a href="{{url('/project')}}" class="nav-link" id="project"><i class="fa fa-file-powerpoint-o text-success"></i> Project</a></li>
+                <li class="nav-item"><a href="{{url('/component')}}" class="nav-link" id="menu_component"><i class="fa fa-cubes text-success"></i> Component</a></li>
+                <li class="nav-item"><a href="{{url('/activity_type')}}" class="nav-link" id="activity_type"><i class="fa fa-child text-success"></i> Activity Type</a></li>
+                <li class="nav-item"><a href="{{url('/framework')}}" class="nav-link" id="framework"> <i class="fa fa-share-alt-square text-success"></i>
+Framework</a></li>
+                <li class="nav-item"><a href="{{url('/level')}}" class="nav-link" id="level"><i class="fa fa-signal text-success"></i> Level</a></li>
+                <li class="nav-item"><a href="{{url('/activity_category')}}" class="nav-link" id="activity_category"><i class="fa fa-tags text-success"></i> Activity Category</a></li>
+                <li class="nav-item"><a href="{{url('/event')}}" class="nav-link" id="event"><i class="fa fa-calendar text-success"></i> Event</a></li>
+                <li class="nav-item"><a href="{{url('/venue_type')}}" class="nav-link" id="venue_type"><i class="fa fa-map-marker text-success"></i> Venue Type</a></li>
+                <li class="nav-item"><a href="{{url('/event_organizor')}}" class="nav-link" id="event_organizor"><i class="fa fa-calendar-check-o text-success"></i> Event Organizor</a></li>
 
                 <li class="nav-item"><strong>Custom Field</strong></li>
-                <li class="nav-item"><a href="#" class="nav-link">Activity Setting</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-wrench text-success"></i> Activity Setting</a></li>
                 <li class="nav-item"><strong>User Management</strong></li>
                 @if(Auth::user()->ngo_id<=0)
                  <li class="nav-item">
-                    <a class="nav-link" href="{{url('/ngo')}}" id="menu_ngo">NGO</a>
+                    <a class="nav-link" href="{{url('/ngo')}}" id="menu_ngo"><i class="fa fa-university text-success"></i> NGO</a>
                 </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/role')}}" id="menu_role">User Role</a>
+                    <a class="nav-link" href="{{url('/role')}}" id="menu_role"><i class="fa fa-shield text-success"></i> User Role</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/user')}}" id="user">User Account</a>
+                    <a class="nav-link" href="{{url('/user')}}" id="user"><i class="fa fa-user text-success"></i> User Account</a>
                 </li>
                 
             </ul>

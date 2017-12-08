@@ -496,7 +496,7 @@ function editTarget(obj,evt)
                     <div class="form-group row col-md-12 text-center">
                         <div class="col-md-4"></div>
                         <div class="form-group row col-md-4 text-center">
-                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Year</label>
                             <div class="col-sm-6 col-md-6">
                                 <select id="year" class="form-control text-center">
                                 @foreach($years as $year)
