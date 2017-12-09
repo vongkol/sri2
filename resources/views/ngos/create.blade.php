@@ -103,32 +103,32 @@
                             </div>
                             <div class="col-sm-6">
                             
-                            <div class="form-group row">
-                               <label class="control-label col-sm-3 lb">Sector</label>
-                               <div class="col-sm-8">
-                                   <input type="text" class="form-control" name="sector">
-                               </div>
-                           </div>
-                           <div class="form-group row">
-                               <label class="control-label col-sm-3 lb">Office Based</label>
-                               <div class="col-sm-8">
-                                   <input type="text" class="form-control" name="base">
-                               </div>
-                           </div>
-                           <div class="form-group row">
-                                        <label for="logo" class="control-label col-sm-3 lb">Logo</label>
-                                        <div class="col-sm-8">
-                                            <input type="file" class="form-control" id="logo" name="logo" onchange="loadFile(event)">
-                                            <br>
-                                            <img src="{{asset("uploads/ngos/default.png")}}" alt="Logo" width="120" id="preview">
-                                            <p>
-                                                <br>
-                                                <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                                                <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
-                                            </p>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-3 lb">Sector</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="sector">
                                     </div>
-                               
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-3 lb">Office Based</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="base">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="logo" class="control-label col-sm-3 lb">Logo</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" class="form-control" id="logo" name="logo" onchange="loadFile(event)">
+                                        <br>
+                                        <img src="{{asset("uploads/ngos/default.png")}}" alt="Logo" width="120" id="preview">
+                                        <p>
+                                            <br>
+                                            <button class="btn btn-primary btn-flat" type="submit">Save</button>
+                                            <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
+                                        </p>
+                                    </div>
+                                </div>
+                                    
                             </div>
                         </div>
                     </form>

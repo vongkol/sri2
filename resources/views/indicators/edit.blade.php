@@ -187,83 +187,17 @@
                     </div>
                     <div class="tab-pane" id="other1" role="tabpanel">
                         <p>
-                        <br>
-                            <a href="#" class="text-primary" id="btnAddTarget1" data-toggle="modal" data-target=".bd-target-modal-lg-2"><i class="fa fa-plus"></i> New Target </a>
+                            Other 1
                         </p>
-                        <table class="tbl">
-                            <thead>
-                                <tr>
-                                    <th>&numero;</th>
-                                    <th>Year</th>
-                                    <th>Jan</th>
-                                    <th>Feb</th>
-                                    <th>Mar</th>
-                                    <th>Apr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Aug</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Nov</th>
-                                    <th>Dec</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                        </table>
+                       
                     </div>
             
-                    <div class="tab-pane" id="other2" role="tabpanel"><p>
-                        <br>
-                            <a href="#" class="text-primary" id="btnAddTarget2" data-toggle="modal" data-target=".bd-target-modal-lg-3"><i class="fa fa-plus"></i> New Target </a>
-                        </p>
-                        <table class="tbl">
-                            <thead>
-                                <tr>
-                                    <th>&numero;</th>
-                                    <th>Year</th>
-                                    <th>Jan</th>
-                                    <th>Feb</th>
-                                    <th>Mar</th>
-                                    <th>Apr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Aug</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Nov</th>
-                                    <th>Dec</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                        </table>
+                    <div class="tab-pane" id="other2" role="tabpanel">
+                        <p>Other 2</p>
                     </div>
-                    <div class="tab-pane" id="other3" role="tabpanel"><p>
-                        <br>
-                            <a href="#" class="text-primary" id="btnAddTarget3" data-toggle="modal" data-target=".bd-target-modal-lg-4"><i class="fa fa-plus"></i> New Target </a>
-                        </p>
-                        <table class="tbl">
-                            <thead>
-                                <tr>
-                                    <th>&numero;</th>
-                                    <th>Year</th>
-                                    <th>Jan</th>
-                                    <th>Feb</th>
-                                    <th>Mar</th>
-                                    <th>Apr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Aug</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Nov</th>
-                                    <th>Dec</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                        </table></div>
+                    <div class="tab-pane" id="other3" role="tabpanel">
+                       <p>Other 3</p>
+                    </div>
                 </div>
             </div>
         </div>
