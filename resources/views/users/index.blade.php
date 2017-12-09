@@ -4,8 +4,22 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>User List</strong>&nbsp;&nbsp;
-                    <a href="{{url('/user/create')}}"><i class="fa fa-plus"></i> New</a>
+                    <div class="row">
+                        <strong>User List</strong>&nbsp;&nbsp;
+                        <a href="{{url('/user/create')}}"><i class="fa fa-plus"></i> New</a>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <span><b>User NGO</b></span>
+                                    <select  id="test">
+                                        <option>Test 1</option>
+                                        <option>Test</option>
+                                    </select>  
+                                    <input type="button" value="search" name="search" class="btn-search">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-block">
                     <table class="tbl">

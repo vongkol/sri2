@@ -6,7 +6,6 @@
                 <div class="card-header">
                     <strong>Create Project</strong>&nbsp;&nbsp;
                     <a href="{{url('/project')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -37,12 +36,8 @@
                                     <label for="name" class="control-label col-sm-3 lb">Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" value="{{old('name')}}" id="name" name="name" required>
-                                         
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                               
                             </div>
                         </div>
                          <div class="row">
@@ -51,12 +46,8 @@
                                     <label for="acronym" class="control-label col-sm-3 lb">Acronym </label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" value="{{old('acronym')}}" id="acronym" name="acronym" >
-                                         
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                               
                             </div>
                         </div>
                         <div class="row">
@@ -75,9 +66,6 @@
                                         <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                               
                             </div>
                         </div>
                     </form>

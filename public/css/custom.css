@@ -101,3 +101,7 @@ ul.pagination li a, ul.pagination li span{
 .show{
     display: block;
 }
+.btn-search {
+    height: 21px;
+    line-height: 16px;
+}
