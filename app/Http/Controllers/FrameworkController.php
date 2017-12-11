@@ -119,4 +119,8 @@ class FrameworkController extends Controller
         }
         return redirect('/framework');
     }
+    public function get($id)
+    {
+        return DB::table('frameworks')->where('active',1)->where('ngo_id',$id)->get();
+    }
 }

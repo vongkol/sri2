@@ -30,6 +30,7 @@ Route::get('/user/update-password/{id}', "UserController@load_password");
 Route::post('/user/save-password', "UserController@update_password");
 Route::get('/user/getrole/{id}', "UserController@getRole");
 Route::get('/user/getcomponent/{id}', "UserController@getComponent");
+Route::get('/user/get/{id}', "UserController@get");
 // role
 Route::get("/role", "RoleController@index");
 Route::get("/role/create", "RoleController@create");
@@ -57,6 +58,7 @@ Route::post('/ngo/update', "NgoController@update");
 
 /// component
 Route::get('/component', "ComponentController@index");
+Route::get('/component/get/{id}', "ComponentController@get");
 Route::get('/component/create', "ComponentController@create");
 Route::get('/component/edit/{id}', "ComponentController@edit");
 Route::get('/component/delete/{id}', "ComponentController@delete");
@@ -72,9 +74,11 @@ Route::get('/project/edit/{id}', "ProjectController@edit");
 Route::get('/project/delete/{id}', "ProjectController@delete");
 Route::post('/project/save', "ProjectController@save");
 Route::post('/project/update', "ProjectController@update");
+Route::get('/project/get/{id}', "ProjectController@get");
 
 /// activity type
 Route::get('/activity_type', "ActivityTypeController@index");
+Route::get('/activity_type/get/{id}', "ActivityTypeController@get");
 Route::get('/activity_type/create', "ActivityTypeController@create");
 Route::get('/activity_type/edit/{id}', "ActivityTypeController@edit");
 Route::get('/activity_type/delete/{id}', "ActivityTypeController@delete");
@@ -83,6 +87,7 @@ Route::post('/activity_type/update', "ActivityTypeController@update");
 
 /// framework
 Route::get('/framework', "FrameworkController@index");
+Route::get('/framework/get/{id}', "FrameworkController@get");
 Route::get('/framework/create', "FrameworkController@create");
 Route::get('/framework/edit/{id}', "FrameworkController@edit");
 Route::get('/framework/delete/{id}', "FrameworkController@delete");

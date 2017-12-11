@@ -119,5 +119,8 @@ class ComponentController extends Controller
         }
         return redirect('/component');
     }
-
+    public function get($id)
+    {
+        return DB::table('components')->where('active', 1)->where('ngo_id', $id)->get();
+    }
 }

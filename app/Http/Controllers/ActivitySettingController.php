@@ -53,4 +53,51 @@ class ActivitySettingController extends Controller
         }
         return view('activity-settings.create', $data);
     }
+    public function save(Request $r)
+    {
+        $data = array(
+            'project_code' => $r->project_code,
+            'project_id' => $r->project_name,
+            'activity_code' => $r->activity_code,
+            'activity_name' => $r->activity_name,
+            'activity_type_id' => $r->activity_type,
+            'activity_definition' => $r->activity_definition,
+            'framework_id' => $r->result_framework_structure,
+            'deliverable' => $r->deliverable,
+            'data_source' => $r->data_source,
+            'location' => $r->location,
+            'ngo_id' => $r->ngo,
+            'create_by' => Auth::user()->id
+        );
+       $i = DB::table('activity_settings')->insertGetId($data);
+       // person responsible
+       $persons = $r->person_responsible;
+       $coms = $r->component_responsible;
+        $pp = array();
+        $cc = array();
+        foreach($persons as $p)
+        {
+            $p= array(
+                'activity_setting_id' => $i,
+                'user_id' => $p
+            );
+            array_push($pp, $p);
+        }
+        foreach($coms as $com)
+        {
+            $c = array(
+                'activity_setting_id' => $i,
+                'component_id' => $com
+            );
+            array_push($cc, $c);
+        }
+        $a = DB::table('person_responsible_details')->insert($pp);
+        $b = DB::table('component_responsible_details')->insert($cc);
+
+        if($r->save_status<=0)
+        {
+            $r->session()->flash('sms', "Save successfully!");
+            return redirect('/activity-setting/create');
+        }
+    }
 }
