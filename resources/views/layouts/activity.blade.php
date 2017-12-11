@@ -15,10 +15,11 @@
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-        <link rel="stylesheet" href="{{asset("chosen/chosen.css")}}">
+        <link rel="stylesheet" href="{{asset('chosen/chosen.css')}}">
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('js/multiselect/example-styles.css')}}">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset("css/table.css")}}">
+    <link rel="stylesheet" href="{{asset('css/table.css')}}">
 </head>
 <body>
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-blue">
@@ -30,14 +31,14 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/home')}}"><i class="fa fa-home"></i> {{trans('labels.home')}}</a>
+                <a class="nav-link" href="{{url('/home')}}">{{trans('labels.home')}}</a>
             </li>
-            <li class="nav-item active"><a href="{{url('/activity')}}" class="nav-link"><i class="fa fa-bolt"></i> {{trans('labels.activity')}} <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item active"><a href="{{url('/activity')}}" class="nav-link">{{trans('labels.activity')}} <span class="sr-only">(current)</span></a></li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/setting')}}"><i class="fa fa-cog"></i> {{trans('labels.administration')}}</a>
+                <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-question"></i> {{trans('labels.help')}}</a>
+                <a class="nav-link" href="#">{{trans('labels.help')}}</a>
             </li>
         </ul>
         <ul class="navbar-nav">

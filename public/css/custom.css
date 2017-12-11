@@ -105,3 +105,8 @@ ul.pagination li a, ul.pagination li span{
     height: 21px;
     line-height: 16px;
 }
+.filter{
+    font-weight: normal;
+    font-size: 11px;
+    font-family: arial;
+}

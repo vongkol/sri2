@@ -5,27 +5,26 @@
             <div class="card">
                 <div class="card-header text-bold">
                     <div class="row">
-                        <strong>Activity Setting List</strong>&nbsp;&nbsp;
-                        <a href="{{url('/activity-setting/create')}}"><i class="fa fa-plus"></i> New</a>
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <div class="col-sm-8">
-                                    <span><b>User NGO</b></span>
-                                    <select  id="test">
-                                        <option>Test 1</option>
-                                        <option>Test</option>
-                                    </select>  
-                                    <input type="button" value="search" name="search" class="btn-search">
-                                </div>
-                            </div>
-                        </div>
+                       <div class="col-sm-4">
+                            <strong>Activity Setting List</strong>&nbsp;&nbsp;
+                            <a href="{{url('/activity-setting/create')}}"><i class="fa fa-plus"></i> New</a>
+                       </div>
+                       <div class="col-sm-6">
+                            <form action="" method="get">
+                                <select name="search" id="search" class="filter">
+                                    <option value="0">All NGOs</option>
+                                    <option value="1">Vdoo Solutions Co., Ltd</option>
+                                </select>
+                                <button class="filter" type="submit">Filter</button>
+                            </form>
+                       </div>
                     </div>
                 </div>
                 <div class="card-block">
                     <table class="tbl">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>&numero;</th>
                             <th>Project Code</th>
                             <th>Project Name</th>
                             <th>Activity Code</th>
@@ -43,6 +42,18 @@
                                 $pagex = 1;
                             $i = 12 * ($pagex - 1) + 1;
                         ?>
+                        @foreach($settings as $st)
+                        <tr>
+                            <td>{{$i++}}</td>
+                            <td>{{$st->project_code}}</td>
+                            <td>{{$st->project_name}}</td>
+                            <td>{{$st->activity_code}}</td>
+                            <td>{{$st->activity_name}}</td>
+                            <td>{{$st->data_source}}</td>
+                            <td>{{$st->activity_definition}}</td>
+                            <td>{{$st->location}}</td>
+                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     <nav>

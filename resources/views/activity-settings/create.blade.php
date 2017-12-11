@@ -36,7 +36,9 @@
                                 <label for="ngo" class="control-label col-sm-4 lb">User NGO</label>
                                 <div class="col-sm-8">
                                     <select name="ngo" id="ngo" class="form-control">
-                                    
+                                    @foreach($ngos as $ngo)
+                                        <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                    @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -49,7 +51,11 @@
                             <div class="form-group row">
                                 <label for="project_name" class="control-label col-sm-4 lb">Project Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('project_name')}}" id="project_name" name="project_name">
+                                    <select name="project_name" id="project_name" class="form-control">
+                                    @foreach($projects as $pro)
+                                        <option value="{{$pro->id}}">{{$pro->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -59,9 +65,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="activity_name" class="control-label col-sm-4 lb">Activity Name</label>
+                                <div class="col-sm-8">
+                                    <textarea name="activity_name" id="activity_name" cols="30" rows="2" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="activity_type" class="control-label col-sm-4 lb">Activity Type</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('activity_type')}}" id="activity_type" name="activity_type">
+                                    <select name="activity_type" id="activity_type" class="form-control">
+                                    @foreach($activity_types as $ac)
+                                        <option value="{{$ac->id}}">{{$ac->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -74,15 +90,23 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="Result_Framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('Result_Framework_structure')}}" id="Result_Framework_structure" name="Result_Framework_structure">
+                                    <select name="result_framework_structure" id="result_framework_structure" class="form-control">
+                                    @foreach($frameworks as $fr)
+                                        <option value="{{$fr->id}}">{{$fr->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="component_responsible" class="control-label col-sm-4 lb">Component Responsible</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('component_responsible')}}" id="component_responsible" name="component_responsible">
+                                    <select name="component_responsible" id="component_responsible" class="form-control" multiple>
+                                    @foreach($components as $com)
+                                        <option value="{{$com->id}}">{{$com->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -100,15 +124,29 @@
                             <div class="form-group row">
                                 <label for="location" class="control-label col-sm-4 lb">Location</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('location')}}" id="location" name="location">
+                                    <select name="location" id="location" class="form-control">
+                                    @foreach($provinces as $pro)
+                                        <option value="{{$pro->name}}">{{$pro->name}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                           <div class="form-group row">
+                                <label for="person_responsible" class="control-label col-sm-4 lb">Person Responsible</label>
+                                <div class="col-sm-8">
+                                    <select name="person_responsible" id="person_responsible" class="form-control" multiple>
+                                    @foreach($users as $per)
+                                        <option value="{{$per->id}}">{{$per->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>                  
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 text-center ">
-                            <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                            <button class="btn btn-warning btn-flat" type="submit">Save and Continue</button>
+                            <button class="btn btn-primary btn-flat" type="button">Save</button>
+                            <button class="btn btn-success btn-flat" type="button">Save and Continue</button>
                             <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
                         </div>
                     </div>
@@ -120,10 +158,13 @@
 </div>
 @endsection
 @section('js')
+    <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
             $("#menu_activity_setting").addClass("current");
+            $('#person_responsible').multiSelect();
+            $("#component_responsible").multiSelect();
         })
     </script>
 @endsection
