@@ -110,3 +110,25 @@ ul.pagination li a, ul.pagination li span{
     font-size: 11px;
     font-family: arial;
 }
+.chosen-container-single .chosen-single {
+    height: 25px;
+    border-radius: 3px;
+}
+.chosen-container .chosen-drop {
+    position: absolute;
+    top: 100%;
+    z-index: 1010;
+    width: 95%;
+    border: 1px solid #aaa;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: rgb(170, 170, 170);
+    margin-left: 8px;
+        background-clip: border-box;
+    -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    clip: rect(0, 0, 0, 0);
+}
+.chosen-container-single .chosen-single {
+    padding: 0 0 0 8px;
+}

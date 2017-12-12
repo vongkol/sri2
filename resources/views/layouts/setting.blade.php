@@ -9,16 +9,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>System Admin - SRI V2</title>
+
     <!-- Styles -->
     <!-- Bootstrap core CSS -->
+    <link href="{{asset('chosen/docsupport/prism.css')}}" rel="stylesheet">
+    <link href="{{asset('chosen/chosen.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-        <link rel="stylesheet" href="{{asset("chosen/chosen.css")}}">
+    
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset("css/table.css")}}">
+    <link rel="stylesheet" href="{{asset('css/table.css')}}">
+
 </head>
 <body>
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-blue">
@@ -111,9 +115,14 @@ Framework</a></li>
     </div>
 </div>
 <!-- Scripts -->
+
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{asset('js/tether.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('chosen/chosen.jquery.js')}}"></script>
+<script src="{{asset('chosen/docsupport/prism.js')}}"></script>
+<script src="{{asset('chosen/docsupport/init.js')}}"></script>
+
 <script>
         function chLang(evt, ln)
         {

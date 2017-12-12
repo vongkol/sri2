@@ -11,11 +11,12 @@
                     </div>
                     <div class="col-sm-6">
                         <form action="" method="get" name="search">
-                            <select name="user_ngo" id="user_ngo" class="filter">
+                            <select name="user_ngo" id="user_ngo" class="chosen-select">
                                 <option value="0">All NGOs</option>
                                 <option value="1">Vdoo Solutions Co., Ltd</option>
+                                <option value="0">Passerelles numeriques Cambodia</option>
                             </select>
-                            <button type="submit" class="filter">Filter</button>
+                            <button type="submit" class="filter">Filter</button>   
                         </form>
                     </div>
                 </div>
@@ -65,6 +66,7 @@
     </div>
 @endsection
 @section('js')
+
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
