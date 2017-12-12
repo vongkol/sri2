@@ -121,5 +121,8 @@ class ActivityTypeController extends Controller
         return redirect('/activity_type');
     }
 
-
+    public function get($id)
+    {
+        return DB::table('activity_types')->where('active',1)->where('ngo_id', $id)->get();
+    }
 }

@@ -121,4 +121,9 @@ class ProjectController extends Controller
         }
         return redirect('/project');
     }
+    // get project by ngo id
+    public function get($id)
+    {
+        return DB::table('projects')->where('active',1)->where('ngo_id', $id)->get();
+    }
 }

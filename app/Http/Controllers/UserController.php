@@ -329,4 +329,8 @@ class UserController extends Controller
     {
         return DB::table('components')->where('active',1)->where('ngo_id',$id)->orderBy('name')->get();
     }
+    public function get($id)
+    {
+        return DB::table('users')->where('active',1)->where('ngo_id', $id)->get();
+    }
 }
