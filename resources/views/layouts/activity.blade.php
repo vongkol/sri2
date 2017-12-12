@@ -78,12 +78,12 @@
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
             <ul class="nav nav-pills flex-column" id="siderbar">
                 <li class="nav-item"><strong>Achievement</strong></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-angle-double-right"></i> Activity Achieved</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-angle-double-right"></i> Indicator Achieved</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-angle-double-right"></i> Narrative Achieved</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-angle-double-right text-info"></i> Activity Achieved</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-angle-double-right text-info"></i> Indicator Achieved</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-angle-double-right text-info"></i> Narrative Achieved</a></li>
                 <li class="nav-item"><strong>Setting</strong></li>
-                <li class="nav-item"><a href="{{url('/activity-setting')}}" class="nav-link" id="menu_activity_setting"><i class="fa fa-angle-double-right"></i> Activity Setting</a></li>
-                <li class="nav-item"><a href="{{url('/indicator')}}" class="nav-link" id="menu_indicator_setting"><i class="fa fa-angle-double-right"></i> Indicator Setting</a></li>
+                <li class="nav-item"><a href="{{url('/activity-setting')}}" class="nav-link" id="menu_activity_setting"><i class="fa fa-angle-double-right text-info"></i> Activity Setting</a></li>
+                <li class="nav-item"><a href="{{url('/indicator')}}" class="nav-link" id="menu_indicator_setting"><i class="fa fa-angle-double-right text-info"></i> Indicator Setting</a></li>
             </ul>
         </nav>
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2">

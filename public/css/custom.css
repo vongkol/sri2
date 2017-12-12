@@ -1,6 +1,6 @@
 ﻿ul#siderbar li.nav-item a.nav-link{
-    padding: 1px 1em;
-    font-size: 15px;
+    padding: 5px 1em;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 ul#siderbar li.nav-item strong{
@@ -14,7 +14,7 @@ ul#siderbar li.nav-item a.nav-link:hover{
     padding-bottom: 0;
 }
 .navbar-nav a {
-    font-size: 15px;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 .sidebar{
