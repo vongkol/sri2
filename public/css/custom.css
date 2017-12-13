@@ -1,6 +1,6 @@
 ﻿ul#siderbar li.nav-item a.nav-link{
-    padding: 1px 1em;
-    font-size: 15px;
+    padding: 5px 1em;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 ul#siderbar li.nav-item strong{
@@ -14,7 +14,7 @@ ul#siderbar li.nav-item a.nav-link:hover{
     padding-bottom: 0;
 }
 .navbar-nav a {
-    font-size: 15px;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 .sidebar{
@@ -109,4 +109,26 @@ ul.pagination li a, ul.pagination li span{
     font-weight: normal;
     font-size: 11px;
     font-family: arial;
+}
+.chosen-container-single .chosen-single {
+    height: 25px;
+    border-radius: 3px;
+}
+.chosen-container .chosen-drop {
+    position: absolute;
+    top: 100%;
+    z-index: 1010;
+    width: 95%;
+    border: 1px solid #aaa;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: rgb(170, 170, 170);
+    margin-left: 8px;
+        background-clip: border-box;
+    -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    clip: rect(0, 0, 0, 0);
+}
+.chosen-container-single .chosen-single {
+    padding: 0 0 0 8px;
 }
