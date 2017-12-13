@@ -49,15 +49,14 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="ngo" class="control-label col-sm-3 lb">NGO <span class="text-danger">*</span></label>
+                                    <label for="ngo" class="control-label col-sm-3 lb">User NGO <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <select name="role" id="role" class="form-control">
+                                        <select name="role" id="role" class="form-control chosen-select">
                                         @foreach($ngos as $ngo)
                                             <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                         @endforeach
                                         </select>
-                                        
-                                         <br>
+                                         <br><br>
                                         <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
                                         <button class="btn btn-danger btn-flat" type="button" onclick="location.reload()">Cancel</button>
                                     </div>

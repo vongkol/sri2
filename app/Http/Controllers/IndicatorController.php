@@ -23,6 +23,11 @@ class IndicatorController extends Controller
                 ->where('ngo_id', $x)
                 ->paginate(12);        
         }
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        if($x>0)
+        {
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id',$x)->get();
+        }
         return view('indicators.index', $data);
     }
     public function create()

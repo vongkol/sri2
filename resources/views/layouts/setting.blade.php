@@ -122,7 +122,6 @@ Framework</a></li>
 <script src="{{asset('chosen/chosen.jquery.js')}}"></script>
 <script src="{{asset('chosen/docsupport/prism.js')}}"></script>
 <script src="{{asset('chosen/docsupport/init.js')}}"></script>
-
 <script>
         function chLang(evt, ln)
         {

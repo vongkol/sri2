@@ -9,15 +9,16 @@
                             <strong>Activity Setting List</strong>&nbsp;&nbsp;
                             <a href="{{url('/activity-setting/create')}}"><i class="fa fa-plus"></i> New</a>
                        </div>
-                       <div class="col-sm-6">
-                            <form action="" method="get">
-                                <select name="search" id="search" class="filter">
-                                    <option value="0">All NGOs</option>
-                                    <option value="1">Vdoo Solutions Co., Ltd</option>
+                       <div class="col-sm-8">
+                            <form action="" method="get" name="search">
+                                <select name="user_ngo" id="user_ngo" class="chosen-select">
+                                    @foreach($ngos as $ngo)
+                                        <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                    @endforeach
                                 </select>
-                                <button class="filter" type="submit">Filter</button>
+                                <button type="submit" class="filter">Filter</button>   
                             </form>
-                       </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-block">
