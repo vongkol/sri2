@@ -9,7 +9,7 @@
                         <strong>Project List</strong>&nbsp;&nbsp;
                         <a href="{{url('/project/create')}}"><i class="fa fa-plus"></i> New</a>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         <form action="" method="get" name="search">
                             <select name="user_ngo" id="user_ngo" class="chosen-select">
                                 <option value="0">All NGOs</option>

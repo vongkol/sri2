@@ -11,6 +11,8 @@
     <title>Activity Management - SRI V2</title>
     <!-- Styles -->
     <!-- Bootstrap core CSS -->
+    <link href="{{asset('chosen/docsupport/prism.css')}}" rel="stylesheet">
+    <link href="{{asset('chosen/chosen.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
 
@@ -95,6 +97,9 @@
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{asset('js/tether.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('chosen/chosen.jquery.js')}}"></script>
+<script src="{{asset('chosen/docsupport/prism.js')}}"></script>
+<script src="{{asset('chosen/docsupport/init.js')}}"></script>
 <script>
         function chLang(evt, ln)
         {

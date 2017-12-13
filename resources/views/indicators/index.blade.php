@@ -5,19 +5,19 @@
             <div class="card">
                 <div class="card-header text-bold">
                     <div class="row">
-                        <strong>Indicator Setting List</strong>&nbsp;&nbsp;
-                        <a href="{{url('/indicator/create')}}"><i class="fa fa-plus"></i> New</a>
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <div class="col-sm-8">
-                                    <span><b>User NGO</b></span>
-                                    <select  id="test">
-                                        <option>Test 1</option>
-                                        <option>Test</option>
-                                    </select>  
-                                    <input type="button" value="search" name="search" class="btn-search">
-                                </div>
-                            </div>
+                        <div class="col-sm-4">
+                            <strong>Indicator Setting List</strong>&nbsp;&nbsp;
+                            <a href="{{url('/indicator/create')}}"><i class="fa fa-plus"></i> New</a>
+                        </div>
+                        <div class="col-sm-8">
+                            <form action="" method="get" name="search">
+                                <select name="user_ngo" id="user_ngo" class="chosen-select">
+                                    <option value="0">All NGOs</option>
+                                    <option value="1">Vdoo Solutions Co., Ltd</option>
+                                    <option value="0">Passerelles numeriques Cambodia</option>
+                                </select>
+                                <button type="submit" class="filter">Filter</button>   
+                            </form>
                         </div>
                     </div>
                 </div>
