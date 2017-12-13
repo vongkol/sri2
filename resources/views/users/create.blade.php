@@ -84,7 +84,7 @@
                                     <div class="form-group row">
                                            <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
-                                              <select name="ngo" id="ngo" class="form-control">
+                                              <select name="ngo" id="ngo" class="form-control chosen-select">
                                                 @foreach($ngos as $ngo)
                                                     <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                                 @endforeach

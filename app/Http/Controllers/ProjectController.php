@@ -40,6 +40,11 @@ class ProjectController extends Controller
                 ->select('projects.*', 'ngos.name as ngo_name')
                 ->paginate(12); 
         }
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        if(Auth::user()->ngo_id>0)
+        {
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id', Auth::user()->ngo_id)->get();
+        }
         return view("projects.index", $data);
     }
 

@@ -12,9 +12,9 @@
                        <div class="col-sm-8">
                             <form action="" method="get" name="search">
                                 <select name="user_ngo" id="user_ngo" class="chosen-select">
-                                    <option value="0">All NGOs</option>
-                                    <option value="1">Vdoo Solutions Co., Ltd</option>
-                                    <option value="0">Passerelles numeriques Cambodia</option>
+                                    @foreach($ngos as $ngo)
+                                        <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                    @endforeach
                                 </select>
                                 <button type="submit" class="filter">Filter</button>   
                             </form>

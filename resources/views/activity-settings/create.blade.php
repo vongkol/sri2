@@ -35,7 +35,7 @@
                              <div class="form-group row">
                                 <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <select name="ngo" id="ngo" class="form-control" onchange="binding()">
+                                    <select name="ngo" id="ngo" class="form-control chosen-select" onchange="binding()">
                                     @foreach($ngos as $ngo)
                                         <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                     @endforeach
@@ -51,7 +51,7 @@
                             <div class="form-group row">
                                 <label for="project_name" class="control-label col-sm-4 lb">Project Name <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <select name="project_name" id="project_name" class="form-control">
+                                    <select name="project_name" id="project_name" class="form-control chosen-select">
                                     @foreach($projects as $pro)
                                         <option value="{{$pro->id}}">{{$pro->name}}</option>
                                     @endforeach
@@ -73,7 +73,7 @@
                             <div class="form-group row">
                                 <label for="activity_type" class="control-label col-sm-4 lb">Activity Type</label>
                                 <div class="col-sm-8">
-                                    <select name="activity_type" id="activity_type" class="form-control">
+                                    <select name="activity_type" id="activity_type" class="form-control chosen-select">
                                     @foreach($activity_types as $ac)
                                         <option value="{{$ac->id}}">{{$ac->name}}</option>
                                     @endforeach
@@ -92,7 +92,7 @@
                             <div class="form-group row">
                                 <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
                                 <div class="col-sm-8">
-                                    <select name="result_framework_structure" id="result_framework_structure" class="form-control">
+                                    <select name="result_framework_structure" id="result_framework_structure" class="form-control chosen-select">
                                     @foreach($frameworks as $fr)
                                         <option value="{{$fr->id}}">{{$fr->name}}</option>
                                     @endforeach
@@ -124,7 +124,7 @@
                             <div class="form-group row">
                                 <label for="location" class="control-label col-sm-4 lb">Location</label>
                                 <div class="col-sm-8">
-                                    <select name="location" id="location" class="form-control">
+                                    <select name="location" id="location" class="form-control chosen-select" style="height: 37px" >
                                     @foreach($provinces as $pro)
                                         <option value="{{$pro->name}}">{{$pro->name}}</option>
                                     @endforeach
