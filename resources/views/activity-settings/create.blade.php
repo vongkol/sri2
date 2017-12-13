@@ -178,6 +178,10 @@
                 $("#save_status").val("0");
                 frm.submit();
             });
+            $("#btnSave1").click(function(){
+                $("#save_status").val("1");
+                frm.submit();
+            });
         });
         // function binding data on ngo changed
         function binding()

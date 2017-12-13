@@ -54,9 +54,34 @@ class ActivitySettingController extends Controller
             $data['frameworks'] = DB::table('frameworks')->where('active',1)->where('ngo_id',$x)->orderBy('name')->get();        
             $data['users'] = DB::table('users')->where('active',1)->where('ngo_id',$x)->get();
             $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',$x)->get();        
-        
+
         }
         return view('activity-settings.create', $data);
+    }
+    public function edit($id)
+    {
+        $x = Auth::user()->ngo_id;
+        $data['projects'] = DB::table('projects')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        $data['activity_types'] = DB::table('activity_types')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
+        $data['frameworks'] = DB::table('frameworks')->where('active',1)->where('ngo_id',0)->orderBy('name')->get();
+        $data['provinces'] = DB::table('provinces')->orderBy('name')->get();
+        $data['users'] = DB::table('users')->where('active',1)->where('ngo_id',0)->get();
+        $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',0)->get();
+        if($x>0)
+        {
+            $data['projects'] = DB::table('projects')->where('active',1)->where('ngo_id',$x)->orderBy('name')->get();
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id',$x)->orderBy('name')->get();  
+            $data['activity_types'] = DB::table('activity_types')->where('active',1)->where('ngo_id',$x)->orderBy('name')->get();
+            $data['frameworks'] = DB::table('frameworks')->where('active',1)->where('ngo_id',$x)->orderBy('name')->get();        
+            $data['users'] = DB::table('users')->where('active',1)->where('ngo_id',$x)->get();
+            $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',$x)->get();        
+
+        }
+        $data['setting'] = DB::table('activity_settings')->where('id', $id)->first();
+        $data['component_repsonsibles'] = DB::table('component_responsible_details')->where('activity_setting_id', $id)->get();
+        $data['person_responsibles'] = DB::table('person_responsible_details')->where('activity_setting_id',$id)->get();
+        return view('activity-settings.edit', $data);
     }
     public function save(Request $r)
     {
@@ -80,29 +105,39 @@ class ActivitySettingController extends Controller
        $coms = $r->component_responsible;
         $pp = array();
         $cc = array();
-        foreach($persons as $p)
+        if($persons!=null)
         {
-            $p= array(
-                'activity_setting_id' => $i,
-                'user_id' => $p
-            );
-            array_push($pp, $p);
+            foreach($persons as $p)
+            {
+                $p= array(
+                    'activity_setting_id' => $i,
+                    'user_id' => $p
+                );
+                array_push($pp, $p);
+            }
+            $a = DB::table('person_responsible_details')->insert($pp);
+        
         }
-        foreach($coms as $com)
-        {
-            $c = array(
-                'activity_setting_id' => $i,
-                'component_id' => $com
-            );
-            array_push($cc, $c);
-        }
-        $a = DB::table('person_responsible_details')->insert($pp);
-        $b = DB::table('component_responsible_details')->insert($cc);
-
+       if($coms !=null)
+       {
+            foreach($coms as $com)
+            {
+                $c = array(
+                    'activity_setting_id' => $i,
+                    'component_id' => $com
+                );
+                array_push($cc, $c);
+            }
+            $b = DB::table('component_responsible_details')->insert($cc);
+        
+       }
         if($r->save_status<=0)
         {
             $r->session()->flash('sms', "Save successfully!");
             return redirect('/activity-setting/create');
+        }
+        else{
+            return redirect('/activity-setting/edit/'.$i);
         }
     }
 }
