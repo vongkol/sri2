@@ -118,7 +118,7 @@ ul.pagination li a, ul.pagination li span{
     position: absolute;
     top: 100%;
     z-index: 1010;
-    width: 95%;
+    width: 92%;
     border: 1px solid #aaa;
         border-top-width: 1px;
         border-top-style: solid;
