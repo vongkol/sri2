@@ -71,4 +71,5 @@
             $("#menu_activity_setting").addClass("current");
         })
     </script>
+    
 @endsection
