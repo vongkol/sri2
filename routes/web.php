@@ -179,3 +179,10 @@ Route::get('/document/edit/{id}', "DocumentController@edit");
 Route::get('/document/delete/{id}', "DocumentController@delete");
 Route::post('/document/save', "DocumentController@save");
 Route::post('/document/update', "DocumentController@update");
+// narative
+Route::get('/narative-achieve', "NarativeAchievedController@index");
+Route::get('/narative-achieve/create', "NarativeAchievedController@create");
+Route::get('/narative-achieve/edit/{id}', "NarativeAchievedController@edit");
+Route::get('/narative-achieve/delete/{id}', "NarativeAchievedController@delete");
+Route::post('/narative-achieve/save', "NarativeAchievedController@save");
+Route::post('/narative-achieve/update', "NarativeAchievedController@update");
