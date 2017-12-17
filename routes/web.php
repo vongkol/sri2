@@ -186,3 +186,4 @@ Route::get('/narative-achieve/edit/{id}', "NarativeAchievedController@edit");
 Route::get('/narative-achieve/delete/{id}', "NarativeAchievedController@delete");
 Route::post('/narative-achieve/save', "NarativeAchievedController@save");
 Route::post('/narative-achieve/update', "NarativeAchievedController@update");
+Route::get('/narative-achieve/detail/{id}', "NarativeAchievedController@detail");
