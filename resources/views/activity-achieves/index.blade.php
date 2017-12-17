@@ -6,8 +6,8 @@
                 <div class="card-header text-bold">
                     <div class="row">
                        <div class="col-sm-4">
-                            <strong>Activity Setting List</strong>&nbsp;&nbsp;
-                            <a href="{{url('/activity-setting/create')}}"><i class="fa fa-plus"></i> New</a>
+                            <strong>Activity Achieved</strong>&nbsp;&nbsp;
+                            <a href="{{url('/activity-achieve/create')}}"><i class="fa fa-plus"></i> New</a>
                        </div>
                        <div class="col-sm-8">
                             <form action="" method="get" name="search">
@@ -26,13 +26,12 @@
                         <thead>
                         <tr>
                             <th>&numero;</th>
-                            <th>Project Code</th>
-                            <th>Project Name</th>
-                            <th>Activity Code</th>
                             <th>Activity Name</th>
-                            <th>Data Source</th>
-                            <th>Activity Definition</th>
-                            <th>Location</th>
+                            <th>Activity Type</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Total Budget</th>
+                            <th>Total Expense</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -43,27 +42,26 @@
                                 $pagex = 1;
                             $i = 12 * ($pagex - 1) + 1;
                         ?>
-                        @foreach($settings as $st)
-                        <tr>
-                            <td>{{$i++}}</td>
-                            <td> <a href="{{url('/activity-setting/edit/'.$st->id)}}" title="Detail">{{$st->project_code}}</a></td>
-                            <td> <a href="{{url('/activity-setting/edit/'.$st->id)}}" title="Detail">{{$st->project_name}}</a></td>
-                            <td>{{$st->activity_code}}</td>
-                            <td>{{$st->activity_name}}</td>
-                            <td>{{$st->data_source}}</td>
-                            <td>{{$st->activity_definition}}</td>
-                            <td>{{$st->location}}</td>
-                            <td>
-                                 <a href="{{url('/activity-setting/edit/'.$st->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/activity-setting/delete/'.$st->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                        @foreach($activities as $a)
+                            <tr>
+                                <td>{{$i++}}</td>
+                                <td><a href="{{url('/activity-achieve/edit/'.$a->id)}}">{{$a->activity_name}}</a></td>
+                                <td>{{$a->activity_type_name}}</td>
+                                <td>{{$a->start_date}}</td>
+                                <td>{{$a->end_date}}</td>       
+                                <td>$ {{$a->total_budget}}</td>   
+                                <td>$ {{$a->total_expense}}</td>                      
+                                <td>
+                                    <a href="{{url('/activity-achieve/edit/'.$a->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
+                                    <a href="{{url('/activity-achieve/delete/'.$a->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
                                        title="Delete"><i class="fa fa-remove text-danger"></i></a>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>
                     <nav>
-                        {{$settings->links()}}
+
                     </nav>
                 </div>
             </div>
@@ -74,7 +72,7 @@
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
-            $("#menu_activity_setting").addClass("current");
+            $("#menu_activity_achieved").addClass("current");
         })
     </script>
 

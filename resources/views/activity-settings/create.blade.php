@@ -51,7 +51,8 @@
                             <div class="form-group row">
                                 <label for="project_name" class="control-label col-sm-4 lb">Project Name <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <select name="project_name" id="project_name" class="form-control chosen-select">
+                                    <select name="project_name" id="project_name" class="form-control chosen-select" data-placeholder=" ">
+                                        
                                     @foreach($projects as $pro)
                                         <option value="{{$pro->id}}">{{$pro->name}}</option>
                                     @endforeach
@@ -73,7 +74,8 @@
                             <div class="form-group row">
                                 <label for="activity_type" class="control-label col-sm-4 lb">Activity Type</label>
                                 <div class="col-sm-8">
-                                    <select name="activity_type" id="activity_type" class="form-control chosen-select">
+                                    <select name="activity_type" id="activity_type" class="form-control chosen-select" data-placeholder=" ">
+                                                                                                                
                                     @foreach($activity_types as $ac)
                                         <option value="{{$ac->id}}">{{$ac->name}}</option>
                                     @endforeach
@@ -92,7 +94,7 @@
                             <div class="form-group row">
                                 <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
                                 <div class="col-sm-8">
-                                    <select name="result_framework_structure" id="result_framework_structure" class="form-control chosen-select">
+                                    <select name="result_framework_structure" id="result_framework_structure" class="form-control chosen-select" data-placeholder=" ">
                                     @foreach($frameworks as $fr)
                                         <option value="{{$fr->id}}">{{$fr->name}}</option>
                                     @endforeach
@@ -187,6 +189,7 @@
         function binding()
         {
             var id = $("#ngo").val();
+            
             bindProject(id);
         }
         // bind project
@@ -201,7 +204,10 @@
                     {
                         opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
                     }
+
                     $("#project_name").html(opts);
+                       
+                   $('#project_name').val('').trigger('chosen:updated');
                     bindActivityType(ngo_id);
                 }
             });
@@ -219,6 +225,7 @@
                         opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
                     }
                     $("#activity_type").html(opts);
+                    $('#activity_type').val('').trigger('chosen:updated');                    
                     bindFramework(ngo_id);
                 }
             });
@@ -236,6 +243,8 @@
                         opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
                     }
                     $("#result_framework_structure").html(opts);
+                    $('#result_framework_structure').val('').trigger('chosen:updated');                    
+                    
                     bindComponent(ngo_id);
                 }
             });
@@ -256,6 +265,7 @@
                         lbs += "</label>";
                     }
                     $("#sp .multi-select-menuitems").html(lbs);
+
                    bindUser(ngo_id);
                 }
             });

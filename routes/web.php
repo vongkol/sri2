@@ -157,3 +157,25 @@ Route::get('/activity-setting/delete/{id}', "ActivitySettingController@delete");
 Route::get('/activity-setting/detail/{id}', "ActivitySettingController@detail");
 Route::post('/activity-setting/save', "ActivitySettingController@save");
 Route::post('/activity-setting/update', "ActivitySettingController@update");
+Route::post('/activity-setting/target/save', "ActivitySettingController@add_target");
+Route::get('/activity-setting/target/delete/{id}', "ActivitySettingController@delete_target");
+// activity achieved
+Route::get('/activity-achieve', "ActivityAchievedController@index");
+Route::get('/activity-achieve/create', "ActivityAchievedController@create");
+Route::get('/activity-achieve/edit/{id}', "ActivityAchievedController@edit");
+Route::get('/activity-achieve/delete/{id}', "ActivityAchievedController@delete");
+Route::post('/activity-achieve/save', "ActivityAchievedController@save");
+Route::post('/activity-achieve/update', "ActivityAchievedController@update");
+Route::get('/setting/get/{id}', "ActivityAchievedController@get");
+Route::get('/setting/framework/get/{id}', "ActivityAchievedController@get_framework");
+Route::get('/setting/component/get/{id}', "ActivityAchievedController@get_component");
+Route::get('/setting/person/get/{id}', "ActivityAchievedController@get_person");
+Route::get('/setting/category/get/{id}', "ActivityAchievedController@get_category");
+
+// documents
+Route::get('/document', "DocumentController@index");
+Route::get('/document/create', "DocumentController@create");
+Route::get('/document/edit/{id}', "DocumentController@edit");
+Route::get('/document/delete/{id}', "DocumentController@delete");
+Route::post('/document/save', "DocumentController@save");
+Route::post('/document/update', "DocumentController@update");
