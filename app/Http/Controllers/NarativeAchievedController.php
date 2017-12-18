@@ -15,14 +15,17 @@ class NarativeAchievedController extends Controller
     public function index()
     {
         $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        $data['narative_achieves'] = DB::table('narative_achieves')
+            ->where('ngo_id', 0)
+            ->where('active',1)->paginate(12);
         if(Auth::user()->ngo_id>0)
         {
             $data['ngos'] = DB::table('ngos')->where('active',1)->where('id', Auth::user()->ngo_id)->get();
+            $data['narative_achieves'] = DB::table('narative_achieves')
+            ->where('ngo_id', Auth::user()->ngo_id)
+            ->where('active',1)->paginate(12);
         }
-        $data['narative_achieves'] = DB::table('narative_achieves')
-            ->join('ngos', 'ngos.id', '=', 'narative_achieves.ngo_id')
-            ->select('narative_achieves.*',  'narative_achieves.id as id', 'ngos.name as ngo_name')
-            ->where('narative_achieves.active',1)->paginate(12);
+        
         return view('narative-achieves.index', $data);
     }
     public function create()

@@ -25,11 +25,10 @@
                     <table class="tbl">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>&numero;</th>
+                            <th>Introduction</th>
                             <th>Start Date</th>
                             <th>End Date</th>
-                            <th>User NGO</th>
-                            <th>Summary</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -43,10 +42,10 @@
                         @foreach($narative_achieves as $nar)
                             <tr>
                                 <td>{{$i++}}</td>
+                                <td>{!!$nar->introduction!!}</td>
                                 <td>{{$nar->start_date}}</td>
                                 <td>{{$nar->end_date}}</td>
-                                <td>{{$nar->ngo_name}}</td>
-                                <td>{!!$nar->summary!!}</td>
+                                
                                 <td>
                                     <a href="{{url('/narative-achieve/detail/'.$nar->id)}}" title="Edit"><i class="fa fa-info-circle"></i></a>&nbsp;&nbsp
                                     <a href="{{url('/narative-achieve/edit/'.$nar->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
