@@ -235,4 +235,14 @@ class ActivitySettingController extends Controller
         $i = DB::table('activity_targets')->where('id', $id)->delete();
         return $i;
     }
+    public function delete($id)
+    {
+        DB::table('activity_settings')->where('id', $id)->update(["active"=>0]);
+        $page = @$_GET['page'];
+        if ($page>0)
+        {
+            return redirect('/activity-setting?page='.$page);
+        }
+        return redirect('/activity-setting');
+    }
 }

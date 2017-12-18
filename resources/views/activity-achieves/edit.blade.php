@@ -547,7 +547,7 @@ function saveDoc () {
                     var tr = "";
                     
                     tr +="<tr id='" + sms.id + "'>";
-                    tr += "<td>" + counter++ + "</td>";
+                    tr += "<td>" + (counter++) + "</td>";
                     tr += "<td>" + "<a href='" + doc_url + "/" + sms.file_name + "' target='_blank'>" + sms.file_name + "</a>" + "</td>";
                     tr +="<td>" + sms.description+ "</td>";
                     tr += "<td>" + "<a href='#' onclick='deleteDoc(this,event)'><i class='fa fa-remove text-danger'></i></a>" + "</td>";
