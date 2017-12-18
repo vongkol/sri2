@@ -38,7 +38,7 @@ class NarativeAchievedController extends Controller
         return view('narative-achieves.create', $data);
     }
 
-    public function edit()
+    public function edit($id)
     {
         $data['ngos'] = DB::table('ngos')->where('active',1)->get();
         if(Auth::user()->ngo_id>0)
@@ -48,7 +48,9 @@ class NarativeAchievedController extends Controller
         $data['narative_achieve'] = DB::table('narative_achieves')
             ->join('ngos', 'ngos.id', '=', 'narative_achieves.ngo_id')
             ->select('narative_achieves.*', 'narative_achieves.id as id', 'ngos.name as ngo_name')
-            ->where('narative_achieves.active',1)->first();
+            ->where('narative_achieves.active',1)
+            ->where('narative_achieves.id', $id)
+            ->first();
         return view('narative-achieves.edit', $data);
     }
     
@@ -63,7 +65,9 @@ class NarativeAchievedController extends Controller
         $data['narative_achieve'] = DB::table('narative_achieves')
             ->join('ngos', 'ngos.id', '=', 'narative_achieves.ngo_id')
             ->select('narative_achieves.*', 'narative_achieves.id as id', 'ngos.name as ngo_name')
-            ->where('narative_achieves.active',1)->first();
+            ->where('narative_achieves.active',1)
+            ->where('narative_achieves.id', $id)
+            ->first();
 
         return view("narative-achieves.detail", $data);
     }

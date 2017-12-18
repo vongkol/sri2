@@ -45,7 +45,7 @@
                                 <td>{!!$nar->introduction!!}</td>
                                 <td>{{$nar->start_date}}</td>
                                 <td>{{$nar->end_date}}</td>
-                                
+                              
                                 <td>
                                     <a href="{{url('/narative-achieve/detail/'.$nar->id)}}" title="Edit"><i class="fa fa-info-circle"></i></a>&nbsp;&nbsp
                                     <a href="{{url('/narative-achieve/edit/'.$nar->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
