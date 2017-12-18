@@ -110,6 +110,14 @@ Route::get('/activity_category/delete/{id}', "ActivityCategoryController@delete"
 Route::post('/activity_category/save', "ActivityCategoryController@save");
 Route::post('/activity_category/update', "ActivityCategoryController@update");
 
+/// activity category
+Route::get('/activity_area', "ActivityAreaController@index");
+Route::get('/activity_area/create', "ActivityAreaController@create");
+Route::get('/activity_area/edit/{id}', "ActivityAreaController@edit");
+Route::get('/activity_area/delete/{id}', "ActivityAreaController@delete");
+Route::post('/activity_area/save', "ActivityAreaController@save");
+Route::post('/activity_area/update', "ActivityAreaController@update");
+
 /// event
 Route::get('/event', "EventController@index");
 Route::get('/event/create', "EventController@create");
@@ -171,7 +179,6 @@ Route::get('/setting/framework/get/{id}', "ActivityAchievedController@get_framew
 Route::get('/setting/component/get/{id}', "ActivityAchievedController@get_component");
 Route::get('/setting/person/get/{id}', "ActivityAchievedController@get_person");
 Route::get('/setting/category/get/{id}', "ActivityAchievedController@get_category");
-
 // documents
 Route::get('/document', "DocumentController@index");
 Route::get('/document/create', "DocumentController@create");

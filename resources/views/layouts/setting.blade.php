@@ -88,6 +88,7 @@
 Framework</a></li>
                 <li class="nav-item"><a href="{{url('/level')}}" class="nav-link" id="level"><i class="fa fa-angle-double-right text-info"></i> Level</a></li>
                 <li class="nav-item"><a href="{{url('/activity_category')}}" class="nav-link" id="activity_category"><i class="fa fa-angle-double-right text-info"></i> Activity Category</a></li>
+                <li class="nav-item"><a href="{{url('/activity_area')}}" class="nav-link" id="activity_area"><i class="fa fa-angle-double-right text-info"></i> Activity Area</a></li>
                 <li class="nav-item"><a href="{{url('/event')}}" class="nav-link" id="event"><i class="fa fa-angle-double-right text-info"></i> Event</a></li>
                 <li class="nav-item"><a href="{{url('/venue_type')}}" class="nav-link" id="venue_type"><i class="fa fa-angle-double-right text-info"></i> Venue Type</a></li>
                 <li class="nav-item"><a href="{{url('/event_organizor')}}" class="nav-link" id="event_organizor"><i class="fa fa-angle-double-right text-info"></i> Event Organizor</a></li>

@@ -4,9 +4,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Edit Venue Type</strong>&nbsp;&nbsp;
-                    <a href="{{url('/venue_type/create')}}"><i class="fa fa-plus"></i> New</a>
-                    <a href="{{url('/venue_type')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
+                    <strong>Create Activity Area</strong>&nbsp;&nbsp;
+                    <a href="{{url('/activity_area')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -29,15 +28,15 @@
                             </div>
                         </div>
                     @endif
-                    <form action="{{url('/venue_type/update')}}" class="form-horizontal" method="post" onsubmit="return confirm('You want to save?')">
+                    <form action="{{url('/activity_area/save')}}" class="form-horizontal" method="post" onsubmit="return confirm('You want to save?')">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <label for="name" class="control-label col-sm-3 lb">Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$venue_types->name}}" id="name" name="name" required>
-                                        <input type="hidden" name="id" value="{{$venue_types->id}}">
+                                        <input type="text" class="form-control" value="{{old('name')}}" id="name" name="name" required>
+                                         
                                     </div>
                                 </div>
                             </div>
@@ -48,8 +47,9 @@
                                     <label for="ngo" class="control-label col-sm-3 lb">User NGO <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="ngo" id="ngo" class="form-control chosen-select">
+                                       
                                         @foreach($ngos as $ngo)
-                                            <option value="{{$ngo->id}}" {{$venue_types->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
+                                            <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                         @endforeach
                                         </select>
                                          <br><br>
@@ -71,7 +71,7 @@
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
-            $("#venue_type").addClass("current");
+            $("#activity_area").addClass("current");
         });
     </script>
 @endsection

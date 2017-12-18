@@ -6,7 +6,6 @@
                 <div class="card-header">
                     <strong>Create Level</strong>&nbsp;&nbsp;
                     <a href="{{url('/level')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -37,22 +36,16 @@
                                     <label for="name" class="control-label col-sm-3 lb">Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" value="{{old('name')}}" id="name" name="name" required>
-                                         
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
-                        </div>
-                         
+                        </div>    
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <label for="ngo" class="control-label col-sm-3 lb">User NGO <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="ngo" id="ngo" class="form-control chosen-select">
-                                       
                                         @foreach($ngos as $ngo)
                                             <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                         @endforeach
@@ -63,12 +56,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -83,5 +72,4 @@
             $("#level").addClass("current");
         });
     </script>
-
 @endsection

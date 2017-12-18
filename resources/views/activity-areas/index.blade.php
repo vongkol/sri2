@@ -6,8 +6,8 @@
                 <div class="card-header text-bold">
                     <div class="row">
                         <div class="col-sm-4">
-                            <strong>Venue Type List</strong>&nbsp;&nbsp;
-                            <a href="{{url('/venue_type/create')}}"><i class="fa fa-plus"></i> New</a>
+                            <strong>Activity Area List</strong>&nbsp;&nbsp;
+                            <a href="{{url('/activity_area/create')}}"><i class="fa fa-plus"></i> New</a>
                         </div>
                         <div class="col-sm-8">
                             <form action="" method="get" name="search">
@@ -32,20 +32,22 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         <?php
                             $pagex = @$_GET['page'];
                             if(!$pagex)
                                 $pagex = 1;
                             $i = 12 * ($pagex - 1) + 1;
                         ?>
-                        @foreach($venue_types as $venue_type)
+
+                        @foreach($activity_areas as $act_are)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$venue_type->name}}</td>
-                                <td>{{$venue_type->ngo_name==null?'CCC':$venue_type->ngo_name}}</td>
+                                <td>{{$act_are->name}}</td>
+                                <td>{{$act_are->ngo_name==null?'CCC':$act_are->ngo_name}}</td>
                                 <td>
-                                    <a href="{{url('/venue_type/edit/'.$venue_type->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/venue_type/delete/'.$venue_type->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                    <a href="{{url('/activity_area/edit/'.$act_are->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
+                                    <a href="{{url('/activity_area/delete/'.$act_are->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
                                        title="Delete"><i class="fa fa-remove text-danger"></i></a>
                                 </td>
                             </tr>
@@ -53,7 +55,7 @@
                         </tbody>
                     </table>
                     <nav>
-                        {{$venue_types->links()}}
+                        {{$activity_areas->links()}}
                     </nav>
                 </div>
             </div>
@@ -64,7 +66,7 @@
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
-            $("#venue_type").addClass("current");
+            $("#activity_area").addClass("current");
         })
     </script>
 @endsection

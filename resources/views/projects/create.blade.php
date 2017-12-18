@@ -69,7 +69,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -84,5 +83,4 @@
             $("#project").addClass("current");
         });
     </script>
-
 @endsection
