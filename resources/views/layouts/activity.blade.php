@@ -15,7 +15,7 @@
     <link href="{{asset('chosen/chosen.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
-
+    <link href="{{asset('datepicker/date.css')}}" rel="stylesheet"/>
     <!-- Custom styles for this template -->
         <link rel="stylesheet" href="{{asset('chosen/chosen.css')}}">
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">

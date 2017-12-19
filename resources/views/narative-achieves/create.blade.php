@@ -35,16 +35,17 @@
                                 <div class="form-group row">
                                     <label for="start_date" class="control-label col-sm-3 lb">Start Date</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('start_date')}}" id="start_date" name="start_date">
+                                        <input type="text" class="form-control" placeholder="MM/DD/YYYY" value="{{old('start_date')}}" id="start_date" name="start_date">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="end_date" class="control-label col-sm-3 lb">End Date</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{old('end_date')}}" id="end_date" name="end_date">
+                                        <input type="text" class="form-control" placeholder="MM/DD/YYYY" value="{{old('end_date')}}" id="end_date" name="end_date">
                                     </div>
                                 </div>
                             </div>
+                         
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <label for="ngo" class="control-label col-sm-3 lb">User NGO <span class="text-danger">*</span></label>
@@ -245,12 +246,20 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{asset("chosen/chosen.jquery.js")}}"></script>
-    <script src="{{asset("chosen/chosen.proto.js")}}"></script>
+    <script src="{{asset('chosen/chosen.jquery.js')}}"></script>
+    <script src="{{asset('chosen/chosen.proto.js')}}"></script>
+    <script src="{{asset('datepicker/date.js')}}" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
             $("#menu_narative_achieve").addClass("current");
+
+            $('#start_date').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+            $('#end_date').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
         });
     </script>
     <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
@@ -260,5 +269,4 @@
                 filebrowserImageBrowseUrl:roxyFileman+'&type=image',
                 removeDialogTabs: 'link:upload;image:upload'});
     </script> 
-
 @endsection

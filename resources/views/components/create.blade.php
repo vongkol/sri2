@@ -6,7 +6,6 @@
                 <div class="card-header">
                     <strong>Create Component</strong>&nbsp;&nbsp;
                     <a href="{{url('/component')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -37,12 +36,8 @@
                                     <label for="name" class="control-label col-sm-3 lb">Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" value="{{old('name')}}" id="name" name="name" required>
-                                         
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                               
                             </div>
                         </div>
                         <div class="row">
@@ -61,12 +56,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -81,5 +72,4 @@
             $("#menu_component").addClass("current");
         });
     </script>
-
 @endsection

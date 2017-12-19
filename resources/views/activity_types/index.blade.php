@@ -32,14 +32,12 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         <?php
                             $pagex = @$_GET['page'];
                             if(!$pagex)
                                 $pagex = 1;
                             $i = 12 * ($pagex - 1) + 1;
                         ?>
-
                         @foreach($activity_types as $activity_type)
                             <tr>
                                 <td>{{$i++}}</td>

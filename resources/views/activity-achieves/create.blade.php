@@ -89,7 +89,7 @@
                             <div class="form-group row">
                                 <label for="start_date" class="control-label col-sm-4 lb">Start Date</label>
                                 <div class="col-sm-8">
-                                   <input type="date" class="form-control" id="start_date" name="start_date" value="{{old('start_date')}}">
+                                   <input type="text"  placeholder="MM/DD/YYYY"  class="form-control" id="start_date" name="start_date" value="{{old('start_date')}}">
                                 </div>
                             </div>
                            <div class="form-group row">
@@ -122,7 +122,7 @@
                             <div class="form-group row">
                                 <label for="end_date" class="control-label col-sm-4 lb">End Date</label>
                                 <div class="col-sm-8">
-                                   <input type="date" class="form-control" id="end_date" name="end_date" value="{{old('end_date')}}">
+                                   <input type="text" class="form-control" placeholder="MM/DD/YYYY" id="end_date" name="end_date" value="{{old('end_date')}}">
                                 </div>
                             </div>
                             
@@ -249,6 +249,7 @@
 @endsection
 @section('js')
     <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
+    <script src="{{asset('datepicker/date.js')}}" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
@@ -266,6 +267,12 @@
                 bindFramework();
                 bindComponent();
                 bindPerson();
+            });
+            $('#start_date').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+            $('#end_date').datepicker({
+                uiLibrary: 'bootstrap4'
             });
         });
         // function binding data on ngo changed

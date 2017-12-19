@@ -7,7 +7,6 @@
                     <strong>Edit Project</strong>&nbsp;&nbsp;
                     <a href="{{url('/project/create')}}"><i class="fa fa-plus"></i> New</a>
                     <a href="{{url('/project')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -42,9 +41,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -55,9 +51,6 @@
                                          
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                               
                             </div>
                         </div>
                         <div class="row">
@@ -77,12 +70,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -97,5 +86,4 @@
             $("#project").addClass("current");
         });
     </script>
-
 @endsection

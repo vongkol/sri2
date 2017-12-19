@@ -6,7 +6,6 @@
                 <div class="card-header">
                     <strong>Create Activity Type</strong>&nbsp;&nbsp;
                     <a href="{{url('/activity_type')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -41,11 +40,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
-                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
@@ -63,12 +58,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -83,5 +74,4 @@
             $("#activity_type").addClass("current");
         });
     </script>
-
 @endsection

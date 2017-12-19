@@ -7,7 +7,6 @@
                     <strong>Edit Venue Type</strong>&nbsp;&nbsp;
                     <a href="{{url('/venue_type/create')}}"><i class="fa fa-plus"></i> New</a>
                     <a href="{{url('/venue_type')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -42,18 +41,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
-                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <label for="ngo" class="control-label col-sm-3 lb">User NGO <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="ngo" id="ngo" class="form-control chosen-select">
-                                        
                                         @foreach($ngos as $ngo)
                                             <option value="{{$ngo->id}}" {{$venue_types->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
                                         @endforeach
@@ -64,12 +58,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -84,5 +74,4 @@
             $("#venue_type").addClass("current");
         });
     </script>
-
 @endsection

@@ -7,7 +7,6 @@
                     <strong>Edit Level</strong>&nbsp;&nbsp;
                     <a href="{{url('/level/create')}}"><i class="fa fa-plus"></i> New</a>
                     <a href="{{url('/level')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -42,11 +41,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
-                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
@@ -64,12 +59,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -84,5 +75,4 @@
             $("#level").addClass("current");
         });
     </script>
-
 @endsection

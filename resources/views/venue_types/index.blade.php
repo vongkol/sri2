@@ -32,21 +32,18 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         <?php
                             $pagex = @$_GET['page'];
                             if(!$pagex)
                                 $pagex = 1;
                             $i = 12 * ($pagex - 1) + 1;
                         ?>
-
                         @foreach($venue_types as $venue_type)
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$venue_type->name}}</td>
                                 <td>{{$venue_type->ngo_name==null?'CCC':$venue_type->ngo_name}}</td>
                                 <td>
-                                    
                                     <a href="{{url('/venue_type/edit/'.$venue_type->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
                                     <a href="{{url('/venue_type/delete/'.$venue_type->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
                                        title="Delete"><i class="fa fa-remove text-danger"></i></a>

@@ -36,13 +36,13 @@
                                 <div class="form-group row">
                                     <label for="start_date" class="control-label col-sm-3 lb">Start Date</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$narative_achieve->start_date}}" id="start_date" name="start_date">
+                                        <input type="text" class="form-control" placeholder="MM/DD/YYYY" value="{{$narative_achieve->start_date}}" id="start_date" name="start_date">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="end_date" class="control-label col-sm-3 lb">End Date</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{$narative_achieve->end_date}}" id="end_date" name="end_date">
+                                        <input type="text" class="form-control" placeholder="MM/DD/YYYY" value="{{$narative_achieve->end_date}}" id="end_date" name="end_date">
                                     </div>
                                 </div>
                             </div>
@@ -238,10 +238,18 @@
 @section('js')
     <script src="{{asset("chosen/chosen.jquery.js")}}"></script>
     <script src="{{asset("chosen/chosen.proto.js")}}"></script>
+    <script src="{{asset('datepicker/date.js')}}" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
             $("#menu_narative_achieve").addClass("current");
+
+            $('#start_date').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+            $('#end_date').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
         });
     </script>
     <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
