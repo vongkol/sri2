@@ -7,7 +7,6 @@
                     <strong>Edit Event</strong>&nbsp;&nbsp;
                     <a href="{{url('/event/create')}}"><i class="fa fa-plus"></i> New</a>
                     <a href="{{url('/event')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -42,21 +41,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
-                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <label for="ngo" class="control-label col-sm-3 lb">User NGO <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="ngo" id="ngo" class="form-control chosen-select">
-                                        
-                                        @foreach($ngos as $ngo)
-                                            <option value="{{$ngo->id}}" {{$events->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
-                                        @endforeach
+                                            @foreach($ngos as $ngo)
+                                                <option value="{{$ngo->id}}" {{$events->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
+                                            @endforeach
                                         </select>
                                          <br><br>
                                         <button class="btn btn-primary btn-flat" type="submit">Save</button>
@@ -64,12 +58,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                               
-                            </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -84,5 +74,4 @@
             $("#event").addClass("current");
         });
     </script>
-
 @endsection

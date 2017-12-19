@@ -6,7 +6,7 @@
                 <div class="card-header text-bold">
                     <div class="row">
                        <div class="col-sm-4">
-                            <strong>Activity Achieved</strong>&nbsp;&nbsp;
+                            <strong>Activity Achieved List</strong>&nbsp;&nbsp;
                             <a href="{{url('/activity-achieve/create')}}"><i class="fa fa-plus"></i> New</a>
                        </div>
                        <div class="col-sm-8">
@@ -61,7 +61,7 @@
                         </tbody>
                     </table>
                     <nav>
-
+                        {{$activities->links()}}
                     </nav>
                 </div>
             </div>
@@ -75,5 +75,4 @@
             $("#menu_activity_achieved").addClass("current");
         })
     </script>
-
 @endsection
