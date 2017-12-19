@@ -58,7 +58,7 @@
                         </tbody>
                     </table>
                     <nav>
-                       
+                       {{$narative_achieves->links()}}
                     </nav>
                 </div>
             </div>

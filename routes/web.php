@@ -171,6 +171,12 @@ Route::get('/setting/framework/get/{id}', "ActivityAchievedController@get_framew
 Route::get('/setting/component/get/{id}', "ActivityAchievedController@get_component");
 Route::get('/setting/person/get/{id}', "ActivityAchievedController@get_person");
 Route::get('/setting/category/get/{id}', "ActivityAchievedController@get_category");
+Route::get('/setting/district/get/{id}', "ActivityAchievedController@get_district");
+Route::get('/setting/commune/get/{id}', "ActivityAchievedController@get_commune");
+Route::get('/setting/village/get/{id}', "ActivityAchievedController@get_village");
+Route::post('/activity-achieve/event/save', "ActivityAchievedController@save_event");
+Route::get('/activity-achieve/event/delete/{id}', "ActivityAchievedController@delete_event");
+Route::get('/activity-achieve/event/get/{id}', "ActivityAchievedController@get_event");
 
 // documents
 Route::get('/document', "DocumentController@index");

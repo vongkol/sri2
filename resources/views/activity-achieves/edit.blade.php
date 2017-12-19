@@ -257,6 +257,15 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#beneficiary" role="tab">Beneficiary</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#other1" role="tab">Other 1</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#other2" role="tab">Other 2</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#other3" role="tab">Other 3</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="document" role="tabpanel">
@@ -292,17 +301,217 @@
                     <div class="tab-pane" id="event" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Target</a>
+                            <a href="#" class="text-primary" id="btnAddEvent" data-toggle="modal" data-target="#event_modal"><i class="fa fa-plus"></i> New Event</a>
                         </p>
+                       <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>&numero;</th>
+                                    <th>Activity Subject</th>
+                                    <th>Event Organizer</th>
+                                    <th>Total Participant</th>
+                                    <th>Total Female</th>
+                                    <th>Total Youth</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eventData">
+                            @php($i=1)
+                            @foreach($events as $ev)
+                                <tr id="{{$ev->id}}">
+                                    <td>{{$i++}}</td>
+                                    <td>{{$ev->subject}}</td>
+                                    <td>{{$ev->name}}</td>
+                                    <td>{{$ev->total_participant}}</td>
+                                    <td>{{$ev->total_female}}</td>
+                                    <td>{{$ev->total_youth}}</td>
+                                    <td>
+                                        <a href="#" class="text-success" title="Edit" onclick="editEvent(this,event)"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                        <a href="#" class="text-danger" title="Delete" onclick="deleteEvent(this,event)"><i class="fa fa-remove"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                         
                     </div>
                     <div class="tab-pane" id="beneficiary" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Target</a>
+                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Beneficiary</a>
                         </p>
                         
                     </div>
+                    <div class="tab-pane" id="other1" role="tabpanel">
+                        <p>
+                            Other 1
+                        </p>
+                        
+                    </div>
+                    <div class="tab-pane" id="other2" role="tabpanel">
+                        <p>
+                            Other 2
+                        </p>
+                        
+                    </div>
+                    <div class="tab-pane" id="other3" role="tabpanel">
+                        <p>
+                            Other 3
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@section('modal')
+<div class="modal fade bd-target-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content btn-flat">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload New Document</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="target1">
+                   <input type="hidden" id="doc_id" name="doc_id" value="0">
+                    <div class="form-group row">
+                        <label for="doc_description" class="control-label col-sm-2 lb">Description</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="doc_description" name="doc_description">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="doc_file_name" class="control-label col-sm-2 lb">File Name</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" id="doc_file_name" name="doc_file_name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br>
+                            <p class="text-success text-center" id="docsms"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary btn-flat" onclick="saveDoc()">Save</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearDoc()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-target-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="event_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content btn-flat">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create New Event</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="target1">
+                   <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group row">
+                                <label for="activity_area" class="control-label col-sm-3 lb">Activity Area <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <select name="activity_area" id="activity_area" class="form-control">
+                                    @foreach($activity_areas as $ac)
+                                        <option value="{{$ac->id}}">{{$ac->name}}</option>
+                                    @endforeach
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="activity_subject" class="control-label col-sm-3 lb">Activity Subject <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="activity_subject" name="activity_subject">
+                                    <input type="hidden" name="event_id" id="event_id" value="0">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="event_organizer" class="control-label col-sm-3 lb">Event Organizer <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <select name="event_organizer" id="event_organizer" class="form-control">
+                                    @foreach($event_organizers as $ev)
+                                        <option value="{{$ev->id}}">{{$ev->name}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="total" class="control-label col-sm-3 lb">Total Participant</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="total" value="0" min="0" step="1" name="total">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="total_female" class="control-label col-sm-3 lb">Total Female</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="total_female" value="0" min="0" step="1" name="total_female">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="total_youth" class="control-label col-sm-3 lb">Total Youth</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="total_youth" value="0" min="0" step="1" name="total_youth">
+                                </div>
+                            </div>
+                             <div class="form-group row">
+                                <label for="province" class="control-label col-sm-3 lb">Province</label>
+                                <div class="col-sm-8">
+                                    <select name="province" id="province" class="form-control" onchange="bindDistict()">
+                                        <option value="0">-- Choose One --</option>
+                                    @foreach($provinces as $pro)
+                                        <option value="{{$pro->id}}">{{$pro->name}} - {{$pro->name_kh}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="form-group row">
+                                <label for="district" class="control-label col-sm-3 lb">District</label>
+                                <div class="col-sm-8">
+                                    <select name="district" id="district" class="form-control" onchange="bindCommune()">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="commune" class="control-label col-sm-3 lb">Commune</label>
+                                <div class="col-sm-8">
+                                    <select name="commune" id="commune" class="form-control" onchange="bindVillage()">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="form-group row">
+                                <label for="village" class="control-label col-sm-3 lb">Village</label>
+                                <div class="col-sm-8">
+                                    <select name="village" id="village" class="form-control">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                   
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br>
+                            <p class="text-success text-center" id="eventsms"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary btn-flat" onclick="saveEvent()">Save</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearEvent()">Close</button>
                 </div>
             </div>
         </div>
@@ -318,6 +527,7 @@
             $('#person_responsible').multiSelect();
             $("#component_responsible").multiSelect();
             $("#person_achieved").multiSelect();
+            
             bindFramework();
             bindComponent();
             bindPerson();
@@ -464,6 +674,56 @@
                 }
             });
         }
+        function bindDistict()
+        {
+            var p_id = $("#province").val();
+            $.ajax({
+                type: "GET",
+                url: burl + "/setting/district/get/" + p_id,
+                success: function(sms){
+                     var opts = "";
+                    for(var i=0;i<sms.length;i++)
+                    {
+                        opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
+                    }
+                    $("#district").html(opts);
+                    bindCommune();
+                }
+            });
+        }
+        function bindCommune()
+        {
+            var p_id = $("#district").val();
+            $.ajax({
+                type: "GET",
+                url: burl + "/setting/commune/get/" + p_id,
+                success: function(sms){
+                     var opts = "";
+                    for(var i=0;i<sms.length;i++)
+                    {
+                        opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
+                    }
+                    $("#commune").html(opts);
+                    bindVillage();
+                }
+            });
+        }
+         function bindVillage()
+        {
+            var p_id = $("#commune").val();
+            $.ajax({
+                type: "GET",
+                url: burl + "/setting/village/get/" + p_id,
+                success: function(sms){
+                     var opts = "";
+                    for(var i=0;i<sms.length;i++)
+                    {
+                        opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
+                    }
+                    $("#village").html(opts);
+                }
+            });
+        }
         function showEdit(evt)
         {
             evt.preventDefault();
@@ -498,6 +758,15 @@
             $("#docsms").html("");
             $("#doc_id").val("0");
         }
+        function clearEvent()
+        {
+            $("#event_id").val("0");
+            $("#activity_subject").val("");
+            $("#total").val("0");
+            $("#total_female").val("0");
+            $("#total_youth").val("0");
+            $("#eventsms").html("");
+        }
         // delete a document by its id
         function deleteDoc (obj, evt) {
             var tr = $(obj).parent().parent();
@@ -515,6 +784,50 @@
             }
         
         }
+        function deleteEvent (obj, evt) {
+            evt.preventDefault();
+            var tr = $(obj).parent().parent();
+            var id = $(tr).attr('id');
+            var con = confirm('You want to delete?');
+            if(con)
+            {
+                $.ajax({
+                type: "GET",
+                url: burl + "/activity-achieve/event/delete/" + id,
+                success: function (response) {
+                    $(tr).remove();
+                    }
+                });
+            }
+        
+        }
+function editEvent(obj,evt)
+{
+    evt.preventDefault();
+    var tr = $(obj).parent().parent();
+    var id = $(tr).attr('id');
+    $("#event_id").val(id);
+    $.ajax({
+        type: "GET",
+        url: burl + "/activity-achieve/event/get/" + id,
+        success: function(sms){
+            sms = JSON.parse(sms);
+            $("#event_id").val(sms.id);
+            $("#activity_area").val(sms.activity_area_id);
+            $("#activity_subject").val(sms.subject);
+            $("#event_organizer").val(sms.organizer_id);
+            $("#total").val(sms.total_participant);
+            $("#total_female").val(sms.total_female);
+            $("#total_youth").val(sms.total_youth);
+            $("#province").val(sms.province_id);
+            bindDistict();
+            $("#district").val(sms.district_id);
+            $("#commune").val(sms.commune_id);
+            $("#village").val(sms.village_id);
+            $("#btnAddEvent").trigger("click");
+        }
+    });
+}
         // save document
 function saveDoc () {
     var id = $("#id").val();
@@ -541,7 +854,6 @@ function saveDoc () {
                 },
                 success:function(sms){
          
-
                    sms = JSON.parse(sms);
                    var counter = $("#docData tr").length;
                     var tr = "";
@@ -567,43 +879,80 @@ function saveDoc () {
 
         }
 }
+function saveEvent()
+{
+    var aid = $("#id").val();
+     var o = confirm('Do you want to save?');
+        if(o)
+        {
+            var ed = {
+                id: $("#event_id").val(),
+                activity_area_id: $("#activity_area").val(),
+                subject: $("#activity_subject").val(),
+                activity_achieved_id: aid,
+                organizer_id: $("#event_organizer").val(),
+                total_participant: $("#total").val(),
+                total_female: $("#total_female").val(),
+                total_youth: $("#total_youth").val(),
+                village_id: $("#village").val(),
+                commune_id: $("#commune").val(),
+                district_id: $("#district").val(),
+                province_id: $("#province").val()
+            }
+             $.ajax({
+                type: 'POST',
+                url:burl + '/activity-achieve/event/save',
+                data: ed,
+                type: 'POST',
+                beforeSend: function (request) {
+                    return request.setRequestHeader('X-CSRF-Token', $("input[name='_token']").val());
+                },
+                success:function(sms){
+                    sms = JSON.parse(sms);
+                    var x = $("#event_id").val();
+                    if(x>0)
+                    {
+                        var str = "#eventData tr[id='" + x + "']";
+                        var tr = $(str);
+                        var id = $(tr).attr("id");
+                        var tds = $(tr).children('td');
+                        $(tds[1]).html(sms.subject);
+                        $(tds[2]).html(sms.name);
+                        $(tds[3]).html(sms.total_participant);
+                        $(tds[4]).html(sms.total_female);
+                        $(tds[5]).html(sms.total_youth);
+                        $("#eventsms").html("All changes have been saved successfully!");                        
+                    }
+                    else{
+                        var counter = $("#eventData tr").length;
+                        var tr = "";
+                        
+                        tr +="<tr id='" + sms.id + "'>";
+                        tr += "<td>" + (counter++) + "</td>";
+                        tr += "<td>" +  sms.subject + "</td>";
+                        tr +="<td>" + sms.name + "</td>";
+                        tr +="<td>" + sms.total_participant + "</td>";
+                        tr +="<td>" + sms.total_female + "</td>";
+                        tr +="<td>" + sms.total_youth + "</td>";
+                        tr += "<td>" + "<a href='#' class='text-success' title='Edit' onclick='editEvent(this,event)'><i class='fa fa-pencil'></i></a>&nbsp;&nbsp;<a href='#' onclick='deleteEvent(this,event)'><i class='fa fa-remove text-danger'></i></a>" + "</td>";
+                        tr +="</tr>";
+                        
+                        if(counter>0){
+                            $("#eventData tr:last-child").after(tr);
+                        }
+                        else{
+                            $("#eventData").html(tr);
+                        }
+                        clearEvent();
+                        $("#province").val("0");
+                        $("#eventsms").html("New event has been created successfully!");
+                        $("#district").html("");
+                        $("#commune").html("");
+                        $("#village").html("");
+                    }
+                },
+            });
+        }
+}
     </script>
 @endsection
-<div class="modal fade bd-target-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content btn-flat">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Upload New Document</h5>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" id="target1">
-                   <input type="hidden" id="doc_id" name="doc_id" value="0">
-                    <div class="form-group row">
-                        <label for="doc_description" class="control-label col-sm-2 lb">Description</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="doc_description" name="doc_description">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="doc_file_name" class="control-label col-sm-2 lb">File Name</label>
-                        <div class="col-sm-8">
-                            <input type="file" class="form-control" id="doc_file_name" name="doc_file_name">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <br>
-                            <p class="text-success text-center" id="docsms"></p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-primary btn-flat" onclick="saveDoc()">Save</button>
-                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearDoc()">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
