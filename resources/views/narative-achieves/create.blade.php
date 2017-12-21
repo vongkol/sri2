@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Create Narative Achieves</strong>&nbsp;&nbsp;
+                    <strong>Create Narative Achieved</strong>&nbsp;&nbsp;
                     <a href="{{url('/narative-achieve')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
                 </div>
                 <div class="card-block">

@@ -6,7 +6,7 @@
                 <div class="card-header text-bold">
                     <div class="row">
                         <div class="col-sm-4">
-                            <strong>Narative Achieve List</strong>&nbsp;&nbsp;
+                            <strong>Narative Achieved List</strong>&nbsp;&nbsp;
                             <a href="{{url('/narative-achieve/create')}}"><i class="fa fa-plus"></i> New</a>
                         </div>
                         <div class="col-sm-8">
@@ -53,7 +53,6 @@
                                        title="Delete"><i class="fa fa-remove text-danger"></i></a>
                                 </td>
                             </tr>
-                            
                         @endforeach
                         </tbody>
                     </table>

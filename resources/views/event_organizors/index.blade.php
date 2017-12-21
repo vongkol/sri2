@@ -32,27 +32,25 @@
                         </tr>
                         </thead>
                         <tbody>
-
-                        <?php
-                            $pagex = @$_GET['page'];
-                            if(!$pagex)
-                                $pagex = 1;
-                            $i = 12 * ($pagex - 1) + 1;
-                        ?>
-
-                        @foreach($event_organizors as $event_organizor)
-                            <tr>
-                                <td>{{$i++}}</td>
-                                <td>{{$event_organizor->name}}</td>
-                                <td>{{$event_organizor->ngo_name==null?'CCC':$event_organizor->ngo_name}}</td>
-                                <td>
-                                    
-                                    <a href="{{url('/event_organizor/edit/'.$event_organizor->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/event_organizor/delete/'.$event_organizor->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-remove text-danger"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
+                            <?php
+                                $pagex = @$_GET['page'];
+                                if(!$pagex)
+                                    $pagex = 1;
+                                $i = 12 * ($pagex - 1) + 1;
+                            ?>
+                            @foreach($event_organizors as $event_organizor)
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{$event_organizor->name}}</td>
+                                    <td>{{$event_organizor->ngo_name==null?'CCC':$event_organizor->ngo_name}}</td>
+                                    <td>
+                                        
+                                        <a href="{{url('/event_organizor/edit/'.$event_organizor->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
+                                        <a href="{{url('/event_organizor/delete/'.$event_organizor->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                        title="Delete"><i class="fa fa-remove text-danger"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav>
