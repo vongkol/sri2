@@ -58,14 +58,14 @@ class ActivityAchievedController extends Controller
             'start_date' => $r->start_date,
             'end_date' => $r->end_date,
             'actual' => $r->actual,
-            'achievement' => $r->achievement,
-            'challenge' => $r->challenge,
-            'solution' => $r->solution,
-            'lesson_learn' => $r->lesson_learn,
-            'next_plan' => $r->next_plan,
-            'other_comment' => $r->other_comment,
-            'total_budget' => $r->total_budget,
-            'total_expense' => $r->total_expense,
+            //'achievement' => $r->achievement,
+            //'challenge' => $r->challenge,
+            //'solution' => $r->solution,
+            //'lesson_learn' => $r->lesson_learn,
+            //'next_plan' => $r->next_plan,
+            //'other_comment' => $r->other_comment,
+            //'total_budget' => $r->total_budget,
+            //'total_expense' => $r->total_expense,
             'activity_category_id' => $r->activity_category,
             'ngo_id' => $r->ngo,
             'create_by' => Auth::user()->id
@@ -94,6 +94,36 @@ class ActivityAchievedController extends Controller
             $r->session()->flash('sms1', "Fail to save changes!");
             return redirect('/activity-achieve/create')->withInput();
         }
+    }
+    public function save_description(Request $r)
+    {
+        $id = $r->id_for_description;
+        $data = array(
+            'achievement' => $r->achievement,
+            'challenge' => $r->challenge,
+            'solution' => $r->solution,
+            'lesson_learn' => $r->lesson_learn,
+            'next_plan' => $r->next_plan,
+            'other_comment' => $r->other_comment,
+            'total_budget' => $r->total_budget,
+            'total_expense' => $r->total_expense
+        );
+        $i = DB::table('activity_achieves')->where('id', $id)->update($data);
+        $r->session()->flash('sms2', 'Your description changes have been saved successfully!');
+        return redirect('/activity-achieve/edit/'.$id);            
+    }
+    public function save_funding(Request $r)
+    {
+        $id = $r->id_for_funding;
+        $data = array(
+            
+            'total_budget' => $r->total_budget,
+            'total_expense' => $r->total_expense
+        );
+        $i = DB::table('activity_achieves')->where('id', $id)->update($data);
+        $r->session()->flash('sms3', 'Your funding changes have been saved successfully!');
+        $r->session()->flash('funding', 'active');
+        return redirect('/activity-achieve/edit/'.$id . "#funding");            
     }
     public function edit($id)
     {
@@ -141,14 +171,14 @@ class ActivityAchievedController extends Controller
             'start_date' => $r->start_date,
             'end_date' => $r->end_date,
             'actual' => $r->actual,
-            'achievement' => $r->achievement,
-            'challenge' => $r->challenge,
-            'solution' => $r->solution,
-            'lesson_learn' => $r->lesson_learn,
-            'next_plan' => $r->next_plan,
-            'other_comment' => $r->other_comment,
-            'total_budget' => $r->total_budget,
-            'total_expense' => $r->total_expense,
+            //'achievement' => $r->achievement,
+            //'challenge' => $r->challenge,
+            //'solution' => $r->solution,
+            //'lesson_learn' => $r->lesson_learn,
+            //'next_plan' => $r->next_plan,
+            //'other_comment' => $r->other_comment,
+            //'total_budget' => $r->total_budget,
+            //'total_expense' => $r->total_expense,
             'activity_category_id' => $r->activity_category
         );
         $id = DB::table('activity_achieves')->where("id", $r->id)->update($data);

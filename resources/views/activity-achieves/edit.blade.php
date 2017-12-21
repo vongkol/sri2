@@ -158,80 +158,6 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <p class="text-primary" style="border-bottom:1px solid #ccc">
-                                <strong>Description</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label for="achievement" class="control-label col-sm-4 lb">Achievement</label>
-                                <div class="col-sm-8">
-                                    <textarea name="achievement" id="achievement" cols="30" rows="1" class="form-control" disabled>{{$activity_achieve->achievement}}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="solution" class="control-label col-sm-4 lb">Solution</label>
-                                <div class="col-sm-8">
-                                    <textarea name="solution" id="solution" cols="30" rows="1" class="form-control" disabled>{{$activity_achieve->solution}}</textarea>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label for="next_plan" class="control-label col-sm-4 lb">Next Plan</label>
-                                <div class="col-sm-8">
-                                    <textarea name="next_plan" id="next_plan" cols="30" rows="1" class="form-control" disabled>{{$activity_achieve->next_plan}}</textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                             <div class="form-group row">
-                                <label for="challenge" class="control-label col-sm-4 lb">Challenge</label>
-                                <div class="col-sm-8">
-                                    <textarea name="challenge" id="challenge" cols="30" rows="1" class="form-control" disabled>{{$activity_achieve->challenge}}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="lesson_learn" class="control-label col-sm-4 lb">Lesson Learn</label>
-                                <div class="col-sm-8">
-                                    <textarea name="lesson_learn" id="lesson_learn" cols="30" rows="1" class="form-control" disabled>{{$activity_achieve->lesson_learn}}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="other_comment" class="control-label col-sm-4 lb">Other Comment</label>
-                                <div class="col-sm-8">
-                                    <textarea name="other_comment" id="other_comment" cols="30" rows="1" class="form-control" disabled>{{$activity_achieve->other_comment}}</textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p class="text-primary" style="border-bottom:1px solid #ccc">
-                                <strong>Funding</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label for="total_budget" class="control-label col-sm-4 lb">Total Budget($)</label>
-                                <div class="col-sm-8">
-                                    <input type="number" step="0.01" min="0" value="{{$activity_achieve->total_budget}}" class="form-control" id="total_budget" name="total_budget" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label for="total_expense" class="control-label col-sm-4 lb">Total Expense($)</label>
-                                <div class="col-sm-8">
-                                    <input type="number" step="0.01" min="0" value="{{$activity_achieve->total_expense}}" class="form-control" id="total_expense" name="total_expense" disabled>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
                             <p class="text-center hide" id="box">
                                 <br>
                                 <button class="btn btn-primary btn-flat" type="submit">Save</button>
@@ -242,14 +168,22 @@
                      <div class="row">
                         <div class="col-sm-12">
                             <p class="text-success">
-                            All fields with <span class="text-danger">*</span> are required!
+                                <br>
+                                All fields with <span class="text-danger">*</span> are required!
+                                <br>
                             </p>
                         </div>
                     </div>
                 </form>
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#document" role="tab">Supporting Document</a>
+                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#funding" role="tab" id="funding_tab">Funding</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#document" role="tab">Supporting Document</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#event" role="tab">Event</a>
@@ -268,7 +202,136 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="document" role="tabpanel">
+                    <div class="tab-pane active" id="description" role="tabpanel">
+                        <form action="{{url('/activity-achieve/description/update')}}" method="post" onsubmit="return confirm('You want to save changes?')">
+                        {{csrf_field()}}
+                        <input type="hidden" value="{{$activity_achieve->id}}" name="id_for_description">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @if(Session::has('sms2'))
+                                    <div class="alert alert-success" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <div>
+                                            {{session('sms2')}}
+                                        </div>
+                                    </div>
+                                @endif
+                                <p>
+                                <br>
+                                <button type="button" class="btn btn-primary btn-flat" onclick="editDescription()"><i class="fa fa-plus"></i> Edit Description</button>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="achievement" class="control-label col-sm-4 lb">Achievement</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="achievement" id="achievement" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->achievement}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="solution" class="control-label col-sm-4 lb">Solution</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="solution" id="solution" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->solution}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="next_plan" class="control-label col-sm-4 lb">Next Plan</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="next_plan" id="next_plan" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->next_plan}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4 lb">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <p class="hide" id="description_box">
+                                            <button type="submit" class="btn btn-primary btn-flat">Save Changes</button>
+                                            <button type="button" class="btn btn-danger btn-flat" onclick="cancelDescription()">Cancel</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="challenge" class="control-label col-sm-4 lb">Challenge</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="challenge" id="challenge" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->challenge}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lesson_learn" class="control-label col-sm-4 lb">Lesson Learn</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="lesson_learn" id="lesson_learn" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->lesson_learn}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="other_comment" class="control-label col-sm-4 lb">Other Comment</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="other_comment" id="other_comment" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->other_comment}}</textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="funding" role="tabpanel">
+                    <form action="{{url('/activity-achieve/funding/update')}}" method="post" onsubmit="return confirm('You want to save changes?')">
+                        {{csrf_field()}}
+                        <input type="hidden" value="{{$activity_achieve->id}}" name="id_for_funding">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @if(Session::has('sms3'))
+                                    <div class="alert alert-success" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <div>
+                                            {{session('sms3')}}
+                                        </div>
+                                    </div>
+                                @endif
+                                <p>
+                                <br>
+                                <button type="button" class="btn btn-primary btn-flat" onclick="editFunding()"><i class="fa fa-plus"></i> Edit Funding</button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="total_budget" class="control-label col-sm-4 lb">Total Budget($)</label>
+                                    <div class="col-sm-8">
+                                        <input type="number" step="0.01" min="0" value="{{$activity_achieve->total_budget}}" class="form-control" id="total_budget" name="total_budget" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4 lb">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <p class="hide" id="funding_box">
+                                            <button type="submit" class="btn btn-primary btn-flat">Save Changes</button>
+                                            <button type="button" class="btn btn-danger btn-flat" onclick="cancelFunding()">Cancel</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="total_expense" class="control-label col-sm-4 lb">Total Expense($)</label>
+                                    <div class="col-sm-8">
+                                        <input type="number" step="0.01" min="0" value="{{$activity_achieve->total_expense}}" class="form-control" id="total_expense" name="total_expense" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="document" role="tabpanel">
                         <p>
                         <br>
                             <a class="btn btn-primary btn-flat" href="#" id="btnAddTarget" data-toggle="modal" 
@@ -291,7 +354,7 @@
                                     <td><a href="{{asset('uploads/documents/'.$doc->file_name)}}" target="_blank">{{$doc->file_name}}</a></td>
                                     <td>{{$doc->description}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteDoc(this,event)"><i class="fa fa-trash-o"></i> Delete</a>
+                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteDoc(this,event)"><i class="fa fa-trash-o"></i> Delete</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -326,8 +389,8 @@
                                     <td>{{$ev->total_female}}</td>
                                     <td>{{$ev->total_youth}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-success" title="Edit" onclick="editEvent(this,event)"><i class="fa fa-pencil"></i> Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteEvent(this,event)"><i class="fa fa-trash-o"></i> Delete</a></a>
+                                        <button type='button' class="btn btn-sm btn-success" onclick="editEvent(this,event)"><i class="fa fa-pencil"></i> Edit</button>
+                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteEvent(this,event)"><i class="fa fa-trash-o"></i> Delete</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -338,8 +401,25 @@
                     <div class="tab-pane" id="beneficiary" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="btn btn-primary btn-flat" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Beneficiary</a>
+                            <a href="#" class="btn btn-primary btn-flat" id="btnAddBeneficiary" data-toggle="modal" data-target="#beneficiary_modal"><i class="fa fa-plus"></i> New Beneficiary</a>
                         </p>
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>&numero;</th>
+                                    <th>Beneficiay Name</th>
+                                    <th>Gender</th>
+                                    <th>Come From</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Position</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="beneficiaryData">
+
+                            </tbody>
+                        </table>
                         
                     </div>
                     <div class="tab-pane" id="other1" role="tabpanel">
@@ -371,7 +451,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content btn-flat">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Upload New Document</h5>
+                <h5 class="modal-title" id="documentTitle">Upload New Document</h5>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="target1">
@@ -517,449 +597,140 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade bd-target-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="beneficiary_modal">
+    <div class="modal-dialog modal-xlg">
+        <div class="modal-content btn-flat">
+            <div class="modal-header">
+                <h5 class="modal-title" id="beneficiary_title">Create New Beneficiary</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="target1">
+                   <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group row">
+                                <label for="bid" class="control-label col-sm-3 lb">Beneficiary ID</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="bid" name="bid">
+                                </div>
+                                 <label for="bgender" class="control-label col-sm-1 lb">Gender</label>
+                                <div class="col-sm-3">
+                                    <select name="bgender" id="bgender" class="form-control">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                               
+                            </div>
+                          
+                            <div class="form-group row">
+                                <label for="full_name" class="control-label col-sm-3 lb">Beneficiary Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="full_name" name="full_name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="bemail" class="control-label col-sm-3 lb">Email</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="bemail" name="bemail">
+                                </div>
+                                <label for="bphone" class="control-label col-sm-1 lb">Phone</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="bphone" name="bphone">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                            <label for="come_from" class="control-label col-sm-3 lb">Come From</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="come_from" name="come_from">
+                                </div>
+                                <label for="bposition" class="control-label col-sm-1 lb">Position</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="bposition" name="bposition">
+                                </div>
+                            </div>
+                             <div class="form-group row">
+                                <label for="bprovince" class="control-label col-sm-3 lb">Province</label>
+                                <div class="col-sm-4">
+                                    <select name="bprovince" id="bprovince" class="form-control" onchange="bindDistict1()">
+                                        <option value="0">-- Choose One --</option>
+                                    @foreach($provinces as $pro)
+                                        <option value="{{$pro->id}}">{{$pro->name}} - {{$pro->name_kh}}</option>
+                                    @endforeach
+                                    </select>
+
+                                </div>
+                                <label for="bdistrict" class="control-label col-sm-1 lb">District</label>
+                                <div class="col-sm-3">
+                                    <select name="bdistrict" id="bdistrict" class="form-control" onchange="bindCommune1()">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                           
+                            <div class="form-group row">
+                                <label for="bcommune" class="control-label col-sm-3 lb">Commune</label>
+                                <div class="col-sm-4">
+                                    <select name="bcommune" id="bcommune" class="form-control" onchange="bindVillage1()">
+                                        
+                                    </select>
+                                </div>
+                                <label for="bvillage" class="control-label col-sm-1 lb">Village</label>
+                                <div class="col-sm-3">
+                                    <select name="bvillage" id="bvillage" class="form-control">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label lb col-sm-3">Beneficiary Type</label>
+                                <div class="col-sm-4">
+                                    <br>
+                                    <label class="lb">
+                                        <input type="checkbox" name="bch" value="Provincial NGO Network"> Provincial NGO Network
+                                    </label>
+                                    <br>
+                                    <label class="lb">
+                                        <input type="checkbox" name="bch" value="Non-member"> Non-member
+                                    </label>
+                                    
+                                </div> 
+                                <div class="col-sm-4">
+                                    <br>
+                                    <label class="lb">
+                                        <input type="checkbox" name="bch" value="Member"> Member
+                                    </label>
+                                    <br>
+                                    <label class="lb">
+                                        <input type="checkbox" name="bch" value="Other"> Other
+                                    </label>
+                                </div>   
+                            </div>
+
+                             
+                        </div>
+                   </div>
+                   
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br>
+                            <p class="text-success text-center" id="eventsms"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary btn-flat" onclick="saveBeneficiary()">Save</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearBeneficiary()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('js')
     <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
     <script src="{{asset('datepicker/date.js')}}" type="text/javascript"></script>
-    <script>
-        $(document).ready(function () {
-            $("#siderbar li a").removeClass("current");
-            $("#menu_activity_achieved").addClass("current");
-            $('#person_responsible').multiSelect();
-            $("#component_responsible").multiSelect();
-            $("#person_achieved").multiSelect();
-            
-            bindFramework();
-            bindComponent();
-            bindPerson();
-            $("#btnCancel").click(function(){
-                location.href = burl + "/activity-achieve/edit/" + $("#id").val();
-            });
-            $("#activity_type").change(function(){
-                var ngo_id = $("#ngo").val();
-                $("#result_framework_structure").val("");
-                bindActivity(ngo_id);
-            });
-            $("#activity_name").change(function(){
-                $("#result_framework_structure").val("");
-                bindFramework();
-                bindComponent();
-                bindPerson();
-            });
-            $('#start_date').datepicker({
-                uiLibrary: 'bootstrap4'
-            });
-            $('#end_date').datepicker({
-                uiLibrary: 'bootstrap4'
-            });
-        });
-        // function binding data on ngo changed
-        function binding()
-        {
-            var id = $("#ngo").val();
-            $("#result_framework_structure").val("");
-            bindActivityType(id);
-
-        }
-       
-        // bind activity type
-        function bindActivityType(ngo_id)
-        {
-            $.ajax({
-                type: "GET",
-                url: burl + "/activity_type/get/" + ngo_id,
-                success: function(sms){
-                    var opts = "";
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
-                    }
-                     //$('#activity_type').val('').trigger('chosen:updated');  
-                    $('#activity_type').chosen('destroy');
-                    $("#activity_type").html(opts);
-                    $("#activity_type option:first-child").attr("selected","selected");
-                    $('#activity_type').chosen();                 
-                    bindActivity(ngo_id);
-                }
-            });
-        }
-        // bind framework
-        function bindActivity(ngo_id)
-        {
-           var aid = $("#activity_type").val();
-           $.ajax({
-                type: "GET",
-                url: burl + "/setting/get/" + ngo_id+"*"+aid,
-                success: function(sms){
-                    var opts = "";
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        opts += "<option value='" + sms[i].id + "'>" + sms[i].activity_name + "</option>";
-                    }
-                     //$('#activity_type').val('').trigger('chosen:updated');  
-                    $('#activity_name').chosen('destroy');
-                    $("#activity_name").html(opts);
-                    $("#activity_name option:first-child").attr("selected","selected");
-                    $('#activity_name').chosen();                 
-                    bindFramework();
-                    bindComponent();
-                    bindPerson();
-                }
-            });
-        }
-        function bindFramework()
-        {
-           var id = $("#activity_name").val();
-           $.ajax({
-                type: "GET",
-                url: burl + "/setting/framework/get/" + id,
-                success: function(sms){
-                  
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        $("#result_framework_structure").val(sms[i].fname);
-                    }
-                }
-            });
-        }
-        // bind component
-        function bindComponent()
-        {
-            var id = $("#activity_name").val();
-            $.ajax({
-                type: "GET",
-                url: burl + "/setting/component/get/" + id,
-                success: function(sms){
-                    var opts = "<select class='form-control' name='component_responsible[]' id='component_responsible' multiple disabled>";
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        opts += "<option value='" + sms[i].id + "' selected>" + sms[i].name + "</option>";
-                    }
-                    opts += "</select>";
-                    $("#sp").html(opts);
-                    $("#component_responsible").multiSelect();
-
-                }
-            });
-        }
-         function bindPerson()
-        {
-            var id = $("#activity_name").val();
-            $.ajax({
-                type: "GET",
-                url: burl + "/setting/person/get/" + id,
-                success: function(sms){
-                    var opts = "<select class='form-control' name='person_responsible[]' id='person_responsible' multiple disabled>";
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        opts += "<option value='" + sms[i].id + "' selected>" + sms[i].name + "</option>";
-                    }
-                    opts += "</select>";
-                    $("#sp1").html(opts);
-                    $("#person_responsible").multiSelect();
-
-                }
-            });
-        }
-        // bind component
-        function bindUser(ngo_id)
-        {
-            $.ajax({
-                type: "GET",
-                url: burl + "/user/get/" + ngo_id,
-                success: function(sms){
-                    var lbs = "";
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        lbs += "<label class='multi-select-menuitem' for='person_responsible_" + i + "' role='menuitem'>";
-                        lbs += "<input id='person_responsible_" + i + "' value='" + sms[i].id + "' type='checkbox'>";
-                        lbs += sms[i].name;
-                        lbs += "</label>";
-                    }
-                    $("#sp1 .multi-select-menuitems").html(lbs);
-                   
-                }
-            });
-        }
-        function bindDistict()
-        {
-            var p_id = $("#province").val();
-            $.ajax({
-                type: "GET",
-                url: burl + "/setting/district/get/" + p_id,
-                success: function(sms){
-                     var opts = "";
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
-                    }
-                    $("#district").html(opts);
-                    bindCommune();
-                }
-            });
-        }
-        function bindCommune()
-        {
-            var p_id = $("#district").val();
-            $.ajax({
-                type: "GET",
-                url: burl + "/setting/commune/get/" + p_id,
-                success: function(sms){
-                     var opts = "";
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
-                    }
-                    $("#commune").html(opts);
-                    bindVillage();
-                }
-            });
-        }
-         function bindVillage()
-        {
-            var p_id = $("#commune").val();
-            $.ajax({
-                type: "GET",
-                url: burl + "/setting/village/get/" + p_id,
-                success: function(sms){
-                     var opts = "";
-                    for(var i=0;i<sms.length;i++)
-                    {
-                        opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
-                    }
-                    $("#village").html(opts);
-                }
-            });
-        }
-        function showEdit(evt)
-        {
-            evt.preventDefault();
-            $("input").removeAttr("disabled");
-            $("textarea").removeAttr("disabled");
-            $("#result_framework_structure").attr("disabled","disabled");
-            // enable ngo dropdown
-            $("#ngo").chosen('destroy');
-            $("#ngo").removeAttr("disabled");
-            $("#ngo").chosen();
-            // enable activity type dropdown
-            $("#activity_type").chosen("destroy");
-            $("#activity_type").removeAttr("disabled");
-            $("#activity_type").chosen();
-            // enable activity name
-            $("#activity_name").chosen("destroy");
-            $("#activity_name").removeAttr("disabled");
-            $("#activity_name").chosen();
-            // enable activity category
-            $("#activity_category").chosen("destroy");
-            $("#activity_category").removeAttr("disabled");
-            $("#activity_category").chosen();
-            // person achieved
-       
-            $("#person_achieved").removeAttr("disabled");
-     
-            $("#box").removeClass('hide');
-        }
-        function clearDoc() {
-            $("#doc_description").val("");
-            $("#doc_file_name").val("");
-            $("#docsms").html("");
-            $("#doc_id").val("0");
-        }
-        function clearEvent()
-        {
-            $("#event_id").val("0");
-            $("#activity_subject").val("");
-            $("#total").val("0");
-            $("#total_female").val("0");
-            $("#total_youth").val("0");
-            $("#eventsms").html("");
-        }
-        // delete a document by its id
-        function deleteDoc (obj, evt) {
-            var tr = $(obj).parent().parent();
-            var id = $(tr).attr('id');
-            var con = confirm('You want to delete?');
-            if(con)
-            {
-                $.ajax({
-                type: "GET",
-                url: burl + "/document/delete/" + id,
-                success: function (response) {
-                    $(tr).remove();
-                    }
-                });
-            }
-        
-        }
-        function deleteEvent (obj, evt) {
-            evt.preventDefault();
-            var tr = $(obj).parent().parent();
-            var id = $(tr).attr('id');
-            var con = confirm('You want to delete?');
-            if(con)
-            {
-                $.ajax({
-                type: "GET",
-                url: burl + "/activity-achieve/event/delete/" + id,
-                success: function (response) {
-                    $(tr).remove();
-                    }
-                });
-            }
-        
-        }
-function editEvent(obj,evt)
-{
-    evt.preventDefault();
-    var tr = $(obj).parent().parent();
-    var id = $(tr).attr('id');
-    $("#event_id").val(id);
-    $.ajax({
-        type: "GET",
-        url: burl + "/activity-achieve/event/get/" + id,
-        success: function(sms){
-            sms = JSON.parse(sms);
-            $("#event_id").val(sms.id);
-            $("#activity_area").val(sms.activity_area_id);
-            $("#activity_subject").val(sms.subject);
-            $("#event_organizer").val(sms.organizer_id);
-            $("#total").val(sms.total_participant);
-            $("#total_female").val(sms.total_female);
-            $("#total_youth").val(sms.total_youth);
-            $("#province").val(sms.province_id);
-            bindDistict();
-            $("#district").val(sms.district_id);
-            $("#commune").val(sms.commune_id);
-            $("#village").val(sms.village_id);
-            $("#btnAddEvent").trigger("click");
-        }
-    });
-}
-        // save document
-function saveDoc () {
-    var id = $("#id").val();
-    
-      var o = confirm('Do you want to save?');
-        if(o)
-        {
-            var file_data = $('#doc_file_name').prop('files')[0];
-            var form_data = new FormData();
-            form_data.append('doc_file_name', file_data);
-            form_data.append("description", $('#doc_description').val());
-            form_data.append("act_id", id);
-            $("#docsms").html("<img src='" + asset + "/ajax-loader.gif" + "'>");
-            $.ajax({
-                type: 'POST',
-                url:burl + '/document/save',
-                data: form_data,
-                type: 'POST',
-                contentType: false,       // The content type used when sending data to the server.
-                cache: false,             // To unable request pages to be cached
-                processData: false,
-                beforeSend: function (request) {
-                    return request.setRequestHeader('X-CSRF-Token', $("input[name='_token']").val());
-                },
-                success:function(sms){
-         
-                   sms = JSON.parse(sms);
-                   var counter = $("#docData tr").length;
-                    var tr = "";
-                    
-                    tr +="<tr id='" + sms.id + "'>";
-                    tr += "<td>" + (counter++) + "</td>";
-                    tr += "<td>" + "<a href='" + doc_url + "/" + sms.file_name + "' target='_blank'>" + sms.file_name + "</a>" + "</td>";
-                    tr +="<td>" + sms.description+ "</td>";
-                    tr += "<td>" + "<a href='#' onclick='deleteDoc(this,event)'><i class='fa fa-remove text-danger'></i></a>" + "</td>";
-                    tr +="</tr>";
-                    
-                    if(counter>0){
-                        $("#docData tr:last-child").after(tr);
-                    }
-                    else{
-                        $("#docData").html(tr);
-                    }
-                    $("#docsms").html("Your doc has been saved!");
-                    $("#doc_description").val("");
-                    $("#doc_file_name").val("");
-                },
-            });
-
-        }
-}
-function saveEvent()
-{
-    var aid = $("#id").val();
-     var o = confirm('Do you want to save?');
-        if(o)
-        {
-            var ed = {
-                id: $("#event_id").val(),
-                activity_area_id: $("#activity_area").val(),
-                subject: $("#activity_subject").val(),
-                activity_achieved_id: aid,
-                organizer_id: $("#event_organizer").val(),
-                total_participant: $("#total").val(),
-                total_female: $("#total_female").val(),
-                total_youth: $("#total_youth").val(),
-                village_id: $("#village").val(),
-                commune_id: $("#commune").val(),
-                district_id: $("#district").val(),
-                province_id: $("#province").val()
-            }
-             $.ajax({
-                type: 'POST',
-                url:burl + '/activity-achieve/event/save',
-                data: ed,
-                type: 'POST',
-                beforeSend: function (request) {
-                    return request.setRequestHeader('X-CSRF-Token', $("input[name='_token']").val());
-                },
-                success:function(sms){
-                    sms = JSON.parse(sms);
-                    var x = $("#event_id").val();
-                    if(x>0)
-                    {
-                        var str = "#eventData tr[id='" + x + "']";
-                        var tr = $(str);
-                        var id = $(tr).attr("id");
-                        var tds = $(tr).children('td');
-                        $(tds[1]).html(sms.subject);
-                        $(tds[2]).html(sms.name);
-                        $(tds[3]).html(sms.total_participant);
-                        $(tds[4]).html(sms.total_female);
-                        $(tds[5]).html(sms.total_youth);
-                        $("#eventsms").html("All changes have been saved successfully!");                        
-                    }
-                    else{
-                        var counter = $("#eventData tr").length;
-                        var tr = "";
-                        
-                        tr +="<tr id='" + sms.id + "'>";
-                        tr += "<td>" + (counter++) + "</td>";
-                        tr += "<td>" +  sms.subject + "</td>";
-                        tr +="<td>" + sms.name + "</td>";
-                        tr +="<td>" + sms.total_participant + "</td>";
-                        tr +="<td>" + sms.total_female + "</td>";
-                        tr +="<td>" + sms.total_youth + "</td>";
-                        tr += "<td>" + "<a href='#' class='text-success' title='Edit' onclick='editEvent(this,event)'><i class='fa fa-pencil'></i></a>&nbsp;&nbsp;<a href='#' onclick='deleteEvent(this,event)'><i class='fa fa-remove text-danger'></i></a>" + "</td>";
-                        tr +="</tr>";
-                        
-                        if(counter>0){
-                            $("#eventData tr:last-child").after(tr);
-                        }
-                        else{
-                            $("#eventData").html(tr);
-                        }
-                        clearEvent();
-                        $("#province").val("0");
-                        $("#eventsms").html("New event has been created successfully!");
-                        $("#district").html("");
-                        $("#commune").html("");
-                        $("#village").html("");
-                    }
-                },
-            });
-        }
-}
-    </script>
+    <script src="{{asset('js/activity-achieved.js')}}"></script>
 @endsection

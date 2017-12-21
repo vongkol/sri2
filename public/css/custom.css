@@ -125,3 +125,6 @@ ul.pagination li a, ul.pagination li span{
 .form-control {
     line-height: 12px;
 }
+.modal-xlg{
+    max-width: 900px!important;
+}

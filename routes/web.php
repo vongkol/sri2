@@ -174,6 +174,9 @@ Route::get('/activity-achieve/edit/{id}', "ActivityAchievedController@edit");
 Route::get('/activity-achieve/delete/{id}', "ActivityAchievedController@delete");
 Route::post('/activity-achieve/save', "ActivityAchievedController@save");
 Route::post('/activity-achieve/update', "ActivityAchievedController@update");
+Route::post('/activity-achieve/description/update', "ActivityAchievedController@save_description");
+Route::post('/activity-achieve/funding/update', "ActivityAchievedController@save_funding");
+
 Route::get('/setting/get/{id}', "ActivityAchievedController@get");
 Route::get('/setting/framework/get/{id}', "ActivityAchievedController@get_framework");
 Route::get('/setting/component/get/{id}', "ActivityAchievedController@get_component");
