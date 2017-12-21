@@ -45,9 +45,9 @@
                                 <td>{{$ngo->email}}</td>
                                 <td>{{$ngo->base}}</td>
                                 <td>
-                                    <a href="{{url('/ngo/edit/'.$ngo->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/ngo/delete/'.$ngo->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-remove text-danger"></i></a>
+                                    <a class="btn btn-success btn-sm" href="{{url('/ngo/edit/'.$ngo->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{{url('/ngo/delete/'.$ngo->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                       title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -48,10 +48,9 @@
                                     <label for="ngo" class="control-label col-sm-3 lb">User NGO <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="ngo" id="ngo" class="form-control chosen-select">
-                                        
-                                        @foreach($ngos as $ngo)
-                                            <option value="{{$ngo->id}}" {{$levels->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
-                                        @endforeach
+                                            @foreach($ngos as $ngo)
+                                                <option value="{{$ngo->id}}" {{$levels->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
+                                            @endforeach
                                         </select>
                                          <br><br>
                                         <button class="btn btn-primary btn-flat" type="submit">Save</button>

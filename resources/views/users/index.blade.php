@@ -54,9 +54,9 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->role_name}}</td>
                                 <td>
-                                    <a href="{{url('/user/update-password/'.$user->id)}}" title="Reset Password"><i class="fa fa-shield"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/user/edit/'.$user->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/user/delete/'.$user->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')" title="Delete"><i class="fa fa-remove text-danger"></i></a>
+                                    <a class="btn btn-info btn-sm"  href="{{url('/user/update-password/'.$user->id)}}" title="Reset Password"><i class="fa fa-shield"></i> Reset Password</a>
+                                    <a class="btn btn-success btn-sm"  href="{{url('/user/edit/'.$user->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                    <a class="btn btn-danger btn-sm"  href="{{url('/user/delete/'.$user->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')" title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -68,7 +68,6 @@
                 </div>
             </div>
         </div>
-        <!--/.col-->
     </div>
 @endsection
 @section('js')

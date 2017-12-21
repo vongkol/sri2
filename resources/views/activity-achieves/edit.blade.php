@@ -271,7 +271,7 @@
                     <div class="tab-pane active" id="document" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" 
+                            <a class="btn btn-primary btn-flat" href="#" id="btnAddTarget" data-toggle="modal" 
                             data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> Upload Document</a>
                         </p>
                         <table class="tbl">
@@ -291,7 +291,7 @@
                                     <td><a href="{{asset('uploads/documents/'.$doc->file_name)}}" target="_blank">{{$doc->file_name}}</a></td>
                                     <td>{{$doc->description}}</td>
                                     <td>
-                                        <a href="#" class="text-danger" title="Delete" onclick="deleteDoc(this,event)"><i class="fa fa-remove"></i></a>
+                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteDoc(this,event)"><i class="fa fa-trash-o"></i> Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -301,7 +301,7 @@
                     <div class="tab-pane" id="event" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="text-primary" id="btnAddEvent" data-toggle="modal" data-target="#event_modal"><i class="fa fa-plus"></i> New Event</a>
+                            <a href="#" class="btn btn-primary btn-flat" id="btnAddEvent" data-toggle="modal" data-target="#event_modal"><i class="fa fa-plus"></i> New Event</a>
                         </p>
                        <table class="tbl">
                             <thead>
@@ -326,8 +326,8 @@
                                     <td>{{$ev->total_female}}</td>
                                     <td>{{$ev->total_youth}}</td>
                                     <td>
-                                        <a href="#" class="text-success" title="Edit" onclick="editEvent(this,event)"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                        <a href="#" class="text-danger" title="Delete" onclick="deleteEvent(this,event)"><i class="fa fa-remove"></i></a>
+                                        <a href="#" class="btn btn-sm btn-success" title="Edit" onclick="editEvent(this,event)"><i class="fa fa-pencil"></i> Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteEvent(this,event)"><i class="fa fa-trash-o"></i> Delete</a></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -338,7 +338,7 @@
                     <div class="tab-pane" id="beneficiary" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Beneficiary</a>
+                            <a href="#" class="btn btn-primary btn-flat" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Beneficiary</a>
                         </p>
                         
                     </div>

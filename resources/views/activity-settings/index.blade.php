@@ -54,9 +54,9 @@
                             <td>{{$st->activity_definition}}</td>
                             <td>{{$st->location}}</td>
                             <td>
-                                 <a href="{{url('/activity-setting/edit/'.$st->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/activity-setting/delete/'.$st->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-remove text-danger"></i></a>
+                                <a class="btn btn-sm btn-success" href="{{url('/activity-setting/edit/'.$st->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                <a class="btn btn-sm btn-danger" href="{{url('/activity-setting/delete/'.$st->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                       title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
                             </td>
                         </tr>
                         @endforeach
@@ -77,5 +77,4 @@
             $("#menu_activity_setting").addClass("current");
         })
     </script>
-
 @endsection

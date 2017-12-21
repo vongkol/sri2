@@ -58,9 +58,9 @@
                                 <td>{{$indicator->baseline}}</td>
                                 <td>{{$indicator->data_source}}</td>
                                 <td>
-                                    <a href="{{url('/indicator/edit/'.$indicator->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/indicator/delete/'.$indicator->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-remove text-danger"></i></a>
+                                    <a class="btn btn-sm btn-success"​​ href="{{url('/indicator/edit/'.$indicator->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>&nbsp;&nbsp
+                                    <a class="btn btn-sm btn-danger" href="{{url('/indicator/delete/'.$indicator->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                       title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
                                 </td>
                             </tr>
                             @endforeach

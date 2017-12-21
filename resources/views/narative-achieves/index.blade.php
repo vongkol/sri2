@@ -47,10 +47,10 @@
                                 <td>{{$nar->end_date}}</td>
                               
                                 <td>
-                                    <a href="{{url('/narative-achieve/detail/'.$nar->id)}}" title="Edit"><i class="fa fa-info-circle"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/narative-achieve/edit/'.$nar->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/narative-achieve/delete/'.$nar->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-remove text-danger"></i></a>
+                                    <a class="btn btn-sm btn-info" href="{{url('/narative-achieve/detail/'.$nar->id)}}" title="Edit"><i class="fa fa-info-circle"></i> Detail</a>
+                                    <a class="btn btn-sm btn-success" href="{{url('/narative-achieve/edit/'.$nar->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                    <a class="btn btn-sm btn-danger" href="{{url('/narative-achieve/delete/'.$nar->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                       title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
                                 </td>
                             </tr>
                         @endforeach

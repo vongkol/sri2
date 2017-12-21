@@ -135,7 +135,7 @@
                     <div class="tab-pane active" id="target" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="text-primary" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Target</a>
+                            <a href="#"  class="btn btn-primary btn-flat" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Target</a>
                         </p>
                         <table class="tbl">
                             <thead>
@@ -176,9 +176,8 @@
                                     <td>{{$target->m11}}</td>
                                     <td>{{$target->m12}}</td>
                                     <td>
-                                        <a href="#" class="text-success" title="Edit" onclick="editTarget(this,event)"><i class="fa fa-pencil"></i></a>
-                                        &nbsp;&nbsp;
-                                        <a href="#" class="text-danger" title="Delete" onclick="deleteTarget(this,event)"><i class="fa fa-remove"></i></a>
+                                        <a href="#" class="btn btn-sm btn-success" title="Edit" onclick="editTarget(this,event)"><i class="fa fa-pencil"></i> Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteTarget(this,event)"><i class="fa fa-trash-o"></i> Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

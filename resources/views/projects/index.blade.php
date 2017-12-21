@@ -33,28 +33,25 @@
                         </tr>
                         </thead>
                         <tbody>
-
-                        <?php
-                            $pagex = @$_GET['page'];
-                            if(!$pagex)
-                                $pagex = 1;
-                            $i = 12 * ($pagex - 1) + 1;
-                        ?>
-
-                        @foreach($projects as $project)
-                            <tr>
-                                <td>{{$i++}}</td>
-                                <td>{{$project->name}}</td>
-                                <td>{{$project->acronym}}</td>
-                                <td>{{$project->ngo_name==null?'CCC':$project->ngo_name}}</td>
-                                <td>
-                                    
-                                    <a href="{{url('/project/edit/'.$project->id)}}" title="Edit"><i class="fa fa-edit text-success"></i></a>&nbsp;&nbsp
-                                    <a href="{{url('/project/delete/'.$project->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-remove text-danger"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
+                            <?php
+                                $pagex = @$_GET['page'];
+                                if(!$pagex)
+                                    $pagex = 1;
+                                $i = 12 * ($pagex - 1) + 1;
+                            ?>
+                            @foreach($projects as $project)
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{$project->name}}</td>
+                                    <td>{{$project->acronym}}</td>
+                                    <td>{{$project->ngo_name==null?'CCC':$project->ngo_name}}</td>
+                                    <td>
+                                        <a class="btn btn-success btn-sm" href="{{url('/project/edit/'.$project->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                        <a class="btn btn-danger btn-sm" href="{{url('/project/delete/'.$project->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                        title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav>
@@ -66,7 +63,6 @@
     </div>
 @endsection
 @section('js')
-
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
