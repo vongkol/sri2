@@ -64,15 +64,19 @@ ul#siderbar>li>a{
     font-size: 13px;
 }
 ul.pagination{
-    margin-top: 9px;
+    margin-top: 10px;
 }
 ul.pagination li{
-    padding-left: 4px;
+    padding: 7px 0;
     font-size: 13px;
     border: 1px solid #ddd;
 }
+ul.pagination li.active {
+    background: #ddd;
+    font-weight: bold;
+}
 ul.pagination li a, ul.pagination li span{
-    padding: 5px 9px;
+    padding: 9px 15px;
 }
 .form-group {
     margin-bottom: 2px;
