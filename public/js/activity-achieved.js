@@ -474,7 +474,7 @@ if(o)
                 tr +="<td>" + sms.total_participant + "</td>";
                 tr +="<td>" + sms.total_female + "</td>";
                 tr +="<td>" + sms.total_youth + "</td>";
-                tr += "<td>" + "<button type='button' class='btn btn-sm btn-success' onclick='editEvent(this,event)'><i class='fa fa-pencil'></i> Edit</button> <button type='button' class='btn btn-sm btn-danger' onclick='deleteEvent(this,event)'><i class='fa fa-remove'></i> Delete</button>" + "</td>";
+                tr += "<td>" + "<button type='button' class='btn btn-sm btn-success' onclick='editEvent(this,event)'><i class='fa fa-pencil'></i> Edit</button> <button type='button' class='btn btn-sm btn-danger' onclick='deleteEvent(this,event)'><i class='fa fa-trush-o'></i> Delete</button>" + "</td>";
                 tr +="</tr>";
                 
                 if(counter>0){
