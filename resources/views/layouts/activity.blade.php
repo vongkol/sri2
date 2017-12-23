@@ -85,7 +85,7 @@
             <ul class="nav nav-pills flex-column" id="siderbar">
                 <li class="nav-item"><strong>Achievement</strong></li>
                 <li class="nav-item"><a href="{{url('/activity-achieve')}}" class="nav-link" id="menu_activity_achieved"><i class="fa fa-bolt text-info"></i> Activity Achieved</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-bolt text-info"></i> Indicator Achieved</a></li>
+                <li class="nav-item"><a href="{{url('/indicator-achieve')}}" class="nav-link" id="menu_indicator"><i class="fa fa-bolt text-info"></i> Indicator Achieved</a></li>
                 <li class="nav-item"><a href="{{url('/narative-achieve')}}" class="nav-link" id="menu_narative_achieve"><i class="fa fa-bolt text-info"></i> Narrative Achieved</a></li>
                 <li class="nav-item"><strong>Setting</strong></li>
                 <li class="nav-item"><a href="{{url('/activity-setting')}}" class="nav-link" id="menu_activity_setting"><i class="fa fa-bolt text-info"></i> Activity Setting</a></li>

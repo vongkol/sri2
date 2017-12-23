@@ -192,6 +192,19 @@ Route::get('/activity-achieve/beneficiary/delete/{id}', "ActivityAchievedControl
 Route::get('/activity-achieve/beneficiary/get/{id}', "ActivityAchievedController@get_beneficiary");
 Route::get('/activity-achieve/event/get/{id}', "ActivityAchievedController@get_event");
 Route::post('/activity-achieve/beneficiary/save', "ActivityAchievedController@save_beneficiary");
+// indicator achieved
+Route::get('/indicator-achieve', "IndicatorAchievedController@index");
+Route::get('/indicator-achieve/create', "IndicatorAchievedController@create");
+Route::get('/indicator-achieve/edit/{id}', "IndicatorAchievedController@edit");
+Route::get('/indicator-achieve/delete/{id}', "IndicatorAchievedController@delete");
+Route::post('/indicator-achieve/save', "IndicatorAchievedController@save");
+Route::post('/indicator-achieve/update', "IndicatorAchievedController@update");
+Route::post('/indicator-achieve/description/update', "IndicatorAchievedController@save_description");
+Route::get('/indicator/target/get/{id}', "IndicatorAchievedController@get_target");
+Route::get('/indicator/info/get/{id}', "IndicatorAchievedController@get_info");
+Route::get('/indicator/project/get/{id}', "IndicatorAchievedController@get_project");
+Route::get('/indicator/document/delete/{id}', "DocumentController@delete1");
+Route::post('/indicator/document/save', "DocumentController@save1");
 
 // documents
 Route::get('/document', "DocumentController@index");

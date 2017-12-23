@@ -32,7 +32,7 @@
                 @endif
                     <form action="{{url('/indicator/update')}}" class="form-horizontal" method="post" name="frm" onsubmit="return confirm('You want to save changes?')">
                     {{csrf_field()}}
-                    <input type="hidden" name="id" value="{{$indicator_setting->id}}">
+                    <input type="hidden" name="id" value="{{$indicator_setting->id}}" id="id">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -236,7 +236,7 @@
                                     <td>{{$target->m12}}</td>
                                     <td>
                                         <a href="#" class="btn btn-sm btn-success" title="Edit" onclick="editTarget(this,event)"><i class="fa fa-pencil"></i> Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteTarget(this,event)"><i class="fa fa-trash-o"></i> Delete</a>
+                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteTarget(this,event)"><i class="fa fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -447,7 +447,6 @@ function saveTarget(id)
         nov: $("#nov").val(),
         dec: $("#dec").val()
     };
-
     var o = confirm("You want to save?");
     if(o)
     {
@@ -481,8 +480,8 @@ function saveTarget(id)
                         tr += "<td>" + target.oct + "</td>";
                         tr += "<td>" + target.nov + "</td>";
                         tr += "<td>" + target.dec + "</td>";
-                        tr += "<td>" + "<a href='#' class='text-success' title='Edit' onclick='editTarget(this,event)'><i class='fa fa-pencil'></i></a>&nbsp;&nbsp;";
-                        tr += "<a href='#' class='text-danger' title='Delete' onclick='deleteTarget(this,event)'><i class='fa fa-remove'></i></a>" + "</td>";
+                        tr += "<td>" + "<a href='#' class='btn btn-sm btn-success' title='Edit' onclick='editTarget(this,event)'><i class='fa fa-pencil'></i> Edit</a>&nbsp;&nbsp;";
+                        tr += "<a href='#' class='btn btn-sm btn-danger' title='Delete' onclick='deleteTarget(this,event)'><i class='fa fa-trash'></i> Delete</a>" + "</td>";
                         tr += "</tr>";
                         if($("#data tr:last-child").length>0)
                         {
