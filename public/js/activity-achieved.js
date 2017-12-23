@@ -26,11 +26,12 @@ $(document).ready(function () {
         bindComponent();
         bindPerson();
     });
-    $('#start_date').datepicker({
-        uiLibrary: 'bootstrap4'
-    });
-    $('#end_date').datepicker({
-        uiLibrary: 'bootstrap4'
+    $("#start_date, #end_date").datepicker({
+        orientation: 'bottom',
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true,
+        toggleActive: true
     });
 });
 // function binding data on ngo changed
@@ -342,31 +343,31 @@ function deleteEvent (obj, evt) {
 }
 function editEvent(obj,evt)
 {
-evt.preventDefault();
-$("#exampleModalLabel").html("Edit Event");
-var tr = $(obj).parent().parent();
-var id = $(tr).attr('id');
-$("#event_id").val(id);
-$.ajax({
-type: "GET",
-url: burl + "/activity-achieve/event/get/" + id,
-success: function(sms){
-    sms = JSON.parse(sms);
-    $("#event_id").val(sms.id);
-    $("#activity_area").val(sms.activity_area_id);
-    $("#activity_subject").val(sms.subject);
-    $("#event_organizer").val(sms.organizer_id);
-    $("#total").val(sms.total_participant);
-    $("#total_female").val(sms.total_female);
-    $("#total_youth").val(sms.total_youth);
-    $("#province").val(sms.province_id);
-    bindDistict();
-    $("#district").val(sms.district_id);
-    $("#commune").val(sms.commune_id);
-    $("#village").val(sms.village_id);
-    $("#btnAddEvent").trigger("click");
-}
-});
+    evt.preventDefault();
+    $("#exampleModalLabel").html("Edit Event");
+        var tr = $(obj).parent().parent();
+        var id = $(tr).attr('id');
+        $("#event_id").val(id);
+        $.ajax({
+        type: "GET",
+        url: burl + "/activity-achieve/event/get/" + id,
+        success: function(sms){
+            sms = JSON.parse(sms);
+            $("#event_id").val(sms.id);
+            $("#activity_area").val(sms.activity_area_id);
+            $("#activity_subject").val(sms.subject);
+            $("#event_organizer").val(sms.organizer_id);
+            $("#total").val(sms.total_participant);
+            $("#total_female").val(sms.total_female);
+            $("#total_youth").val(sms.total_youth);
+            $("#province").val(sms.province_id);
+            bindDistict();
+            $("#district").val(sms.district_id);
+            $("#commune").val(sms.commune_id);
+            $("#village").val(sms.village_id);
+            $("#btnAddEvent").trigger("click");
+        }
+    });
 }
 // save document
 function saveDoc () {
@@ -421,98 +422,257 @@ if(o)
 }
 function saveEvent()
 {
-var aid = $("#id").val();
-var o = confirm('Do you want to save?');
-if(o)
-{
-    var ed = {
-        id: $("#event_id").val(),
-        activity_area_id: $("#activity_area").val(),
-        subject: $("#activity_subject").val(),
-        activity_achieved_id: aid,
-        organizer_id: $("#event_organizer").val(),
-        total_participant: $("#total").val(),
-        total_female: $("#total_female").val(),
-        total_youth: $("#total_youth").val(),
-        village_id: $("#village").val(),
-        commune_id: $("#commune").val(),
-        district_id: $("#district").val(),
-        province_id: $("#province").val()
-    }
-     $.ajax({
-        type: 'POST',
-        url:burl + '/activity-achieve/event/save',
-        data: ed,
-        type: 'POST',
-        beforeSend: function (request) {
-            return request.setRequestHeader('X-CSRF-Token', $("input[name='_token']").val());
-        },
-        success:function(sms){
-            sms = JSON.parse(sms);
-            var x = $("#event_id").val();
-            if(x>0)
-            {
-                var str = "#eventData tr[id='" + x + "']";
-                var tr = $(str);
-                var id = $(tr).attr("id");
-                var tds = $(tr).children('td');
-                $(tds[1]).html(sms.subject);
-                $(tds[2]).html(sms.name);
-                $(tds[3]).html(sms.total_participant);
-                $(tds[4]).html(sms.total_female);
-                $(tds[5]).html(sms.total_youth);
-                $("#eventsms").html("All changes have been saved successfully!");                        
-            }
-            else{
-                var counter = $("#eventData tr").length;
-                var tr = "";
-                
-                tr +="<tr id='" + sms.id + "'>";
-                tr += "<td>" + (counter++) + "</td>";
-                tr += "<td>" +  sms.subject + "</td>";
-                tr +="<td>" + sms.name + "</td>";
-                tr +="<td>" + sms.total_participant + "</td>";
-                tr +="<td>" + sms.total_female + "</td>";
-                tr +="<td>" + sms.total_youth + "</td>";
-                tr += "<td>" + "<button type='button' class='btn btn-sm btn-success' onclick='editEvent(this,event)'><i class='fa fa-pencil'></i> Edit</button> <button type='button' class='btn btn-sm btn-danger' onclick='deleteEvent(this,event)'><i class='fa fa-trush-o'></i> Delete</button>" + "</td>";
-                tr +="</tr>";
-                
-                if(counter>0){
-                    $("#eventData tr:last-child").after(tr);
+    var aid = $("#id").val();
+    var o = confirm('Do you want to save?');
+    if(o)
+    {
+        var ed = {
+            id: $("#event_id").val(),
+            activity_area_id: $("#activity_area").val(),
+            subject: $("#activity_subject").val(),
+            activity_achieved_id: aid,
+            organizer_id: $("#event_organizer").val(),
+            total_participant: $("#total").val(),
+            total_female: $("#total_female").val(),
+            total_youth: $("#total_youth").val(),
+            village_id: $("#village").val(),
+            commune_id: $("#commune").val(),
+            district_id: $("#district").val(),
+            province_id: $("#province").val()
+        }
+        $.ajax({
+            type: 'POST',
+            url:burl + '/activity-achieve/event/save',
+            data: ed,
+            type: 'POST',
+            beforeSend: function (request) {
+                return request.setRequestHeader('X-CSRF-Token', $("input[name='_token']").val());
+            },
+            success:function(sms){
+                sms = JSON.parse(sms);
+                var x = $("#event_id").val();
+                if(x>0)
+                {
+                    var str = "#eventData tr[id='" + x + "']";
+                    var tr = $(str);
+                    var id = $(tr).attr("id");
+                    var tds = $(tr).children('td');
+                    $(tds[1]).html(sms.subject);
+                    $(tds[2]).html(sms.name);
+                    $(tds[3]).html(sms.total_participant);
+                    $(tds[4]).html(sms.total_female);
+                    $(tds[5]).html(sms.total_youth);
+                    $("#eventsms").html("All changes have been saved successfully!");                        
                 }
                 else{
-                    $("#eventData").html(tr);
+                    var counter = $("#eventData tr").length;
+                    var tr = "";
+                    
+                    tr +="<tr id='" + sms.id + "'>";
+                    tr += "<td>" + (counter++) + "</td>";
+                    tr += "<td>" +  sms.subject + "</td>";
+                    tr +="<td>" + sms.name + "</td>";
+                    tr +="<td>" + sms.total_participant + "</td>";
+                    tr +="<td>" + sms.total_female + "</td>";
+                    tr +="<td>" + sms.total_youth + "</td>";
+                    tr += "<td>" + "<button type='button' class='btn btn-sm btn-success' onclick='editEvent(this,event)'><i class='fa fa-pencil'></i> Edit</button> <button type='button' class='btn btn-sm btn-danger' onclick='deleteEvent(this,event)'><i class='fa fa-trush-o'></i> Delete</button>" + "</td>";
+                    tr +="</tr>";
+                    
+                    if(counter>0){
+                        $("#eventData tr:last-child").after(tr);
+                    }
+                    else{
+                        $("#eventData").html(tr);
+                    }
+                    clearEvent();
+                    $("#province").val("0");
+                    $("#eventsms").html("New event has been created successfully!");
+                    $("#district").html("");
+                    $("#commune").html("");
+                    $("#village").html("");
                 }
-                clearEvent();
-                $("#province").val("0");
-                $("#eventsms").html("New event has been created successfully!");
-                $("#district").html("");
-                $("#commune").html("");
-                $("#village").html("");
-            }
-        },
-    });
-}
+            },
+        });
+    }
 }
 function editDescription()
 {
-$("textarea").removeAttr("disabled");
-$("#description_box").removeClass("hide");
+    $("textarea").removeAttr("disabled");
+    $("#description_box").removeClass("hide");
 }
 function cancelDescription()
 {
-$("textarea").attr("disabled", "disabled");    
-$("#description_box").addClass("hide");
+    $("textarea").attr("disabled", "disabled");    
+    $("#description_box").addClass("hide");
 }
 function editFunding()
 {
-$("#total_budget").removeAttr("disabled");
-$("#total_expense").removeAttr("disabled");
-$("#funding_box").removeClass('hide');
+    $("#total_budget").removeAttr("disabled");
+    $("#total_expense").removeAttr("disabled");
+    $("#funding_box").removeClass('hide');
 }
 function cancelFunding()
 {
-$("#total_budget").attr("disabled", "disabled");
-$("#total_expense").attr("disabled", "disabled");
-$("#funding_box").addClass('hide');
+    $("#total_budget").attr("disabled", "disabled");
+    $("#total_expense").attr("disabled", "disabled");
+    $("#funding_box").addClass('hide');
+}
+function clearBeneficiary()
+{
+    $("#beneficiary_id").val("0");
+    $("#bid").val("");
+    $("#full_name").val("");
+    $("#bemail").val("");
+    $("#bposition").val("");
+    $("#bphone").val("");
+    $("#come_from").val("");
+    $("#bprovince").val("0");
+    $("#bdistrict").html("");
+    $("#bcommune").html("");
+    $("#bvillage").html("");
+    $("input[name='bch']").prop("checked", false);
+}
+function saveBeneficiary()
+{
+    var aid = $("#id").val();
+    var o = confirm('Do you want to save?');
+    if(o)
+    {
+        var ch = "";
+        var check = $("input[name='bch']");
+        for(var i=0; i<check.length;i++)
+        {
+            if(check[i].checked)
+            {
+                ch += check[i].value + ",";
+            }
+        }
+        var bf = {
+            id: $("#beneficiary_id").val(),
+            bid: $("#bid").val(),
+            full_name: $("#full_name").val(),
+            activity_achieved_id: aid,
+            gender: $("#bgender").val(),
+            email: $("#bemail").val(),
+            phone: $("#bphone").val(),
+            come_from: $("#come_from").val(),
+            province: $("#bprovince").val(),
+            district: $("#bdistrict").val(),
+            commune: $("#bcommune").val(),
+            village: $("#bvillage").val(),
+            type: ch,
+            position: $("#bposition").val()
+        }
+        $.ajax({
+            type: 'POST',
+            url:burl + '/activity-achieve/beneficiary/save',
+            data: bf,
+            type: 'POST',
+            beforeSend: function (request) {
+                return request.setRequestHeader('X-CSRF-Token', $("input[name='_token']").val());
+            },
+            success:function(sms){
+                // console.log(sms);
+
+                sms = JSON.parse(sms);
+                var x = $("#beneficiary_id").val();
+                if(x>0)
+                {
+                    var str = "#beneficiaryData tr[id='" + x + "']";
+                    var tr = $(str);
+                    var id = $(tr).attr("id");
+                    var tds = $(tr).children('td');
+                    $(tds[1]).html(sms.benficiary_id);
+                    $(tds[2]).html(sms.full_name);
+                    $(tds[3]).html(sms.gender);
+                    $(tds[4]).html(sms.come_from);
+                    $(tds[5]).html(sms.email);
+                    $(tds[6]).html(sms.phone);
+                    $(tds[7]).html(sms.position);
+                    $("#bsms").html("All changes have been saved successfully!");                        
+                }
+                else{
+                    var counter = $("#beneficiaryData tr").length;
+                    var tr = "";
+                    
+                    tr +="<tr id='" + sms.id + "'>";
+                    tr += "<td>" + (counter++) + "</td>";
+                    tr += "<td>" +  sms.benficiary_id + "</td>";
+                    tr +="<td>" + sms.full_name + "</td>";
+                    tr +="<td>" + sms.gender + "</td>";
+                    tr +="<td>" + sms.come_from + "</td>";
+                    tr +="<td>" + sms.email + "</td>";
+                    tr +="<td>" + sms.phone + "</td>";
+                    tr +="<td>" + sms.position + "</td>";
+                    tr += "<td>" + "<button type='button' class='btn btn-sm btn-success' onclick='editBeneficiary(this,event)'><i class='fa fa-pencil'></i> Edit</button> <button type='button' class='btn btn-sm btn-danger' onclick='deleteBeneficiary(this,event)'><i class='fa fa-trush-o'></i> Delete</button>" + "</td>";
+                    tr +="</tr>";
+                    
+                    if(counter>0){
+                        $("#beneficiaryData tr:last-child").after(tr);
+                    }
+                    else{
+                        $("#beneficiaryData").html(tr);
+                    }
+                    clearBeneficiary();
+                    $("#bsms").html("New beneficiary has been created successfully!");
+                    
+                }
+            },
+        });
+    }
+}
+function deleteBeneficiary(obj, evt) {
+    evt.preventDefault();
+    var tr = $(obj).parent().parent();
+    var id = $(tr).attr('id');
+    var con = confirm('You want to delete?');
+    if(con)
+    {
+        $.ajax({
+        type: "GET",
+        url: burl + "/activity-achieve/beneficiary/delete/" + id,
+        success: function (response) {
+                $(tr).remove();
+            }
+        });
+    }
+
+}
+function editBeneficiary(obj,evt)
+{
+    evt.preventDefault();
+    $("#beneficiary_title").html("Edit Beneficiary");
+        var tr = $(obj).parent().parent();
+        var id = $(tr).attr('id');
+        $("#beneficiary_id").val(id);
+        $.ajax({
+        type: "GET",
+        url: burl + "/activity-achieve/beneficiary/get/" + id,
+        success: function(sms){
+            sms = JSON.parse(sms);
+            var txt = sms.type;
+            txt = txt.split(",");
+            var check = $("input[name='bch']");
+            for(var i=0;i<txt.length;i++)
+            {
+                var str = "input[value='" + txt[i] + "']";
+                $(str).prop("checked", true);
+            }
+           
+            $("#bid").val(sms.beneficiary_id);
+            $("#full_name").val(sms.full_name);
+            $("#bgender").val(sms.gender);
+            $("#bemail").val(sms.email);
+            $("#bphone").val(sms.phone);
+            $("#bposition").val(sms.position);
+            $("#bprovince").val(sms.province_id);
+            $("#come_from").val(sms.come_from);
+            bindDistict1();
+            $("#bdistrict").val(sms.district_id);
+            $("#bcommune").val(sms.commune_id);
+            $("#bvillage").val(sms.village_id);
+            $("#btnAddBeneficiary").trigger("click");
+
+        }
+    });
 }

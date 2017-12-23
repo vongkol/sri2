@@ -161,6 +161,7 @@ class ActivityAchievedController extends Controller
             ->where('activity_achieved_events.activity_achieved_id', $id)
             ->select('activity_achieved_events.*', 'event_organizors.name')
             ->get();
+            $data['beneficiaries'] = DB::table("activity_achieved_beneficiaries")->where("activity_achieved_id", $id)->get();
         return view('activity-achieves.edit', $data);
     }
     public function update(Request $r)
@@ -289,5 +290,45 @@ class ActivityAchievedController extends Controller
     public function get_event($id)
     {
         return json_encode(DB::table('activity_achieved_events')->where('id', $id)->first());
+    }
+
+    public function save_beneficiary(Request $r)
+    {
+        $data = array(
+            'beneficiary_id' => $r->bid,
+            'full_name' => $r->full_name,
+            'gender' => $r->gender,
+            'activity_achieved_id' => $r->activity_achieved_id,
+            'email' => $r->email,
+            'phone' => $r->phone,
+            'position' => $r->position,
+            'come_from' => $r->come_from,
+            'type' => $r->type,
+            'village_id' => $r->village,
+            'commune_id' => $r->commune,
+            'district_id' => $r->district,
+            'province_id' => $r->province
+        );
+        // $id = DB::table('activity_achieved_beneficiaries')->insert($data);
+        if($r->id>0)
+        {
+            $id = DB::table("activity_achieved_beneficiaries")->where('id', $r->id)->update($data);
+            $id = $r->id;
+
+        }
+        else{
+           $id = DB::table('activity_achieved_beneficiaries')->insertGetId($data);
+        }
+        return json_encode(DB::table('activity_achieved_beneficiaries')->where('id', $id)->first());
+        // return $data;
+    }
+    public function delete_beneficiary($id)
+    {
+        $i = DB::table('activity_achieved_beneficiaries')->where('id', $id)->delete();
+        return $i;
+    }
+    public function get_beneficiary($id)
+    {
+        return json_encode(DB::table('activity_achieved_beneficiaries')->where('id', $id)->first());
     }
 }

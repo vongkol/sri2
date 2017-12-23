@@ -30,7 +30,7 @@
                             <th>Project Name</th>
                             <th>Indicator Code</th>
                             <th>Indicator Name</th>
-                            <th>Indicator Level</th>
+                            <th>Indicator Type</th>
                             <th>Baseline</th>
                             <th>Data Source</th>
                             <th>Actions</th>
@@ -54,7 +54,7 @@
                                 </td>
                                 <td>{{$indicator->indicator_code}}</td>
                                 <td>{{$indicator->indicator_name}}</td>
-                                <td>{{$indicator->indicator_level}}</td>
+                                <td>{{$indicator->type}}</td>
                                 <td>{{$indicator->baseline}}</td>
                                 <td>{{$indicator->data_source}}</td>
                                 <td>

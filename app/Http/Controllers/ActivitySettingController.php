@@ -83,7 +83,7 @@ class ActivitySettingController extends Controller
 
         }
         
-        $data['component_repsonsibles'] = DB::table('component_responsible_details')->where('activity_setting_id', $id)->get();
+        $data['icomponents'] = DB::table('component_responsible_details')->where('activity_setting_id', $id)->get();
         $data['person_responsibles'] = DB::table('person_responsible_details')->where('activity_setting_id',$id)->get();
         $data['targets'] = DB::table('activity_targets')->where('activity_setting_id', $id)->get();
         $data['years'] = DB::table('years')->get();

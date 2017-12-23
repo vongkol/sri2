@@ -15,13 +15,14 @@
     <link href="{{asset('chosen/chosen.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('datepicker/date.css')}}" rel="stylesheet"/>
+
     <!-- Custom styles for this template -->
         <link rel="stylesheet" href="{{asset('chosen/chosen.css')}}">
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('js/multiselect/example-styles.css')}}">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/table.css')}}">
+    
 </head>
 <body>
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-blue">
@@ -37,8 +38,11 @@
             </li>
             <li class="nav-item active"><a href="{{url('/activity')}}" class="nav-link">{{trans('labels.activity')}} <span class="sr-only">(current)</span></a></li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}}</a>
+                <a class="nav-link" href="#">Report</a>
             </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}}</a>
+                </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">{{trans('labels.help')}}</a>
             </li>

@@ -1,5 +1,6 @@
 @extends("layouts.activity")
 @section('content')
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -108,9 +109,16 @@
                                 <label for="component_responsible" class="control-label col-sm-4 lb">Component Responsible</label>
                                 <div class="col-sm-8" id="sp">
                                     <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
-                                    @foreach($components as $com)
-                                        <option value="{{$com->id}}">{{$com->name}}</option>
-                                    @endforeach
+                                            @php($a="")
+                                            @foreach($components as $com)
+                                                @foreach($icomponents as $c)
+                                                    @if($com->id == $c->component_id)
+                                                        {{$a='selected'}}
+                                                    @endif
+                                                @endforeach
+                                                <option value="{{$com->id}}" {{$a}}>{{$com->name}}</option>
+                                                {{$a=''}}
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -259,6 +267,7 @@
 @endsection
 @section('js')
     <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
+    
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");

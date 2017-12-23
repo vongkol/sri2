@@ -1,5 +1,6 @@
 @extends("layouts.activity")
 @section('content')
+<link href="{{asset('css/datepicker.css')}}" rel="stylesheet">
 <style>
     #sp .multi-select-button, #sp1 .multi-select-button{
         background: #eceeef;
@@ -86,7 +87,7 @@
                             <div class="form-group row">
                                 <label for="start_date" class="control-label col-sm-4 lb">Start Date</label>
                                 <div class="col-sm-8">
-                                   <input type="text"  placeholder="MM/DD/YYYY"  class="form-control" id="start_date" name="start_date" value="{{$activity_achieve->start_date}}" disabled>
+                                   <input type="text"  placeholder="MM/DD/YYYY"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{$activity_achieve->start_date}}" disabled>
                                 </div>
                             </div>
                            <div class="form-group row">
@@ -128,7 +129,7 @@
                             <div class="form-group row">
                                 <label for="end_date" class="control-label col-sm-4 lb">End Date</label>
                                 <div class="col-sm-8">
-                                   <input type="text" class="form-control"  placeholder="MM/DD/YYYY"  id="end_date" name="end_date" value="{{$activity_achieve->end_date}}" disabled>
+                                   <input type="text" class="form-control datepicker-icon"  placeholder="MM/DD/YYYY"  id="end_date" name="end_date" value="{{$activity_achieve->end_date}}" disabled>
                                 </div>
                             </div>
                             
@@ -407,6 +408,7 @@
                             <thead>
                                 <tr>
                                     <th>&numero;</th>
+                                    <th>Beneficiary ID</th>
                                     <th>Beneficiay Name</th>
                                     <th>Gender</th>
                                     <th>Come From</th>
@@ -417,7 +419,23 @@
                                 </tr>
                             </thead>
                             <tbody id="beneficiaryData">
-
+                            @php($i=1)
+                            @foreach($beneficiaries as $b)
+                                <tr id="{{$b->id}}">
+                                    <td>{{$i++}}</td>
+                                    <td>{{$b->beneficiary_id}}</td>
+                                    <td>{{$b->full_name}}</td>
+                                    <td>{{$b->gender}}</td>
+                                    <td>{{$b->come_from}}</td>
+                                    <td>{{$b->email}}</td>
+                                    <td>{{$b->phone}}</td>
+                                    <td>{{$b->position}}</td>
+                                    <td>
+                                        <button type='button' class="btn btn-sm btn-success" onclick="editBeneficiary(this,event)"><i class="fa fa-pencil"></i> Edit</button>
+                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteBeneficiary(this,event)"><i class="fa fa-trash-o"></i> Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         
@@ -612,6 +630,7 @@
                                 <label for="bid" class="control-label col-sm-3 lb">Beneficiary ID</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" id="bid" name="bid">
+                                    <input type="hidden" id="beneficiary_id" name="beneficiary_id" value="0">
                                 </div>
                                  <label for="bgender" class="control-label col-sm-1 lb">Gender</label>
                                 <div class="col-sm-3">
@@ -712,7 +731,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <br>
-                            <p class="text-success text-center" id="eventsms"></p>
+                            <p class="text-success text-center" id="bsms"></p>
                         </div>
                     </div>
                 </form>
@@ -729,6 +748,6 @@
 @endsection
 @section('js')
     <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
-    <script src="{{asset('datepicker/date.js')}}" type="text/javascript"></script>
+    <script src="{{asset('datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{asset('js/activity-achieved.js')}}"></script>
 @endsection

@@ -37,6 +37,9 @@
                 <a class="nav-link" href="{{url('/home')}}">{{trans('labels.home')}}</a>
             </li>
             <li class="nav-item"><a href="{{url('/activity')}}" class="nav-link">{{trans('labels.activity')}}</a></li>
+            <li class="nav-item">
+                    <a class="nav-link" href="#">Report</a>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}} <span class="sr-only">(current)</span></a>
             </li>

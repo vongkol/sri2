@@ -1,5 +1,6 @@
 @extends("layouts.activity")
-@section('content')
+@section('content')   
+<link href="{{asset('css/datepicker.css')}}" rel="stylesheet">
 <style>
     #sp .multi-select-button, #sp1 .multi-select-button{
         background: #eceeef;
@@ -89,7 +90,7 @@
                             <div class="form-group row">
                                 <label for="start_date" class="control-label col-sm-4 lb">Start Date</label>
                                 <div class="col-sm-8">
-                                   <input type="text"  placeholder="MM/DD/YYYY"  class="form-control" id="start_date" name="start_date" value="{{old('start_date')}}">
+                                   <input type="text"  placeholder="dd/mm/yyyy"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{old('start_date')}}">
                                 </div>
                             </div>
                            <div class="form-group row">
@@ -122,7 +123,7 @@
                             <div class="form-group row">
                                 <label for="end_date" class="control-label col-sm-4 lb">End Date</label>
                                 <div class="col-sm-8">
-                                   <input type="text" class="form-control" placeholder="MM/DD/YYYY" id="end_date" name="end_date" value="{{old('end_date')}}">
+                                   <input type="text" class="form-control datepicker-icon" placeholder="dd/mm/yyyy" id="end_date" name="end_date" value="{{old('end_date')}}">
                                 </div>
                             </div>
                             
@@ -249,7 +250,7 @@
 @endsection
 @section('js')
     <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
-    <script src="{{asset('datepicker/date.js')}}" type="text/javascript"></script>
+    <script src="{{asset('datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $("#siderbar li a").removeClass("current");
@@ -257,6 +258,13 @@
             $('#person_responsible').multiSelect();
             $("#component_responsible").multiSelect();
             $("#person_achieved").multiSelect();
+            $("#start_date, #end_date").datepicker({
+                orientation: 'bottom',
+                format: 'dd/mm/yyyy',
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true
+            });
             binding();
             $('#activity_type').change(function(){
                 $("#result_framework_structure").val("");
@@ -268,12 +276,7 @@
                 bindComponent();
                 bindPerson();
             });
-            $('#start_date').datepicker({
-                uiLibrary: 'bootstrap4'
-            });
-            $('#end_date').datepicker({
-                uiLibrary: 'bootstrap4'
-            });
+           
         });
         // function binding data on ngo changed
         function binding()

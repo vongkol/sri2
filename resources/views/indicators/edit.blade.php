@@ -6,112 +6,171 @@
             <div class="card-header">
                 <strong>Edit Indicator Setting</strong>&nbsp;&nbsp;
                 <a href="{{url('/indicator')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-                <a href="#" class="text-danger" id="btnEdit"><i class="fa fa-pencil"></i> Edit</a>
+                <a href="#" class="text-danger" id="btnEdit" onclick="showEdit(event)"><i class="fa fa-pencil"></i> Edit</a>
                 <a href="{{url('/indicator/create')}}" class="text-primary"><i class="fa fa-plus"></i> New</a>
             </div>
             <div class="card-block">
-                <form class="form-horizontal" method="post" name="frm">
+                    @if(Session::has('sms'))
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div>
+                            {{session('sms')}}
+                        </div>
+                    </div>
+                @endif
+                @if(Session::has('sms1'))
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div>
+                            {{session('sms1')}}
+                        </div>
+                    </div>
+                @endif
+                    <form action="{{url('/indicator/update')}}" class="form-horizontal" method="post" name="frm" onsubmit="return confirm('You want to save changes?')">
                     {{csrf_field()}}
-                    <input type="hidden" id="id" name="id" value="{{$indicator_setting->id}}">
+                    <input type="hidden" name="id" value="{{$indicator_setting->id}}">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="project_code" class="control-label col-sm-4 lb">Project Code</label>
+                                <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="project_code" id="project_code" value="{{$indicator_setting->project_code}}" readonly>
+                                    <select name="ngo" id="ngo" class="form-control chosen-select" onchange="binding()" disabled>
+                                    @foreach($ngos as $ngo)
+                                        <option value="{{$ngo->id}}" {{$ngo->id==$indicator_setting->ngo_id?'selected':''}} >{{$ngo->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_name" class="control-label col-sm-4 lb">Project Name</label>
+                                <label for="project_code" class="control-label col-sm-4 lb">Project Code <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="project_name" name="project_name" value="{{$indicator_setting->project_name}}" readonly>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->project_code}}" name="project_code" id="project_code" required disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_code" class="control-label col-sm-4 lb">Indicator Code</label>
+                                <label for="project_name" class="control-label col-sm-4 lb">Project Name <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_code}}" id="indicator_code" name="indicator_code" readonly>
+                                    <select name="project_name" id="project_name" class="form-control chosen-select" data-placeholder=" " disabled>
+                                    @foreach($projects as $pro)
+                                        <option value="{{$pro->id}}" {{$pro->id==$indicator_setting->project_id?'selected':''}}>{{$pro->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_name" class="control-label col-sm-4 lb">Indicator Name</label>
+                                <label for="indicator_code" class="control-label col-sm-4 lb">Indicator Code <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_name}}" id="indicator_name" name="indicator_name" readonly>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_code}}" id="indicator_code" name="indicator_code" required disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                <label for="indicator_name" class="control-label col-sm-4 lb">Indicator Name <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->result_framework_structure}}" id="result_framework_structure" name="result_framework_structure" readonly>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_name}}" id="indicator_name" name="indicator_name" required disabled>
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                    <div class="col-sm-8">
+                                        <select name="result_framework_structure" id="result_framework_structure" class="form-control chosen-select" data-placeholder=" " disabled>
+                                        @foreach($frameworks as $fr)
+                                            <option value="{{$fr->id}}" {{$fr->id==$indicator_setting->framework?'selected':''}}>{{$fr->name}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
                             </div>
                             <div class="form-group row">
                                 <label for="calculation_method" class="control-label col-sm-4 lb">Calculation Method</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->calculation_method}}" id="calculation_method" name="calculation_method" readonly>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->calculation_method}}" id="calculation_method" name="calculation_method" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="indicator_definition" class="control-label col-sm-4 lb">Indicator Definition</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_definition}}" id="indicator_definition" name="indicator_definition" readonly>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_definition}}" id="indicator_definition" name="indicator_definition" disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="indicator_level" class="control-label col-sm-4 lb">Indicator Level</label>
+                                <label for="indicator_type" class="control-label col-sm-4 lb">Indicator Type <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_level}}" id="indicator_level" name="indicator_level" readonly>
+                                    <select name="indicator_type" id="indicator_type" class="form-control chosen-select" disabled>
+                                        <option value="0">-- Choose One --</option>
+                                    @foreach($indicator_types as $t)
+                                        <option value="{{$t->id}}" {{$t->id==$indicator_setting->indicator_type_id?'selected':''}}>{{$t->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="baseline" class="control-label col-sm-4 lb">Baseline</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->baseline}}" id="baseline" name="baseline" readonly>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->baseline}}" id="baseline" name="baseline" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="data_source" class="control-label col-sm-4 lb">Data Source</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->data_source}}" id="data_source" name="data_source" readonly>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->data_source}}" id="data_source" name="data_source" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="indicator_unit" class="control-label col-sm-4 lb">Indicator Unit</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_unit}}" id="indicator_unit" name="indicator_unit" readonly>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_unit}}" id="indicator_unit" disabled name="indicator_unit">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="component_responsible" class="control-label col-sm-4 lb">Component Responsible</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->component_responsible}}" id="component_responsible" name="component_responsible" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="responsible_person" class="control-label col-sm-4 lb">Person Responsible</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->person_responsible}}" id="responsible_person" name="responsible_person" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label for="ngo" class="control-label col-sm-4 lb">User NGO</label>
-                                <div class="col-sm-8">
-                                    <select name="ngo" id="ngo" class="form-control chosen-select" readonly>
-                                    @foreach($ngos as $ngo)
-                                        <option value="{{$ngo->id}}" {{$indicator_setting->ngo_id==$ngo->id?'selected':''}}>{{$ngo->name}}</option>
+                                <div class="col-sm-8" id="sp">
+                                    <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
+                                    @php($a="")
+                                    @foreach($components as $com)
+                                        @foreach($icomponents as $c)
+                                            @if($com->id == $c->component_id)
+                                            {{$a='selected'}}
+                                            @endif
+                                        @endforeach
+                                        <option value="{{$com->id}}" {{$a}}>{{$com->name}}</option>
+                                        {{$a=''}}   
                                     @endforeach
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="person_responsible" class="control-label col-sm-4 lb">Person Responsible</label>
+                                <div class="col-sm-8" id="sp1">
+                                    <select name="person_responsible[]" id="person_responsible" class="form-control" multiple disabled>
+                                            @php($x="")
+                                            @foreach($users as $per)
+                                                @foreach($iusers as $p)
+                                                    @if($per->id==$p->user_id)
+                                                        {{$x='selected'}}
+                                                    @endif
+                                                @endforeach
+                                                <option value="{{$per->id}}" {{$x}}>{{$per->name}}</option>
+                                                {{$x=''}}
+                                            @endforeach
+                                            </select>
+                                    </select>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-12 text-center hide" id="box1">
-                        <br>
-                            <button class="btn btn-primary btn-flat" type="button" id="btnSave">Save Changes</button>
-                            <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
+                        <div class="col-sm-12 text-center ">
+                            <p class="hide" id="btnBox">
+                                    <br>
+                                    <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
+                                    <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
+                            </p>
 
                         </div>
                     </div>
@@ -204,18 +263,15 @@
 </div>
 @endsection
 @section('js')
+<script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
+
     <script>
         $(document).ready(function () {
     $("#siderbar li a").removeClass("current");
     $("#menu_indicator_setting").addClass("current");
-    // edit main form
-    $("#btnEdit").click(function(event){
-        event.preventDefault();
-        $(this).hide();
-        $("input").removeAttr('readonly');
-        $("#ngo").removeAttr("readonly");
-        $("#box1").removeClass("hide");
-    });
+    $('#person_responsible').multiSelect();
+    $("#component_responsible").multiSelect();
+   
     // btn cancel
     $("#btnCancel").click(function(){
         var o = confirm('You want to cancel?');
@@ -265,6 +321,103 @@
     });
     // clear from when click cancel
 });
+function binding()
+{
+    var id = $("#ngo").val();
+    
+    bindProject(id);
+}
+// bind project
+function bindProject(ngo_id)
+{
+   $.ajax({
+       type: "GET",
+       url: burl + "/project/get/" + ngo_id,
+       success: function(sms){
+           var opts = "";
+           for(var i=0;i<sms.length;i++)
+           {
+               opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+           }
+
+           $("#project_name").html(opts);
+              
+          $('#project_name').val('').trigger('chosen:updated');
+          bindFramework(ngo_id);
+       }
+   });
+}
+// bind framework
+function bindFramework(ngo_id)
+{
+   $.ajax({
+       type: "GET",
+       url: burl + "/framework/get/" + ngo_id,
+       success: function(sms){
+           var opts = "";
+           for(var i=0;i<sms.length;i++)
+           {
+               opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+           }
+           $("#result_framework_structure").html(opts);
+           $('#result_framework_structure').val('').trigger('chosen:updated');                    
+           
+           bindComponent(ngo_id);
+       }
+   });
+}
+// bind component
+function bindComponent(ngo_id)
+{
+   $.ajax({
+       type: "GET",
+       url: burl + "/component/get/" + ngo_id,
+       success: function(sms){
+           var lbs = "";
+           for(var i=0;i<sms.length;i++)
+           {
+               lbs += "<label class='multi-select-menuitem' for='component_responsible_" + i + "' role='menuitem'>";
+               lbs += "<input id='component_responsible_" + i + "' value='" + sms[i].id + "' type='checkbox'>";
+               lbs += sms[i].name;
+               lbs += "</label>";
+           }
+           $("#sp .multi-select-menuitems").html(lbs);
+
+          bindUser(ngo_id);
+       }
+   });
+}
+// bind component
+function bindUser(ngo_id)
+{
+   $.ajax({
+       type: "GET",
+       url: burl + "/user/get/" + ngo_id,
+       success: function(sms){
+           var lbs = "";
+           for(var i=0;i<sms.length;i++)
+           {
+               lbs += "<label class='multi-select-menuitem' for='person_responsible_" + i + "' role='menuitem'>";
+               lbs += "<input id='person_responsible_" + i + "' value='" + sms[i].id + "' type='checkbox'>";
+               lbs += sms[i].name;
+               lbs += "</label>";
+           }
+           $("#sp1 .multi-select-menuitems").html(lbs);
+          
+       }
+   });
+}
+function showEdit(evt)
+{
+    evt.preventDefault();
+    $("input").removeAttr('disabled');
+    $("select.chosen-select").chosen('destroy');
+    $("select.chosen-select").removeAttr("disabled");
+    $("select#person_responsible").removeAttr("disabled");
+    $("select#component_responsible").removeAttr("disabled");
+    $("select.chosen-select").chosen();
+    $("#btnBox").removeClass('hide');
+}
 function clearForm()
 {
     $("#target1 input[type='text']").val("");

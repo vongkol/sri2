@@ -33,34 +33,52 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="project_code" class="control-label col-sm-4 lb">Project Code</label>
+                                <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('project_code')}}" name="project_code" id="project_code">
+                                    <select name="ngo" id="ngo" class="form-control chosen-select" onchange="binding()">
+                                    @foreach($ngos as $ngo)
+                                        <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_name" class="control-label col-sm-4 lb">Project Name</label>
+                                <label for="project_code" class="control-label col-sm-4 lb">Project Code <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('project_name')}}" id="project_name" name="project_name">
+                                    <input type="text" class="form-control" value="{{old('project_code')}}" name="project_code" id="project_code" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_code" class="control-label col-sm-4 lb">Indicator Code</label>
+                                <label for="project_name" class="control-label col-sm-4 lb">Project Name <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('indicator_code')}}" id="indicator_code" name="indicator_code">
+                                    <select name="project_name" id="project_name" class="form-control chosen-select" data-placeholder=" ">
+                                    @foreach($projects as $pro)
+                                        <option value="{{$pro->id}}">{{$pro->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_name" class="control-label col-sm-4 lb">Indicator Name</label>
+                                <label for="indicator_code" class="control-label col-sm-4 lb">Indicator Code <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('indicator_name')}}" id="indicator_name" name="indicator_name">
+                                    <input type="text" class="form-control" value="{{old('indicator_code')}}" id="indicator_code" name="indicator_code" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                <label for="indicator_name" class="control-label col-sm-4 lb">Indicator Name <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('result_framework_structure')}}" id="result_framework_structure" name="result_framework_structure">
+                                    <input type="text" class="form-control" value="{{old('indicator_name')}}" id="indicator_name" name="indicator_name" required>
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                    <div class="col-sm-8">
+                                        <select name="result_framework_structure" id="result_framework_structure" class="form-control chosen-select" data-placeholder=" ">
+                                        @foreach($frameworks as $fr)
+                                            <option value="{{$fr->id}}">{{$fr->name}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
                             </div>
                             <div class="form-group row">
                                 <label for="calculation_method" class="control-label col-sm-4 lb">Calculation Method</label>
@@ -77,9 +95,14 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="indicator_level" class="control-label col-sm-4 lb">Indicator Level</label>
+                                <label for="indicator_type" class="control-label col-sm-4 lb">Indicator Type <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('indicator_level')}}" id="indicator_level" name="indicator_level">
+                                    <select name="indicator_type" id="indicator_type" class="form-control chosen-select">
+                                        <option value="0">-- Choose One --</option>
+                                    @foreach($indicator_types as $t)
+                                        <option value="{{$t->id}}">{{$t->name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -102,26 +125,25 @@
                             </div>
                             <div class="form-group row">
                                 <label for="component_responsible" class="control-label col-sm-4 lb">Component Responsible</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('component_responsible')}}" id="component_responsible" name="component_responsible">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="responsible_person" class="control-label col-sm-4 lb">Responsible Person</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('responsible_person')}}" id="responsible_person" name="responsible_person">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="ngo" class="control-label col-sm-4 lb">User NGO</label>
-                                <div class="col-sm-8">
-                                    <select name="ngo" id="ngo" class="form-control chosen-select">
-                                    @foreach($ngos as $ngo)
-                                        <option value="{{$ngo->id}}">{{$ngo->name}}</option>
+                                <div class="col-sm-8" id="sp">
+                                    <select name="component_responsible[]" id="component_responsible" class="form-control" multiple>
+                                    @foreach($components as $com)
+                                        <option value="{{$com->id}}">{{$com->name}}</option>
                                     @endforeach
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="person_responsible" class="control-label col-sm-4 lb">Person Responsible</label>
+                                <div class="col-sm-8" id="sp1">
+                                    <select name="person_responsible[]" id="person_responsible" class="form-control" multiple>
+                                    @foreach($users as $per)
+                                        <option value="{{$per->id}}">{{$per->name}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="form-group row">
@@ -142,11 +164,13 @@
 </div>
 @endsection
 @section('js')
+<script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
 <script>
     $(document).ready(function(){
         $("#siderbar li a").removeClass("current");
         $("#menu_indicator_setting").addClass("current");
-        
+        $('#person_responsible').multiSelect();
+        $("#component_responsible").multiSelect();
          $("#btnSave").click(function(){
             $("#save_status").val("0");
             frm.submit();
@@ -157,5 +181,92 @@
         });
 
     });
+     // function binding data on ngo changed
+     function binding()
+     {
+         var id = $("#ngo").val();
+         
+         bindProject(id);
+     }
+    // bind project
+    function bindProject(ngo_id)
+    {
+        $.ajax({
+            type: "GET",
+            url: burl + "/project/get/" + ngo_id,
+            success: function(sms){
+                var opts = "";
+                for(var i=0;i<sms.length;i++)
+                {
+                    opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+                }
+
+                $("#project_name").html(opts);
+                   
+               $('#project_name').val('').trigger('chosen:updated');
+               bindFramework(ngo_id);
+            }
+        });
+    }
+    // bind framework
+    function bindFramework(ngo_id)
+    {
+        $.ajax({
+            type: "GET",
+            url: burl + "/framework/get/" + ngo_id,
+            success: function(sms){
+                var opts = "";
+                for(var i=0;i<sms.length;i++)
+                {
+                    opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+                }
+                $("#result_framework_structure").html(opts);
+                $('#result_framework_structure').val('').trigger('chosen:updated');                    
+                
+                bindComponent(ngo_id);
+            }
+        });
+    }
+    // bind component
+    function bindComponent(ngo_id)
+    {
+        $.ajax({
+            type: "GET",
+            url: burl + "/component/get/" + ngo_id,
+            success: function(sms){
+                var lbs = "";
+                for(var i=0;i<sms.length;i++)
+                {
+                    lbs += "<label class='multi-select-menuitem' for='component_responsible_" + i + "' role='menuitem'>";
+                    lbs += "<input id='component_responsible_" + i + "' value='" + sms[i].id + "' type='checkbox'>";
+                    lbs += sms[i].name;
+                    lbs += "</label>";
+                }
+                $("#sp .multi-select-menuitems").html(lbs);
+
+               bindUser(ngo_id);
+            }
+        });
+    }
+    // bind component
+    function bindUser(ngo_id)
+    {
+        $.ajax({
+            type: "GET",
+            url: burl + "/user/get/" + ngo_id,
+            success: function(sms){
+                var lbs = "";
+                for(var i=0;i<sms.length;i++)
+                {
+                    lbs += "<label class='multi-select-menuitem' for='person_responsible_" + i + "' role='menuitem'>";
+                    lbs += "<input id='person_responsible_" + i + "' value='" + sms[i].id + "' type='checkbox'>";
+                    lbs += sms[i].name;
+                    lbs += "</label>";
+                }
+                $("#sp1 .multi-select-menuitems").html(lbs);
+               
+            }
+        });
+    }
 </script>
 @endsection

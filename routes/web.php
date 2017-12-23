@@ -188,7 +188,10 @@ Route::get('/setting/commune/get/{id}', "ActivityAchievedController@get_commune"
 Route::get('/setting/village/get/{id}', "ActivityAchievedController@get_village");
 Route::post('/activity-achieve/event/save', "ActivityAchievedController@save_event");
 Route::get('/activity-achieve/event/delete/{id}', "ActivityAchievedController@delete_event");
+Route::get('/activity-achieve/beneficiary/delete/{id}', "ActivityAchievedController@delete_beneficiary");
+Route::get('/activity-achieve/beneficiary/get/{id}', "ActivityAchievedController@get_beneficiary");
 Route::get('/activity-achieve/event/get/{id}', "ActivityAchievedController@get_event");
+Route::post('/activity-achieve/beneficiary/save', "ActivityAchievedController@save_beneficiary");
 
 // documents
 Route::get('/document', "DocumentController@index");
