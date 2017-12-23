@@ -208,3 +208,11 @@ Route::get('/narative-achieve/delete/{id}', "NarativeAchievedController@delete")
 Route::post('/narative-achieve/save', "NarativeAchievedController@save");
 Route::post('/narative-achieve/update', "NarativeAchievedController@update");
 Route::get('/narative-achieve/detail/{id}', "NarativeAchievedController@detail");
+
+// indicator type
+Route::get('/indicator-type', "IndicatorTypeController@index");
+Route::get('/indicator-type/create', "IndicatorTypeController@create");
+Route::get('/indicator-type/edit/{id}', "IndicatorTypeController@edit");
+Route::get('/indicator-type/delete/{id}', "IndicatorTypeController@delete");
+Route::post('/indicator-type/save', "IndicatorTypeController@save");
+Route::post('/indicator-type/update', "IndicatorTypeController@update");
