@@ -12,6 +12,9 @@ return [
     'configuration' => "Configuration",
     'profile' => "Profile",
     'reset_password' => "Reset Password",
+    'filter' => "Filter",
+    'delete' => "Delete",
+    'user_ngo' => "User NGO",
     // new words
     'project_list' => "Project List",
     'create_project' => "Create Project",
@@ -20,6 +23,7 @@ return [
     'edit' => "Edit",
     'back' => "Back",
     'cancel' => "Cancel",
+    'save' => "Save",
     'save_changes' => "Save Changes",
     'new_password' => "New Password",
     'project' => "Project",
