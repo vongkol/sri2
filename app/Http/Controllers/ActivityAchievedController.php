@@ -11,6 +11,10 @@ class ActivityAchievedController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            app()->setLocale(Session::get("lang"));
+             return $next($request);
+         });
     }
     // index
     public function index()

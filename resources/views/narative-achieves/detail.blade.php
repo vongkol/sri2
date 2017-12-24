@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Content</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Table of Contents</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->content!!}
                                 </div>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Acronyms</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>List of Acronyms</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->acronyms!!}
                                 </div>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Table List</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>List of Tables</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->table_list!!}
                                 </div>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Figure</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>List of figures</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->figure!!}
                                 </div>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Photos</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>List of Photos</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->photos!!}
                                 </div>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Summary</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Executive Summary</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->summary!!}
                                 </div>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Result Framework</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Achievements by Results Framework</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->result_framework!!}
                                 </div>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Indicator</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Achievements by Indicators</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->indicator!!}
                                 </div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Outcome</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Outcomes and Impacts</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->outcome!!}
                                 </div>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Challenge</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Challenges and Solutions</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->challenge!!}
                                 </div>
@@ -135,7 +135,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Lesson Learn</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Lesson Learned</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->lesson_learn!!}
                                 </div>
@@ -151,7 +151,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Financial</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Financial Management</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->financial!!}
                                 </div>
@@ -159,7 +159,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label  class="control-label col-sm-12 lb text-primary"><b>Annex</b></label>
+                                <label  class="control-label col-sm-12 lb text-primary"><b>Annexes</b></label>
                                 <div class="col-sm-12 lb">
                                     {!!$narative_achieve->annex!!}
                                 </div>

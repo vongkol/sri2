@@ -1,5 +1,7 @@
 @extends("layouts.activity")
 @section('content')
+<link href="{{asset('css/datepicker.css')}}" rel="stylesheet">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -36,13 +38,13 @@
                                 <div class="form-group row">
                                     <label for="start_date" class="control-label col-sm-3 lb">Start Date</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="MM/DD/YYYY" value="{{$narative_achieve->start_date}}" id="start_date" name="start_date">
+                                        <input type="text" class="form-control datepicker-icon" placeholder="dd/mm/yyyy" value="{{$narative_achieve->start_date}}" id="start_date" name="start_date">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="end_date" class="control-label col-sm-3 lb">End Date</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="MM/DD/YYYY" value="{{$narative_achieve->end_date}}" id="end_date" name="end_date">
+                                        <input type="text" class="form-control datepicker-icon" placeholder="dd/mm/yyyy" value="{{$narative_achieve->end_date}}" id="end_date" name="end_date">
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +74,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="content" class="control-label col-sm-12 lb">Content</label>
+                                    <label for="content" class="control-label col-sm-12 lb">Table of Contents</label>
                                     <div class="col-sm-12">
                                         <textarea name="content" id="content" class="form-control ckeditor">{!!$narative_achieve->content!!}</textarea>
                                     </div>
@@ -82,7 +84,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="acronyms" class="control-label col-sm-12 lb">Acronyms</label>
+                                    <label for="acronyms" class="control-label col-sm-12 lb">List of Acronyms</label>
                                     <div class="col-sm-12">
                                         <textarea name="acronyms" id="acronyms" class="form-control ckeditor">{!!$narative_achieve->acronyms!!}</textarea>
                                     </div>
@@ -92,7 +94,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="table_list" class="control-label col-sm-12 lb">Table List</label>
+                                    <label for="table_list" class="control-label col-sm-12 lb">List of Tables</label>
                                     <div class="col-sm-12">
                                         <textarea name="table_list" id="table_list" class="form-control ckeditor">{!!$narative_achieve->table_list!!}</textarea>
                                     </div>
@@ -102,7 +104,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="figure" class="control-label col-sm-12 lb">Figure</label>
+                                    <label for="figure" class="control-label col-sm-12 lb">List of Figures</label>
                                     <div class="col-sm-12">
                                         <textarea name="figure" id="figure" class="form-control ckeditor">{!!$narative_achieve->figure!!}</textarea>
                                     </div>
@@ -112,7 +114,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="photos" class="control-label col-sm-12 lb">Photos</label>
+                                    <label for="photos" class="control-label col-sm-12 lb">List of Photos</label>
                                     <div class="col-sm-12">
                                         <textarea name="photos" id="photos" class="form-control ckeditor">{!!$narative_achieve->photos!!}</textarea>
                                     </div>
@@ -122,7 +124,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="summary" class="control-label col-sm-12 lb">Summary</label>
+                                    <label for="summary" class="control-label col-sm-12 lb">Executive Summary</label>
                                     <div class="col-sm-12">
                                         <textarea name="summary" id="summary" class="form-control ckeditor">{!!$narative_achieve->summary!!}</textarea>
                                     </div>
@@ -142,7 +144,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="result_framework" class="control-label col-sm-12 lb">Result Framework</label>
+                                    <label for="result_framework" class="control-label col-sm-12 lb">Achievements by Results Framework</label>
                                     <div class="col-sm-12">
                                         <textarea name="result_framework" id="result_framework" class="form-control ckeditor">{!!$narative_achieve->result_framework!!}</textarea>
                                     </div>
@@ -152,7 +154,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="indicator" class="control-label col-sm-12 lb">Indicator</label>
+                                    <label for="indicator" class="control-label col-sm-12 lb">Achievements by Indicators</label>
                                     <div class="col-sm-12">
                                         <textarea name="indicator" id="indicator" class="form-control ckeditor">{!!$narative_achieve->indicator!!}</textarea>
                                     </div>
@@ -162,7 +164,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="outcome" class="control-label col-sm-12 lb">Outcome</label>
+                                    <label for="outcome" class="control-label col-sm-12 lb">Outcomes and Impacts</label>
                                     <div class="col-sm-12">
                                         <textarea name="outcome" id="outcome" class="form-control ckeditor">{!!$narative_achieve->outcome!!}</textarea>
                                     </div>
@@ -172,7 +174,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="challenge" class="control-label col-sm-12 lb">Challenge</label>
+                                    <label for="challenge" class="control-label col-sm-12 lb">Challenges and Solutions</label>
                                     <div class="col-sm-12">
                                         <textarea name="challenge" id="challenge" class="form-control ckeditor">{!!$narative_achieve->challenge!!}</textarea>
                                     </div>
@@ -182,7 +184,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="lesson_learn" class="control-label col-sm-12 lb">Lesson Learn</label>
+                                    <label for="lesson_learn" class="control-label col-sm-12 lb">Lesson Learned</label>
                                     <div class="col-sm-12">
                                         <textarea name="lesson_learn" id="lesson_learn" class="form-control ckeditor">{!!$narative_achieve->lesson_learn!!}</textarea>
                                     </div>
@@ -202,7 +204,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="financial" class="control-label col-sm-12 lb">Financial</label>
+                                    <label for="financial" class="control-label col-sm-12 lb">Financial Management</label>
                                     <div class="col-sm-12">
                                         <textarea name="financial" id="financial" class="form-control ckeditor">{!!$narative_achieve->financial!!}</textarea>
                                     </div>
@@ -212,7 +214,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="annex" class="control-label col-sm-12 lb">Annex</label>
+                                    <label for="annex" class="control-label col-sm-12 lb">Annexex</label>
                                     <div class="col-sm-12">
                                         <textarea name="annex" id="annex" class="form-control ckeditor">{!!$narative_achieve->annex!!}</textarea>
                                     </div>
@@ -244,11 +246,12 @@
             $("#siderbar li a").removeClass("current");
             $("#menu_narative_achieve").addClass("current");
 
-            $('#start_date').datepicker({
-                uiLibrary: 'bootstrap4'
-            });
-            $('#end_date').datepicker({
-                uiLibrary: 'bootstrap4'
+            $("#start_date, #end_date").datepicker({
+                orientation: 'bottom',
+                format: 'dd/mm/yyyy',
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true
             });
         });
     </script>
