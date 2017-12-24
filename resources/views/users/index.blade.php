@@ -6,8 +6,8 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-4">
-                            <strong>User List</strong>&nbsp;&nbsp;
-                            <a href="{{url('/user/create')}}"><i class="fa fa-plus"></i> New</a>
+                            <strong>{{trans('labels.user_list')}}</strong>&nbsp;&nbsp;
+                            <a href="{{url('/user/create')}}"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
                         </div>
                         <div class="col-sm-8">
                             <form action="" method="get" name="search">
@@ -16,7 +16,7 @@
                                         <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                     @endforeach
                                 </select>
-                                <button type="submit" class="filter">Filter</button>   
+                                <button type="submit" class="filter">{{trans('labels.filter')}}</button>   
                             </form>
                         </div>
                     </div>
@@ -25,15 +25,15 @@
                     <table class="tbl">
                         <thead>
                         <tr>
-                            <th>&numero;</th>
-                            <th>Full Name</th>
-                            <th>Username</th>
-                            <th>Gender</th>
-                            <th>NGO Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>User Role</th>
-                            <th>Actions</th>
+                            <th>{!!trans('labels.id')!!}</th>
+                            <th>{{trans('labels.full_name')}}</th>
+                            <th>{{trans('labels.username')}}</th>
+                            <th>{{trans('labels.gender')}}</th>
+                            <th>{{trans('labels.ngo_name')}}</th>
+                            <th>{{trans('labels.phone')}}</th>
+                            <th>{{trans('labels.email')}}</th>
+                            <th>{{trans('labels.user_role')}}</th>
+                            <th>{{trans('labels.actions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,9 +54,9 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->role_name}}</td>
                                 <td>
-                                    <a class="btn btn-info btn-sm"  href="{{url('/user/update-password/'.$user->id)}}" title="Reset Password"><i class="fa fa-shield"></i> Reset Password</a>
-                                    <a class="btn btn-success btn-sm"  href="{{url('/user/edit/'.$user->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
-                                    <a class="btn btn-danger btn-sm"  href="{{url('/user/delete/'.$user->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')" title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
+                                    <a class="btn btn-info btn-sm"  href="{{url('/user/update-password/'.$user->id)}}" title="Reset Password"><i class="fa fa-shield"></i> {{trans('labels.reset_password')}}</a>
+                                    <a class="btn btn-success btn-sm"  href="{{url('/user/edit/'.$user->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
+                                    <a class="btn btn-danger btn-sm"  href="{{url('/user/delete/'.$user->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')" title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach

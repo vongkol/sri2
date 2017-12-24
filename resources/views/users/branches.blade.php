@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>User Branch [{{Auth::user()->email}}]</strong>&nbsp;&nbsp;
+                    <strong>User Branch[{{Auth::user()->email}}]</strong>&nbsp;&nbsp;
                 </div>
                 <div class="card-block">
                    <div class="row">

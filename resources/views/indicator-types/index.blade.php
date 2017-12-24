@@ -6,8 +6,8 @@
                 <div class="card-header text-bold">
                     <div class="row">
                         <div class="col-sm-4">
-                            <strong>Indicator Type List</strong>&nbsp;&nbsp;
-                            <a href="{{url('/indicator-type/create')}}"><i class="fa fa-plus"></i> New</a>
+                            <strong>{{trans('labels.indicator_type_list')}}</strong>&nbsp;&nbsp;
+                            <a href="{{url('/indicator-type/create')}}"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
                         </div>
                         <div class="col-sm-8">
                             <form action="" method="get" name="search">
@@ -16,7 +16,7 @@
                                         <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                     @endforeach
                                 </select>
-                                <button type="submit" class="filter">Filter</button>   
+                                <button type="submit" class="filter">{{trans('labels.filter')}}</button>   
                             </form>
                         </div>
                     </div>
@@ -25,10 +25,10 @@
                     <table class="tbl">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>NGO Name</th>
-                            <th>Actions</th>
+                            <th>{!!trans('labels.id')!!}</th>
+                            <th>{{trans('labels.name')}}</th>
+                            <th>{{trans('labels.ngo_name')}}</th>
+                            <th>{{trans('labels.actions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,9 +44,9 @@
                                     <td>{{$ind->name}}</td>
                                     <td>{{$ind->ngo_name==null?'CCC':$ind->ngo_name}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="{{url('/indicator-type/edit/'.$ind->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                        <a class="btn btn-success btn-sm" href="{{url('/indicator-type/edit/'.$ind->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
                                         <a class="btn btn-danger btn-sm" href="{{url('/indicator-type/delete/'.$ind->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                        title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
+                                        title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
                                     </td>
                                 </tr>
                             @endforeach

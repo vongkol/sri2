@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
-
+use Session;
 class FrameworkController extends Controller
 {
     //
@@ -16,6 +16,10 @@ class FrameworkController extends Controller
             {
                 return redirect("/login");
             }
+            return $next($request);
+        });
+        $this->middleware(function ($request, $next) {
+            app()->setLocale(Session::get("lang"));
             return $next($request);
         });
     }
@@ -39,6 +43,11 @@ class FrameworkController extends Controller
                 ->orderBy("frameworks.name")
                 ->select('frameworks.*', 'ngos.name as ngo_name')
                 ->paginate(12); 
+        }
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        if(Auth::user()->ngo_id>0)
+        {
+            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id', Auth::user()->ngo_id)->get();
         }
         return view("frameworks.index", $data);
     }

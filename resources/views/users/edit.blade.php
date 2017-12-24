@@ -4,8 +4,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Edit User</strong>&nbsp;&nbsp;
-                    <a href="{{url('/user')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
+                    <strong>{{trans('labels.edit_user')}}</strong>&nbsp;&nbsp;
+                    <a href="{{url('/user')}}" class="text-success"><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
                 </div>
                 <div class="card-block">
                     <div class="row">
@@ -36,7 +36,7 @@
                         <div class="row">
                                     <div class="col">
                                        <div class="form-group row">
-                                           <label for="name" class="control-label col-sm-4 lb">Full Name <span class="text-danger">*</span></label>
+                                           <label for="name" class="control-label col-sm-4 lb">{{trans('labels.full_name')}}<span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <input type="text" id="name" name="name" class="form-control" value="{{$user->name}}" required>
                                            </div>
@@ -44,11 +44,11 @@
                                    </div>
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="gender" class="control-label col-sm-4 lb">Gender <span class="text-danger">*</span></label>
+                                           <label for="gender" class="control-label col-sm-4 lb">{{trans('labels.gender')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <select name="gender" id="gender" class="form-control sl">
-                                                   <option value="Male" {{$user->gender=='Male'?'selected':''}}>Male</option>
-                                                   <option value="Female" {{$user->gender=='Female'?'selected':''}}>Female</option>
+                                                   <option value="Male" {{$user->gender=='Male'?'selected':''}}>{{trans('labels.male')}}</option>
+                                                   <option value="Female" {{$user->gender=='Female'?'selected':''}}>{{trans('labels.female')}}</option>
                                                </select>
                                            </div>
                                        </div>
@@ -57,7 +57,7 @@
                                <div class="row">
                                     <div class="col">
                                        <div class="form-group row">
-                                           <label for="email" class="control-label col-sm-4 lb">Email</label>
+                                           <label for="email" class="control-label col-sm-4 lb">{{trans('labels.email')}}</label>
                                            <div class="col-sm-8">
                                                <input type="email" id="email" name="email" class="form-control" value="{{$user->email}}">
                                            </div>
@@ -65,7 +65,7 @@
                                    </div>
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="phone" class="control-label col-sm-4 lb">Phone</label>
+                                           <label for="phone" class="control-label col-sm-4 lb">{{trans('labels.phone')}}</label>
                                            <div class="col-sm-8">
                                                <input type="text" class="form-control" id="phone" name="phone" value="{{$user->phone}}">
                                            </div>
@@ -75,7 +75,7 @@
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="username" class="control-label col-sm-4 lb">Username <span class="text-danger">*</span></label>
+                                           <label for="username" class="control-label col-sm-4 lb">{{trans('labels.username')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <input type="text" id="username" name="username" class="form-control" value="{{$user->username}}" required> 
                                            </div>
@@ -83,7 +83,7 @@
                                    </div>
                                    <div class="col">
                                    <div class="form-group row">
-                                           <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                           <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                               <select name="ngo" id="ngo" class="form-control chosen-select">
                                                 @foreach($ngos as $ngo)
@@ -92,13 +92,12 @@
                                               </select>
                                            </div>
                                        </div>
-                                       
                                    </div>
                                </div>
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="password" class="control-label col-sm-4 lb">Password</label>
+                                           <label for="password" class="control-label col-sm-4 lb">{{trans('labels.password')}}</label>
                                            <div class="col-sm-8">
                                                <input type="password" name="password" id="password" class="form-control">
                                            </div>
@@ -106,7 +105,7 @@
                                    </div>
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="position" class="control-label col-sm-4 lb">Position</label>
+                                           <label for="position" class="control-label col-sm-4 lb">{{trans('labels.position')}}</label>
                                            <div class="col-sm-8">
                                                <input type="text" name="position" id="position" class="form-control" value="{{$user->position}}">
                                               
@@ -117,18 +116,18 @@
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
-                                           <label for="cpassword" class="control-label col-sm-4 lb">Confirm Password</label>
+                                           <label for="cpassword" class="control-label col-sm-4 lb">{{trans('labels.confirm_password')}}</label>
                                            <div class="col-sm-8">
                                                <input type="password" name="cpassword" id="cpassword" class="form-control">
                                                 <br>
-                                               <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
-                                               <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
+                                               <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
+                                               <button class="btn btn-danger btn-flat" type="button" id="btnCancel">{{trans('labels.cancel')}}</button>
                                            </div>
                                        </div>
                                    </div>
                                    <div class="col">
-                                   <div class="form-group row">
-                                           <label for="role" class="control-label col-sm-4 lb">User Role <span class="text-danger">*</span></label>
+                                        <div class="form-group row">
+                                           <label for="role" class="control-label col-sm-4 lb">{{trans('labels.user_role')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <select name="role" id="role" class="form-control sl">
                                                    @foreach($roles as $role)
@@ -137,10 +136,8 @@
                                                </select>
                                            </div>
                                        </div>
-                                       
                                    </div>
                                </div>
-                              
                                <div class="row">
                                    <div class="col">
                                        <div class="form-group row">
@@ -158,7 +155,7 @@
                                         </p>
                                     </div>
                                </div>
-                    </form>
+                            </form>
                         </div>
                     </div>
                 </div>

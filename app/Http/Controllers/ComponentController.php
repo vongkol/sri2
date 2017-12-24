@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
-
+use Session;
 class ComponentController extends Controller
 {
     //
@@ -16,6 +16,10 @@ class ComponentController extends Controller
             {
                 return redirect("/login");
             }
+            return $next($request);
+        });
+        $this->middleware(function ($request, $next) {
+            app()->setLocale(Session::get("lang"));
             return $next($request);
         });
     }

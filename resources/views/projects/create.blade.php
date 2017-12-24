@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Create Project</strong>&nbsp;&nbsp;
+                    <strong>{{trans('labels.create_project')}}</strong>&nbsp;&nbsp;
                     <a href="{{url('/project')}}" class="text-success"><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
                 </div>
                 <div class="card-block">
