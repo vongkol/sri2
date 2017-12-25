@@ -62,7 +62,6 @@ class ActivityAchievedController extends Controller
             'start_date' => $r->start_date,
             'end_date' => $r->end_date,
             'actual' => $r->actual,
-
             'activity_category_id' => $r->activity_category,
             'ngo_id' => $r->ngo,
             'create_by' => Auth::user()->id
@@ -167,14 +166,7 @@ class ActivityAchievedController extends Controller
             'start_date' => $r->start_date,
             'end_date' => $r->end_date,
             'actual' => $r->actual,
-            //'achievement' => $r->achievement,
-            //'challenge' => $r->challenge,
-            //'solution' => $r->solution,
-            //'lesson_learn' => $r->lesson_learn,
-            //'next_plan' => $r->next_plan,
-            //'other_comment' => $r->other_comment,
-            //'total_budget' => $r->total_budget,
-            //'total_expense' => $r->total_expense,
+
             'activity_category_id' => $r->activity_category
         );
         $id = DB::table('activity_achieves')->where("id", $r->id)->update($data);
@@ -259,7 +251,8 @@ class ActivityAchievedController extends Controller
             'village_id' => $r->village_id,
             'commune_id' => $r->commune_id,
             'district_id' => $r->district_id,
-            'province_id' => $r->province_id
+            'province_id' => $r->province_id,
+            'ngo_id' => $r->ngo_id
         );
         $x = $r->id;
         $id = 0;

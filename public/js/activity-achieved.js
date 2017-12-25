@@ -438,7 +438,8 @@ function saveEvent()
             village_id: $("#village").val(),
             commune_id: $("#commune").val(),
             district_id: $("#district").val(),
-            province_id: $("#province").val()
+            province_id: $("#province").val(),
+            ngo_id: $("#ngo").val()
         }
         $.ajax({
             type: 'POST',

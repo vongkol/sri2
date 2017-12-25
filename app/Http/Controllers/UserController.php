@@ -20,6 +20,11 @@ class UserController extends Controller
     // function to load profile view
     public  function index()
     {
+        // if(!Right::check('User Account', 'l'))
+        // {
+        //     return view('403.setting');
+        // }
+        
         $data['users'] = DB::table('users')
             ->join("roles", "users.role_id","=", "roles.id")
             ->leftJoin('ngos', "users.ngo_id", "ngos.id")
@@ -72,10 +77,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $data['user'] = DB::table('users')->where('id', $id)->first();
-        $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id',0)->get();
+        $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id', 0)->get();
 
         if(Auth::user()->ngo_id>0)
         {
+            $data['roles'] = DB::table('roles')->where('active',1)->where('ngo_id', Auth::user()->ngo_id)->get();
             $data['ngos'] = DB::table('ngos')->where("id", Auth::user()->ngo_id)->get();
         }
         else{
@@ -180,7 +186,6 @@ class UserController extends Controller
             'gender' => $r->gender,
             'phone' => $r->phone,
             'position' => $r->position,
-            // 'component' => $r->component,
             'ngo_id' => $r->ngo,
             'password' => bcrypt($r->password),
             'role_id' => $r->role,
@@ -189,6 +194,14 @@ class UserController extends Controller
         $i = DB::table('users')->insert($data);
         if ($i)
         {
+            $message = "<h3 style='text-align:center;color:#039'>Your new account has been created successfully!</h3>";
+            $message .= "<br>";
+            $message .= "<p>Now you can login to SRI tool with the following account: </p>";
+            $message .= "<p>Username: <strong>{$r->username}</strong></p>";
+            $message .= "<p>Password: <strong>{$r->password}</strong></p>";
+            $message .= "<hr>";
+            $message .= "<p>If you have any problem with your account, please contact the system admin.<br>Thank you!</p>";
+            Right::send_email($r->email, $message);
             $r->session()->flash('sms', 'New user has been created successfully!');
             return redirect('/user/create');
         }

@@ -38,7 +38,7 @@
             </li>
             <li class="nav-item"><a href="{{url('/activity')}}" class="nav-link">{{trans('labels.activity')}}</a></li>
             <li class="nav-item">
-                    <a class="nav-link" href="#">Report</a>
+                    <a class="nav-link" href="{{url('/dashboard')}}">Report</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}} <span class="sr-only">(current)</span></a>
@@ -95,7 +95,7 @@ Framework</a></li>
                 <li class="nav-item"><a href="{{url('/activity_area')}}" class="nav-link" id="activity_area"><i class="fa fa-angle-double-right text-info"></i> Activity Area</a></li>
                 <li class="nav-item"><a href="{{url('/event')}}" class="nav-link" id="event"><i class="fa fa-angle-double-right text-info"></i> Event</a></li>
                 <li class="nav-item"><a href="{{url('/venue_type')}}" class="nav-link" id="venue_type"><i class="fa fa-angle-double-right text-info"></i> Venue Type</a></li>
-                <li class="nav-item"><a href="{{url('/event_organizor')}}" class="nav-link" id="event_organizor"><i class="fa fa-angle-double-right text-info"></i> Event Organizor</a></li>
+                <li class="nav-item"><a href="{{url('/event_organizor')}}" class="nav-link" id="event_organizor"><i class="fa fa-angle-double-right text-info"></i> Event Organizer</a></li>
 
                 <li class="nav-item"><strong>Custom Field</strong></li>
                 <li class="nav-item"><a href="#" class="nav-link" id="activity_setting"><i class="fa fa-angle-double-right text-info"></i> Activity Setting</a></li>

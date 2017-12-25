@@ -359,6 +359,5 @@
 @section('js')
 <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
 <script src="{{asset('datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-
 <script src="{{asset('js/indicator-achieved.js')}}"></script>
 @endsection

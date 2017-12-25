@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Auth;
-
+use PHPMailer\PHPMailer\PHPMailer;
 class Right
 {
     public static function check($permission_name, $action) {
@@ -41,5 +41,30 @@ class Right
             array_push($arr, $b->branch_id);
         }
         return $arr;
+    }
+    public static function send_email($send_to, $sms)
+    {
+        try {
+                
+            $mail = new PHPMailer(true); 
+            $mail->isSMTP(); 
+            $mail->CharSet = "utf-8"; 
+            $mail->SMTPAuth = true;  
+            $mail->SMTPSecure = "ssl"; 
+            $mail->MailerDebug = false;
+            $mail->Host = "mail.ccc-sri.org";
+            $mail->Port = 465; 
+            $mail->Username = "support@ccc-sri.org";
+            $mail->Password = "Khmer@123";
+            $mail->setFrom("support@ccc-sri.org", "CCC SRI V2");
+            $mail->Subject = "CCC SRI V2: Account Information";
+            $mail->MsgHTML($sms);
+            $mail->addAddress($send_to);
+            $mail->send();
+         } catch (phpmailerException $e) {
+
+         } catch (Exception $e) {
+
+        }
     }
 }

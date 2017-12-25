@@ -90,7 +90,7 @@
                             <div class="form-group row">
                                 <label for="start_date" class="control-label col-sm-4 lb">Start Date</label>
                                 <div class="col-sm-8">
-                                   <input type="text"  placeholder="dd/mm/yyyy"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{old('start_date')}}">
+                                   <input type="text"  placeholder="yyyy-mm-dd"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{old('start_date')}}">
                                 </div>
                             </div>
                            <div class="form-group row">
@@ -123,7 +123,7 @@
                             <div class="form-group row">
                                 <label for="end_date" class="control-label col-sm-4 lb">End Date</label>
                                 <div class="col-sm-8">
-                                   <input type="text" class="form-control datepicker-icon" placeholder="dd/mm/yyyy" id="end_date" name="end_date" value="{{old('end_date')}}">
+                                   <input type="text" class="form-control datepicker-icon" placeholder="yyyy-mm-dd" id="end_date" name="end_date" value="{{old('end_date')}}">
                                 </div>
                             </div>
                             
@@ -186,7 +186,7 @@
             $("#person_achieved").multiSelect();
             $("#start_date, #end_date").datepicker({
                 orientation: 'bottom',
-                format: 'dd/mm/yyyy',
+                format: 'yyyy-mm-dd',
                 autoclose: true,
                 todayHighlight: true,
                 toggleActive: true

@@ -229,3 +229,8 @@ Route::get('/indicator-type/edit/{id}', "IndicatorTypeController@edit");
 Route::get('/indicator-type/delete/{id}', "IndicatorTypeController@delete");
 Route::post('/indicator-type/save', "IndicatorTypeController@save");
 Route::post('/indicator-type/update', "IndicatorTypeController@update");
+// report
+Route::get('/report', "ReportController@index");
+// dashboard report
+Route::get('/dashboard', "DashboardController@index");
+Route::get('/dashboard/view', "DashboardController@search");
