@@ -18,6 +18,7 @@ return [
     'description' => "Description",
     'edit_description' => "Edit Description",
     'beneficiary' => "Beneficiary",
+    'edit_target' => "Edit Target",
     // new words
     'project_list' => "Project List",
     'create_project' => "Create Project",
