@@ -26,10 +26,10 @@
                         <thead>
                         <tr>
                             <th>&numero;</th>
-                            <th>Introduction</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Actions</th>
+                            <th>{{trans('labels.introduction')}}</th>
+                            <th>{{trans('labels.start_date')}}</th>
+                            <th>{{trans('labels.end_date')}}</th>
+                            <th>{{trans('labels.actions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,10 +47,10 @@
                                 <td>{{$nar->end_date}}</td>
                               
                                 <td>
-                                    <a class="btn btn-sm btn-info" href="{{url('/narative-achieve/detail/'.$nar->id)}}" title="Edit"><i class="fa fa-info-circle"></i> Detail</a>
-                                    <a class="btn btn-sm btn-success" href="{{url('/narative-achieve/edit/'.$nar->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                    <a class="btn btn-sm btn-info" href="{{url('/narative-achieve/detail/'.$nar->id)}}" title="Edit"><i class="fa fa-info-circle"></i> {{trans('labels.detail')}}</a>
+                                    <a class="btn btn-sm btn-success" href="{{url('/narative-achieve/edit/'.$nar->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
                                     <a class="btn btn-sm btn-danger" href="{{url('/narative-achieve/delete/'.$nar->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
+                                       title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach
