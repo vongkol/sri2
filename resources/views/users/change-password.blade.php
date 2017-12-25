@@ -4,8 +4,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-header text-bold">
-                    <strong>Reset Password</strong>&nbsp;&nbsp;
-                    <a href="{{url('/user')}}" class='text-success'><i class="fa fa-arrow-left"></i> Back</a>
+                    <strong>{{trans('labels.reset_password')}} / {{trans('labels.strong')}} >&nbsp;&nbsp;
+                    <a href="{{url('/user')}}" class='text-success'><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
                 </div>
                 <div class="card-block">
                     <div class="row">
@@ -37,48 +37,43 @@
                                     </div>
                                 </div>
                             @endif
-                                <form action="{{url('/user/save-password')}}" class="form-horizontal" method="post">
-                                {{csrf_field()}}
+                            <form action="{{url('/user/save-password')}}" class="form-horizontal" method="post">
+                            {{csrf_field()}}
                                 <input type="hidden" name="id" value="{{$user->id}}">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group row">
-                                                <label for="new_password" class="control-label col-sm-4">New Password</label>
-                                                <div class="col-sm-8">
-                                                    <input type="password" required  name="new_password" value="{{old('new_password')}}" id="new_password" class="form-control">
-                                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group row">
+                                            <label for="new_password" class="control-label col-sm-4">{{trans('labels.new_password')}}</label>
+                                            <div class="col-sm-8">
+                                                <input type="password" required  name="new_password" value="{{old('new_password')}}" id="new_password" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col"></div>
                                     </div>
-                                    <div class="row">
-                                       <div class="col">
-                                           <div class="form-group row">
-                                               <label for="confirm_password" class="control-label col-sm-4">Confirm Password</label>
-                                               <div class="col-sm-8">
-                                                   <input type="password" required  name="confirm_password" value="{{old('confirm_password')}}"
-                                                          id="confirm_password" class="form-control">
-                                               </div>
-                                           </div>
-                                       </div>
-                                        <div class="col">
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4">&nbsp;</label>
-                                                <div class="col-sm-8">
-                                                <br>
-                                                    <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                                                    <a href="{{url('/user')}}" class="btn btn-danger btn-flat">Cancel</a>
-                                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group row">
+                                            <label for="confirm_password" class="control-label col-sm-4">{{trans('labels.confirm_password')}}</label>
+                                            <div class="col-sm-8">
+                                                <input type="password" required  name="confirm_password" value="{{old('confirm_password')}}"
+                                                        id="confirm_password" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col"></div>
                                     </div>
-                                </form>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group row">
+                                            <label class="control-label col-sm-4">&nbsp;</label>
+                                            <div class="col-sm-8">
+                                            <br>
+                                                <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
+                                                <a href="{{url('/user')}}" class="btn btn-danger btn-flat">{{trans('labels.cancel')}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

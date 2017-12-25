@@ -4,10 +4,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Edit NGO</strong>&nbsp;&nbsp;
-                    <a href="{{url('/ngo/create')}}"><i class="fa fa-plus"></i> New</a>
-                    <a href="{{url('/ngo')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-
+                    <strong>{{trans('labels.edit_ngo')}}</strong>&nbsp;&nbsp;
+                    <a href="{{url('/ngo/create')}}"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
+                    <a href="{{url('/ngo')}}" class="text-success"><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -36,64 +35,64 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label  class="control-label col-sm-4 lb">Focal Person Name <span class="text-danger">*</span></label>
+                                    <label  class="control-label col-sm-4 lb">{{trans('labels.focal_person_gender')}} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="person_name" required value="{{$ngo->person_name}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label  class="control-label col-sm-4 lb">Focal Person Gender</label>
+                                    <label  class="control-label col-sm-4 lb">{{trans('labels.focal_person_gender')}}</label>
                                     <div class="col-sm-8">
                                         <select name="gender" id="gender" class="form-control">
-                                                <option value="Male" {{$ngo->gender=='Male'?'selected':''}}>Male</option>
-                                                <option value="Female" {{$ngo->gender=='Female'?'selected':''}}>Female</option>
+                                                <option value="Male" {{$ngo->gender=='Male'?'selected':''}}>{{trans('labels.male')}}</option>
+                                                <option value="Female" {{$ngo->gender=='Female'?'selected':''}}>{{trans('labels.female')}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-4 lb">Focal Person Phone</label>
+                                    <label class="control-label col-sm-4 lb">{{trans('labels.focal_person_phone')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="person_phone" value="{{$ngo->person_phone}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-4 lb">Focal Person Position</label>
+                                    <label class="control-label col-sm-4 lb">{{trans('labels.focal_person_position')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="person_position" value="{{$ngo->person_position}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-4 lb">Focal Person Email</label>
+                                    <label class="control-label col-sm-4 lb">{{trans('labels.focal_person_email')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="person_email" value="{{$ngo->person_email}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-4 lb">Organization Name <span class="text-danger">*</span></label>
+                                    <label class="control-label col-sm-4 lb">{{trans('labels.organization_name')}} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="name" required value="{{$ngo->name}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-4 lb">Organization Acronym</label>
+                                    <label class="control-label col-sm-4 lb">{{trans('labels.organization_acronym')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="acronym" value="{{$ngo->acronym}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-4 lb">Organization Type</label>
+                                    <label class="control-label col-sm-4 lb">{{trans('labels.organization_type')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="type" value="{{$ngo->type}}"> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-4 lb">Office Phone</label>
+                                    <label class="control-label col-sm-4 lb">{{trans('labels.office_phone')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="phone" value="{{$ngo->phone}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-4 lb">Office Email</label>
+                                    <label class="control-label col-sm-4 lb">{{trans('labels.office_email')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="email" value="{{$ngo->email}}">
                                     </div>
@@ -105,26 +104,26 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3 lb">Sector</label>
+                                    <label class="control-label col-sm-3 lb">{{trans('labels.sector')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="sector" value="{{$ngo->sector}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3 lb">Office Based</label>
+                                    <label class="control-label col-sm-3 lb">{{trans('labels.office_based')}}</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" name="base" value="{{$ngo->base}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                        <label for="logo" class="control-label col-sm-3 lb">Logo</label>
+                                        <label for="logo" class="control-label col-sm-3 lb">{{trans('labels.logo')}}</label>
                                         <div class="col-sm-8">
                                             <input type="file" class="form-control" id="logo" name="logo" onchange="loadFile(event)">
                                             <br>
                                             <img src="{{asset("uploads/ngos/".$ngo->logo)}}" alt="Logo" width="120" id="preview">
                                             <p>
                                                 <br>
-                                                <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
+                                                <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
                                             </p>
                                         </div>
                                     </div>

@@ -4,8 +4,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Create Level</strong>&nbsp;&nbsp;
-                    <a href="{{url('/level')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
+                    <strong>{{trans('labels.create_level')}}</strong>&nbsp;&nbsp;
+                    <a href="{{url('/level')}}" class="text-success"><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
                 </div>
                 <div class="card-block">
                     @if(Session::has('sms'))
@@ -33,7 +33,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="name" class="control-label col-sm-3 lb">Name <span class="text-danger">*</span></label>
+                                    <label for="name" class="control-label col-sm-3 lb">{{trans('labels.name')}} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" value="{{old('name')}}" id="name" name="name" required>
                                     </div>
@@ -43,7 +43,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="ngo" class="control-label col-sm-3 lb">User NGO <span class="text-danger">*</span></label>
+                                    <label for="ngo" class="control-label col-sm-3 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="ngo" id="ngo" class="form-control chosen-select">
                                             @foreach($ngos as $ngo)
@@ -51,8 +51,8 @@
                                             @endforeach
                                         </select>
                                          <br><br>
-                                        <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                                        <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
+                                        <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
+                                        <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
                                     </div>
                                 </div>
                             </div>

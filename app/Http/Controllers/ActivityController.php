@@ -13,8 +13,8 @@ class ActivityController extends Controller
         $this->middleware('auth');
         $this->middleware(function ($request, $next) {
             app()->setLocale(Session::get("lang"));
-             return $next($request);
-         });
+            return $next($request);
+        });
     }
     public function index()
     {

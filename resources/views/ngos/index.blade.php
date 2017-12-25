@@ -4,23 +4,23 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header text-bold">
-                    <strong>NGO List</strong>&nbsp;&nbsp;
-                    <a href="{{url('/ngo/create')}}"><i class="fa fa-plus"></i> New</a>
+                    <strong>{{trans('labels.ngo_list')}}</strong>&nbsp;&nbsp;
+                    <a href="{{url('/ngo/create')}}"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
                 </div>
                 <div class="card-block">
                     <table class="tbl">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Organization Name</th>
-                            <th>Focal Person Name</th>
-                            <th>Focal Person Gender</th>
-                            <th>Focal Person Phone</th>
-                            <th>Organization Type</th>
-                            <th>Office Phone</th>
-                            <th>Office Email</th>
-                            <th>Office Based</th>
-                            <th>Actions</th>
+                            <th>{{trans('labels.organization_name')}}</th>
+                            <th>{{trans('labels.focal_person_name')}}</th>
+                            <th>{{trans('labels.focal_person_gender')}}</th>
+                            <th>{{trans('labels.focal_person_phone')}}</th>
+                            <th>{{trans('labels.organization_type')}}</th>
+                            <th>{{trans('labels.office_phone')}}</th>
+                            <th>{{trans('labels.office_email')}}</th>
+                            <th>{{trans('labels.office_based')}}</th>
+                            <th>{{trans('labels.actions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,8 +32,7 @@
                         ?>
                         @foreach($ngos as $ngo)
                             <tr>
-                                <td>{{$i++}}</td>
-                                
+                                <td>{{$ngo->id}}</td>
                                 <td>
                                     <a href="{{url('/ngo/detail/'.$ngo->id)}}">{{$ngo->name}}</a>
                                 </td>
@@ -45,9 +44,9 @@
                                 <td>{{$ngo->email}}</td>
                                 <td>{{$ngo->base}}</td>
                                 <td>
-                                    <a class="btn btn-success btn-sm" href="{{url('/ngo/edit/'.$ngo->id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                    <a class="btn btn-success btn-sm" href="{{url('/ngo/edit/'.$ngo->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
                                     <a class="btn btn-danger btn-sm" href="{{url('/ngo/delete/'.$ngo->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
+                                       title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach
