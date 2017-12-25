@@ -6,8 +6,8 @@
                 <div class="card-header text-bold">
                     <div class="row">
                        <div class="col-sm-4">
-                            <strong>Indicator Achieved List</strong>&nbsp;&nbsp;
-                            <a href="{{url('/indicator-achieve/create')}}"><i class="fa fa-plus"></i> New</a>
+                            <strong>{{trans('labels.indicator_achieved_list')}}</strong>&nbsp;&nbsp;
+                            <a href="{{url('/indicator-achieve/create')}}"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
                        </div>
                        <div class="col-sm-8">
                             <form action="" method="get" name="search">
@@ -16,7 +16,7 @@
                                         <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                     @endforeach
                                 </select>
-                                <button type="submit" class="filter">Filter</button>   
+                                <button type="submit" class="filter">{{trans('labels.filter')}}</button>   
                             </form>
                         </div>
                     </div>
@@ -26,13 +26,13 @@
                         <thead>
                         <tr>
                             <th>&numero;</th>
-                            <th>Project Code</th>
-                            <th>Project Name</th>
-                            <th>Indicator Code</th>
-                            <th>Indicator Name</th>
-                            <th>Baseline</th>
-                            <th>Indicator Unit</th>
-                            <th>Actions</th>
+                            <th>{{trans('labels.project_code')}}</th>
+                            <th>{{trans('labels.project_name')}}</th>
+                            <th>{{trans('labels.indicator_code')}}</th>
+                            <th>{{trans('labels.indicator_name')}}</th>
+                            <th>{{trans('labels.baseline')}}</th>
+                            <th>{{trans('labels.indicator_unit')}}</th>
+                            <th>{{trans('labels.actions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,9 +57,9 @@
                                 <td>{{$a->baseline}}</td>
                                 <td>{{$a->indicator_unit}}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-success"​​ href="{{url('/indicator-achieve/edit/'.$a->indicator_id)}}" title="Edit"><i class="fa fa-pencil"></i> Edit</a>&nbsp;&nbsp
+                                    <a class="btn btn-sm btn-success"​​ href="{{url('/indicator-achieve/edit/'.$a->indicator_id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
                                     <a class="btn btn-sm btn-danger" href="{{url('/indicator-achieve/delete/'.$a->indicator_id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-trash-o"></i> Delete</a>
+                                       title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach

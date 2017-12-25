@@ -10,10 +10,10 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong>Edit Indicator Achieved</strong>&nbsp;&nbsp;
-                <a href="{{url('/indicator-achieve')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-                <a href="#" class="text-danger" onclick="editIndicator(event)"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="{{url('/indicator-achieve/create')}}"><i class="fa fa-plus"></i> New</a>
+                <strong>{{trans('labels.edit_indicator_achieved')}}</strong>&nbsp;&nbsp;
+                <a href="{{url('/indicator-achieve')}}" class="text-success"><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
+                <a href="#" class="text-danger" onclick="editIndicator(event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
+                <a href="{{url('/indicator-achieve/create')}}"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
             </div>
             <div class="card-block">
                 @if(Session::has('sms'))
@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="ngo" id="ngo" class="form-control chosen-select" onchange="getProject()" disabled>
                                     @foreach($ngos as $ngo)
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="project_code" class="control-label col-sm-4 lb">Project Code</label>
+                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="project_code" name="project_code" disabled> 
                                 </div>
@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label for="project_name" class="control-label col-sm-2 lb">Project Name <span class="text-danger">*</span></label>
+                                <label for="project_name" class="control-label col-sm-2 lb">{{trans('labels.project_name')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
                                     <select name="project_name" id="project_name" class="form-control chosen-select" onchange="getInfo()" disabled>
                                         {{--  <option value="0">-- Choose a project --</option>  --}}
@@ -83,70 +83,70 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="start_date" class="control-label col-sm-4 lb">Start Date <span class="text-danger">*</span></label>
+                                <label for="start_date" class="control-label col-sm-4 lb">{{trans('labels.start_date')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control datepicker-icon" id="start_date" 
                                     value="{{$indicator_achieve->start_date}}" name="start_date" required disabled> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_code" class="control-label col-sm-4 lb">Indicator Code</label>
+                                <label for="indicator_code" class="control-label col-sm-4 lb">{{trans('labels.indicator_code')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="indicator_code" name="indicator_code" disabled> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_type" class="control-label col-sm-4 lb">Indicator Type</label>
+                                <label for="indicator_type" class="control-label col-sm-4 lb">{{trans('labels.indicator_type')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="indicator_type" name="indicator_type" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="baseline" class="control-label col-sm-4 lb">Baseline</label>
+                                <label for="baseline" class="control-label col-sm-4 lb">{{trans('labels.baseline')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="baseline" name="baseline" disabled> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_mode" class="control-label col-sm-4 lb">Indicator Mode</label>
+                                <label for="indicator_mode" class="control-label col-sm-4 lb">{{trans('labels.indicator_mode')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="indicator_mode" value="{{$indicator_achieve->indicator_mode}}" name="indicator_mode" disabled> 
                                     <p class="hide" id="btnBox">
                                             <br>
-                                            <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
-                                            <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
+                                            <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
+                                            <button class="btn btn-danger btn-flat" type="button" id="btnCancel">{{trans('labels.cancel')}}</button>
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="end_date" class="control-label col-sm-4 lb">End Date <span class="text-danger">*</span></label>
+                                <label for="end_date" class="control-label col-sm-4 lb">{{trans('labels.end_date')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control datepicker-icon" 
                                     value="{{$indicator_achieve->end_date}}" id="end_date" name="end_date" required disabled> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_name" class="control-label col-sm-4 lb">Indicator Name</label>
+                                <label for="indicator_name" class="control-label col-sm-4 lb">{{trans('labels.indicator_name')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="indicator_name" name="indicator_name" disabled> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="framework" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                <label for="framework" class="control-label col-sm-4 lb">{{trans('labels.result_framework_structure')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="framework" name="framework" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_unit" class="control-label col-sm-4 lb">Indicator Unit</label>
+                                <label for="indicator_unit" class="control-label col-sm-4 lb">{{trans('labels.indicator_unit')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="indicator_unit" name="indicator_unit" disabled> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="target" class="control-label col-sm-4 lb">Target</label>
+                                <label for="target" class="control-label col-sm-4 lb">{{trans('labels.target')}}</label>
                                 <div class="col-sm-8" id="sp">
                                     <select name="target[]" id="target" class="form-control"  multiple disabled>
 
@@ -159,10 +159,10 @@
                 </form>
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab">{{trans('labels.description')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#document" role="tab">Supporting Document</a>
+                        <a class="nav-link" data-toggle="tab" href="#document" role="tab">{{trans('labels.supporting_document')}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#other1" role="tab">Other 1</a>
@@ -193,7 +193,7 @@
                                     @endif
                                     <p>
                                     <br>
-                                    <button type="button" class="btn btn-primary btn-flat" onclick="editDescription()"><i class="fa fa-plus"></i> Edit Description</button>
+                                    <button type="button" class="btn btn-primary btn-flat" onclick="editDescription()"><i class="fa fa-plus"></i> {{trans('labels.edit_description')}}</button>
                                     </p>
                                 </div>
                             </div>
@@ -201,19 +201,19 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group row">
-                                        <label for="achievement" class="control-label col-sm-4 lb">Achievement</label>
+                                        <label for="achievement" class="control-label col-sm-4 lb">{{trans('labels.achievement')}}</label>
                                         <div class="col-sm-8">
                                             <textarea name="achievement" id="achievement" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->achievement}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="solution" class="control-label col-sm-4 lb">Solution</label>
+                                        <label for="solution" class="control-label col-sm-4 lb">{{trans('labels.solution')}}</label>
                                         <div class="col-sm-8">
                                             <textarea name="solution" id="solution" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->solution}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="next_plan" class="control-label col-sm-4 lb">Next Plan</label>
+                                        <label for="next_plan" class="control-label col-sm-4 lb">{{trans('labels.next_plan')}}</label>
                                         <div class="col-sm-8">
                                             <textarea name="next_plan" id="next_plan" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->next_plan}}</textarea>
                                         </div>
@@ -222,27 +222,27 @@
                                         <label class="control-label col-sm-4 lb">&nbsp;</label>
                                         <div class="col-sm-8">
                                             <p class="hide" id="description_box">
-                                                <button type="submit" class="btn btn-primary btn-flat">Save Changes</button>
-                                                <button type="button" class="btn btn-danger btn-flat" onclick="cancelDescription()">Cancel</button>
+                                                <button type="submit" class="btn btn-primary btn-flat">{{trans('labels.save_changes')}}</button>
+                                                <button type="button" class="btn btn-danger btn-flat" onclick="cancelDescription()">{{trans('labels.cancel')}}</button>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group row">
-                                        <label for="challenge" class="control-label col-sm-4 lb">Challenge</label>
+                                        <label for="challenge" class="control-label col-sm-4 lb">{{trans('labels.challenge')}}</label>
                                         <div class="col-sm-8">
                                             <textarea name="challenge" id="challenge" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->challenge}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="lesson_learn" class="control-label col-sm-4 lb">Lesson Learn</label>
+                                        <label for="lesson_learn" class="control-label col-sm-4 lb">{{trans('labels.lesson_learned')}}</label>
                                         <div class="col-sm-8">
                                             <textarea name="lesson_learn" id="lesson_learn" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->lesson_learn}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="other_comment" class="control-label col-sm-4 lb">Other Comment</label>
+                                        <label for="other_comment" class="control-label col-sm-4 lb">{{trans('labels.other_comment')}}</label>
                                         <div class="col-sm-8">
                                             <textarea name="other_comment" id="other_comment" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->other_comment}}</textarea>
                                         </div>
@@ -256,16 +256,16 @@
                             <p>
                             <br>
                                 <a class="btn btn-primary btn-flat" href="#" id="btnAddTarget" data-toggle="modal" 
-                                data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> Upload Document</a>
+                                data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> {{trans('labels.upload_document')}}</a>
                             </p>
                             <table class="tbl">
                                 <thead>
                                     <tr>
-                                        <th>&numero;</th>
-                                        <th>Description</th>
-                                        <th>File URL</th>
-                                        <th>File Name</th>
-                                        <th>Actions</th>
+                                        <th>{!!trans('labels.id')!!}</th>
+                                        <th>{{trans('labels.description')}}</th>
+                                        <th>{{trans('labels.file_url')}}</th>
+                                        <th>{{trans('labels.file_name')}}</th>
+                                        <th>{{trans('labels.action')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody id="docData">
@@ -277,7 +277,7 @@
                                         <td><a href="{{$doc->url}}" target="_blank">{{$doc->url}}</a></td>                                        
                                         <td><a href="{{asset('uploads/documents/'.$doc->file_name)}}" target="_blank">{{$doc->file_name}}</a></td>
                                         <td>
-                                            <button type='button' class="btn btn-sm btn-danger" onclick="deleteDoc(this,event)"><i class="fa fa-trash-o"></i> Delete</button>
+                                            <button type='button' class="btn btn-sm btn-danger" onclick="deleteDoc(this,event)"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -315,25 +315,25 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content btn-flat">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="documentTitle">Upload New Document</h5>
+                    <h5 class="modal-title" id="documentTitle">{{trans('labels.upload_new_document')}}</h5>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" id="target1">
                        <input type="hidden" id="doc_id" name="doc_id" value="0">
                         <div class="form-group row">
-                            <label for="doc_description" class="control-label col-sm-2 lb">Description <span class="text-danger">*</span></label>
+                            <label for="doc_description" class="control-label col-sm-2 lb">{{trans('labels.description')}} <span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="doc_description" name="doc_description">
                             </div>
                         </div>
                         <div class="row">
-                            <label for="file_url" class="control-label col-sm-2 lb">File URL</label>
+                            <label for="file_url" class="control-label col-sm-2 lb">{{trans('labels.file_url')}}</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="file_url" name="file_url">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="doc_file_name" class="control-label col-sm-2 lb">File Name</label>
+                            <label for="doc_file_name" class="control-label col-sm-2 lb">{{trans('labels.file_name')}}</label>
                             <div class="col-sm-8">
                                 <input type="file" class="form-control" id="doc_file_name" name="doc_file_name">
                             </div>
@@ -348,8 +348,8 @@
                 </div>
                 <div class="modal-footer">
                     <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-primary btn-flat" onclick="saveDoc()">Save</button>
-                    <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearDoc()">Close</button>
+                    <button type="button" class="btn btn-primary btn-flat" onclick="saveDoc()">{{trans('labels.save')}}</button>
+                    <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearDoc()">{{trans('labels.close')}}</button>
                     </div>
                 </div>
             </div>
