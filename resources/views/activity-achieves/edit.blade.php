@@ -10,10 +10,10 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong>Edit Activity Achieved</strong>&nbsp;&nbsp;
-                <a href="{{url('/activity-achieve')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-                <a href="#" class="text-danger" onclick="showEdit(event)"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="{{url('/activity-achieve/create')}}" class="text-primary"><i class="fa fa-plus"></i> New</a>
+                <strong>{{trans('labels.edit_activity_achieved')}}</strong>&nbsp;&nbsp;
+                <a href="{{url('/activity-achieve')}}" class="text-success"><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
+                <a href="#" class="text-danger" onclick="showEdit(event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
+                <a href="{{url('/activity-achieve/create')}}" class="text-primary"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
             </div>
             <div class="card-block">
                 @if(Session::has('sms'))
@@ -39,8 +39,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                              <div class="form-group row">
-                            
-                                <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="ngo" id="ngo" class="form-control chosen-select" onchange="binding()" disabled>
                                     @foreach($ngos as $ngo)
@@ -52,7 +51,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="activity_type" class="control-label col-sm-4 lb">Activity Type <span class="text-danger">*</span></label>
+                                <label for="activity_type" class="control-label col-sm-4 lb">{{trans('labels.activity_type')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="activity_type" id="activity_type" class="form-control chosen-select" disabled>
                                         @foreach($activity_types as $t)
@@ -66,7 +65,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label for="activity_name" class="control-label col-sm-2 lb">Activity Name</label>
+                                <label for="activity_name" class="control-label col-sm-2 lb">{{trans('labels.activity_name')}}</label>
                                 <div class="col-sm-10">
                                     <select name="activity_name" id="activity_name" class="form-control chosen-select" disabled>
                                     @foreach($settings as $s)
@@ -74,7 +73,6 @@
                                     @endforeach
                                 </select>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -82,22 +80,21 @@
                         <div class="col-sm-12"></div>
                     </div>
                     <div class="row">
-
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="start_date" class="control-label col-sm-4 lb">Start Date</label>
+                                <label for="start_date" class="control-label col-sm-4 lb">{{trans('labels.start_date')}}</label>
                                 <div class="col-sm-8">
-                                   <input type="text"  placeholder="MM/DD/YYYY"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{$activity_achieve->start_date}}" disabled>
+                                   <input type="text"  placeholder="dd/mm/yyyy"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{$activity_achieve->start_date}}" disabled>
                                 </div>
                             </div>
                            <div class="form-group row">
-                                <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                <label for="result_framework_structure" class="control-label col-sm-4 lb">{{trans('labels.result_framework_structure')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="result_framework_structure" name="result_framework_structure" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="activity_category" class="control-label col-sm-4 lb">Activity Category</label>
+                                <label for="activity_category" class="control-label col-sm-4 lb">{{trans('labels.activity_category')}}</label>
                                 <div class="col-sm-8">
                                     <select name="activity_category" id="activity_category" class="form-control chosen-select" data-placeholder=" " disabled>
                                     @foreach($activity_categories as $c)
@@ -107,7 +104,7 @@
                                 </div>
                             </div>
                            <div class="form-group row">
-                                <label for="person_achieved" class="control-label col-sm-4 lb">Person(s) achieved activity</label>
+                                <label for="person_achieved" class="control-label col-sm-4 lb">{{trans('labels.person_achieved_activity')}}</label>
                                 <div class="col-sm-8" id="sp2">
                                     <select name="person_achieved[]" id="person_achieved" class="form-control" multiple disabled>
                                     @foreach($users as $per)
@@ -123,18 +120,16 @@
                                     </select>
                                 </div>
                             </div>
-                           
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="end_date" class="control-label col-sm-4 lb">End Date</label>
+                                <label for="end_date" class="control-label col-sm-4 lb">{{trans('labels.end_date')}}</label>
                                 <div class="col-sm-8">
-                                   <input type="text" class="form-control datepicker-icon"  placeholder="MM/DD/YYYY"  id="end_date" name="end_date" value="{{$activity_achieve->end_date}}" disabled>
+                                   <input type="text" class="form-control datepicker-icon"  placeholder="dd/mm/yyyy"  id="end_date" name="end_date" value="{{$activity_achieve->end_date}}" disabled>
                                 </div>
                             </div>
-                            
                             <div class="form-group row">
-                                <label for="component_responsible" class="control-label col-sm-4 lb">Component Responsible</label>
+                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
                                 <div class="col-sm-8" id="sp">
                                     <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
                                    
@@ -148,7 +143,7 @@
                                 </div>
                             </div>
                            <div class="form-group row">
-                                <label for="person_responsible" class="control-label col-sm-4 lb">Person Responsible</label>
+                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
                                 <div class="col-sm-8" id="sp1">
                                     <select name="person_responsible[]" id="person_responsible" class="form-control" multiple disabled>
                                    
@@ -161,8 +156,8 @@
                         <div class="col-sm-12">
                             <p class="text-center hide" id="box">
                                 <br>
-                                <button class="btn btn-primary btn-flat" type="submit">Save</button>
-                                <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
+                                <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
+                                <button class="btn btn-danger btn-flat" type="button" id="btnCancel">{{trans('labels.cancel')}}</button>
                             </p>
                         </div>
                     </div>
@@ -178,19 +173,19 @@
                 </form>
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab">{{trans('labels.description')}}</a>
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#funding" role="tab" id="funding_tab">Funding</a>
+                        <a class="nav-link" data-toggle="tab" href="#funding" role="tab" id="funding_tab">{{trans('labels.funding')}}</a>
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#document" role="tab">Supporting Document</a>
+                        <a class="nav-link" data-toggle="tab" href="#document" role="tab">{{trans('labels.supporting_document')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#event" role="tab">Event</a>
+                        <a class="nav-link" data-toggle="tab" href="#event" role="tab">{{trans('labels.event')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#beneficiary" role="tab">Beneficiary</a>
+                        <a class="nav-link" data-toggle="tab" href="#beneficiary" role="tab">{{trans('labels.beneficiary')}}</a>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#other1" role="tab">Other 1</a>
@@ -221,7 +216,7 @@
                                 @endif
                                 <p>
                                 <br>
-                                <button type="button" class="btn btn-primary btn-flat" onclick="editDescription()"><i class="fa fa-plus"></i> Edit Description</button>
+                                <button type="button" class="btn btn-primary btn-flat" onclick="editDescription()"><i class="fa fa-plus"></i> {{trans('labels.edit_description')}}</button>
                                 </p>
                             </div>
                         </div>
@@ -229,19 +224,19 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="achievement" class="control-label col-sm-4 lb">Achievement</label>
+                                    <label for="achievement" class="control-label col-sm-4 lb">{{trans('labels.achievement')}}</label>
                                     <div class="col-sm-8">
                                         <textarea name="achievement" id="achievement" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->achievement}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="solution" class="control-label col-sm-4 lb">Solution</label>
+                                    <label for="solution" class="control-label col-sm-4 lb">{{trans('labels.solution')}}</label>
                                     <div class="col-sm-8">
                                         <textarea name="solution" id="solution" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->solution}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="next_plan" class="control-label col-sm-4 lb">Next Plan</label>
+                                    <label for="next_plan" class="control-label col-sm-4 lb">{{trans('labels.next_plan')}}</label>
                                     <div class="col-sm-8">
                                         <textarea name="next_plan" id="next_plan" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->next_plan}}</textarea>
                                     </div>
@@ -250,32 +245,31 @@
                                     <label class="control-label col-sm-4 lb">&nbsp;</label>
                                     <div class="col-sm-8">
                                         <p class="hide" id="description_box">
-                                            <button type="submit" class="btn btn-primary btn-flat">Save Changes</button>
-                                            <button type="button" class="btn btn-danger btn-flat" onclick="cancelDescription()">Cancel</button>
+                                            <button type="submit" class="btn btn-primary btn-flat">{{trans('labels.save_changes')}}</button>
+                                            <button type="button" class="btn btn-danger btn-flat" onclick="cancelDescription()">{{trans('labels.cancel')}}</button>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="challenge" class="control-label col-sm-4 lb">Challenge</label>
+                                    <label for="challenge" class="control-label col-sm-4 lb">{{trans('labels.challenge')}}</label>
                                     <div class="col-sm-8">
                                         <textarea name="challenge" id="challenge" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->challenge}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="lesson_learn" class="control-label col-sm-4 lb">Lesson Learn</label>
+                                    <label for="lesson_learn" class="control-label col-sm-4 lb">{{trans('labels.lesson_learn')}}</label>
                                     <div class="col-sm-8">
                                         <textarea name="lesson_learn" id="lesson_learn" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->lesson_learn}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="other_comment" class="control-label col-sm-4 lb">Other Comment</label>
+                                    <label for="other_comment" class="control-label col-sm-4 lb">{{trans('labels.other_comment')}}</label>
                                     <div class="col-sm-8">
                                         <textarea name="other_comment" id="other_comment" cols="30" rows="2" class="form-control" disabled>{{$activity_achieve->other_comment}}</textarea>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         </form>
@@ -298,14 +292,14 @@
                                 @endif
                                 <p>
                                 <br>
-                                <button type="button" class="btn btn-primary btn-flat" onclick="editFunding()"><i class="fa fa-plus"></i> Edit Funding</button>
+                                <button type="button" class="btn btn-primary btn-flat" onclick="editFunding()"><i class="fa fa-plus"></i> {{trans('labels.edit_funding')}}</button>
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="total_budget" class="control-label col-sm-4 lb">Total Budget($)</label>
+                                    <label for="total_budget" class="control-label col-sm-4 lb">{{trans('labels.total_budget')}}($)</label>
                                     <div class="col-sm-8">
                                         <input type="number" step="0.01" min="0" value="{{$activity_achieve->total_budget}}" class="form-control" id="total_budget" name="total_budget" disabled>
                                     </div>
@@ -314,21 +308,20 @@
                                     <label class="control-label col-sm-4 lb">&nbsp;</label>
                                     <div class="col-sm-8">
                                         <p class="hide" id="funding_box">
-                                            <button type="submit" class="btn btn-primary btn-flat">Save Changes</button>
-                                            <button type="button" class="btn btn-danger btn-flat" onclick="cancelFunding()">Cancel</button>
+                                            <button type="submit" class="btn btn-primary btn-flat">{{trans('labels.save_changes')}}</button>
+                                            <button type="button" class="btn btn-danger btn-flat" onclick="cancelFunding()">{{trans('labels.cancel')}}</button>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group row">
-                                    <label for="total_expense" class="control-label col-sm-4 lb">Total Expense($)</label>
+                                    <label for="total_expense" class="control-label col-sm-4 lb">{{trans('labels.total_expense')}}($)</label>
                                     <div class="col-sm-8">
                                         <input type="number" step="0.01" min="0" value="{{$activity_achieve->total_expense}}" class="form-control" id="total_expense" name="total_expense" disabled>
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                         </form>
                     </div>
@@ -336,15 +329,15 @@
                         <p>
                         <br>
                             <a class="btn btn-primary btn-flat" href="#" id="btnAddTarget" data-toggle="modal" 
-                            data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> Upload Document</a>
+                            data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> {{trans('labels.upload_document')}}</a>
                         </p>
                         <table class="tbl">
                             <thead>
                                 <tr>
                                     <th>&numero;</th>
-                                    <th>File Name</th>
-                                    <th>Description</th>
-                                    <th>Actions</th>
+                                    <th>{{trans('labels.file_name')}}</th>
+                                    <th>{{trans('labels.description')}}</th>
+                                    <th>{{trans('labels.actions')}}</th>
                                 </tr>
                             </thead>
                             <tbody id="docData">
@@ -355,7 +348,7 @@
                                     <td><a href="{{asset('uploads/documents/'.$doc->file_name)}}" target="_blank">{{$doc->file_name}}</a></td>
                                     <td>{{$doc->description}}</td>
                                     <td>
-                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteDoc(this,event)"><i class="fa fa-trash-o"></i> Delete</button>
+                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteDoc(this,event)"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -365,18 +358,18 @@
                     <div class="tab-pane" id="event" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="btn btn-primary btn-flat" id="btnAddEvent" data-toggle="modal" data-target="#event_modal"><i class="fa fa-plus"></i> New Event</a>
+                            <a href="#" class="btn btn-primary btn-flat" id="btnAddEvent" data-toggle="modal" data-target="#event_modal"><i class="fa fa-plus"></i> {{trans('labels.new_event')}}</a>
                         </p>
                        <table class="tbl">
                             <thead>
                                 <tr>
                                     <th>&numero;</th>
-                                    <th>Activity Subject</th>
-                                    <th>Event Organizer</th>
-                                    <th>Total Participant</th>
-                                    <th>Total Female</th>
-                                    <th>Total Youth</th>
-                                    <th>Actions</th>
+                                    <th>{{trans('labels.activity_subject')}}</th>
+                                    <th>{{trans('labels.event_organizer')}}</th>
+                                    <th>{{trans('labels.total_articipant')}}</th>
+                                    <th>{{trans('labels.total_female')}}</th>
+                                    <th>{{trans('labels.total_youth')}}</th>
+                                    <th>{{trans('labels.actions')}}</th>
                                 </tr>
                             </thead>
                             <tbody id="eventData">
@@ -390,8 +383,8 @@
                                     <td>{{$ev->total_female}}</td>
                                     <td>{{$ev->total_youth}}</td>
                                     <td>
-                                        <button type='button' class="btn btn-sm btn-success" onclick="editEvent(this,event)"><i class="fa fa-pencil"></i> Edit</button>
-                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteEvent(this,event)"><i class="fa fa-trash-o"></i> Delete</button>
+                                        <button type='button' class="btn btn-sm btn-success" onclick="editEvent(this,event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</button>
+                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteEvent(this,event)"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -402,7 +395,7 @@
                     <div class="tab-pane" id="beneficiary" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#" class="btn btn-primary btn-flat" id="btnAddBeneficiary" data-toggle="modal" data-target="#beneficiary_modal"><i class="fa fa-plus"></i> New Beneficiary</a>
+                            <a href="#" class="btn btn-primary btn-flat" id="btnAddBeneficiary" data-toggle="modal" data-target="#beneficiary_modal"><i class="fa fa-plus"></i> {{trans('labels.new_beneficiary')}}</a>
                         </p>
                         <table class="tbl">
                             <thead>
@@ -431,8 +424,8 @@
                                     <td>{{$b->phone}}</td>
                                     <td>{{$b->position}}</td>
                                     <td>
-                                        <button type='button' class="btn btn-sm btn-success" onclick="editBeneficiary(this,event)"><i class="fa fa-pencil"></i> Edit</button>
-                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteBeneficiary(this,event)"><i class="fa fa-trash-o"></i> Delete</button>
+                                        <button type='button' class="btn btn-sm btn-success" onclick="editBeneficiary(this,event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</button>
+                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteBeneficiary(this,event)"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -444,19 +437,16 @@
                         <p>
                             Other 1
                         </p>
-                        
                     </div>
                     <div class="tab-pane" id="other2" role="tabpanel">
                         <p>
                             Other 2
                         </p>
-                        
                     </div>
                     <div class="tab-pane" id="other3" role="tabpanel">
                         <p>
                             Other 3
                         </p>
-                        
                     </div>
                 </div>
             </div>
@@ -469,19 +459,19 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content btn-flat">
             <div class="modal-header">
-                <h5 class="modal-title" id="documentTitle">Upload New Document</h5>
+                <h5 class="modal-title" id="documentTitle">{{trans('labels.upload_new_document')}}</h5>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="target1">
                    <input type="hidden" id="doc_id" name="doc_id" value="0">
                     <div class="form-group row">
-                        <label for="doc_description" class="control-label col-sm-2 lb">Description</label>
+                        <label for="doc_description" class="control-label col-sm-2 lb">{{trans('labels.description')}}</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="doc_description" name="doc_description">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="doc_file_name" class="control-label col-sm-2 lb">File Name</label>
+                        <label for="doc_file_name" class="control-label col-sm-2 lb">{{trans('labels.file_name')}}</label>
                         <div class="col-sm-8">
                             <input type="file" class="form-control" id="doc_file_name" name="doc_file_name">
                         </div>
@@ -496,8 +486,8 @@
             </div>
             <div class="modal-footer">
                 <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-primary btn-flat" onclick="saveDoc()">Save</button>
-                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearDoc()">Close</button>
+                <button type="button" class="btn btn-primary btn-flat" onclick="saveDoc()">{{trans('labels.save')}}</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearDoc()">{{trans('labels.close')}}</button>
                 </div>
             </div>
         </div>
@@ -508,32 +498,31 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content btn-flat">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create New Event</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{trans('labels.create_new_event')}}</h5>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="target1">
                    <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label for="activity_area" class="control-label col-sm-3 lb">Activity Area <span class="text-danger">*</span></label>
+                                <label for="activity_area" class="control-label col-sm-3 lb">{{trans('labels.activity_area')}}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="activity_area" id="activity_area" class="form-control">
                                     @foreach($activity_areas as $ac)
                                         <option value="{{$ac->id}}">{{$ac->name}}</option>
                                     @endforeach
                                     </select>
-                                    
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="activity_subject" class="control-label col-sm-3 lb">Activity Subject <span class="text-danger">*</span></label>
+                                <label for="activity_subject" class="control-label col-sm-3 lb">{{trans('labels.activity_subject')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="activity_subject" name="activity_subject">
                                     <input type="hidden" name="event_id" id="event_id" value="0">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="event_organizer" class="control-label col-sm-3 lb">Event Organizer <span class="text-danger">*</span></label>
+                                <label for="event_organizer" class="control-label col-sm-3 lb">{{trans('labels.event_organizer')}}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="event_organizer" id="event_organizer" class="form-control">
                                     @foreach($event_organizers as $ev)
@@ -543,25 +532,25 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="total" class="control-label col-sm-3 lb">Total Participant</label>
+                                <label for="total" class="control-label col-sm-3 lb">{{trans('labels.total_participant')}}</label>
                                 <div class="col-sm-8">
                                     <input type="number" class="form-control" id="total" value="0" min="0" step="1" name="total">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="total_female" class="control-label col-sm-3 lb">Total Female</label>
+                                <label for="total_female" class="control-label col-sm-3 lb">{{trans('labels.total_female')}}</label>
                                 <div class="col-sm-8">
                                     <input type="number" class="form-control" id="total_female" value="0" min="0" step="1" name="total_female">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="total_youth" class="control-label col-sm-3 lb">Total Youth</label>
+                                <label for="total_youth" class="control-label col-sm-3 lb">{{trans('labels.total_youth')}}</label>
                                 <div class="col-sm-8">
                                     <input type="number" class="form-control" id="total_youth" value="0" min="0" step="1" name="total_youth">
                                 </div>
                             </div>
                              <div class="form-group row">
-                                <label for="province" class="control-label col-sm-3 lb">Province</label>
+                                <label for="province" class="control-label col-sm-3 lb">{{trans('labels.province')}}</label>
                                 <div class="col-sm-8">
                                     <select name="province" id="province" class="form-control" onchange="bindDistict()">
                                         <option value="0">-- Choose One --</option>
@@ -572,7 +561,7 @@
                                 </div>
                             </div>
                              <div class="form-group row">
-                                <label for="district" class="control-label col-sm-3 lb">District</label>
+                                <label for="district" class="control-label col-sm-3 lb">{{trans('labels.district')}}</label>
                                 <div class="col-sm-8">
                                     <select name="district" id="district" class="form-control" onchange="bindCommune()">
                                         
@@ -580,7 +569,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="commune" class="control-label col-sm-3 lb">Commune</label>
+                                <label for="commune" class="control-label col-sm-3 lb">{{trans('labels.commune')}}</label>
                                 <div class="col-sm-8">
                                     <select name="commune" id="commune" class="form-control" onchange="bindVillage()">
                                         
@@ -588,7 +577,7 @@
                                 </div>
                             </div>
                              <div class="form-group row">
-                                <label for="village" class="control-label col-sm-3 lb">Village</label>
+                                <label for="village" class="control-label col-sm-3 lb">{{trans('labels.village')}}</label>
                                 <div class="col-sm-8">
                                     <select name="village" id="village" class="form-control">
                                         
@@ -608,8 +597,8 @@
             </div>
             <div class="modal-footer">
                 <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-primary btn-flat" onclick="saveEvent()">Save</button>
-                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearEvent()">Close</button>
+                <button type="button" class="btn btn-primary btn-flat" onclick="saveEvent()">{{trans('labels.save')}}</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearEvent()">{{trans('labels.close')}}</button>
                 </div>
             </div>
         </div>
@@ -620,56 +609,56 @@
     <div class="modal-dialog modal-xlg">
         <div class="modal-content btn-flat">
             <div class="modal-header">
-                <h5 class="modal-title" id="beneficiary_title">Create New Beneficiary</h5>
+                <h5 class="modal-title" id="beneficiary_title">{{trans('labels.create_new_benificiary')}}</h5>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="target1">
                    <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group row">
-                                <label for="bid" class="control-label col-sm-3 lb">Beneficiary ID</label>
+                                <label for="bid" class="control-label col-sm-3 lb">{{trans('labels.beneficiary_id')}}</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" id="bid" name="bid">
                                     <input type="hidden" id="beneficiary_id" name="beneficiary_id" value="0">
                                 </div>
-                                 <label for="bgender" class="control-label col-sm-1 lb">Gender</label>
+                                 <label for="bgender" class="control-label col-sm-1 lb">{{trans('labels.gender')}}</label>
                                 <div class="col-sm-3">
                                     <select name="bgender" id="bgender" class="form-control">
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
+                                        <option value="Male">{{trans('labels.male')}}</option>
+                                        <option value="Female">{{trans('labels.female')}}</option>
                                     </select>
                                 </div>
                                
                             </div>
                           
                             <div class="form-group row">
-                                <label for="full_name" class="control-label col-sm-3 lb">Beneficiary Name</label>
+                                <label for="full_name" class="control-label col-sm-3 lb">{{trans('labels.beneficiary_name')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="full_name" name="full_name">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="bemail" class="control-label col-sm-3 lb">Email</label>
+                                <label for="bemail" class="control-label col-sm-3 lb">{{trans('labels.email')}}</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" id="bemail" name="bemail">
                                 </div>
-                                <label for="bphone" class="control-label col-sm-1 lb">Phone</label>
+                                <label for="bphone" class="control-label col-sm-1 lb">{{trans('labels.phone')}}</label>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control" id="bphone" name="bphone">
                                 </div>
                             </div>
                             <div class="form-group row">
-                            <label for="come_from" class="control-label col-sm-3 lb">Come From</label>
+                            <label for="come_from" class="control-label col-sm-3 lb">{{trans('labels.come_from')}}</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" id="come_from" name="come_from">
                                 </div>
-                                <label for="bposition" class="control-label col-sm-1 lb">Position</label>
+                                <label for="bposition" class="control-label col-sm-1 lb">{{trans('labels.position')}}</label>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control" id="bposition" name="bposition">
                                 </div>
                             </div>
                              <div class="form-group row">
-                                <label for="bprovince" class="control-label col-sm-3 lb">Province</label>
+                                <label for="bprovince" class="control-label col-sm-3 lb"> {{trans('labels.province')}}</label>
                                 <div class="col-sm-4">
                                     <select name="bprovince" id="bprovince" class="form-control" onchange="bindDistict1()">
                                         <option value="0">-- Choose One --</option>
@@ -679,7 +668,7 @@
                                     </select>
 
                                 </div>
-                                <label for="bdistrict" class="control-label col-sm-1 lb">District</label>
+                                <label for="bdistrict" class="control-label col-sm-1 lb">{{trans('labels.district')}}</label>
                                 <div class="col-sm-3">
                                     <select name="bdistrict" id="bdistrict" class="form-control" onchange="bindCommune1()">
                                         
@@ -688,13 +677,13 @@
                             </div>
                            
                             <div class="form-group row">
-                                <label for="bcommune" class="control-label col-sm-3 lb">Commune</label>
+                                <label for="bcommune" class="control-label col-sm-3 lb">{{trans('labels.commune')}}</label>
                                 <div class="col-sm-4">
                                     <select name="bcommune" id="bcommune" class="form-control" onchange="bindVillage1()">
                                         
                                     </select>
                                 </div>
-                                <label for="bvillage" class="control-label col-sm-1 lb">Village</label>
+                                <label for="bvillage" class="control-label col-sm-1 lb">{{trans('labels.village')}}</label>
                                 <div class="col-sm-3">
                                     <select name="bvillage" id="bvillage" class="form-control">
                                         
@@ -702,26 +691,26 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="control-label lb col-sm-3">Beneficiary Type</label>
+                                <label class="control-label lb col-sm-3">{{trans('labels.beneficiary_type')}}</label>
                                 <div class="col-sm-4">
                                     <br>
                                     <label class="lb">
-                                        <input type="checkbox" name="bch" value="Provincial NGO Network"> Provincial NGO Network
+                                        <input type="checkbox" name="bch" value="Provincial NGO Network">{{trans('labels.provincial_ngo_network')}}
                                     </label>
                                     <br>
                                     <label class="lb">
-                                        <input type="checkbox" name="bch" value="Non-member"> Non-member
+                                        <input type="checkbox" name="bch" value="Non-member"> {{trans('labels.non_member')}}
                                     </label>
                                     
                                 </div> 
                                 <div class="col-sm-4">
                                     <br>
                                     <label class="lb">
-                                        <input type="checkbox" name="bch" value="Member"> Member
+                                        <input type="checkbox" name="bch" value="Member"> {{trans('labels.member')}}
                                     </label>
                                     <br>
                                     <label class="lb">
-                                        <input type="checkbox" name="bch" value="Other"> Other
+                                        <input type="checkbox" name="bch" value="Other"> {{trans('labels.other')}}
                                     </label>
                                 </div>   
                             </div>
@@ -738,8 +727,8 @@
             </div>
             <div class="modal-footer">
                 <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-primary btn-flat" onclick="saveBeneficiary()">Save</button>
-                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearBeneficiary()">Close</button>
+                <button type="button" class="btn btn-primary btn-flat" onclick="saveBeneficiary()">{{trans('labels.save')}}</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearBeneficiary()">{{trans('labels.close')}}</button>
                 </div>
             </div>
         </div>
