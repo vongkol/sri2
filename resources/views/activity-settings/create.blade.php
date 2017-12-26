@@ -4,8 +4,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong>Create Activity Setting</strong>&nbsp;&nbsp;
-                <a href="{{url('/activity-setting')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
+                <strong>{{trans('labels.create_activity_setting')}}</strong>&nbsp;&nbsp;
+                <a href="{{url('/activity-setting')}}" class="text-success"><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
             </div>
             <div class="card-block">
                 @if(Session::has('sms'))
@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                              <div class="form-group row">
-                                <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="ngo" id="ngo" class="form-control chosen-select" onchange="binding()">
                                     @foreach($ngos as $ngo)
@@ -43,13 +43,13 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_code" class="control-label col-sm-4 lb">Project Code <span class="text-danger">*</span></label>
+                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('project_code')}}" name="project_code" id="project_code">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_name" class="control-label col-sm-4 lb">Project Name <span class="text-danger">*</span></label>
+                                <label for="project_name" class="control-label col-sm-4 lb">{{trans('labels.project_name')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="project_name" id="project_name" class="form-control chosen-select" data-placeholder=" ">
                                         
@@ -60,19 +60,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="activity_code" class="control-label col-sm-4 lb">Activity Code <span class="text-danger">*</span></label>
+                                <label for="activity_code" class="control-label col-sm-4 lb">{{trans('labels.activity_code')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('activity_code')}}" id="activity_code" name="activity_code">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="activity_name" class="control-label col-sm-4 lb">Activity Name <span class="text-danger">*</span></label>
+                                <label for="activity_name" class="control-label col-sm-4 lb">{{trans('labels.activity_name')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <textarea name="activity_name" id="activity_name" cols="30" rows="2" class="form-control"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="activity_type" class="control-label col-sm-4 lb">Activity Type</label>
+                                <label for="activity_type" class="control-label col-sm-4 lb">{{trans('labels.activity_type')}}</label>
                                 <div class="col-sm-8">
                                     <select name="activity_type" id="activity_type" class="form-control chosen-select" data-placeholder=" ">
                                                                                                                 
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="activity_definition" class="control-label col-sm-4 lb">Activity Definition</label>
+                                <label for="activity_definition" class="control-label col-sm-4 lb">{{trans('labels.activity_definition')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('activity_definition')}}" id="activity_definition" name="activity_definition">
                                 </div>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                <label for="result_framework_structure" class="control-label col-sm-4 lb">{{trans('labels.result_framework_structure')}}</label>
                                 <div class="col-sm-8">
                                     <select name="result_framework_structure" id="result_framework_structure" class="form-control chosen-select" data-placeholder=" ">
                                     @foreach($frameworks as $fr)
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="component_responsible" class="control-label col-sm-4 lb">Component Responsible</label>
+                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
                                 <div class="col-sm-8" id="sp">
                                     <select name="component_responsible[]" id="component_responsible" class="form-control" multiple>
                                     @foreach($components as $com)
@@ -112,19 +112,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="data_source" class="control-label col-sm-4 lb">Data Source</label>
+                                <label for="data_source" class="control-label col-sm-4 lb">{{trans('labels.data_source')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('data_source')}}" id="data_source" name="data_source">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="deliverable" class="control-label col-sm-4 lb">Deliverable / Unit</label>
+                                <label for="deliverable" class="control-label col-sm-4 lb">{{trans('labels.deliverable')}} / {{trans('labels.unit')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('deliverable')}}" id="deliverable" name="deliverable">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="location" class="control-label col-sm-4 lb">Location</label>
+                                <label for="location" class="control-label col-sm-4 lb">{{trans('labels.location')}}</label>
                                 <div class="col-sm-8">
                                     <select name="location" id="location" class="form-control chosen-select" style="height: 37px" >
                                     @foreach($provinces as $pro)
@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                            <div class="form-group row">
-                                <label for="person_responsible" class="control-label col-sm-4 lb">Person Responsible</label>
+                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
                                 <div class="col-sm-8" id="sp1">
                                     <select name="person_responsible[]" id="person_responsible" class="form-control" multiple>
                                     @foreach($users as $per)
@@ -148,20 +148,19 @@
                     <div class="form-group row">
                         <div class="col-sm-12 text-center ">
                             <input type="hidden" name="save_status" value="0" id="save_status">
-                            <button class="btn btn-primary btn-flat" type="button" id="btnSave">Save</button>
-                            <button class="btn btn-success btn-flat" type="button" id="btnSave1">Save and Continue</button>
-                            <button class="btn btn-danger btn-flat" type="reset">Cancel</button>
+                            <button class="btn btn-primary btn-flat" type="button" id="btnSave">{{trans('labels.save')}}</button>
+                            <button class="btn btn-success btn-flat" type="button" id="btnSave1">{{trans('labels.save_and_continue')}}</button>
+                            <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
                         </div>
                     </div>
                      <div class="row">
-                                    <div class="col-sm-12">
-                                        <p class="text-success">
-                                        All fields with <span class="text-danger">*</span> are required!
-                                        </p>
-                                    </div>
-                               </div>
+                        <div class="col-sm-12">
+                            <p class="text-success">
+                            All fields with <span class="text-danger">*</span> are required!
+                            </p>
+                        </div>
+                    </div>
                 </form>
-               
             </div>
         </div>
     </div>

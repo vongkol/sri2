@@ -4,10 +4,10 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong>Edit Indicator Setting</strong>&nbsp;&nbsp;
-                <a href="{{url('/indicator')}}" class="text-success"><i class="fa fa-arrow-left"></i> Back</a>
-                <a href="#" class="text-danger" id="btnEdit" onclick="showEdit(event)"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="{{url('/indicator/create')}}" class="text-primary"><i class="fa fa-plus"></i> New</a>
+                <strong>{{trans('labels.edit_indicator_setting')}}</strong>&nbsp;&nbsp;
+                <a href="{{url('/indicator')}}" class="text-success"><i class="fa fa-arrow-left"></i> {{trans('labels.back')}}</a>
+                <a href="#" class="text-danger" id="btnEdit" onclick="showEdit(event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
+                <a href="{{url('/indicator/create')}}" class="text-primary"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
             </div>
             <div class="card-block">
                     @if(Session::has('sms'))
@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="ngo" class="control-label col-sm-4 lb">User NGO <span class="text-danger">*</span></label>
+                                <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="ngo" id="ngo" class="form-control chosen-select" onchange="binding()" disabled>
                                     @foreach($ngos as $ngo)
@@ -46,13 +46,13 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_code" class="control-label col-sm-4 lb">Project Code <span class="text-danger">*</span></label>
+                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->project_code}}" name="project_code" id="project_code" required disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_name" class="control-label col-sm-4 lb">Project Name <span class="text-danger">*</span></label>
+                                <label for="project_name" class="control-label col-sm-4 lb">{{trans('labels.proect_name')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="project_name" id="project_name" class="form-control chosen-select" data-placeholder=" " disabled>
                                     @foreach($projects as $pro)
@@ -62,19 +62,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_code" class="control-label col-sm-4 lb">Indicator Code <span class="text-danger">*</span></label>
+                                <label for="indicator_code" class="control-label col-sm-4 lb">{{trans('labels.indicator_code')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->indicator_code}}" id="indicator_code" name="indicator_code" required disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_name" class="control-label col-sm-4 lb">Indicator Name <span class="text-danger">*</span></label>
+                                <label for="indicator_name" class="control-label col-sm-4 lb">{{trans('labels.indicator_type')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->indicator_name}}" id="indicator_name" name="indicator_name" required disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                    <label for="result_framework_structure" class="control-label col-sm-4 lb">Result Framework Structure</label>
+                                    <label for="result_framework_structure" class="control-label col-sm-4 lb">{{trans('labels.result_framework_structure')}}</label>
                                     <div class="col-sm-8">
                                         <select name="result_framework_structure" id="result_framework_structure" class="form-control chosen-select" data-placeholder=" " disabled>
                                         @foreach($frameworks as $fr)
@@ -84,13 +84,13 @@
                                     </div>
                             </div>
                             <div class="form-group row">
-                                <label for="calculation_method" class="control-label col-sm-4 lb">Calculation Method</label>
+                                <label for="calculation_method" class="control-label col-sm-4 lb">{{trans('labels.calculation_method')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->calculation_method}}" id="calculation_method" name="calculation_method" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_definition" class="control-label col-sm-4 lb">Indicator Definition</label>
+                                <label for="indicator_definition" class="control-label col-sm-4 lb">{{trans('labels.indicator_definition')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->indicator_definition}}" id="indicator_definition" name="indicator_definition" disabled>
                                 </div>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
-                                <label for="indicator_type" class="control-label col-sm-4 lb">Indicator Type <span class="text-danger">*</span></label>
+                                <label for="indicator_type" class="control-label col-sm-4 lb">{{trans('labels.indicator_type')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="indicator_type" id="indicator_type" class="form-control chosen-select" disabled>
                                         <option value="0">-- Choose One --</option>
@@ -109,25 +109,25 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="baseline" class="control-label col-sm-4 lb">Baseline</label>
+                                <label for="baseline" class="control-label col-sm-4 lb">{{trans('labels.baseline')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->baseline}}" id="baseline" name="baseline" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="data_source" class="control-label col-sm-4 lb">Data Source</label>
+                                <label for="data_source" class="control-label col-sm-4 lb">{{trans('labels.data_source')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->data_source}}" id="data_source" name="data_source" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_unit" class="control-label col-sm-4 lb">Indicator Unit</label>
+                                <label for="indicator_unit" class="control-label col-sm-4 lb">{{trans('labels.indicator_unit')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->indicator_unit}}" id="indicator_unit" disabled name="indicator_unit">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="component_responsible" class="control-label col-sm-4 lb">Component Responsible</label>
+                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
                                 <div class="col-sm-8" id="sp">
                                     <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
                                     @php($a="")
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="person_responsible" class="control-label col-sm-4 lb">Person Responsible</label>
+                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
                                 <div class="col-sm-8" id="sp1">
                                     <select name="person_responsible[]" id="person_responsible" class="form-control" multiple disabled>
                                             @php($x="")
@@ -168,8 +168,8 @@
                         <div class="col-sm-12 text-center ">
                             <p class="hide" id="btnBox">
                                     <br>
-                                    <button class="btn btn-primary btn-flat" type="submit">Save Changes</button>
-                                    <button class="btn btn-danger btn-flat" type="button" id="btnCancel">Cancel</button>
+                                    <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_change')}}</button>
+                                    <button class="btn btn-danger btn-flat" type="button" id="btnCancel">{{trans('labels.cancel')}}</button>
                             </p>
 
                         </div>
@@ -177,7 +177,7 @@
                 </form>
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#target" role="tab">Target</a>
+                        <a class="nav-link active" data-toggle="tab" href="#target" role="tab">{{trans('labels.target')}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#other1" role="tab">Other 1</a>
@@ -194,26 +194,26 @@
                     <div class="tab-pane active" id="target" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#"  class="btn btn-primary btn-flat" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> New Target</a>
+                            <a href="#"  class="btn btn-primary btn-flat" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i>{{trans('labels.new_target')}}</a>
                         </p>
                         <table class="tbl">
                             <thead>
                                 <tr>
                                     <th>&numero;</th>
-                                    <th>Year</th>
-                                    <th>Jan</th>
-                                    <th>Feb</th>
-                                    <th>Mar</th>
-                                    <th>Apr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Aug</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Nov</th>
-                                    <th>Dec</th>
-                                    <th>Actions</th>
+                                    <th>{{trans('labels.year')}}</th>
+                                    <th>{{trans('labels.jan')}}</th>
+                                    <th>{{trans('labels.feb')}}</th>
+                                    <th>{{trans('labels.mar')}}</th>
+                                    <th>{{trans('labels.apr')}}</th>
+                                    <th>{{trans('labels.may')}}</th>
+                                    <th>{{trans('labels.jun')}}</th>
+                                    <th>{{trans('labels.jul')}}</th>
+                                    <th>{{trans('labels.aug')}}</th>
+                                    <th>{{trans('labels.sep')}}</th>
+                                    <th>{{trans('labels.oct')}}</th>
+                                    <th>{{trans('labels.nov')}}</th>
+                                    <th>{{trans('labels.dec')}}</th>
+                                    <th>{{trans('labels.actions')}}</th>
                                 </tr>
                             </thead>
                             <tbody id="data">
@@ -235,8 +235,8 @@
                                     <td>{{$target->m11}}</td>
                                     <td>{{$target->m12}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-success" title="Edit" onclick="editTarget(this,event)"><i class="fa fa-pencil"></i> Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteTarget(this,event)"><i class="fa fa-trash"></i> Delete</a>
+                                        <a href="#" class="btn btn-sm btn-success" title="Edit" onclick="editTarget(this,event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
+                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteTarget(this,event)"><i class="fa fa-trash"></i> {{trans('labels.delete')}}</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -480,8 +480,8 @@ function saveTarget(id)
                         tr += "<td>" + target.oct + "</td>";
                         tr += "<td>" + target.nov + "</td>";
                         tr += "<td>" + target.dec + "</td>";
-                        tr += "<td>" + "<a href='#' class='btn btn-sm btn-success' title='Edit' onclick='editTarget(this,event)'><i class='fa fa-pencil'></i> Edit</a>&nbsp;&nbsp;";
-                        tr += "<a href='#' class='btn btn-sm btn-danger' title='Delete' onclick='deleteTarget(this,event)'><i class='fa fa-trash'></i> Delete</a>" + "</td>";
+                        tr += "<td>" + "<a href='#' class='btn btn-sm btn-success' title='Edit' onclick='editTarget(this,event)'><i class='fa fa-pencil'></i> {{trans('labels.edit')}}</a>&nbsp;";
+                        tr += "<a href='#' class='btn btn-sm btn-danger' title='Delete' onclick='deleteTarget(this,event)'><i class='fa fa-trash'></i> {{trans('labels.delete')}}</a>" + "</td>";
                         tr += "</tr>";
                         if($("#data tr:last-child").length>0)
                         {
@@ -561,7 +561,6 @@ function editTarget(obj,evt)
     $("#oct").val($(tds[11]).html());
     $("#nov").val($(tds[12]).html());
     $("#dec").val($(tds[13]).html());
-    
     $("#btnAddTarget").trigger("click");
 }
     </script>
@@ -571,7 +570,7 @@ function editTarget(obj,evt)
     <div class="modal-dialog modal-lg">
         <div class="modal-content btn-flat">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create New Target</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{trans('labels.create_new_target')}}</h5>
                 {{--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>  --}}
@@ -581,7 +580,7 @@ function editTarget(obj,evt)
                     <div class="form-group row col-md-12 text-center">
                         <div class="col-md-4"></div>
                         <div class="form-group row col-md-4 text-center">
-                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Year</label>
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.year')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <select id="year" class="form-control text-center">
                                 @foreach($years as $year)
@@ -596,13 +595,13 @@ function editTarget(obj,evt)
                     <br>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <label for="jan" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jan')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jan" name="jan">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="feb" class=" col-sm-6 col-md-6 lb text-right">Feb</label>
+                            <label for="feb" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.feb')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="feb" name="feb">
                             </div>
@@ -610,13 +609,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="mar" class="col-sm-6 col-md-6 lb text-right">Mar</label>
+                            <label for="mar" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.mar')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="mar" name="mar">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="apr" class=" col-sm-6 col-md-6 lb text-right">Apr</label>
+                            <label for="apr" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.apr')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="apr" name="apr">
                             </div>
@@ -624,13 +623,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="may" class="col-sm-6 col-md-6 lb text-right">May</label>
+                            <label for="may" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.may')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="may" name="may">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="jun" class="col-sm-6 col-md-6 lb text-right">Jun</label>
+                            <label for="jun" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jun')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jun" name="jun">
                             </div>
@@ -638,13 +637,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="jul" class="col-sm-6 col-md-6 lb text-right">Jul</label>
+                            <label for="jul" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jul')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jul" name="jul">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="aug" class="col-sm-6 col-md-6 lb text-right">Aug</label>
+                            <label for="aug" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.aug')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="aug" name="aug">
                             </div>
@@ -652,13 +651,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="sep" class=" col-sm-6 col-md-6 lb text-right">Sep</label>
+                            <label for="sep" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.sep')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="sep" name="sep">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="oct" class="col-sm-6 col-md-6 lb text-right">Oct</label>
+                            <label for="oct" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.oct')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="oct" name="oct">
                             </div>
@@ -666,13 +665,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="nov" class="col-sm-6 col-md-6 lb text-right">Nov</label>
+                            <label for="nov" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.nov')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="nov" name="nov">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="dec" class="col-sm-6 col-md-6 lb text-right">Dec</label>
+                            <label for="dec" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.dec')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="dec" name="dec">
                             </div>
@@ -688,8 +687,8 @@ function editTarget(obj,evt)
             </div>
             <div class="modal-footer">
                 <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-primary btn-flat" onclick="saveTarget(1)">Save</button>
-                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearForm()">Close</button>
+                <button type="button" class="btn btn-primary btn-flat" onclick="saveTarget(1)">{{trans('labels.save')}}</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearForm()">{{trans('labels.close')}}</button>
                 </div>
             </div>
         </div>
@@ -710,7 +709,7 @@ function editTarget(obj,evt)
                     <div class="form-group row col-md-12 text-center">
                         <div class="col-md-4"></div>
                         <div class="form-group row col-md-4 text-center">
-                            <label for="year1" class="col-sm-6 col-md-6 lb text-right">Year</label>
+                            <label for="year1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.year')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <select id="year1" class="form-control text-center" name="year1">
                                 @foreach($years as $year)
@@ -724,13 +723,13 @@ function editTarget(obj,evt)
                     <br>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="jan1" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <label for="jan1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jan')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jan1" name="jan1">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="feb1" class=" col-sm-6 col-md-6 lb text-right">Feb</label>
+                            <label for="feb1" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.feb')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="feb1" name="feb1">
                             </div>
@@ -738,13 +737,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="mar1" class="col-sm-6 col-md-6 lb text-right">Mar</label>
+                            <label for="mar1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.mar')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="mar1" name="mar1">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="apr1" class=" col-sm-6 col-md-6 lb text-right">Apr</label>
+                            <label for="apr1" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.apr')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="apr1" name="apr1">
                             </div>
@@ -752,13 +751,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="may1" class="col-sm-6 col-md-6 lb text-right">May</label>
+                            <label for="may1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.may')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="may1" name="may1">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="jun1" class="col-sm-6 col-md-6 lb text-right">Jun</label>
+                            <label for="jun1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jun')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jun1" name="jun1">
                             </div>
@@ -766,13 +765,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="jul1" class="col-sm-6 col-md-6 lb text-right">Jul</label>
+                            <label for="jul1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jul')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jul1" name="jul1">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="aug1" class="col-sm-6 col-md-6 lb text-right">Aug</label>
+                            <label for="aug1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.aug')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="aug1" name="aug1">
                             </div>
@@ -780,13 +779,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="sep1" class=" col-sm-6 col-md-6 lb text-right">Sep</label>
+                            <label for="sep1" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.sep')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="sep1" name="sep1">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="oct1" class="col-sm-6 col-md-6 lb text-right">Oct</label>
+                            <label for="oct1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.oct')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="oct1" name="oct1">
                             </div>
@@ -794,13 +793,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="nov1" class="col-sm-6 col-md-6 lb text-right">Nov</label>
+                            <label for="nov1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.nov')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="nov1" name="nov1">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="dec1" class="col-sm-6 col-md-6 lb text-right">Dec</label>
+                            <label for="dec1" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.dec')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="dec1" name="dec1">
                             </div>
@@ -810,8 +809,8 @@ function editTarget(obj,evt)
             </div>
             <div class="modal-footer">
                 <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-primary btn-flat">Submit</button>
-                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearForm()">Cancel</button>
+                <button type="button" class="btn btn-primary btn-flat">{{trans('labels.submit')}}</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearForm()">{{trans('labels.cancel')}}</button>
                 </div>
             </div>
         </div>
@@ -831,7 +830,7 @@ function editTarget(obj,evt)
                     <div class="form-group row col-md-12 text-center">
                         <div class="col-md-4"></div>
                         <div class="form-group row col-md-4 text-center">
-                            <label for="year2" class="col-sm-6 col-md-6 lb text-right">Year</label>
+                            <label for="year2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.year')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <select id="year2" class="form-control text-center" name="year2">
                                 @foreach($years as $year)
@@ -845,13 +844,13 @@ function editTarget(obj,evt)
                     <br>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="jan2" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <label for="jan2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jan')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jan2" name="jan2">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="feb2" class=" col-sm-6 col-md-6 lb text-right">Feb</label>
+                            <label for="feb2" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.feb')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="feb2" name="feb2">
                             </div>
@@ -859,13 +858,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="mar2" class="col-sm-6 col-md-6 lb text-right">Mar</label>
+                            <label for="mar2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.mar')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="mar2" name="mar2">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="apr2" class=" col-sm-6 col-md-6 lb text-right">Apr</label>
+                            <label for="apr2" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.apr')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="apr2" name="apr2">
                             </div>
@@ -873,13 +872,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="may2" class="col-sm-6 col-md-6 lb text-right">May</label>
+                            <label for="may2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.may')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="may2" name="may2">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="jun2" class="col-sm-6 col-md-6 lb text-right">Jun</label>
+                            <label for="jun2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jun')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jun2" name="jun2">
                             </div>
@@ -887,13 +886,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="jul2" class="col-sm-6 col-md-6 lb text-right">Jul</label>
+                            <label for="jul2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jul')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jul2" name="jul2">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="aug2" class="col-sm-6 col-md-6 lb text-right">Aug</label>
+                            <label for="aug2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.aug')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="aug2" name="aug2">
                             </div>
@@ -901,13 +900,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="sep2" class=" col-sm-6 col-md-6 lb text-right">Sep</label>
+                            <label for="sep2" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.sep')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="sep2" name="sep2">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="oct2" class="col-sm-6 col-md-6 lb text-right">Oct</label>
+                            <label for="oct2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.oct')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="oct2" name="oct2">
                             </div>
@@ -915,13 +914,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="nov2" class="col-sm-6 col-md-6 lb text-right">Nov</label>
+                            <label for="nov2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.nov')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="nov2" name="nov2">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="dec2" class="col-sm-6 col-md-6 lb text-right">Dec</label>
+                            <label for="dec2" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.dec')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="dec2" name="dec2">
                             </div>
@@ -932,8 +931,8 @@ function editTarget(obj,evt)
             </div>
             <div class="modal-footer">
                 <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-primary btn-flat">Submit</button>
-                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearForm()">Cancel</button>
+                <button type="button" class="btn btn-primary btn-flat">{{trans('labels.submit')}}</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearForm()">{{trans('labels.cancel')}}</button>
                 </div>
             </div>
         </div>
@@ -954,7 +953,7 @@ function editTarget(obj,evt)
                     <div class="form-group row col-md-12 text-center">
                         <div class="col-md-4"></div>
                         <div class="form-group row col-md-4 text-center">
-                            <label for="year3" class="col-sm-6 col-md-6 lb text-right">Year</label>
+                            <label for="year3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.year')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <select id="year3" class="form-control text-center" name="year3">
                                 @foreach($years as $year)
@@ -968,13 +967,13 @@ function editTarget(obj,evt)
                     <br>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="jan3" class="col-sm-6 col-md-6 lb text-right">Jan</label>
+                            <label for="jan3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jan')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jan3" name="jan3">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="feb3" class=" col-sm-6 col-md-6 lb text-right">Feb</label>
+                            <label for="feb3" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.feb')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="feb3" name="feb3">
                             </div>
@@ -982,13 +981,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="mar3" class="col-sm-6 col-md-6 lb text-right">Mar</label>
+                            <label for="mar3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.mar')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="mar3" name="mar3">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="apr3" class=" col-sm-6 col-md-6 lb text-right">Apr</label>
+                            <label for="apr3" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.apr')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="apr3" name="apr3">
                             </div>
@@ -996,13 +995,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="may3" class="col-sm-6 col-md-6 lb text-right">May</label>
+                            <label for="may3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.may')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="may3" name="may3">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="jun3" class="col-sm-6 col-md-6 lb text-right">Jun</label>
+                            <label for="jun3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jun')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jun3" name="jun3">
                             </div>
@@ -1010,13 +1009,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="jul3" class="col-sm-6 col-md-6 lb text-right">Jul</label>
+                            <label for="jul3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.jul')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="jul3" name="jul3">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="aug3" class="col-sm-6 col-md-6 lb text-right">Aug</label>
+                            <label for="aug3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.aug')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="aug3" name="aug3">
                             </div>
@@ -1024,13 +1023,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="sep3" class=" col-sm-6 col-md-6 lb text-right">Sep</label>
+                            <label for="sep3" class=" col-sm-6 col-md-6 lb text-right">{{trans('labels.sep')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="sep3" name="sep3">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="oct3" class="col-sm-6 col-md-6 lb text-right">Oct</label>
+                            <label for="oct3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.oct')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="oct3" name="oct3">
                             </div>
@@ -1038,13 +1037,13 @@ function editTarget(obj,evt)
                     </div>
                     <div class="form-group row col-md-12 text-center">
                         <div class="form-group row col-md-6">
-                            <label for="nov3" class="col-sm-6 col-md-6 lb text-right">Nov</label>
+                            <label for="nov3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.nov')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="nov3" name="nov3">
                             </div>
                         </div>
                         <div class="form-group row col-md-6">
-                            <label for="dec3" class="col-sm-6 col-md-6 lb text-right">Dec</label>
+                            <label for="dec3" class="col-sm-6 col-md-6 lb text-right">{{trans('labels.dec')}}</label>
                             <div class="col-sm-6 col-md-6">
                                 <input type="text" class="form-control" value="" id="dec3" name="dec3">
                             </div>
@@ -1054,8 +1053,8 @@ function editTarget(obj,evt)
             </div>
             <div class="modal-footer">
                 <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-primary btn-flat">Save</button>
-                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearForm()">Cancel</button>
+                <button type="button" class="btn btn-primary btn-flat">{{trans('labels.submit')}}</button>
+                <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal" onclick="clearForm()">{{trans('labels.cancel')}}</button>
                 </div>
             </div>
         </div>

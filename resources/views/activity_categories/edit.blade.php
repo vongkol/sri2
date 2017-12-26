@@ -53,7 +53,7 @@
                                             @endforeach
                                         </select>
                                          <br><br>
-                                        <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
+                                        <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
                                         <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
                                     </div>
                                 </div>
