@@ -93,7 +93,6 @@ class UserController extends Controller
     // delete a user by his/her id
     public function delete($id)
     {
-       
         DB::table('users')->where('id', $id)->update(['active'=>0]);
         $page = @$_GET['page'];
         if ($page>0)
@@ -171,6 +170,9 @@ class UserController extends Controller
             $r->session()->flash('sms1', "Username already exist. Please use a different one!");
             return redirect('/user/create')->withInput();
         }
+        $r->validate([
+            'password' => 'required|min:6',
+        ]);
        $pass = $r->password;
        $cpass = $r->cpassword;
        if($pass!=$cpass)
@@ -178,7 +180,6 @@ class UserController extends Controller
            $r->session()->flash("sms1", "The password and confirm passwor is not matched!");
            return redirect('/user/create')->withInput();
        }
-
         $data = array(
             'name' => $r->name,
             'email' => $r->email,
@@ -236,6 +237,16 @@ class UserController extends Controller
         );
         if($r->password!=null)
         {
+            $r->validate([
+                'password' => 'required|min:6',
+            ]);
+            $pass = $r->password;
+            $cpass = $r->cpassword;
+            if($pass!=$cpass)
+            {
+                $r->session()->flash("sms1", "The password and confirm passwor is not matched!");
+                return redirect('/user/create')->withInput();
+            }
             $data['password'] = bcrypt($r->password);
         }
         if ($r->hasFile("photo"))
@@ -261,6 +272,12 @@ class UserController extends Controller
         $id = Auth::user()->id;
         $new_password = $r->new_password;
         $confirm_password = $r->confirm_password;
+       
+        if($pass!=$cpass)
+        {
+            $r->session()->flash("sms1", "The password and confirm passwor is not matched!");
+            return redirect('/user/create')->withInput();
+        }
         if ($new_password!=$confirm_password)
         {
                 $r->session()->flash('sms1',"The password is not matched, please check again.");
@@ -296,6 +313,9 @@ class UserController extends Controller
         $confirm_password = $r->confirm_password;
         $sms ="";
         $sms1 = "";
+        $r->validate([
+            'new_password' => 'required|min:6',
+        ]);
         if ($lang=='kh')
         {
             $sms1 = "លេខសម្ងាត់ថ្មីមិនត្រឹមត្រូវទេ សូមពិនិត្យឡើងវិញ។";
