@@ -1,4 +1,4 @@
-@extends("layouts.activity")
+@extends("layouts.design")
 @section('content')
 <div class="row">
     <div class="col-lg-12">

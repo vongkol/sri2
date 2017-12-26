@@ -1,4 +1,4 @@
-@extends('layouts.activity')
+@extends('layouts.design')
 @section('content')
 <div class="row">
         <div class="col-lg-12">
@@ -54,9 +54,9 @@
                             <td>{{$st->activity_definition}}</td>
                             <td>{{$st->location}}</td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="{{url('/activity-setting/edit/'.$st->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                <a class="btn btn-sm btn-danger" href="{{url('/activity-setting/delete/'.$st->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                <a class="btn btn-sm btn-success btn-flat my-btn" href="{{url('/activity-setting/edit/'.$st->id)}}" title="Edit">&nbsp;{{trans('labels.edit')}}&nbsp;</a>
+                                <a class="btn btn-sm btn-danger btn-flat my-btn" href="{{url('/activity-setting/delete/'.$st->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                       title="Delete">{{trans('labels.delete')}}</a>
                             </td>
                         </tr>
                         @endforeach

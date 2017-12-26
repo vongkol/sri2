@@ -36,12 +36,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/home')}}">{{trans('labels.home')}}</a>
             </li>
-            <li class="nav-item"><a href="{{url('/activity')}}" class="nav-link">{{trans('labels.activity')}}</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/activity-achieve')}}">{{trans('labels.achieved')}}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/activity-setting')}}" class="nav-link">{{trans('labels.designed')}}</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/dashboard')}}">{{trans('labels.report')}}</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}} <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.settings')}} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">{{trans('labels.help')}}</a>

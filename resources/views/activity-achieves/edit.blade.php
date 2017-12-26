@@ -1,4 +1,4 @@
-@extends("layouts.activity")
+@extends("layouts.achieve")
 @section('content')
 <link href="{{asset('css/datepicker.css')}}" rel="stylesheet">
 <style>

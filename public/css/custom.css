@@ -128,3 +128,9 @@ ul.pagination li a, ul.pagination li span{
 .modal-xlg{
     max-width: 900px!important;
 }
+.my-btn{
+    margin:2px 0;
+    width: 54px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

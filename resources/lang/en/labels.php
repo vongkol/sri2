@@ -247,5 +247,8 @@ return [
     'activity_area_list' => "Activity Area List",
     'create_activity_area' => "Create Activity Area",
     'edit_activity_area' => "Edit Activity Area",
-    'supporting_document' => "Supporting Document"
+    'supporting_document' => "Supporting Document",
+    'settings' => "Settings",
+    'achieved' => "Achieved",
+    'designed' => "Designed"
 ];
