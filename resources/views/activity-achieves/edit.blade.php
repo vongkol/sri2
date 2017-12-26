@@ -383,8 +383,8 @@
                                     <td>{{$ev->total_female}}</td>
                                     <td>{{$ev->total_youth}}</td>
                                     <td>
-                                        <button type='button' class="btn btn-sm btn-success" onclick="editEvent(this,event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</button>
-                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteEvent(this,event)"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</button>
+                                        <button type='button' class="btn btn-sm btn-success btn-flat my-btn" onclick="editEvent(this,event)">{{trans('labels.edit')}}</button>
+                                        <button type='button' class="btn btn-sm btn-danger btn-flat my-btn" onclick="deleteEvent(this,event)">{{trans('labels.delete')}}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -424,8 +424,8 @@
                                     <td>{{$b->phone}}</td>
                                     <td>{{$b->position}}</td>
                                     <td>
-                                        <button type='button' class="btn btn-sm btn-success" onclick="editBeneficiary(this,event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</button>
-                                        <button type='button' class="btn btn-sm btn-danger" onclick="deleteBeneficiary(this,event)"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</button>
+                                        <button type='button' class="btn btn-sm btn-success btn-flat my-btn" onclick="editBeneficiary(this,event)">{{trans('labels.edit')}}</button>
+                                        <button type='button' class="btn btn-sm btn-danger btn-flat my-btn" onclick="deleteBeneficiary(this,event)">{{trans('labels.delete')}}</button>
                                     </td>
                                 </tr>
                             @endforeach

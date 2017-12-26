@@ -168,7 +168,7 @@
                         <div class="col-sm-12 text-center ">
                             <p class="hide" id="btnBox">
                                     <br>
-                                    <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_change')}}</button>
+                                    <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
                                     <button class="btn btn-danger btn-flat" type="button" id="btnCancel">{{trans('labels.cancel')}}</button>
                             </p>
 
@@ -235,8 +235,8 @@
                                     <td>{{$target->m11}}</td>
                                     <td>{{$target->m12}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-success" title="Edit" onclick="editTarget(this,event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                        <a href="#" class="btn btn-sm btn-danger" title="Delete" onclick="deleteTarget(this,event)"><i class="fa fa-trash"></i> {{trans('labels.delete')}}</a>
+                                        <a href="#" class="btn btn-sm btn-success btn-flat my-btn" title="Edit" onclick="editTarget(this,event)">{{trans('labels.edit')}}</a>
+                                        <a href="#" class="btn btn-sm btn-danger btn-flat my-btn" title="Delete" onclick="deleteTarget(this,event)">{{trans('labels.delete')}}</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -480,8 +480,8 @@ function saveTarget(id)
                         tr += "<td>" + target.oct + "</td>";
                         tr += "<td>" + target.nov + "</td>";
                         tr += "<td>" + target.dec + "</td>";
-                        tr += "<td>" + "<a href='#' class='btn btn-sm btn-success' title='Edit' onclick='editTarget(this,event)'><i class='fa fa-pencil'></i> {{trans('labels.edit')}}</a>&nbsp;";
-                        tr += "<a href='#' class='btn btn-sm btn-danger' title='Delete' onclick='deleteTarget(this,event)'><i class='fa fa-trash'></i> {{trans('labels.delete')}}</a>" + "</td>";
+                        tr += "<td>" + "<a href='#' class='btn btn-sm btn-success btn-flat my-btn' title='Edit' onclick='editTarget(this,event)'>{{trans('labels.edit')}}</a>&nbsp;";
+                        tr += "<a href='#' class='btn btn-sm btn-danger btn-flat my-btn' title='Delete' onclick='deleteTarget(this,event)'>{{trans('labels.delete')}}</a>" + "</td>";
                         tr += "</tr>";
                         if($("#data tr:last-child").length>0)
                         {
