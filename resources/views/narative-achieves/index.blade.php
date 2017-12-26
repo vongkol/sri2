@@ -45,12 +45,11 @@
                                 <td>{!!$nar->introduction!!}</td>
                                 <td>{{$nar->start_date}}</td>
                                 <td>{{$nar->end_date}}</td>
-                              
                                 <td>
-                                    <a class="btn btn-sm btn-info" href="{{url('/narative-achieve/detail/'.$nar->id)}}" title="Edit"><i class="fa fa-info-circle"></i> {{trans('labels.detail')}}</a>
-                                    <a class="btn btn-sm btn-success" href="{{url('/narative-achieve/edit/'.$nar->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                    <a class="btn btn-sm btn-danger" href="{{url('/narative-achieve/delete/'.$nar->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                    <a class="btn btn-sm btn-info btn-flat my-btn" href="{{url('/narative-achieve/detail/'.$nar->id)}}" title="Edit">{{trans('labels.detail')}}</a>
+                                    <a class="btn btn-sm btn-success btn-flat my-btn" href="{{url('/narative-achieve/edit/'.$nar->id)}}" title="Edit">{{trans('labels.edit')}}</a>
+                                    <a class="btn btn-sm btn-danger btn-flat my-btn" href="{{url('/narative-achieve/delete/'.$nar->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                       title="Delete">{{trans('labels.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach

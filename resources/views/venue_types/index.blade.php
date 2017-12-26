@@ -44,9 +44,9 @@
                                     <td>{{$venue_type->name}}</td>
                                     <td>{{$venue_type->ngo_name==null?'CCC':$venue_type->ngo_name}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="{{url('/venue_type/edit/'.$venue_type->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                        <a class="btn btn-danger btn-sm" href="{{url('/venue_type/delete/'.$venue_type->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                        title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                        <a class="btn btn-success btn-sm btn-flat my-btn" href="{{url('/venue_type/edit/'.$venue_type->id)}}" title="Edit">{{trans('labels.edit')}}</a>
+                                        <a class="btn btn-danger btn-sm btn-flat my-btn" href="{{url('/venue_type/delete/'.$venue_type->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                        title="Delete">{{trans('labels.delete')}}</a>
                                     </td>
                                 </tr>
                             @endforeach

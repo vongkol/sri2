@@ -54,9 +54,9 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->role_name}}</td>
                                 <td>
-                                    <a class="btn btn-info btn-sm"  href="{{url('/user/update-password/'.$user->id)}}" title="Reset Password"><i class="fa fa-shield"></i> {{trans('labels.reset_password')}}</a>
-                                    <a class="btn btn-success btn-sm"  href="{{url('/user/edit/'.$user->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                    <a class="btn btn-danger btn-sm"  href="{{url('/user/delete/'.$user->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')" title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                    <a class="btn btn-info btn-sm btn-flat my-btn-permission"  href="{{url('/user/update-password/'.$user->id)}}" title="Reset Password">{{trans('labels.reset_password')}}</a>
+                                    <a class="btn btn-success btn-sm btn-flat my-btn"  href="{{url('/user/edit/'.$user->id)}}" title="Edit">{{trans('labels.edit')}}</a>
+                                    <a class="btn btn-danger btn-sm btn-flat my-btn"  href="{{url('/user/delete/'.$user->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')" title="Delete">{{trans('labels.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -44,9 +44,9 @@
                                     <td>{{$ind->name}}</td>
                                     <td>{{$ind->ngo_name==null?'CCC':$ind->ngo_name}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="{{url('/indicator-type/edit/'.$ind->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                        <a class="btn btn-danger btn-sm" href="{{url('/indicator-type/delete/'.$ind->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                        title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                        <a class="btn btn-success btn-sm btn-flat my-btn" href="{{url('/indicator-type/edit/'.$ind->id)}}" title="Edit">{{trans('labels.edit')}}</a>
+                                        <a class="btn btn-danger btn-sm btn-flat my-btn" href="{{url('/indicator-type/delete/'.$ind->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                        title="Delete">{{trans('labels.delete')}}</a>
                                     </td>
                                 </tr>
                             @endforeach

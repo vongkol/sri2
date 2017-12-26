@@ -152,4 +152,14 @@ class IndicatorAchievedController extends Controller
         $r->session()->flash('sms2', 'Your description changes have been saved successfully!');
         return redirect('/indicator-achieve/edit/'.$id);            
     }
+    public function delete($id)
+    {
+        DB::table('indicator_achieves')->where('id', $id)->update(["active"=>0]);
+        $page = @$_GET['page'];
+        if ($page>0)
+        {
+            return redirect('/indicator-achieve?page='.$page);
+        }
+        return redirect('/indicator-achieve');
+    }
 }

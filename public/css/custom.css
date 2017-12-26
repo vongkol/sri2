@@ -130,7 +130,13 @@ ul.pagination li a, ul.pagination li span{
 }
 .my-btn{
     margin:2px 0;
-    width: 54px;
+    width: 60px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.my-btn-permission{
+    margin:2px 0;
+    width: 120px;
     padding-top: 2px;
     padding-bottom: 2px;
 }

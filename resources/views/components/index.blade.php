@@ -44,9 +44,9 @@
                                     <td>{{$component->name}}</td>
                                     <td>{{$component->ngo_name==null?'CCC':$component->ngo_name}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="{{url('/component/edit/'.$component->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                        <a class="btn btn-danger btn-sm"  href="{{url('/component/delete/'.$component->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                        title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                        <a class="btn btn-success btn-sm btn-flat my-btn" href="{{url('/component/edit/'.$component->id)}}" title="Edit">{{trans('labels.edit')}}</a>
+                                        <a class="btn btn-danger btn-sm btn-flat my-btn"  href="{{url('/component/delete/'.$component->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                        title="Delete">{{trans('labels.delete')}}</a>
                                     </td>
                                 </tr>
                             @endforeach
