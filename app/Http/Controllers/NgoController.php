@@ -65,6 +65,20 @@ class NgoController extends Controller
                 'ngo_id' => $i
             );
             $x = DB::table('roles')->insert($data);
+            $message = "<h3 style='color:#039'>Your new NGO has been created successfully!</h3>";
+            $message .= "<br>";
+            $message .= "<p>This is your NGO Information: </p><hr>";
+            $message .= "<p>NGO Name: <strong>{$r->name}</strong></p>";
+            $message .= "<p>Email: <strong>{$r->email}</strong></p>";
+            $message .= "<p>Phone: <strong>{$r->phone}</strong></p>";
+            $message .= "<p>Focal Person: <strong>{$r->person_name}</strong></p>";
+            $message .= "<p>Gender: <strong>{$r->gender}</strong></p>";
+            $message .= "<p>Focal Email: <strong>{$r->person_email}</strong></p>";
+            $message .= "<p>Focal Phone: <strong>{$r->person_phone}</strong></p>";
+            $message .= "<p>Position: <strong>{$r->person_position}</strong></p>";
+            $message .= "<hr>";
+            $message .= "<p>If you have any problem with your account, please contact the system admin.<br>Thank you!</p>";
+            Right::send_email($r->email, $message);
             $r->session()->flash("sms", "New ngo has been created successfully!");
             return redirect("/ngo/create");
         }

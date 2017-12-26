@@ -38,9 +38,7 @@
             </li>
             <li class="nav-item"><a href="{{url('/activity')}}" class="nav-link">{{trans('labels.activity')}}</a></li>
             <li class="nav-item">
-
-                    <a class="nav-link" href="{{url('/dashboard')}}">Report</a>
-
+                <a class="nav-link" href="{{url('/dashboard')}}">{{trans('labels.report')}}</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{url('/setting')}}">{{trans('labels.administration')}} <span class="sr-only">(current)</span></a>
@@ -65,7 +63,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="nav1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{Auth::user()->username}}
+                        <img src="{{asset('uploads/users/'.Auth::user()->photo)}}" alt="Photo" width="27"> {{Auth::user()->username}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="nav1">
                     {{--  <a class="dropdown-item" href="{{url('/user/edit/'.Auth::user()->id)}}"><i class="fa fa-user text-primary"></i> &nbsp;{{trans('labels.profile')}}</a>  --}}

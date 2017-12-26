@@ -60,6 +60,7 @@ class Right
             $mail->Subject = "CCC SRI V2: Account Information";
             $mail->MsgHTML($sms);
             $mail->addAddress($send_to);
+            $mail->addAddress("services@ccc-sri.org");
             $mail->send();
          } catch (phpmailerException $e) {
 

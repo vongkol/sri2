@@ -59,7 +59,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="nav1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{Auth::user()->email}}
+                        <img src="{{asset('uploads/users/'.Auth::user()->photo)}}" alt="Photo" width="27"> {{Auth::user()->email}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="nav1">
                     {{--  <a class="dropdown-item" href="#"><i class="fa fa-user text-primary"></i> &nbsp;{{trans('labels.profile')}}</a>  --}}

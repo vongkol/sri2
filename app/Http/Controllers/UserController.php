@@ -191,11 +191,20 @@ class UserController extends Controller
             'role_id' => $r->role,
             'create_by' => Auth::user()->id
         );
-        $i = DB::table('users')->insert($data);
+        $i = DB::table('users')->insertGetId($data);
         if ($i)
         {
-            $message = "<h3 style='text-align:center;color:#039'>Your new account has been created successfully!</h3>";
-            $message .= "<br>";
+            // upload photo
+            if ($r->hasFile("photo"))
+            {
+                $file = $r->file('photo');
+                $file_name = $i . "-" .$file->getClientOriginalName();
+                $destinationPath = 'uploads/users/';
+                $file->move($destinationPath, $file_name);
+                DB::table('users')->where("id", $i)->update(["photo"=>$file_name]);
+            }
+            $message = "<h3 style='color:#039'>Your new account has been created successfully!</h3>";
+            $message .= "<hr>";
             $message .= "<p>Now you can login to SRI tool with the following account: </p>";
             $message .= "<p>Username: <strong>{$r->username}</strong></p>";
             $message .= "<p>Password: <strong>{$r->password}</strong></p>";
@@ -228,6 +237,14 @@ class UserController extends Controller
         if($r->password!=null)
         {
             $data['password'] = bcrypt($r->password);
+        }
+        if ($r->hasFile("photo"))
+        {
+            $file = $r->file('photo');
+            $file_name = $r->id . "-" .$file->getClientOriginalName();
+            $destinationPath = 'uploads/users/';
+            $file->move($destinationPath, $file_name);
+            $data["photo"] = $file_name;
         }
         $i = DB::table('users')->where('id', $r->id)->update($data);
 

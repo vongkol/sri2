@@ -173,6 +173,7 @@ return [
     'table_list' => "Table List",
     'figure' => "Figure",
     'photos' => "Photos",
+    'photo' => "Photo",
     'summary' => "Summary",
     'introduction' => "Introduction",
     'result_framework' => "Result Framework",

@@ -119,9 +119,7 @@
                                            <label for="cpassword" class="control-label col-sm-4 lb">{{trans('labels.confirm_password')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <input type="password" required name="cpassword" id="cpassword" class="form-control">
-                                                <br>
-                                               <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
-                                               <button class="btn btn-danger btn-flat" type="reset" id="btnCancel">{{trans('labels.cancel')}}</button>
+                                               
                                            </div>
                                        </div>
                                    </div>
@@ -138,6 +136,32 @@
                                        </div>
                                        
                                    </div>
+                               </div>
+                               <div class="row">
+                                    <div class="col">
+                                        <div class="form-group row">
+                                            <label for="photo" class="control-label col-sm-4 lb">{{trans('labels.photo')}}</label>
+                                            <div class="col-sm-8">
+                                                <input type="file" required name="photo" id="photo" class="form-control" onchange="loadFile(event)">
+                                                <p>
+                                                    <br>
+                                                    <img src="{{asset('uploads/users/default.png')}}" alt="Photo" width="170" id="preview">
+                                                </p>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                    <div class="form-group row">
+                                            <label class="control-label col-sm-4 lb">&nbsp;</label>
+                                            <div class="col-sm-8">
+                                                <br>
+                                                <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
+                                                <button class="btn btn-danger btn-flat" type="reset" id="btnCancel">{{trans('labels.cancel')}}</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                                </div>
                                
                                <div class="row">
@@ -198,7 +222,10 @@
                 */
             });
         });
-       
+        function loadFile(e){
+            var output = document.getElementById('preview');
+            output.src = URL.createObjectURL(e.target.files[0]);
+        }
     </script>
 
 @endsection
