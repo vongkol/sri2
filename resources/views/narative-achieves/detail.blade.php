@@ -1,4 +1,4 @@
-@extends("layouts.setting")
+@extends("layouts.achieve")
 @section('content')
     <div class="row">
         <div class="col-sm-12">
