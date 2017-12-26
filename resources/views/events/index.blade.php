@@ -9,7 +9,7 @@
                             <strong>{{trans('labels.event_list')}}</strong>&nbsp;&nbsp;
                             <a href="{{url('/event/create')}}"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 {{Auth::user()->ngo_id>0?'hide':''}}">
                             <form action="" method="get" name="search">
                                 <select name="user_ngo" id="user_ngo" class="chosen-select">
                                     @foreach($ngos as $ngo)
