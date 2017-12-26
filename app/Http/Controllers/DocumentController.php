@@ -16,6 +16,7 @@ class DocumentController extends Controller
     {
         $data = array(
             'description' => $r->description,
+            'url' => $r->url,
             'activity_achieved_id' => $r->act_id
         );
         $i = DB::table('activity_achieved_documents')->insertGetId($data);

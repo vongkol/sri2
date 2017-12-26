@@ -19,7 +19,6 @@ class ActivityAchievedController extends Controller
     // index
     public function index()
     {
-
         $x = Auth::user()->ngo_id;
         $data['activities'] = DB::table('activity_achieves')
                 ->join('activity_types', 'activity_achieves.activity_type_id', 'activity_types.id')

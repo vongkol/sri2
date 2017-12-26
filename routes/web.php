@@ -65,8 +65,6 @@ Route::get('/component/delete/{id}', "ComponentController@delete");
 Route::post('/component/save', "ComponentController@save");
 Route::post('/component/update', "ComponentController@update");
 
-
-
 /// project
 Route::get('/project', "ProjectController@index");
 Route::get('/project/create', "ProjectController@create");

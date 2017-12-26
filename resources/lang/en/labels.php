@@ -89,6 +89,7 @@ return [
     'edit_activity_category' => "Edit Activity Category",
     'activity_category_list' => "Activity Category List",
     'event' => "Event",
+    'url' => "URL",
     'new_event' => "New Event",
     'create_event' => "Create Event",
     'edit_event' => "Edit Event",

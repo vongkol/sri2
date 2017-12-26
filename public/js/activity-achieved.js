@@ -380,6 +380,7 @@ if(o)
     var form_data = new FormData();
     form_data.append('doc_file_name', file_data);
     form_data.append("description", $('#doc_description').val());
+    form_data.append("url", $('#url').val());
     form_data.append("act_id", id);
     $("#docsms").html("<img src='" + asset + "/ajax-loader.gif" + "'>");
     $.ajax({
@@ -403,6 +404,7 @@ if(o)
             tr += "<td>" + (counter++) + "</td>";
             tr += "<td>" + "<a href='" + doc_url + "/" + sms.file_name + "' target='_blank'>" + sms.file_name + "</a>" + "</td>";
             tr +="<td>" + sms.description+ "</td>";
+            tr +="<td>" + sms.url+ "</td>";
             tr += "<td>" + "<button type='button' onclick='deleteDoc(this,event)' class='btn btn-sm btn-danger'><i class='fa fa-trash'></i> Delete</button>" + "</td>";
             tr +="</tr>";
             
@@ -414,6 +416,7 @@ if(o)
             }
             $("#docsms").html("Your doc has been saved!");
             $("#doc_description").val("");
+            $("#url").val("");
             $("#doc_file_name").val("");
         },
     });
@@ -496,16 +499,7 @@ function saveEvent()
         });
     }
 }
-function editDescription()
-{
-    $("textarea").removeAttr("disabled");
-    $("#description_box").removeClass("hide");
-}
-function cancelDescription()
-{
-    $("textarea").attr("disabled", "disabled");    
-    $("#description_box").addClass("hide");
-}
+
 function editFunding()
 {
     $("#total_budget").removeAttr("disabled");
