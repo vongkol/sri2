@@ -42,6 +42,7 @@ return [
     'project' => "Project",
     'id' => "&numero;", 
     'name' => "Name",
+    'photo' => "Photo",
     'none_select' => "None Select",
     'edit_funding' => "Edit Funding",
     'activity_subject' => "Activity Subject",

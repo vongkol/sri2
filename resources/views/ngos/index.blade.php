@@ -11,7 +11,7 @@
                     <table class="tbl">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>{!!trans('labels.id')!!}</th>
                             <th>{{trans('labels.organization_name')}}</th>
                             <th>{{trans('labels.focal_person_name')}}</th>
                             <th>{{trans('labels.focal_person_gender')}}</th>
@@ -32,7 +32,7 @@
                         ?>
                         @foreach($ngos as $ngo)
                             <tr>
-                                <td>{{$ngo->id}}</td>
+                                <td>{{$i++}}</td>
                                 <td>
                                     <a href="{{url('/ngo/detail/'.$ngo->id)}}">{{$ngo->name}}</a>
                                 </td>
@@ -44,9 +44,9 @@
                                 <td>{{$ngo->email}}</td>
                                 <td>{{$ngo->base}}</td>
                                 <td>
-                                    <a class="btn btn-success btn-sm" href="{{url('/ngo/edit/'.$ngo->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                    <a class="btn btn-danger btn-sm" href="{{url('/ngo/delete/'.$ngo->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                       title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                    <a class="btn btn-success btn-sm btn-flat my-btn" href="{{url('/ngo/edit/'.$ngo->id)}}" title="Edit">{{trans('labels.edit')}}</a>
+                                    <a class="btn btn-danger btn-sm btn-flat my-btn" href="{{url('/ngo/delete/'.$ngo->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                       title="Delete">{{trans('labels.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -10,6 +10,16 @@
                 <div class="card-block">
                    <div class="row">
                        <div class="col-sm-12">
+                            @if ($errors->any())
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    @foreach ($errors->all() as $error)
+                                        {{ $error }}
+                                    @endforeach
+                                </div>
+                            @endif
                            @if(Session::has('sms'))
                                <div class="alert alert-success" role="alert">
                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,7 +43,7 @@
                            <form action="{{url('/user/save')}}" enctype="multipart/form-data" method="post" id="frm" class="form-horizontal">
                                {{csrf_field()}}
                                <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="name" class="control-label col-sm-4 lb">{{trans('labels.full_name')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -41,7 +51,7 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="gender" class="control-label col-sm-4 lb">{{trans('labels.gender')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -54,7 +64,7 @@
                                    </div>
                                </div>
                                <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="email" class="control-label col-sm-4 lb">{{trans('labels.email')}}</label>
                                            <div class="col-sm-8">
@@ -62,7 +72,7 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="phone" class="control-label col-sm-4 lb">{{trans('labels.phone')}}</label>
                                            <div class="col-sm-8">
@@ -72,7 +82,7 @@
                                    </div>
                                </div>
                                <div class="row">
-                                   <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="username" class="control-label col-sm-4 lb">{{trans('labels.username')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -80,7 +90,7 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col-sm-6 {{Auth::user()->ngo_id>0?'hide':''}}">
                                     <div class="form-group row">
                                            <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -91,11 +101,10 @@
                                               </select>
                                            </div>
                                        </div>
-                                       
                                    </div>
                                </div>
                                <div class="row">
-                                   <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="password" class="control-label col-sm-4 lb">{{trans('labels.password')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -103,18 +112,17 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="position" class="control-label col-sm-4 lb">{{trans('labels.position')}}</label>
                                            <div class="col-sm-8">
-                                               <input type="text" name="position" id="position" class="form-control">
-                                              
+                                               <input type="text" name="position" id="position" class="form-control"> 
                                            </div>
                                        </div>
                                    </div>
                                </div>
                                <div class="row">
-                                   <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="cpassword" class="control-label col-sm-4 lb">{{trans('labels.confirm_password')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -123,8 +131,8 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
-                                   <div class="form-group row">
+                                   <div class="col-sm-6">
+                                        <div class="form-group row">
                                            <label for="role" class="control-label col-sm-4 lb">{{trans('labels.user_role')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
                                                <select name="role" id="role" class="form-control sl">
@@ -134,24 +142,22 @@
                                                </select>
                                            </div>
                                        </div>
-                                       
                                    </div>
                                </div>
                                <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <div class="form-group row">
                                             <label for="photo" class="control-label col-sm-4 lb">{{trans('labels.photo')}}</label>
                                             <div class="col-sm-8">
-                                                <input type="file" required name="photo" id="photo" class="form-control" onchange="loadFile(event)">
+                                                <input type="file" name="photo" id="photo" class="form-control" onchange="loadFile(event)">
                                                 <p>
                                                     <br>
                                                     <img src="{{asset('uploads/users/default.png')}}" alt="Photo" width="170" id="preview">
                                                 </p>
-                                            
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                     <div class="form-group row">
                                             <label class="control-label col-sm-4 lb">&nbsp;</label>
                                             <div class="col-sm-8">
@@ -160,12 +166,10 @@
                                                 <button class="btn btn-danger btn-flat" type="reset" id="btnCancel">{{trans('labels.cancel')}}</button>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                </div>
-                               
                                <div class="row">
-                                   <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label class="control-label col-sm-4 lb">&nbsp;</label>
                                            <div class="col-sm-8">

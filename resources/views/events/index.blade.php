@@ -9,7 +9,7 @@
                             <strong>{{trans('labels.event_list')}}</strong>&nbsp;&nbsp;
                             <a href="{{url('/event/create')}}"><i class="fa fa-plus"></i> {{trans('labels.new')}}</a>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 {{Auth::user()->ngo_id>0?'hide':''}}">
                             <form action="" method="get" name="search">
                                 <select name="user_ngo" id="user_ngo" class="chosen-select">
                                     @foreach($ngos as $ngo)
@@ -44,9 +44,9 @@
                                     <td>{{$event->name}}</td>
                                     <td>{{$event->ngo_name==null?'CCC':$event->ngo_name}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="{{url('/event/edit/'.$event->id)}}" title="Edit"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                        <a class="btn btn-danger btn-sm" href="{{url('/event/delete/'.$event->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
-                                        title="Delete"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                        <a class="btn btn-success btn-sm btn-flat my-btn" href="{{url('/event/edit/'.$event->id)}}" title="Edit">{{trans('labels.edit')}}</a>
+                                        <a class="btn btn-danger btn-sm btn-flat my-btn" href="{{url('/event/delete/'.$event->id ."?page=".@$_GET["page"])}}" onclick="return confirm('You want to delete?')"
+                                        title="Delete">{{trans('labels.delete')}}</a>
                                     </td>
                                 </tr>
                             @endforeach

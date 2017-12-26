@@ -35,7 +35,7 @@
                     <input type="hidden" value="{{$setting->id}}" id="id" name="id">
                     <div class="row">
                         <div class="col-sm-6">
-                             <div class="form-group row">
+                             <div class="form-group row {{Auth::user()->ngo_id>0?'hide':''}}">
                                 <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="ngo" id="ngo" class="form-control chosen-select" onchange="binding()" disabled>
@@ -235,8 +235,8 @@
                                     <td>{{$target->m11}}</td>
                                     <td>{{$target->m12}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-success btn-sm" title="Edit" onclick="editTarget(this,event)"><i class="fa fa-pencil"></i> {{trans('labels.edit')}}</a>
-                                        <a href="#" class="btn btn-danger btn-sm" title="Delete" onclick="deleteTarget(this,event)"><i class="fa fa-trash-o"></i> {{trans('labels.delete')}}</a>
+                                        <a href="#" class="btn btn-success btn-sm btn-flat my-btn" title="Edit" onclick="editTarget(this,event)">{{trans('labels.edit')}}</a>
+                                        <a href="#" class="btn btn-danger btn-sm btn-flat my-btn" title="Delete" onclick="deleteTarget(this,event)">{{trans('labels.delete')}}</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -457,8 +457,8 @@ function saveTarget(id)
                         tr += "<td>" + target.oct + "</td>";
                         tr += "<td>" + target.nov + "</td>";
                         tr += "<td>" + target.dec + "</td>";
-                        tr += "<td>" + "<a href='#' class='btn btn-success btn-sm' title='Edit' onclick='editTarget(this,event)'><i class='fa fa-pencil'></i> {{trans('labels.edit')}}</a>&nbsp;";
-                        tr += "<a href='#' class='btn btn-danger btn-sm' title='Delete' onclick='deleteTarget(this,event)'><i class='fa fa-trash-o'></i> {{trans('labels.delete')}} </a>" + "</td>";
+                        tr += "<td>" + "<a href='#' class='btn btn-success btn-sm btn-flat my-btn' title='Edit' onclick='editTarget(this,event)'>{{trans('labels.edit')}}</a>&nbsp;";
+                        tr += "<a href='#' class='btn btn-danger btn-sm btn-flat my-btn' title='Delete' onclick='deleteTarget(this,event)'>{{trans('labels.delete')}} </a>" + "</td>";
                         tr += "</tr>";
                         if($("#data tr:last-child").length>0)
                         {

@@ -476,7 +476,7 @@ function saveEvent()
                     tr +="<td>" + sms.total_participant + "</td>";
                     tr +="<td>" + sms.total_female + "</td>";
                     tr +="<td>" + sms.total_youth + "</td>";
-                    tr += "<td>" + "<button type='button' class='btn btn-sm btn-success' onclick='editEvent(this,event)'><i class='fa fa-pencil'></i> Edit</button> <button type='button' class='btn btn-sm btn-danger' onclick='deleteEvent(this,event)'><i class='fa fa-trush-o'></i> Delete</button>" + "</td>";
+                    tr += "<td>" + "<button type='button' class='btn btn-sm btn-success btn-flat my-btn' onclick='editEvent(this,event)'>Edit</button> <button type='button' class='btn btn-sm btn-danger btn-flat my-btn' onclick='deleteEvent(this,event)'>Delete</button>" + "</td>";
                     tr +="</tr>";
                     
                     if(counter>0){
@@ -605,7 +605,7 @@ function saveBeneficiary()
                     tr +="<td>" + sms.email + "</td>";
                     tr +="<td>" + sms.phone + "</td>";
                     tr +="<td>" + sms.position + "</td>";
-                    tr += "<td>" + "<button type='button' class='btn btn-sm btn-success' onclick='editBeneficiary(this,event)'><i class='fa fa-pencil'></i> Edit</button> <button type='button' class='btn btn-sm btn-danger' onclick='deleteBeneficiary(this,event)'><i class='fa fa-trush-o'></i> Delete</button>" + "</td>";
+                    tr += "<td>" + "<button type='button' class='btn btn-sm btn-success btn-flat my-btn' onclick='editBeneficiary(this,event)'>Edit</button> <button type='button' class='btn btn-sm btn-danger btn-flat my-btn' onclick='deleteBeneficiary(this,event)'>Delete</button>" + "</td>";
                     tr +="</tr>";
                     
                     if(counter>0){

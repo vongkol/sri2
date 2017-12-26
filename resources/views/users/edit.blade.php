@@ -10,6 +10,16 @@
                 <div class="card-block">
                     <div class="row">
                         <div class="col-sm-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                     @if(Session::has('sms'))
                         <div class="alert alert-success" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,8 +43,8 @@
                     <form action="{{url('/user/update')}}" class="form-horizontal" onsubmit="return confirm('Do you want to save changes?')" enctype="multipart/form-data" method="post" id="frm">
                         {{csrf_field()}}
                         <input type="hidden" name="id" value="{{$user->id}}">
-                        <div class="row">
-                                    <div class="col">
+                                 <div class="row">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="name" class="control-label col-sm-4 lb">{{trans('labels.full_name')}}<span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -42,7 +52,7 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="gender" class="control-label col-sm-4 lb">{{trans('labels.gender')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -55,7 +65,7 @@
                                    </div>
                                </div>
                                <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="email" class="control-label col-sm-4 lb">{{trans('labels.email')}}</label>
                                            <div class="col-sm-8">
@@ -63,7 +73,7 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="phone" class="control-label col-sm-4 lb">{{trans('labels.phone')}}</label>
                                            <div class="col-sm-8">
@@ -73,7 +83,7 @@
                                    </div>
                                </div>
                                <div class="row">
-                                   <div class="col">
+                                   <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="username" class="control-label col-sm-4 lb">{{trans('labels.username')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -81,7 +91,7 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col {{Auth::user()->ngo_id>0?'hide':''}}">
                                    <div class="form-group row">
                                            <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -95,7 +105,7 @@
                                    </div>
                                </div>
                                <div class="row">
-                                   <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="password" class="control-label col-sm-4 lb">{{trans('labels.password')}}</label>
                                            <div class="col-sm-8">
@@ -103,7 +113,7 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="position" class="control-label col-sm-4 lb">{{trans('labels.position')}}</label>
                                            <div class="col-sm-8">
@@ -114,7 +124,7 @@
                                    </div>
                                </div>
                                <div class="row">
-                                   <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label for="cpassword" class="control-label col-sm-4 lb">{{trans('labels.confirm_password')}}</label>
                                            <div class="col-sm-8">
@@ -123,7 +133,7 @@
                                            </div>
                                        </div>
                                    </div>
-                                   <div class="col">
+                                   <div class="col-sm-6">
                                         <div class="form-group row">
                                            <label for="role" class="control-label col-sm-4 lb">{{trans('labels.user_role')}} <span class="text-danger">*</span></label>
                                            <div class="col-sm-8">
@@ -137,11 +147,11 @@
                                    </div>
                                </div>
                                <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <div class="form-group row">
                                             <label for="photo" class="control-label col-sm-4 lb">{{trans('labels.photo')}}</label>
                                             <div class="col-sm-8">
-                                                <input type="file" required name="photo" id="photo" class="form-control" onchange="loadFile(event)">
+                                                <input type="file" name="photo" id="photo" class="form-control" onchange="loadFile(event)">
                                                 <p>
                                                     <br>
                                                     <img src="{{asset('uploads/users/'.$user->photo)}}" alt="Photo" width="170" id="preview">
@@ -150,20 +160,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                     <div class="form-group row">
                                             <label class="control-label col-sm-4 lb">&nbsp;</label>
                                             <div class="col-sm-8">
-                                                    <br>
-                                                    <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
-                                                    <button class="btn btn-danger btn-flat" type="button" id="btnCancel">{{trans('labels.cancel')}}</button>
+                                                <br>
+                                                <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
+                                                <button class="btn btn-danger btn-flat" type="button" id="btnCancel">{{trans('labels.cancel')}}</button>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                </div>
                                <div class="row">
-                                   <div class="col">
+                                    <div class="col-sm-6">
                                        <div class="form-group row">
                                            <label class="control-label col-sm-4 lb">&nbsp;</label>
                                            <div class="col-sm-8">
