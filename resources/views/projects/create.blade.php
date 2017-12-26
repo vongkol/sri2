@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row {{Auth::user()->ngo_id>0?'hide':''}}">
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <label for="ngo" class="control-label col-sm-3 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
@@ -61,11 +61,16 @@
                                             <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                         @endforeach
                                         </select>
-                                         <br><br>
-                                        <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
-                                        <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
+                                        
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 off-set-3">
+                                
+                                    <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
+                                    <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
                             </div>
                         </div>
                     </form>
