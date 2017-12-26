@@ -405,7 +405,7 @@ if(o)
             tr += "<td>" + "<a href='" + doc_url + "/" + sms.file_name + "' target='_blank'>" + sms.file_name + "</a>" + "</td>";
             tr +="<td>" + sms.description+ "</td>";
             tr +="<td>" + sms.url+ "</td>";
-            tr += "<td>" + "<button type='button' onclick='deleteDoc(this,event)' class='btn btn-sm btn-danger'><i class='fa fa-trash'></i> Delete</button>" + "</td>";
+            tr += "<td>" + "<button type='button' onclick='deleteDoc(this,event)' class='btn btn-sm btn-danger btn-flat my-btn'>Delete</button>" + "</td>";
             tr +="</tr>";
             
             if(counter>0){
