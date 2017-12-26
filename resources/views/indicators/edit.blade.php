@@ -35,7 +35,7 @@
                     <input type="hidden" name="id" value="{{$indicator_setting->id}}" id="id">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="form-group row">
+                            <div class="form-group row {{Auth::user()->ngo_id>0?'hide':''}}">
                                 <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="ngo" id="ngo" class="form-control chosen-select" onchange="binding()" disabled>

@@ -11,7 +11,7 @@
                     <table class="tbl">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>{!!trans('labels.id')!!}</th>
                             <th>{{trans('labels.organization_name')}}</th>
                             <th>{{trans('labels.focal_person_name')}}</th>
                             <th>{{trans('labels.focal_person_gender')}}</th>
@@ -32,7 +32,7 @@
                         ?>
                         @foreach($ngos as $ngo)
                             <tr>
-                                <td>{{$ngo->id}}</td>
+                                <td>{{$i++}}</td>
                                 <td>
                                     <a href="{{url('/ngo/detail/'.$ngo->id)}}">{{$ngo->name}}</a>
                                 </td>

@@ -40,7 +40,7 @@
                     {{csrf_field()}}
                     <input type="hidden" name="id" id="id" value="{{$indicator_achieve->id}}">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 {{Auth::user()->ngo_id>0?'hide':''}}">
                             <div class="form-group row">
                                 <label for="ngo" class="control-label col-sm-4 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">

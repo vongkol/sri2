@@ -56,21 +56,23 @@
                                     <label for="ngo" class="control-label col-sm-3 lb">{{trans('labels.user_ngo')}} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="ngo" id="ngo" class="form-control chosen-select">
-                                       
                                         @foreach($ngos as $ngo)
                                             <option value="{{$ngo->id}}">{{$ngo->name}}</option>
                                         @endforeach
                                         </select>
-                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 off-set-3">
-                                
-                                    <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
-                                    <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
+                            <div class="col-sm-6"> 
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-3 lb"></label>
+                                    <div class="col-sm-8">
+                                        <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
+                                        <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
