@@ -69,7 +69,7 @@ class IndicatorAchievedController extends Controller
             'start_date' => $r->start_date,
             'end_date' => $r->end_date,
             'indicator_setting_id' => $r->project_name,
-            'indicator_mode' => $r->indicator_mode,
+//            'indicator_mode' => $r->indicator_mode,
             'ngo_id' => $r->ngo,
             'create_by' => Auth::user()->id
         );
@@ -82,7 +82,7 @@ class IndicatorAchievedController extends Controller
             'start_date' => $r->start_date,
             'end_date' => $r->end_date,
             'indicator_setting_id' => $r->project_name,
-            'indicator_mode' => $r->indicator_mode,
+//            'indicator_mode' => $r->indicator_mode,
             'ngo_id' => $r->ngo
         );
         $id = DB::table("indicator_achieves")->where('id', $r->id)->update($data);

@@ -135,4 +135,13 @@ class ProjectController extends Controller
     {
         return DB::table('projects')->where('active',1)->where('ngo_id', $id)->get();
     }
+    // get project by ngo
+    public function ngo_project($id)
+    {
+        return DB::table('activity_settings')
+                ->join('projects', 'activity_settings.project_id', 'projects.id')
+                ->where('activity_settings.ngo_id', $id)
+                ->select('activity_settings.*', 'projects.name as project_name')
+                ->get();
+    }
 }

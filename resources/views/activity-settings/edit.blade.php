@@ -46,7 +46,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}} <span class="text-danger">*</span></label>
+                                <label for="activity_code" class="control-label col-sm-4 lb">{{trans('labels.activity_code')}}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{$setting->activity_code}}" id="activity_code" name="activity_code" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="activity_name" class="control-label col-sm-4 lb">{{trans('labels.activity_name')}} <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <textarea name="activity_name" id="activity_name" cols="30" rows="2" class="form-control" disabled>{{$setting->activity_name}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$setting->project_code}}" name="project_code" id="project_code" disabled>
                                 </div>
@@ -61,36 +73,24 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="activity_code" class="control-label col-sm-4 lb">{{trans('labels.activity_code')}} <span class="text-danger">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$setting->activity_code}}" id="activity_code" name="activity_code" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="activity_name" class="control-label col-sm-4 lb">{{trans('labels.activity_name')}} <span class="text-danger">*</span></label>
-                                <div class="col-sm-8">
-                                    <textarea name="activity_name" id="activity_name" cols="30" rows="2" class="form-control" disabled>{{$setting->activity_name}}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="activity_type" class="control-label col-sm-4 lb">{{trans('labels.activity_type')}}</label>
-                                <div class="col-sm-8">
-                                    <select name="activity_type" id="activity_type" class="form-control chosen-select" data-placeholder=" " disabled>
-                                                                                                                
-                                    @foreach($activity_types as $ac)
-                                        <option value="{{$ac->id}}" {{$setting->activity_type_id==$ac->id?'selected':''}}>{{$ac->name}}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="activity_definition" class="control-label col-sm-4 lb">{{trans('labels.activity_definition')}}</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$setting->activity_definition}}" id="activity_definition" name="activity_definition" disabled>
-                                </div>
-                            </div>
-                           
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="activity_type" class="control-label col-sm-4 lb">{{trans('labels.activity_type')}}</label>--}}
+                                {{--<div class="col-sm-8">--}}
+                                    {{--<select name="activity_type" id="activity_type" class="form-control chosen-select" data-placeholder=" " disabled>--}}
+                                                                                                                {{----}}
+                                    {{--@foreach($activity_types as $ac)--}}
+                                        {{--<option value="{{$ac->id}}" {{$setting->activity_type_id==$ac->id?'selected':''}}>{{$ac->name}}</option>--}}
+                                    {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="activity_definition" class="control-label col-sm-4 lb">{{trans('labels.activity_definition')}}</label>--}}
+                                {{--<div class="col-sm-8">--}}
+                                    {{--<input type="text" class="form-control" value="{{$setting->activity_definition}}" id="activity_definition" name="activity_definition" disabled>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                           {{----}}
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="deliverable" class="control-label col-sm-4 lb"> {{trans('labels.deliverable')}}/ {{trans('labels.unit')}}</label>
+                                <label for="deliverable" class="control-label col-sm-4 lb">Unit</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$setting->deliverable}}" id="deliverable" name="deliverable" disabled>
                                 </div>
@@ -136,6 +136,7 @@
                                 <label for="location" class="control-label col-sm-4 lb">{{trans('labels.location')}}</label>
                                 <div class="col-sm-8">
                                     <select name="location" id="location" class="form-control chosen-select" style="height: 37px" disabled>
+                                        <option value="">&nbsp;</option>
                                     @foreach($provinces as $pro)
                                         <option value="{{$pro->name}}" {{$setting->location==$pro->name?'selected':''}}>{{$pro->name}}</option>
                                     @endforeach
@@ -272,6 +273,16 @@
 
             $('#person_responsible').multiSelect();
             $("#component_responsible").multiSelect();
+            var d = new Date();
+            var y = d.getFullYear();
+            $("#year").val(y);
+            $("#start_date, #end_date").datepicker({
+                orientation: 'bottom',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true
+            });
         });
         // function binding data on ngo changed
         function binding()

@@ -21,10 +21,10 @@ class ActivityAchievedController extends Controller
     {
         $x = Auth::user()->ngo_id;
         $data['activities'] = DB::table('activity_achieves')
-                ->join('activity_types', 'activity_achieves.activity_type_id', 'activity_types.id')
+//                ->join('activity_types', 'activity_achieves.activity_type_id', 'activity_types.id')
                 ->join('activity_settings', 'activity_achieves.activity_setting_id', 'activity_settings.id')
                 ->where('activity_achieves.active',1)
-                ->select('activity_achieves.*', 'activity_types.name as activity_type_name', 'activity_settings.activity_name')
+                ->select('activity_achieves.*', 'activity_settings.activity_name', 'activity_settings.activity_code')
                 ->paginate(12);
         if($x>0)
         {
@@ -45,25 +45,27 @@ class ActivityAchievedController extends Controller
 
         $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
         $data['users'] = DB::table('users')->where('active',1)->where('ngo_id',0)->get();
+        $data['venues'] = DB::table('venue_types')->where('active', 1)->where('ngo_id', 0)->get();
         if($x>0)
         {
             $data['ngos'] = DB::table('ngos')->where('active',1)->where('id',$x)->orderBy('name')->get();  
             $data['users'] = DB::table('users')->where('active',1)->where('ngo_id',$x)->get();
-
+            $data['venues'] = DB::table('venue_types')->where('active', 1)->where('ngo_id', $x)->get();
         }
         return view('activity-achieves.create', $data);
     }
     public function save(Request $r)
     {
         $data = array(
-            'activity_type_id' => $r->activity_type,
+//            'activity_type_id' => $r->activity_type,
             'activity_setting_id' => $r->activity_name,
             'start_date' => $r->start_date,
             'end_date' => $r->end_date,
             'actual' => $r->actual,
             'activity_category_id' => $r->activity_category,
             'ngo_id' => $r->ngo,
-            'create_by' => Auth::user()->id
+            'create_by' => Auth::user()->id,
+            'venue_id' => $r->venue
         );
         $id = DB::table('activity_achieves')->insertGetId($data);
         if($id)
@@ -83,7 +85,15 @@ class ActivityAchievedController extends Controller
                  $a = DB::table('person_achieved_activities')->insert($pp);
              
              }
-            return redirect('/activity-achieve/edit/'.$id);            
+             // is save or save and continue
+            if ($r->save_status>0)
+            {
+                return redirect('/activity-achieve/edit/'.$id);
+            }
+            else{
+                 $r->session()->flash('sms', 'New activity achieved has been created successfully!');
+                return redirect('/activity-achieve/create');
+            }
         }
         else{
             $r->session()->flash('sms1', "Fail to save changes!");
@@ -109,7 +119,6 @@ class ActivityAchievedController extends Controller
     {
         $id = $r->id_for_funding;
         $data = array(
-            
             'total_budget' => $r->total_budget,
             'total_expense' => $r->total_expense
         );
@@ -120,7 +129,6 @@ class ActivityAchievedController extends Controller
     }
     public function edit($id)
     {
-       
         $data['activity_achieve'] = DB::table('activity_achieves')
                 ->where('id', $id)
                 ->first();
@@ -130,16 +138,18 @@ class ActivityAchievedController extends Controller
         $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
         // activity type by ngo
         $ngo_id = $data['activity_achieve']->ngo_id;
-        $data['activity_types'] = DB::table('activity_types')->where('active',1)->where('ngo_id',$ngo_id)->orderBy('name')->get();
+//        $data['activity_types'] = DB::table('activity_types')->where('active',1)->where('ngo_id',$ngo_id)->orderBy('name')->get();
         $data['users'] = DB::table('users')->where('active',1)->where('ngo_id',$ngo_id)->get();
-        $data['settings'] = DB::table("activity_settings")->where('active', 1)->where('ngo_id', $ngo_id)
-                ->where('activity_type_id', $data['activity_achieve']->activity_type_id)
-                ->where('active',1)
+        $data['settings'] = DB::table("activity_settings")
+                ->join('projects', 'activity_settings.project_id', 'projects.id')
+                ->where('activity_settings.active',1)
+                ->where('activity_settings.ngo_id',$ngo_id)
+                ->select('activity_settings.*', 'projects.name as project_name')
                 ->get();
         $data['activity_categories'] = DB::table('activity_categories')->where('ngo_id', $ngo_id)->where('active', 1)->get();
         $data['person_achieves'] = DB::table('person_achieved_activities')->where('activity_achieved_id', $id)
                 ->get();
-        
+        $data['venues'] = DB::table('venue_types')->where('active', 1)->where('ngo_id', $ngo_id)->get();
         if($x>0)
         {
             $data['ngos'] = DB::table('ngos')->where('active',1)->where('id',$x)->orderBy('name')->get();  
@@ -147,12 +157,15 @@ class ActivityAchievedController extends Controller
         // get documents of the achieved activity
         $data['documents'] = DB::table('activity_achieved_documents')->where('activity_achieved_id', $id)->get();
         $data['provinces'] = DB::table('provinces')->orderBy('name')->get();
-        $data['activity_areas'] = DB::table('activity_areas')->where('active',1)->where('ngo_id', $ngo_id)->get();
+//        $data['activity_areas'] = DB::table('activity_areas')->where('active',1)->where('ngo_id', $ngo_id)->get();
+        $data['event_titles'] = DB::table('events')->where('active',1)->where('ngo_id', $ngo_id)->orderBy('name')->get();
         $data['event_organizers'] = DB::table('event_organizors')->where('active',1)->where('ngo_id', $ngo_id)->get();
+        $data['venues'] = DB::table('venue_types')->where('active', 1)->where('ngo_id', $ngo_id)->orderBy('name')->get();
         $data['events'] = DB::table('activity_achieved_events')
+            ->join('events', 'activity_achieved_events.event_id', 'events.id')
             ->join('event_organizors', 'activity_achieved_events.organizer_id', 'event_organizors.id')
             ->where('activity_achieved_events.activity_achieved_id', $id)
-            ->select('activity_achieved_events.*', 'event_organizors.name')
+            ->select('activity_achieved_events.*', 'event_organizors.name', 'events.name as event_name')
             ->get();
             $data['beneficiaries'] = DB::table("activity_achieved_beneficiaries")->where("activity_achieved_id", $id)->get();
         return view('activity-achieves.edit', $data);
@@ -160,12 +173,12 @@ class ActivityAchievedController extends Controller
     public function update(Request $r)
     {
         $data = array(
-            'activity_type_id' => $r->activity_type,
+//            'activity_type_id' => $r->activity_type,
             'activity_setting_id' => $r->activity_name,
             'start_date' => $r->start_date,
             'end_date' => $r->end_date,
             'actual' => $r->actual,
-
+            'venue_id' => $r->venue,
             'activity_category_id' => $r->activity_category
         );
         $id = DB::table('activity_achieves')->where("id", $r->id)->update($data);
@@ -184,7 +197,6 @@ class ActivityAchievedController extends Controller
             }
             DB::table('person_achieved_activities')->where('activity_achieved_id', $r->id)->delete();
             DB::table('person_achieved_activities')->insert($pp);
-        
         }
         $r->session()->flash('sms', "All changes have been saved!");
         return redirect('/activity-achieve/edit/'.$r->id);            
@@ -193,7 +205,7 @@ class ActivityAchievedController extends Controller
     public function get($id)
     {
         $x = explode("*", $id);
-        return DB::table("activity_settings")->where('active', 1)->where('ngo_id', $x[0])->where('activity_type_id', $x[1])->get();
+        return DB::table("activity_settings")->where('active', 1)->where('ngo_id', $x[0])->where('id', $x[1])->get();
     }
     public function get_framework($id)
     {
@@ -227,21 +239,24 @@ class ActivityAchievedController extends Controller
     }
     public function get_district($id)
     {
+
         return DB::table('districts')->where('province_id', $id)->get();
     }
     public function get_commune($id)
     {
+
         return DB::table('communes')->where('district_id', $id)->get();
     }
     public function get_village($id)
     {
+
         return DB::table('villages')->where('commune_id', $id)->get();
     }
     public function save_event(Request $r)
     {
         $data = array(
-            'activity_area_id' => $r->activity_area_id,
-            'subject' => $r->subject,
+//            'activity_area_id' => $r->activity_area_id,
+//            'subject' => $r->subject,
             'activity_achieved_id' => $r->activity_achieved_id,
             'organizer_id' => $r->organizer_id,
             'total_participant' => $r->total_participant,
@@ -251,7 +266,9 @@ class ActivityAchievedController extends Controller
             'commune_id' => $r->commune_id,
             'district_id' => $r->district_id,
             'province_id' => $r->province_id,
-            'ngo_id' => $r->ngo_id
+            'ngo_id' => $r->ngo_id,
+            'event_id' => $r->event_id,
+            'venue_id' => $r->venue_id
         );
         $x = $r->id;
         $id = 0;
@@ -264,9 +281,10 @@ class ActivityAchievedController extends Controller
             $id = DB::table('activity_achieved_events')->insertGetId($data);
         }
         $dd = DB::table('activity_achieved_events')
+            ->join('events', 'activity_achieved_events.event_id', 'events.id')
             ->join('event_organizors', 'activity_achieved_events.organizer_id', 'event_organizors.id')
             ->where('activity_achieved_events.id', $id)
-            ->select('activity_achieved_events.*', 'event_organizors.name')
+            ->select('activity_achieved_events.*', 'event_organizors.name', 'events.name as event_name')
             ->first();
         return json_encode($dd);
     }
@@ -294,7 +312,8 @@ class ActivityAchievedController extends Controller
             'village_id' => $r->village,
             'commune_id' => $r->commune,
             'district_id' => $r->district,
-            'province_id' => $r->province
+            'province_id' => $r->province,
+            'age' => $r->age
         );
         // $id = DB::table('activity_achieved_beneficiaries')->insert($data);
         if($r->id>0)

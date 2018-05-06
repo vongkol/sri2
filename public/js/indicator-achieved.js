@@ -107,6 +107,8 @@ function editIndicator(evt)
     $("#start_date").removeAttr("disabled");
     $("#end_date").removeAttr("disabled");
     $("#indicator_mode").removeAttr("disabled");
+    $("#indicator_code").removeAttr("disabled");
+    $("#indicator_name").removeAttr("disabled");
 }
 function editDescription()
 {

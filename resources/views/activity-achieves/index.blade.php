@@ -27,7 +27,7 @@
                         <tr>
                             <th>{!!trans('labels.id')!!}</th>
                             <th>{{trans('labels.activity_name')}}</th>
-                            <th>{{trans('labels.activity_type')}}</th>
+                            {{--<th>{{trans('labels.activity_type')}}</th>--}}
                             <th>{{trans('labels.start_date')}}</th>
                             <th>{{trans('labels.end_date')}}</th>
                             <th>{{trans('labels.total_budget')}}</th>
@@ -45,8 +45,8 @@
                         @foreach($activities as $a)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td><a href="{{url('/activity-achieve/edit/'.$a->id)}}">{{$a->activity_name}}</a></td>
-                                <td>{{$a->activity_type_name}}</td>
+                                <td><a href="{{url('/activity-achieve/edit/'.$a->id)}}">{{$a->activity_code}} : {{$a->activity_name}}</a></td>
+                                {{--<td>{{$a->activity_type_name}}</td>--}}
                                 <td>{{$a->start_date}}</td>
                                 <td>{{$a->end_date}}</td>       
                                 <td>$ {{$a->total_budget}}</td>   

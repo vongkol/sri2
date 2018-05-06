@@ -88,7 +88,7 @@
                                 <div class="form-group row">
                                     <label for="indicator_code" class="control-label col-sm-4 lb">{{trans('labels.indicator_code')}}</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="indicator_code" name="indicator_code" disabled> 
+                                        <input type="text" class="form-control" id="indicator_code" name="indicator_code">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -104,9 +104,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="indicator_mode" class="control-label col-sm-4 lb">{{trans('labels.indicator_mode')}}</label>
+                                    <label for="indicator_mode" class="control-label col-sm-4 lb"></label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="indicator_mode" name="indicator_mode"> 
+                                        {{--<input type="text" class="form-control" id="indicator_mode" name="indicator_mode"> --}}
                                         <br>
                                         <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
                                         <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
@@ -123,7 +123,7 @@
                                 <div class="form-group row">
                                     <label for="indicator_name" class="control-label col-sm-4 lb">{{trans('labels.indicator_name')}}</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="indicator_name" name="indicator_name" disabled> 
+                                        <input type="text" class="form-control" id="indicator_name" name="indicator_name">
                                     </div>
                                 </div>
                                 <div class="form-group row">

@@ -29,13 +29,13 @@
                 <form action="{{url('/activity-achieve/update')}}" class="form-horizontal" method="post" onsubmit="return confirm('You want to save?')" id='frm'>
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{$activity_achieve->id}}" id="id">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p class="text-primary" style="border-bottom:1px solid #ccc">
-                                <strong>Information</strong>
-                            </p>
-                        </div>
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--<div class="col-sm-12">--}}
+                            {{--<p class="text-primary" style="border-bottom:1px solid #ccc">--}}
+                                {{--<strong>Information</strong>--}}
+                            {{--</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="row">
                         <div class="col-sm-6 {{Auth::user()->ngo_id>0?'hide':''}}">
                              <div class="form-group row">
@@ -50,15 +50,30 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="activity_type" class="control-label col-sm-4 lb">{{trans('labels.activity_type')}} <span class="text-danger">*</span></label>--}}
+                                {{--<div class="col-sm-8">--}}
+                                    {{--<select name="activity_type" id="activity_type" class="form-control chosen-select" disabled>--}}
+                                        {{--@foreach($activity_types as $t)--}}
+                                        {{--<option value="{{$t->id}}" {{$t->id==$activity_achieve->activity_type_id?'selected':''}}>{{$t->name}}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
                             <div class="form-group row">
-                                <label for="activity_type" class="control-label col-sm-4 lb">{{trans('labels.activity_type')}} <span class="text-danger">*</span></label>
-                                <div class="col-sm-8">
-                                    <select name="activity_type" id="activity_type" class="form-control chosen-select" disabled>
-                                        @foreach($activity_types as $t)
-                                        <option value="{{$t->id}}" {{$t->id==$activity_achieve->activity_type_id?'selected':''}}>{{$t->name}}</option>
+                                <label for="project_name" class="control-label col-sm-2 lb">{{trans('labels.project_name')}}</label>
+                                <div class="col-sm-10">
+                                    <select name="project_name" id="project_name" class="form-control chosen-select" disabled="disabled">
+                                        @foreach($settings as $s)
+                                            <option value="{{$s->id}}" {{$s->id==$activity_achieve->activity_setting_id?'selected':''}}>{{$s->project_code}} : {{$s->project_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -68,9 +83,9 @@
                                 <label for="activity_name" class="control-label col-sm-2 lb">{{trans('labels.activity_name')}}</label>
                                 <div class="col-sm-10">
                                     <select name="activity_name" id="activity_name" class="form-control chosen-select" disabled>
-                                    @foreach($settings as $s)
-                                        <option value="{{$s->id}}" {{$s->id==$activity_achieve->activity_setting_id?'selected':''}}>{{$s->activity_name}}</option>
-                                    @endforeach
+                                    {{--@foreach($settings as $s)--}}
+                                        {{--<option value="{{$s->id}}" {{$s->id==$activity_achieve->activity_setting_id?'selected':''}}>{{$s->activity_name}}</option>--}}
+                                    {{--@endforeach--}}
                                 </select>
                                 </div>
                             </div>
@@ -81,12 +96,6 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label for="start_date" class="control-label col-sm-4 lb">{{trans('labels.start_date')}}</label>
-                                <div class="col-sm-8">
-                                   <input type="text"  placeholder="dd/mm/yyyy"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{$activity_achieve->start_date}}" disabled>
-                                </div>
-                            </div>
                            <div class="form-group row">
                                 <label for="result_framework_structure" class="control-label col-sm-4 lb">{{trans('labels.result_framework_structure')}}</label>
                                 <div class="col-sm-8">
@@ -94,15 +103,22 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="activity_category" class="control-label col-sm-4 lb">{{trans('labels.activity_category')}}</label>
-                                <div class="col-sm-8">
-                                    <select name="activity_category" id="activity_category" class="form-control chosen-select" data-placeholder=" " disabled>
-                                    @foreach($activity_categories as $c)
-                                        <option value="{{$c->id}}" {{$c->id==$activity_achieve->activity_category_id?'selected':''}}>{{$c->name}}</option>
-                                    @endforeach
+                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
+                                <div class="col-sm-8" id="sp">
+                                    <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
+
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
+                                <div class="col-sm-8" id="sp1">
+                                    <select name="person_responsible[]" id="person_responsible" class="form-control" multiple disabled>
+
+                                    </select>
+                                </div>
+                            </div>
+
                            <div class="form-group row">
                                 <label for="person_achieved" class="control-label col-sm-4 lb">{{trans('labels.person_achieved_activity')}}</label>
                                 <div class="col-sm-8" id="sp2">
@@ -120,37 +136,50 @@
                                     </select>
                                 </div>
                             </div>
+
                         </div>
                         <div class="col-sm-6">
+                            <div class="form-group row">
+                            <label for="start_date" class="control-label col-sm-4 lb">{{trans('labels.start_date')}}</label>
+                            <div class="col-sm-8">
+                                <input type="text"  placeholder="dd/mm/yyyy"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{$activity_achieve->start_date}}" disabled>
+                            </div>
+                        </div>
                             <div class="form-group row">
                                 <label for="end_date" class="control-label col-sm-4 lb">{{trans('labels.end_date')}}</label>
                                 <div class="col-sm-8">
                                    <input type="text" class="form-control datepicker-icon"  placeholder="dd/mm/yyyy"  id="end_date" name="end_date" value="{{$activity_achieve->end_date}}" disabled>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
-                                <div class="col-sm-8" id="sp">
-                                    <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
-                                   
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="form-group row">
                                 <label for="actual" class="control-label col-sm-4 lb">Actual</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$activity_achieve->actual}}" id="actual" name="actual" placeholder="Input actual" disabled>
                                 </div>
                             </div>
-                           <div class="form-group row">
-                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
-                                <div class="col-sm-8" id="sp1">
-                                    <select name="person_responsible[]" id="person_responsible" class="form-control" multiple disabled>
-                                   
+                            <div class="form-group row">
+                                <label for="activity_category" class="control-label col-sm-4 lb">{{trans('labels.activity_category')}}</label>
+                                <div class="col-sm-8">
+                                    <select name="activity_category" id="activity_category" class="form-control chosen-select" data-placeholder=" " disabled>
+                                        @foreach($activity_categories as $c)
+                                            <option value="{{$c->id}}" {{$c->id==$activity_achieve->activity_category_id?'selected':''}}>{{$c->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-                        </div>                  
+                            <div class="form-group row">
+                                <label for="venue" class="control-label lb col-sm-4">Venue</label>
+                                <div class="col-sm-8">
+                                    <select name="venue" id="venue" class="form-control">
+                                        <option value="">Please select one</option>
+                                        @foreach($venues as $v)
+                                            <option value="{{$v->id}}" {{$v->id==$activity_achieve->venue_id?'selected':''}}>{{$v->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
@@ -363,7 +392,8 @@
                             <thead>
                                 <tr>
                                     <th>&numero;</th>
-                                    <th>{{trans('labels.activity_subject')}}</th>
+                                    <th>Event Title</th>
+                                    {{--<th>{{trans('labels.activity_subject')}}</th>--}}
                                     <th>{{trans('labels.event_organizer')}}</th>
                                     <th>{{trans('labels.total_articipant')}}</th>
                                     <th>{{trans('labels.total_female')}}</th>
@@ -376,7 +406,8 @@
                             @foreach($events as $ev)
                                 <tr id="{{$ev->id}}">
                                     <td>{{$i++}}</td>
-                                    <td>{{$ev->subject}}</td>
+                                    <td>{{$ev->event_name}}</td>
+                                    {{--<td>{{$ev->subject}}</td>--}}
                                     <td>{{$ev->name}}</td>
                                     <td>{{$ev->total_participant}}</td>
                                     <td>{{$ev->total_female}}</td>
@@ -509,20 +540,24 @@
                 <form class="form-horizontal" id="target1">
                    <div class="row">
                         <div class="col-sm-12">
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="activity_area" class="control-label col-sm-3 lb">{{trans('labels.activity_area')}}<span class="text-danger">*</span></label>--}}
+                                {{--<div class="col-sm-8">--}}
+                                    {{--<select name="activity_area" id="activity_area" class="form-control">--}}
+                                    {{--@foreach($activity_areas as $ac)--}}
+                                        {{--<option value="{{$ac->id}}">{{$ac->name}}</option>--}}
+                                    {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             <div class="form-group row">
-                                <label for="activity_area" class="control-label col-sm-3 lb">{{trans('labels.activity_area')}}<span class="text-danger">*</span></label>
+                                <label for="event_title" class="control-label col-sm-3 lb">Event Title<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <select name="activity_area" id="activity_area" class="form-control">
-                                    @foreach($activity_areas as $ac)
-                                        <option value="{{$ac->id}}">{{$ac->name}}</option>
-                                    @endforeach
+                                    <select name="event_title" id="event_title" class="form-control">
+                                        @foreach($event_titles as $et)
+                                            <option value="{{$et->id}}">{{$et->name}}</option>
+                                        @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="activity_subject" class="control-label col-sm-3 lb">{{trans('labels.activity_subject')}} <span class="text-danger">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="activity_subject" name="activity_subject">
                                     <input type="hidden" name="event_id" id="event_id" value="0">
                                 </div>
                             </div>
@@ -533,6 +568,17 @@
                                     @foreach($event_organizers as $ev)
                                         <option value="{{$ev->id}}">{{$ev->name}}</option>
                                     @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="venue_id" class="control-label col-sm-3 lb">Venue</label>
+                                <div class="col-sm-8">
+                                    <select name="venue_id" id="venue_id" class="form-control">
+                                        <option value="0">-- Chose One --</option>
+                                        @foreach($venues as $ev)
+                                            <option value="{{$ev->id}}">{{$ev->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -626,18 +672,25 @@
                                     <input type="text" class="form-control" id="bid" name="bid">
                                     <input type="hidden" id="beneficiary_id" name="beneficiary_id" value="0">
                                 </div>
-                                 <label for="bgender" class="control-label col-sm-1 lb">{{trans('labels.gender')}}</label>
-                                <div class="col-sm-3">
-                                    <select name="bgender" id="bgender" class="form-control">
-                                        <option value="Male">{{trans('labels.male')}}</option>
-                                        <option value="Female">{{trans('labels.female')}}</option>
-                                    </select>
-                                </div>
+
                             </div>
                             <div class="form-group row">
                                 <label for="full_name" class="control-label col-sm-3 lb">{{trans('labels.beneficiary_name')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="full_name" name="full_name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="bgender" class="control-label col-sm-3 lb">{{trans('labels.gender')}}</label>
+                                <div class="col-sm-4">
+                                    <select name="bgender" id="bgender" class="form-control">
+                                        <option value="Male">{{trans('labels.male')}}</option>
+                                        <option value="Female">{{trans('labels.female')}}</option>
+                                    </select>
+                                </div>
+                                <label for="bage" class="control-label col-sm-1 lb">{{trans('labels.age')}}</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="bage" name="bage">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -669,23 +722,22 @@
                                         <option value="{{$pro->id}}">{{$pro->name}} - {{$pro->name_kh}}</option>
                                     @endforeach
                                     </select>
+                                </div>
+                                 <label for="bcommune" class="control-label col-sm-1 lb">{{trans('labels.commune')}}</label>
+                                 <div class="col-sm-3">
+                                     <select name="bcommune" id="bcommune" class="form-control" onchange="bindVillage1()">
 
-                                </div>
-                                <label for="bdistrict" class="control-label col-sm-1 lb">{{trans('labels.district')}}</label>
-                                <div class="col-sm-3">
-                                    <select name="bdistrict" id="bdistrict" class="form-control" onchange="bindCommune1()">
-                                        
-                                    </select>
-                                </div>
+                                     </select>
+                                 </div>
                             </div>
-                           
                             <div class="form-group row">
-                                <label for="bcommune" class="control-label col-sm-3 lb">{{trans('labels.commune')}}</label>
+                                <label for="bdistrict" class="control-label col-sm-3 lb">{{trans('labels.district')}}</label>
                                 <div class="col-sm-4">
-                                    <select name="bcommune" id="bcommune" class="form-control" onchange="bindVillage1()">
-                                        
+                                    <select name="bdistrict" id="bdistrict" class="form-control" onchange="bindCommune1()">
+
                                     </select>
                                 </div>
+
                                 <label for="bvillage" class="control-label col-sm-1 lb">{{trans('labels.village')}}</label>
                                 <div class="col-sm-3">
                                     <select name="bvillage" id="bvillage" class="form-control">
@@ -696,25 +748,15 @@
                             <div class="form-group row">
                                 <label class="control-label lb col-sm-3">{{trans('labels.beneficiary_type')}}</label>
                                 <div class="col-sm-4">
-                                    <br>
-                                    <label class="lb">
-                                        <input type="checkbox" name="bch" value="Provincial NGO Network">{{trans('labels.provincial_ngo_network')}}
-                                    </label>
-                                    <br>
-                                    <label class="lb">
-                                        <input type="checkbox" name="bch" value="Non-member"> {{trans('labels.non_member')}}
-                                    </label>
-                                    
-                                </div> 
+                                    <select name="btype" id="btype" class="form-control">
+                                        <option value="Provincial NGO Network">Provincial NGO Network</option>
+                                        <option value="Member">Member</option>
+                                        <option value="Non-member">Non-member</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
                                 <div class="col-sm-4">
-                                    <br>
-                                    <label class="lb">
-                                        <input type="checkbox" name="bch" value="Member"> {{trans('labels.member')}}
-                                    </label>
-                                    <br>
-                                    <label class="lb">
-                                        <input type="checkbox" name="bch" value="Other"> {{trans('labels.other')}}
-                                    </label>
+
                                 </div>   
                             </div>
                         </div>

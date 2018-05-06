@@ -46,13 +46,13 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}} <span class="text-danger">*</span></label>
+                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}}</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->project_code}}" name="project_code" id="project_code" required disabled>
+                                    <input type="text" class="form-control" value="{{$indicator_setting->project_code}}" name="project_code" id="project_code" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_name" class="control-label col-sm-4 lb">{{trans('labels.proect_name')}} <span class="text-danger">*</span></label>
+                                <label for="project_name" class="control-label col-sm-4 lb">{{trans('labels.project_name')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="project_name" id="project_name" class="form-control chosen-select" data-placeholder=" " disabled>
                                     @foreach($projects as $pro)
@@ -62,17 +62,18 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_code" class="control-label col-sm-4 lb">{{trans('labels.indicator_code')}} <span class="text-danger">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_code}}" id="indicator_code" name="indicator_code" required disabled>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="indicator_name" class="control-label col-sm-4 lb">{{trans('labels.indicator_type')}} <span class="text-danger">*</span></label>
+                                <label for="indicator_name" class="control-label col-sm-4 lb">{{trans('labels.indicator_name')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->indicator_name}}" id="indicator_name" name="indicator_name" required disabled>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="indicator_code" class="control-label col-sm-4 lb">{{trans('labels.indicator_code')}}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{$indicator_setting->indicator_code}}" id="indicator_code" name="indicator_code" disabled>
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                     <label for="result_framework_structure" class="control-label col-sm-4 lb">{{trans('labels.result_framework_structure')}}</label>
                                     <div class="col-sm-8">
@@ -109,6 +110,20 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="start_date" class="control-label col-sm-4 lb">{{trans('labels.start_date')}}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control datepicker-icon" id="start_date" name="start_date"
+                                          disabled value="{{$indicator_setting->start_date}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="end_date" class="control-label col-sm-4 lb">{{trans('labels.end_date')}}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control datepicker-icon" id="end_date" name="end_date"
+                                           disabled value="{{$indicator_setting->end_date}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="baseline" class="control-label col-sm-4 lb">{{trans('labels.baseline')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{$indicator_setting->baseline}}" id="baseline" name="baseline" disabled>
@@ -126,41 +141,41 @@
                                     <input type="text" class="form-control" value="{{$indicator_setting->indicator_unit}}" id="indicator_unit" disabled name="indicator_unit">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
-                                <div class="col-sm-8" id="sp">
-                                    <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
-                                    @php($a="")
-                                    @foreach($components as $com)
-                                        @foreach($icomponents as $c)
-                                            @if($com->id == $c->component_id)
-                                            {{$a='selected'}}
-                                            @endif
-                                        @endforeach
-                                        <option value="{{$com->id}}" {{$a}}>{{$com->name}}</option>
-                                        {{$a=''}}   
-                                    @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
-                                <div class="col-sm-8" id="sp1">
-                                    <select name="person_responsible[]" id="person_responsible" class="form-control" multiple disabled>
-                                            @php($x="")
-                                            @foreach($users as $per)
-                                                @foreach($iusers as $p)
-                                                    @if($per->id==$p->user_id)
-                                                        {{$x='selected'}}
-                                                    @endif
-                                                @endforeach
-                                                <option value="{{$per->id}}" {{$x}}>{{$per->name}}</option>
-                                                {{$x=''}}
-                                            @endforeach
-                                            </select>
-                                    </select>
-                                </div>
-                            </div>
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>--}}
+                                {{--<div class="col-sm-8" id="sp">--}}
+                                    {{--<select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>--}}
+                                    {{--@php($a="")--}}
+                                    {{--@foreach($components as $com)--}}
+                                        {{--@foreach($icomponents as $c)--}}
+                                            {{--@if($com->id == $c->component_id)--}}
+                                            {{--{{$a='selected'}}--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                        {{--<option value="{{$com->id}}" {{$a}}>{{$com->name}}</option>--}}
+                                        {{--{{$a=''}}   --}}
+                                    {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>--}}
+                                {{--<div class="col-sm-8" id="sp1">--}}
+                                    {{--<select name="person_responsible[]" id="person_responsible" class="form-control" multiple disabled>--}}
+                                            {{--@php($x="")--}}
+                                            {{--@foreach($users as $per)--}}
+                                                {{--@foreach($iusers as $p)--}}
+                                                    {{--@if($per->id==$p->user_id)--}}
+                                                        {{--{{$x='selected'}}--}}
+                                                    {{--@endif--}}
+                                                {{--@endforeach--}}
+                                                {{--<option value="{{$per->id}}" {{$x}}>{{$per->name}}</option>--}}
+                                                {{--{{$x=''}}--}}
+                                            {{--@endforeach--}}
+                                            {{--</select>--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             
                         </div>
                     </div>
@@ -194,7 +209,7 @@
                     <div class="tab-pane active" id="target" role="tabpanel">
                         <p>
                         <br>
-                            <a href="#"  class="btn btn-primary btn-flat" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i>{{trans('labels.new_target')}}</a>
+                            <a href="#"  class="btn btn-primary btn-flat" id="btnAddTarget" data-toggle="modal" data-target=".bd-target-modal-lg"><i class="fa fa-plus"></i> {{trans('labels.new_target')}}</a>
                         </p>
                         <table class="tbl">
                             <thead>
@@ -264,22 +279,28 @@
 @endsection
 @section('js')
 <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
-
+<script src="{{asset('datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script>
         $(document).ready(function () {
-    $("#siderbar li a").removeClass("current");
-    $("#menu_indicator_setting").addClass("current");
-    $('#person_responsible').multiSelect();
-    $("#component_responsible").multiSelect();
-   
-    // btn cancel
-    $("#btnCancel").click(function(){
-        var o = confirm('You want to cancel?');
-        if(o)
-        {
-            location.href= burl + "/indicator/edit/{{$indicator_setting->id}}";
-        }
-    });
+            $("#siderbar li a").removeClass("current");
+            $("#menu_indicator_setting").addClass("current");
+            $('#person_responsible').multiSelect();
+            $("#component_responsible").multiSelect();
+            $("#start_date, #end_date").datepicker({
+                orientation: 'bottom',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true
+            });
+            // btn cancel
+            $("#btnCancel").click(function(){
+                var o = confirm('You want to cancel?');
+                if(o)
+                {
+                    location.href= burl + "/indicator/edit/{{$indicator_setting->id}}";
+                }
+        });
     // save changes
     $("#btnSave").click(function(){
         var ind = {

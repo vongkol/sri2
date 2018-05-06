@@ -158,11 +158,11 @@
                         
                 </form>
                 <ul class="nav nav-tabs" role="tablist">
+                    {{--<li class="nav-item">--}}
+                        {{--<a class="nav-link active" data-toggle="tab" href="#description" role="tab">{{trans('labels.description')}}</a>--}}
+                    {{--</li>--}}
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab">{{trans('labels.description')}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#document" role="tab">{{trans('labels.supporting_document')}}</a>
+                        <a class="nav-link active" data-toggle="tab" href="#document" role="tab">{{trans('labels.supporting_document')}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#other1" role="tab">Other 1</a>
@@ -175,84 +175,84 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                        <div class="tab-pane active" id="description" role="tabpanel">
-                            <form action="{{url('/indicator-achieve/description/update')}}" method="post" onsubmit="return confirm('You want to save changes?')">
-                            {{csrf_field()}}
-                            <input type="hidden" value="{{$indicator_achieve->id}}" name="id_for_description">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    @if(Session::has('sms2'))
-                                        <div class="alert alert-success" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <div>
-                                                {{session('sms2')}}
-                                            </div>
-                                        </div>
-                                    @endif
-                                    <p>
-                                    <br>
-                                    <button type="button" class="btn btn-primary btn-flat" onclick="editDescription()"><i class="fa fa-plus"></i> {{trans('labels.edit_description')}}</button>
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group row">
-                                        <label for="achievement" class="control-label col-sm-4 lb">{{trans('labels.achievement')}}</label>
-                                        <div class="col-sm-8">
-                                            <textarea name="achievement" id="achievement" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->achievement}}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="solution" class="control-label col-sm-4 lb">{{trans('labels.solution')}}</label>
-                                        <div class="col-sm-8">
-                                            <textarea name="solution" id="solution" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->solution}}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="next_plan" class="control-label col-sm-4 lb">{{trans('labels.next_plan')}}</label>
-                                        <div class="col-sm-8">
-                                            <textarea name="next_plan" id="next_plan" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->next_plan}}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="control-label col-sm-4 lb">&nbsp;</label>
-                                        <div class="col-sm-8">
-                                            <p class="hide" id="description_box">
-                                                <button type="submit" class="btn btn-primary btn-flat">{{trans('labels.save_changes')}}</button>
-                                                <button type="button" class="btn btn-danger btn-flat" onclick="cancelDescription()">{{trans('labels.cancel')}}</button>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group row">
-                                        <label for="challenge" class="control-label col-sm-4 lb">{{trans('labels.challenge')}}</label>
-                                        <div class="col-sm-8">
-                                            <textarea name="challenge" id="challenge" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->challenge}}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="lesson_learn" class="control-label col-sm-4 lb">{{trans('labels.lesson_learned')}}</label>
-                                        <div class="col-sm-8">
-                                            <textarea name="lesson_learn" id="lesson_learn" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->lesson_learn}}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="other_comment" class="control-label col-sm-4 lb">{{trans('labels.other_comment')}}</label>
-                                        <div class="col-sm-8">
-                                            <textarea name="other_comment" id="other_comment" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->other_comment}}</textarea>
-                                        </div>
-                                    </div>
-    
-                                </div>
-                            </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane" id="document" role="tabpanel">
+                        {{--<div class="tab-pane active" id="description" role="tabpanel">--}}
+                            {{--<form action="{{url('/indicator-achieve/description/update')}}" method="post" onsubmit="return confirm('You want to save changes?')">--}}
+                            {{--{{csrf_field()}}--}}
+                            {{--<input type="hidden" value="{{$indicator_achieve->id}}" name="id_for_description">--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-12">--}}
+                                    {{--@if(Session::has('sms2'))--}}
+                                        {{--<div class="alert alert-success" role="alert">--}}
+                                            {{--<button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+                                                {{--<span aria-hidden="true">&times;</span>--}}
+                                            {{--</button>--}}
+                                            {{--<div>--}}
+                                                {{--{{session('sms2')}}--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--@endif--}}
+                                    {{--<p>--}}
+                                    {{--<br>--}}
+                                    {{--<button type="button" class="btn btn-primary btn-flat" onclick="editDescription()"><i class="fa fa-plus"></i> {{trans('labels.edit_description')}}</button>--}}
+                                    {{--</p>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{----}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-6">--}}
+                                    {{--<div class="form-group row">--}}
+                                        {{--<label for="achievement" class="control-label col-sm-4 lb">{{trans('labels.achievement')}}</label>--}}
+                                        {{--<div class="col-sm-8">--}}
+                                            {{--<textarea name="achievement" id="achievement" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->achievement}}</textarea>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="form-group row">--}}
+                                        {{--<label for="solution" class="control-label col-sm-4 lb">{{trans('labels.solution')}}</label>--}}
+                                        {{--<div class="col-sm-8">--}}
+                                            {{--<textarea name="solution" id="solution" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->solution}}</textarea>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="form-group row">--}}
+                                        {{--<label for="next_plan" class="control-label col-sm-4 lb">{{trans('labels.next_plan')}}</label>--}}
+                                        {{--<div class="col-sm-8">--}}
+                                            {{--<textarea name="next_plan" id="next_plan" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->next_plan}}</textarea>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="form-group row">--}}
+                                        {{--<label class="control-label col-sm-4 lb">&nbsp;</label>--}}
+                                        {{--<div class="col-sm-8">--}}
+                                            {{--<p class="hide" id="description_box">--}}
+                                                {{--<button type="submit" class="btn btn-primary btn-flat">{{trans('labels.save_changes')}}</button>--}}
+                                                {{--<button type="button" class="btn btn-danger btn-flat" onclick="cancelDescription()">{{trans('labels.cancel')}}</button>--}}
+                                            {{--</p>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-sm-6">--}}
+                                    {{--<div class="form-group row">--}}
+                                        {{--<label for="challenge" class="control-label col-sm-4 lb">{{trans('labels.challenge')}}</label>--}}
+                                        {{--<div class="col-sm-8">--}}
+                                            {{--<textarea name="challenge" id="challenge" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->challenge}}</textarea>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="form-group row">--}}
+                                        {{--<label for="lesson_learn" class="control-label col-sm-4 lb">{{trans('labels.lesson_learned')}}</label>--}}
+                                        {{--<div class="col-sm-8">--}}
+                                            {{--<textarea name="lesson_learn" id="lesson_learn" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->lesson_learn}}</textarea>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="form-group row">--}}
+                                        {{--<label for="other_comment" class="control-label col-sm-4 lb">{{trans('labels.other_comment')}}</label>--}}
+                                        {{--<div class="col-sm-8">--}}
+                                            {{--<textarea name="other_comment" id="other_comment" cols="30" rows="2" class="form-control" disabled>{{$indicator_achieve->other_comment}}</textarea>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+    {{----}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
+                        <div class="tab-pane active" id="document" role="tabpanel">
                             <p>
                             <br>
                                 <a class="btn btn-primary btn-flat" href="#" id="btnAddTarget" data-toggle="modal" 

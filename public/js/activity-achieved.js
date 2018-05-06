@@ -9,13 +9,14 @@ $(document).ready(function () {
     {
         $("#funding_tab").trigger("click");
     }
+    bindActivity($('#ngo').val());
     bindFramework();
     bindComponent();
     bindPerson();
     $("#btnCancel").click(function(){
         location.href = burl + "/activity-achieve/edit/" + $("#id").val();
     });
-    $("#activity_type").change(function(){
+    $("#project_name").change(function(){
         var ngo_id = $("#ngo").val();
         $("#result_framework_structure").val("");
         bindActivity(ngo_id);
@@ -39,27 +40,28 @@ function binding()
 {
     var id = $("#ngo").val();
     $("#result_framework_structure").val("");
-    bindActivityType(id);
+    bindProject(id);
 
 }
 
 // bind activity type
-function bindActivityType(ngo_id)
+function bindProject(ngo_id)
 {
     $.ajax({
         type: "GET",
-        url: burl + "/activity_type/get/" + ngo_id,
+        url: burl + "/ngo-project/get/" + ngo_id,
         success: function(sms){
             var opts = "";
             for(var i=0;i<sms.length;i++)
             {
-                opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+                opts += "<option value='" + sms[i].id + "'>" + sms[i].project_code + " : " + sms[i].project_name + "</option>";
             }
-             //$('#activity_type').val('').trigger('chosen:updated');  
-            $('#activity_type').chosen('destroy');
-            $("#activity_type").html(opts);
-            $("#activity_type option:first-child").attr("selected","selected");
-            $('#activity_type').chosen();                 
+            //$('#activity_type').val('').trigger('chosen:updated');
+            $('#project_name').chosen('destroy');
+            $("#project_name").html(opts);
+            $("#project_name option:first-child").attr("selected","selected");
+            $('#project_name').chosen();
+
             bindActivity(ngo_id);
         }
     });
@@ -67,7 +69,7 @@ function bindActivityType(ngo_id)
 // bind framework
 function bindActivity(ngo_id)
 {
-   var aid = $("#activity_type").val();
+   var aid = $("#project_name").val();
    $.ajax({
         type: "GET",
         url: burl + "/setting/get/" + ngo_id+"*"+aid,
@@ -75,7 +77,7 @@ function bindActivity(ngo_id)
             var opts = "";
             for(var i=0;i<sms.length;i++)
             {
-                opts += "<option value='" + sms[i].id + "'>" + sms[i].activity_name + "</option>";
+                opts += "<option value='" + sms[i].id + "'>" + sms[i].activity_code + " : " + sms[i].activity_name + "</option>";
             }
              //$('#activity_type').val('').trigger('chosen:updated');  
             $('#activity_name').chosen('destroy');
@@ -162,103 +164,109 @@ function bindUser(ngo_id)
         }
     });
 }
-function bindDistict()
+function bindDistict(a, b, c)
 {
     var p_id = $("#province").val();
     $.ajax({
         type: "GET",
         url: burl + "/setting/district/get/" + p_id,
         success: function(sms){
-             var opts = "";
+             var opts = "<option value='0'> </option>";
             for(var i=0;i<sms.length;i++)
             {
                 opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
             }
             $("#district").html(opts);
-            bindCommune();
+            $("#district").val(a);
+            bindCommune(b, c);
         }
     });
 }
-function bindDistict1()
+function bindDistict1(a, b, c)
 {
     var p_id = $("#bprovince").val();
     $.ajax({
         type: "GET",
         url: burl + "/setting/district/get/" + p_id,
         success: function(sms){
-             var opts = "";
+            var opts = "<option value='0'> </option>";
             for(var i=0;i<sms.length;i++)
             {
                 opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
             }
             $("#bdistrict").html(opts);
-            bindCommune1();
+            $("#bdistrict").val(a);
+            bindCommune1(b,c);
         }
     });
 }
-function bindCommune()
+function bindCommune(a, b)
 {
     var p_id = $("#district").val();
     $.ajax({
         type: "GET",
         url: burl + "/setting/commune/get/" + p_id,
         success: function(sms){
-             var opts = "";
+            var opts = "<option value='0'> </option>";
             for(var i=0;i<sms.length;i++)
             {
                 opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
             }
             $("#commune").html(opts);
-            bindVillage();
+            $("#commune").val(a);
+            bindVillage(b);
         }
     });
 }
- function bindCommune1()
+ function bindCommune1(a,b)
 {
     var p_id = $("#bdistrict").val();
     $.ajax({
         type: "GET",
         url: burl + "/setting/commune/get/" + p_id,
         success: function(sms){
-             var opts = "";
+            var opts = "<option value='0'> </option>";
             for(var i=0;i<sms.length;i++)
             {
                 opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
             }
             $("#bcommune").html(opts);
-            bindVillage1();
+            $("#bcommune").val(a);
+            bindVillage1(b);
         }
     });
 }
-function bindVillage()
+function bindVillage(a)
 {
     var p_id = $("#commune").val();
     $.ajax({
         type: "GET",
         url: burl + "/setting/village/get/" + p_id,
         success: function(sms){
-             var opts = "";
+            var opts = "<option value='0'> </option>";
             for(var i=0;i<sms.length;i++)
             {
                 opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
             }
             $("#village").html(opts);
+            $("#village").val(a);
         }
     });
 }
-function bindVillage1()
+function bindVillage1(a)
 {
     var p_id = $("#bcommune").val();
     $.ajax({
         type: "GET",
         url: burl + "/setting/village/get/" + p_id,
         success: function(sms){
-             var opts = "";
+            var opts = "<option value=''> </option>";
             for(var i=0;i<sms.length;i++)
             {
                 opts += "<option value='" + sms[i].id + "'>" + sms[i].name + " - " + sms[i].name_kh + "</option>";
             }
             $("#bvillage").html(opts);
+            $("#bvillage").val(a);
         }
     });
 }
@@ -273,9 +281,9 @@ function showEdit(evt)
     $("#ngo").removeAttr("disabled");
     $("#ngo").chosen();
     // enable activity type dropdown
-    $("#activity_type").chosen("destroy");
-    $("#activity_type").removeAttr("disabled");
-    $("#activity_type").chosen();
+    $("#project_name").chosen("destroy");
+    $("#project_name").removeAttr("disabled");
+    $("#project_name").chosen();
     // enable activity name
     $("#activity_name").chosen("destroy");
     $("#activity_name").removeAttr("disabled");
@@ -305,7 +313,10 @@ function clearEvent()
     $("#total_youth").val("0");
     $("#eventsms").html("");
     $("#exampleModalLabel").html("Create New Event");
-    
+    $("#province").val(0);
+    $("#district").val(0);
+    $("#commune").val(0);
+    $("#village").val(0);
 }
 // delete a document by its id
 function deleteDoc (obj, evt) {
@@ -354,18 +365,18 @@ function editEvent(obj,evt)
         success: function(sms){
             sms = JSON.parse(sms);
             $("#event_id").val(sms.id);
-            $("#activity_area").val(sms.activity_area_id);
-            $("#activity_subject").val(sms.subject);
+            // $("#activity_area").val(sms.activity_area_id);
+            $("#event_title").val(sms.event_id);
             $("#event_organizer").val(sms.organizer_id);
             $("#total").val(sms.total_participant);
             $("#total_female").val(sms.total_female);
             $("#total_youth").val(sms.total_youth);
+            $("#venue_id").val(sms.venue_id);
             $("#province").val(sms.province_id);
-            bindDistict();
-            $("#district").val(sms.district_id);
-            $("#commune").val(sms.commune_id);
-            $("#village").val(sms.village_id);
+            bindDistict(sms.district_id, sms.commune_id, sms.village_id);
+
             $("#btnAddEvent").trigger("click");
+
         }
     });
 }
@@ -431,8 +442,8 @@ function saveEvent()
     {
         var ed = {
             id: $("#event_id").val(),
-            activity_area_id: $("#activity_area").val(),
-            subject: $("#activity_subject").val(),
+            // activity_area_id: $("#activity_area").val(),
+            event_id: $("#event_title").val(),
             activity_achieved_id: aid,
             organizer_id: $("#event_organizer").val(),
             total_participant: $("#total").val(),
@@ -442,7 +453,8 @@ function saveEvent()
             commune_id: $("#commune").val(),
             district_id: $("#district").val(),
             province_id: $("#province").val(),
-            ngo_id: $("#ngo").val()
+            ngo_id: $("#ngo").val(),
+            venue_id: $("#venue_id").val(),
         }
         $.ajax({
             type: 'POST',
@@ -461,7 +473,7 @@ function saveEvent()
                     var tr = $(str);
                     var id = $(tr).attr("id");
                     var tds = $(tr).children('td');
-                    $(tds[1]).html(sms.subject);
+                    $(tds[1]).html(sms.event_name);
                     $(tds[2]).html(sms.name);
                     $(tds[3]).html(sms.total_participant);
                     $(tds[4]).html(sms.total_female);
@@ -474,7 +486,7 @@ function saveEvent()
                     
                     tr +="<tr id='" + sms.id + "'>";
                     tr += "<td>" + (counter++) + "</td>";
-                    tr += "<td>" +  sms.subject + "</td>";
+                    tr += "<td>"  + sms.event_name + "</td>";
                     tr +="<td>" + sms.name + "</td>";
                     tr +="<td>" + sms.total_participant + "</td>";
                     tr +="<td>" + sms.total_female + "</td>";
@@ -533,15 +545,6 @@ function saveBeneficiary()
     var o = confirm('Do you want to save?');
     if(o)
     {
-        var ch = "";
-        var check = $("input[name='bch']");
-        for(var i=0; i<check.length;i++)
-        {
-            if(check[i].checked)
-            {
-                ch += check[i].value + ",";
-            }
-        }
         var bf = {
             id: $("#beneficiary_id").val(),
             bid: $("#bid").val(),
@@ -555,8 +558,9 @@ function saveBeneficiary()
             district: $("#bdistrict").val(),
             commune: $("#bcommune").val(),
             village: $("#bvillage").val(),
-            type: ch,
-            position: $("#bposition").val()
+            type: $("#btype").val(),
+            position: $("#bposition").val(),
+            age: $("#bage").val()
         }
         $.ajax({
             type: 'POST',
@@ -645,15 +649,6 @@ function editBeneficiary(obj,evt)
         url: burl + "/activity-achieve/beneficiary/get/" + id,
         success: function(sms){
             sms = JSON.parse(sms);
-            var txt = sms.type;
-            txt = txt.split(",");
-            var check = $("input[name='bch']");
-            for(var i=0;i<txt.length;i++)
-            {
-                var str = "input[value='" + txt[i] + "']";
-                $(str).prop("checked", true);
-            }
-           
             $("#bid").val(sms.beneficiary_id);
             $("#full_name").val(sms.full_name);
             $("#bgender").val(sms.gender);
@@ -662,10 +657,12 @@ function editBeneficiary(obj,evt)
             $("#bposition").val(sms.position);
             $("#bprovince").val(sms.province_id);
             $("#come_from").val(sms.come_from);
-            bindDistict1();
-            $("#bdistrict").val(sms.district_id);
-            $("#bcommune").val(sms.commune_id);
-            $("#bvillage").val(sms.village_id);
+            $("#bage").val(sms.age);
+            $("#btype").val(sms.type);
+            bindDistict1(sms.district_id, sms.commune_id, sms.village_id);
+            // $("#bdistrict").val(sms.district_id);
+            // $("#bcommune").val(sms.commune_id);
+            // $("#bvillage").val(sms.village_id);
             $("#btnAddBeneficiary").trigger("click");
 
         }

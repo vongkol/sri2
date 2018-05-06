@@ -36,13 +36,13 @@
                 @endif
                 <form action="{{url('/activity-achieve/save')}}" class="form-horizontal" method="post" onsubmit="return confirm('You want to save?')" name='frm'>
                     {{csrf_field()}}
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p class="text-primary" style="border-bottom:1px solid #ccc">
-                                <strong>{{trans('labels.information')}}</strong>
-                            </p>
-                        </div>
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--<div class="col-sm-12">--}}
+                            {{--<p class="text-primary" style="border-bottom:1px solid #ccc">--}}
+                                {{--<strong>{{trans('labels.information')}}</strong>--}}
+                            {{--</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="row">
                         <div class="col-sm-6 {{Auth::user()->ngo_id>0?'hide':''}}">
                              <div class="form-group row">
@@ -56,14 +56,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        {{--<div class="col-sm-6">--}}
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="activity_type" class="control-label col-sm-4 lb">{{trans('labels.activity_type')}} <span class="text-danger">*</span></label>--}}
+                                {{--<div class="col-sm-8">--}}
+                                    {{--<select name="activity_type" id="activity_type" class="form-control chosen-select">--}}
+                                        {{--<option value="0">-- {{trans('labels.activity_type')}} --</option>--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
                             <div class="form-group row">
-                                <label for="activity_type" class="control-label col-sm-4 lb">{{trans('labels.activity_type')}} <span class="text-danger">*</span></label>
-                                <div class="col-sm-8">
-                                    <select name="activity_type" id="activity_type" class="form-control chosen-select">
-                                        <option value="0">-- {{trans('labels.activity_type')}} --</option>
-                                    </select>
+                                <label for="project_name" class="control-label col-sm-2 lb">{{trans('labels.project_name')}}</label>
+                                <div class="col-sm-10">
+                                    <select name="project_name" id="project_name" class="form-control chosen-select">
+                                    {{--<option value="0">-- {{trans('labels.project_name')}} --</option>--}}
+                                </select>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -73,10 +86,10 @@
                                 <label for="activity_name" class="control-label col-sm-2 lb">{{trans('labels.activity_name')}}</label>
                                 <div class="col-sm-10">
                                     <select name="activity_name" id="activity_name" class="form-control chosen-select">
-                                    <option value="0">-- {{trans('labels.activity_name')}} --</option>
-                                </select>
+                                        <option value="0">-- {{trans('labels.activity_name')}} --</option>
+                                    </select>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -86,12 +99,7 @@
                     <div class="row">
 
                         <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label for="start_date" class="control-label col-sm-4 lb">{{trans('labels.start_date')}}</label>
-                                <div class="col-sm-8">
-                                   <input type="text"  placeholder="yyyy-mm-dd"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{old('start_date')}}">
-                                </div>
-                            </div>
+
                            <div class="form-group row">
                                 <label for="result_framework_structure" class="control-label col-sm-4 lb">{{trans('labels.result_framework_structure')}}</label>
                                 <div class="col-sm-8">
@@ -99,13 +107,22 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="activity_category" class="control-label col-sm-4 lb">{{trans('labels.activity_category')}}</label>
-                                <div class="col-sm-8">
-                                    <select name="activity_category" id="activity_category" class="form-control chosen-select" data-placeholder=" ">
-                                        <option value="0">-- {{trans('labels.none_select')}} --</option>
+                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
+                                <div class="col-sm-8" id="sp">
+                                    <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
+
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
+                                <div class="col-sm-8" id="sp1">
+                                    <select name="person_responsible[]" id="person_responsible" class="form-control" multiple>
+
+                                    </select>
+                                </div>
+                            </div>
+
                            <div class="form-group row">
                                 <label for="person_achieved" class="control-label col-sm-4 lb">{{trans('labels.person_achieved_activity')}}</label>
                                 <div class="col-sm-8" id="sp2">
@@ -116,9 +133,15 @@
                                     </select>
                                 </div>
                             </div>
-                           
+
                         </div>
                         <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label for="start_date" class="control-label col-sm-4 lb">{{trans('labels.start_date')}}</label>
+                                <div class="col-sm-8">
+                                    <input type="text"  placeholder="yyyy-mm-dd"  class="form-control datepicker-icon" id="start_date" name="start_date" value="{{old('start_date')}}">
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="end_date" class="control-label col-sm-4 lb">{{trans('labels.end_date')}}</label>
                                 <div class="col-sm-8">
@@ -126,25 +149,29 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group row">
-                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
-                                <div class="col-sm-8" id="sp">
-                                    <select name="component_responsible[]" id="component_responsible" class="form-control" multiple disabled>
-                                   
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="form-group row">
                                 <label for="actual" class="control-label col-sm-4 lb">{{trans('labels.actual')}}</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('actual')}}" id="actual" name="actual" placeholder="Input actual">
                                 </div>
                             </div>
-                           <div class="form-group row">
-                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
-                                <div class="col-sm-8" id="sp1">
-                                    <select name="person_responsible[]" id="person_responsible" class="form-control" multiple>
-                                   
+                            <div class="form-group row">
+                                <label for="activity_category" class="control-label col-sm-4 lb">{{trans('labels.activity_category')}}</label>
+                                <div class="col-sm-8">
+                                    <select name="activity_category" id="activity_category" class="form-control chosen-select" data-placeholder=" ">
+                                        <option value="0">-- {{trans('labels.none_select')}} --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="venue" class="control-label lb col-sm-4">Venue</label>
+                                <div class="col-sm-8">
+                                    <select name="venue" id="venue" class="form-control">
+                                        <option value="">Please select one</option>
+                                        @foreach($venues as $v)
+                                            <option value="{{$v->id}}">{{$v->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -155,6 +182,8 @@
                             <p class="text-center">
                             <br>
                                 <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save')}}</button>
+                                <button class="btn btn-success btn-flat" type="button" id="btnSaveGo">Save and Continue</button>
+                                <input type="hidden" id="save_status" name="save_status" value="0">
                                 <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
                             </p>
                         </div>
@@ -178,6 +207,15 @@
     <script src="{{asset('datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script>
         $(document).ready(function () {
+            // save and continue
+            $("#btnSaveGo").click(function () {
+                var o = confirm('You want to save change?');
+                if (o)
+                {
+                    $("#save_status").val("1");
+                    frm.submit();
+                }
+            });
             $("#siderbar li a").removeClass("current");
             $("#menu_activity_achieved").addClass("current");
             $('#person_responsible').multiSelect();
@@ -191,7 +229,7 @@
                 toggleActive: true
             });
             binding();
-            $('#activity_type').change(function(){
+            $('#project_name').change(function(){
                 $("#result_framework_structure").val("");
                 bindActivity($("#ngo").val());
             });
@@ -201,34 +239,34 @@
                 bindComponent();
                 bindPerson();
             });
-           
         });
         // function binding data on ngo changed
         function binding()
         {
             var id = $("#ngo").val();
             $("#result_framework_structure").val("");
-            bindActivityType(id);
+            bindProject(id);
             bindCategory(id);
         }
        
         // bind activity type
-        function bindActivityType(ngo_id)
+        function bindProject(ngo_id)
         {
             $.ajax({
                 type: "GET",
-                url: burl + "/activity_type/get/" + ngo_id,
+                url: burl + "/ngo-project/get/" + ngo_id,
                 success: function(sms){
                     var opts = "";
                     for(var i=0;i<sms.length;i++)
                     {
-                        opts += "<option value='" + sms[i].id + "'>" + sms[i].name + "</option>";
+                        opts += "<option value='" + sms[i].id + "'>" + sms[i].project_code + " : " + sms[i].project_name + "</option>";
                     }
                      //$('#activity_type').val('').trigger('chosen:updated');  
-                    $('#activity_type').chosen('destroy');
-                    $("#activity_type").html(opts);
-                    $("#activity_type option:first-child").attr("selected","selected");
-                    $('#activity_type').chosen();                 
+                    $('#project_name').chosen('destroy');
+                    $("#project_name").html(opts);
+                    $("#project_name option:first-child").attr("selected","selected");
+                    $('#project_name').chosen();
+
                     bindActivity(ngo_id);
                 }
             });
@@ -236,7 +274,7 @@
         // bind framework
         function bindActivity(ngo_id)
         {
-           var aid = $("#activity_type").val();
+           var aid = $("#project_name").val();
            $.ajax({
                 type: "GET",
                 url: burl + "/setting/get/" + ngo_id+"*"+aid,
@@ -244,10 +282,11 @@
                     var opts = "";
                     for(var i=0;i<sms.length;i++)
                     {
-                        opts += "<option value='" + sms[i].id + "'>" + sms[i].activity_name + "</option>";
+                        opts += "<option value='" + sms[i].id + "'>" + sms[i].activity_code + " : " + sms[i].activity_name + "</option>";
                     }
                      //$('#activity_type').val('').trigger('chosen:updated');  
                     $('#activity_name').chosen('destroy');
+                    // $("#activity_name").html("");
                     $("#activity_name").html(opts);
                     $("#activity_name option:first-child").attr("selected","selected");
                     $('#activity_name').chosen();                 

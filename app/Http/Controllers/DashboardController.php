@@ -19,6 +19,19 @@ class DashboardController extends Controller
     public function index()
     {
         $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+        $ngo_id = Auth::user()->ngo_id;
+        if(Auth::user()->ngo_id>0)
+        {
+            $data['ngos'] = DB::table('ngos')->where('active',1)
+                ->where('id', Auth::user()->ngo_id)
+                ->orderBy('name')
+                ->get();
+        }
+        return view('reports.dashboard', $data);
+    }
+    public function search()
+    {
+        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
         $data['view_type'] = 0;
         $data['ngo_id'] = "0";
         $ngo_id = Auth::user()->ngo_id;
@@ -58,61 +71,54 @@ class DashboardController extends Controller
                 and activity_categories.active = 1
                 group BY activity_categories.name"
         );
-        // event by province
-        // $data['events'] = DB::select(
-        //     "select provinces.name, sum(activity_achieved_events.total_participant) as total, sum(activity_achieved_events.total_female) as total1, 
-        //     sum(activity_achieved_events.total_youth) as total2 from activity_achieved_events
-        //     left join provinces on activity_achieved_events.province_id = provinces.id
-        //     where activity_achieved_events.ngo_id= {$ngo_id}
-        //     group by provinces.name"
-        // );
+
           $data['events'] = DB::select(
             "select provinces.name, sum(activity_achieved_events.id) as total from activity_achieved_events
             left join provinces on activity_achieved_events.province_id = provinces.id
             where activity_achieved_events.ngo_id= {$ngo_id}
             group by provinces.name"
         );
-        return view('dashboards.index', $data);
+        return view('reports.dashboard', $data);
     }
-    public function search(Request $r)
-    {
-        $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
-        $data['view_type'] = $r->view_type;
-        $data['ngo_id'] = $r->ngo;
-        $ngo_id = $r->ngo;
-        $x = Auth::user()->ngo_id;
-        if($x>0)
-        {
-            $data['ngos'] = DB::table('ngos')->where('active',1)->where('id', $x)->get();
-        }
-        if($r->view_type==0)
-        {
-            // number of activity by activity
-            $data['activities'] = DB::select(
-                "select activity_types.name, COUNT(activity_achieves.id) as total from activity_types
-                    LEFT JOIN activity_achieves on activity_types.id = activity_achieves.activity_type_id 
-                    where  activity_types.ngo_id = {$ngo_id} 
-                    and activity_types.active = 1
-                    group BY activity_types.name"
-            );
-            return view('dashboards.tree', $data);
+    // public function search(Request $r)
+    // {
+    //     $data['ngos'] = DB::table('ngos')->where('active',1)->orderBy('name')->get();
+    //     $data['view_type'] = $r->view_type;
+    //     $data['ngo_id'] = $r->ngo;
+    //     $ngo_id = $r->ngo;
+    //     $x = Auth::user()->ngo_id;
+    //     if($x>0)
+    //     {
+    //         $data['ngos'] = DB::table('ngos')->where('active',1)->where('id', $x)->get();
+    //     }
+    //     if($r->view_type==0)
+    //     {
+    //         // number of activity by activity
+    //         $data['activities'] = DB::select(
+    //             "select activity_types.name, COUNT(activity_achieves.id) as total from activity_types
+    //                 LEFT JOIN activity_achieves on activity_types.id = activity_achieves.activity_type_id 
+    //                 where  activity_types.ngo_id = {$ngo_id} 
+    //                 and activity_types.active = 1
+    //                 group BY activity_types.name"
+    //         );
+    //         return view('dashboards.tree', $data);
             
-        }
-        else if($r->view_type==1)
-        {
-            return view('dashboards.bar', $data);
-        }
-        else if($r->view_type==2)
-        {
-            return view('dashboards.line', $data);
-        }
-        else if($r->view_type==3)
-        {
-            return view('dashboards.pie', $data);
-        }
-        else{
-            return view('dashboards.index', $data);
-        }
-    }
+    //     }
+    //     else if($r->view_type==1)
+    //     {
+    //         return view('dashboards.bar', $data);
+    //     }
+    //     else if($r->view_type==2)
+    //     {
+    //         return view('dashboards.line', $data);
+    //     }
+    //     else if($r->view_type==3)
+    //     {
+    //         return view('dashboards.pie', $data);
+    //     }
+    //     else{
+    //         return view('dashboards.index', $data);
+    //     }
+    // }
 
 }

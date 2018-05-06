@@ -85,7 +85,40 @@
             <ul class="nav nav-pills flex-column" id="siderbar">
                 <li class="nav-item"><strong>Reports</strong></li>
                 <li class="nav-item">
-                    <a href="{{url('/dashboard')}}" class="nav-link" id="menu_dashboard"> Dashboard </a>
+                    <a href="{{url('/dashboard')}}" class="nav-link" id="menu_dashboard">1 - Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_event_summary">2 - Event Summary</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">3 - Activity Progress Monitor</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">4 - Staff Achieved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">5 - Narative Activity Achieved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">6 - Summary Achieved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">7 - Target Management</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">8 - Detailed Budget</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">9 - Detailed Activity</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">10 - Detailed Event</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">11 - Detailed Participant</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="menu_activity">12 - Detailed Activity Sign up</a>
                 </li>
             </ul>
         </nav>

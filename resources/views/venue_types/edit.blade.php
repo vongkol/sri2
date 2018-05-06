@@ -59,17 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6"> 
-                                <div class="form-group row">
-                                    <label class="control-label col-sm-3 lb"></label>
-                                    <div class="col-sm-8">
-                                        <button class="btn btn-primary btn-flat" type="submit">{{trans('labels.save_changes')}}</button>
-                                        <button class="btn btn-danger btn-flat" type="reset">{{trans('labels.cancel')}}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </form>
                 </div>
             </div>

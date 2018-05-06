@@ -2,7 +2,7 @@
 
 return [
 
-
+    'total_participant' => 'Total Participant',
     'logout' => 'Logout',
     'ngo' => 'NGO',
     'home' => "Home",
@@ -15,7 +15,7 @@ return [
     'filter' => "Filter",
     'delete' => "Delete",
     'user_ngo' => "User NGO",
-    'description' => "Description",
+    'description' => "Qualitative Description",
     'edit_description' => "Edit Description",
     'beneficiary' => "Beneficiary",
     'edit_target' => "Edit Target",
@@ -150,7 +150,7 @@ return [
     'activity_name' => "Activity Name",
     'activity_code' => "Activity Code",
     'activity_type' => "Activity Type",
-    'result_framework_structure' => "Result Framework Structure",
+    'result_framework_structure' => "Project Hierarchy",
     'component_responsible' => "Component Responsible",
     'data_source' => "Data Source",
     'deliverable' => "Deliverable",
@@ -220,7 +220,7 @@ return [
     'indicator' => "Indicator",
     'outcome' => "Outcome",
     'challenge' => "Challenge",
-    'lesson_learned' => "Lesson Learned",
+    'lesson_learned' => "Lesson Learnt",
     'next_plan' => "Next Plan", 
     'financial_management' => "Financia Management",
     'annexes' => "Annexes",
@@ -252,5 +252,6 @@ return [
     'supporting_document' => "Supporting Document",
     'settings' => "Settings",
     'achieved' => "Achieved",
-    'designed' => "Designed"
+    'designed' => "Designed",
+    'age' => "Age"
 ];

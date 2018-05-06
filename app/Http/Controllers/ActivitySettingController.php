@@ -54,7 +54,7 @@ class ActivitySettingController extends Controller
         {
             $data['projects'] = DB::table('projects')->where('active',1)->where('ngo_id',$x)->orderBy('name')->get();
             $data['ngos'] = DB::table('ngos')->where('active',1)->where('id',$x)->orderBy('name')->get();  
-            $data['activity_types'] = DB::table('activity_types')->where('active',1)->where('ngo_id',$x)->orderBy('name')->get();
+//            $data['activity_types'] = DB::table('activity_types')->where('active',1)->where('ngo_id',$x)->orderBy('name')->get();
             $data['frameworks'] = DB::table('frameworks')->where('active',1)->where('ngo_id',$x)->orderBy('name')->get();        
             $data['users'] = DB::table('users')->where('active',1)->where('ngo_id',$x)->get();
             $data['components'] = DB::table('components')->where('active',1)->where('ngo_id',$x)->get();        
@@ -71,7 +71,7 @@ class ActivitySettingController extends Controller
 
         $data['projects'] = DB::table('projects')->where('active',1)->where('ngo_id',$ngo_id)->orderBy('name')->get();
        
-        $data['activity_types'] = DB::table('activity_types')->where('active',1)->where('ngo_id',$ngo_id)->orderBy('name')->get();
+//        $data['activity_types'] = DB::table('activity_types')->where('active',1)->where('ngo_id',$ngo_id)->orderBy('name')->get();
         $data['frameworks'] = DB::table('frameworks')->where('active',1)->where('ngo_id',$ngo_id)->orderBy('name')->get();
         $data['provinces'] = DB::table('provinces')->orderBy('name')->get();
         $data['users'] = DB::table('users')->where('active',1)->where('ngo_id',$ngo_id)->get();
@@ -100,8 +100,8 @@ class ActivitySettingController extends Controller
             'project_id' => $r->project_name,
             'activity_code' => $r->activity_code,
             'activity_name' => $r->activity_name,
-            'activity_type_id' => $r->activity_type,
-            'activity_definition' => $r->activity_definition,
+//            'activity_type_id' => $r->activity_type,
+//            'activity_definition' => $r->activity_definition,
             'framework_id' => $r->result_framework_structure,
             'deliverable' => $r->deliverable,
             'data_source' => $r->data_source,
@@ -157,8 +157,8 @@ class ActivitySettingController extends Controller
             'project_id' => $r->project_name,
             'activity_code' => $r->activity_code,
             'activity_name' => $r->activity_name,
-            'activity_type_id' => $r->activity_type,
-            'activity_definition' => $r->activity_definition,
+//            'activity_type_id' => $r->activity_type,
+//            'activity_definition' => $r->activity_definition,
             'framework_id' => $r->result_framework_structure,
             'deliverable' => $r->deliverable,
             'data_source' => $r->data_source,

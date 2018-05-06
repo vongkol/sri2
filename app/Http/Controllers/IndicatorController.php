@@ -73,41 +73,44 @@ class IndicatorController extends Controller
             'calculation_method' => $r->calculation_method,
             'indicator_definition' => $r->indicator_definition,
             'indicator_unit' => $r->indicator_unit,
+            'indicator_mode' => $r->indicator_mode,
+            'start_date' => $r->start_date,
+            'end_date' => $r->end_date,
             'create_by' => Auth::user()->id,
             'ngo_id' => $r->ngo
         );
         $id = DB::table('indicator_settings')->insertGetId($data);
          // person responsible
-        $persons = $r->person_responsible;
-        $coms = $r->component_responsible;
+//        $persons = $r->person_responsible;
+//        $coms = $r->component_responsible;
         $pp = array();
         $cc = array();
-        if($persons!=null)
-        {
-            foreach($persons as $p)
-            {
-                $p= array(
-                    'indicator_setting_id' => $id,
-                    'user_id' => $p
-                );
-                array_push($pp, $p);
-            }
-            $a = DB::table('indicator_persons')->insert($pp);
-        
-        }
-       if($coms !=null)
-       {
-            foreach($coms as $com)
-            {
-                $c = array(
-                    'indicator_setting_id' => $id,
-                    'component_id' => $com
-                );
-                array_push($cc, $c);
-            }
-            $b = DB::table('indicator_components')->insert($cc);
-        
-       }
+//        if($persons!=null)
+//        {
+//            foreach($persons as $p)
+//            {
+//                $p= array(
+//                    'indicator_setting_id' => $id,
+//                    'user_id' => $p
+//                );
+//                array_push($pp, $p);
+//            }
+//            $a = DB::table('indicator_persons')->insert($pp);
+//
+//        }
+//       if($coms !=null)
+//       {
+//            foreach($coms as $com)
+//            {
+//                $c = array(
+//                    'indicator_setting_id' => $id,
+//                    'component_id' => $com
+//                );
+//                array_push($cc, $c);
+//            }
+//            $b = DB::table('indicator_components')->insert($cc);
+//
+//       }
         if($r->save_status>0)
         {
             // go to detail page
@@ -158,42 +161,44 @@ class IndicatorController extends Controller
             'calculation_method' => $r->calculation_method,
             'indicator_definition' => $r->indicator_definition,
             'indicator_unit' => $r->indicator_unit,
+            'indicator_mode' => $r->indicator_mode,
+            'start_date' => $r->start_date,
+            'end_date' => $r->end_date,
             'ngo_id' => $r->ngo
         );
         $i = DB::table('indicator_settings')->where('id', $r->id)->update($data);
           // person responsible
-       $persons = $r->person_responsible;
-       $coms = $r->component_responsible;
+//       $persons = $r->person_responsible;
+//       $coms = $r->component_responsible;
         $pp = array();
         $cc = array();
-        if($persons!=null)
-        {
-            foreach($persons as $p)
-            {
-                $p= array(
-                    'indicator_setting_id' => $r->id,
-                    'user_id' => $p
-                );
-                array_push($pp, $p);
-            }
-            DB::table('indicator_persons')->where('indicator_setting_id', $r->id)->delete();
-            $a = DB::table('indicator_persons')->insert($pp);
-        
-        }
-       if($coms !=null)
-       {
-            foreach($coms as $com)
-            {
-                $c = array(
-                    'indicator_setting_id' => $r->id,
-                    'component_id' => $com
-                );
-                array_push($cc, $c);
-            }
-            DB::table('indicator_components')->where('indicator_setting_id', $r->id)->delete();            
-            $b = DB::table('indicator_components')->insert($cc);
-        
-       }
+//        if($persons!=null)
+//        {
+//            foreach($persons as $p)
+//            {
+//                $p= array(
+//                    'indicator_setting_id' => $r->id,
+//                    'user_id' => $p
+//                );
+//                array_push($pp, $p);
+//            }
+//            DB::table('indicator_persons')->where('indicator_setting_id', $r->id)->delete();
+//            $a = DB::table('indicator_persons')->insert($pp);
+//
+//        }
+//       if($coms !=null)
+//       {
+//            foreach($coms as $com)
+//            {
+//                $c = array(
+//                    'indicator_setting_id' => $r->id,
+//                    'component_id' => $com
+//                );
+//                array_push($cc, $c);
+//            }
+//            DB::table('indicator_components')->where('indicator_setting_id', $r->id)->delete();
+//            $b = DB::table('indicator_components')->insert($cc);
+//       }
        $r->session()->flash('sms', "All changes have been saved!");
        return redirect('/indicator/edit/'. $r->id);
     }
@@ -236,7 +241,6 @@ class IndicatorController extends Controller
             $i = DB::table("indicator_targets")->insertGetId($data);
             return $i;
         }
-        
     }
     // delete target
     public function delete_target($id)

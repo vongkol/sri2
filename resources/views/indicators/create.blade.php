@@ -43,9 +43,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}} <span class="text-danger">*</span></label>
+                                <label for="project_code" class="control-label col-sm-4 lb">{{trans('labels.project_code')}}</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('project_code')}}" name="project_code" id="project_code" required>
+                                    <input type="text" class="form-control" value="{{old('project_code')}}" name="project_code" id="project_code">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -59,15 +59,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_code" class="control-label col-sm-4 lb">{{trans('labels.indicator_code')}} <span class="text-danger">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('indicator_code')}}" id="indicator_code" name="indicator_code" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label for="indicator_name" class="control-label col-sm-4 lb">{{trans('labels.indicator_name')}} <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" value="{{old('indicator_name')}}" id="indicator_name" name="indicator_name" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="indicator_code" class="control-label col-sm-4 lb">{{trans('labels.indicator_code')}}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{old('indicator_code')}}" id="indicator_code" name="indicator_code">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -92,6 +92,7 @@
                                     <input type="text" class="form-control" value="{{old('indicator_definition')}}" id="indicator_definition" name="indicator_definition">
                                 </div>
                             </div>
+
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -103,6 +104,24 @@
                                         <option value="{{$t->id}}">{{$t->name}}</option>
                                     @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="start_date" class="control-label col-sm-4 lb">{{trans('labels.start_date')}}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control datepicker-icon" id="start_date" name="start_date">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="end_date" class="control-label col-sm-4 lb">{{trans('labels.end_date')}}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control datepicker-icon" id="end_date" name="end_date">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="indicator_unit" class="control-label col-sm-4 lb">{{trans('labels.indicator_unit')}}t</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="{{old('indicator_unit')}}" id="indicator_unit" name="indicator_unit">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -118,31 +137,31 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="indicator_unit" class="control-label col-sm-4 lb">{{trans('labels.indicator_unit')}}t</label>
+                                <label for="indicator_mode" class="control-label col-sm-4 lb">Indicator Mode</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" value="{{old('indicator_unit')}}" id="indicator_unit" name="indicator_unit">
+                                    <input type="text" class="form-control" id="indicator_mode" name="indicator_mode" value="{{old('indicator_mode')}}">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>
-                                <div class="col-sm-8" id="sp">
-                                    <select name="component_responsible[]" id="component_responsible" class="form-control" multiple>
-                                    @foreach($components as $com)
-                                        <option value="{{$com->id}}">{{$com->name}}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>
-                                <div class="col-sm-8" id="sp1">
-                                    <select name="person_responsible[]" id="person_responsible" class="form-control" multiple>
-                                    @foreach($users as $per)
-                                        <option value="{{$per->id}}">{{$per->name}}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                            </div> 
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="component_responsible" class="control-label col-sm-4 lb">{{trans('labels.component_responsible')}}</label>--}}
+                                {{--<div class="col-sm-8" id="sp">--}}
+                                    {{--<select name="component_responsible[]" id="component_responsible" class="form-control" multiple>--}}
+                                    {{--@foreach($components as $com)--}}
+                                        {{--<option value="{{$com->id}}">{{$com->name}}</option>--}}
+                                    {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group row">--}}
+                                {{--<label for="person_responsible" class="control-label col-sm-4 lb">{{trans('labels.person_responsible')}}</label>--}}
+                                {{--<div class="col-sm-8" id="sp1">--}}
+                                    {{--<select name="person_responsible[]" id="person_responsible" class="form-control" multiple>--}}
+                                    {{--@foreach($users as $per)--}}
+                                        {{--<option value="{{$per->id}}">{{$per->name}}</option>--}}
+                                    {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div> --}}
                         </div>
                     </div>
                     <div class="form-group row">
@@ -162,15 +181,23 @@
 @endsection
 @section('js')
 <script src="{{asset('js/multiselect/jquery.multi-select.min.js')}}"></script>
+<script src="{{asset('datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script>
     $(document).ready(function(){
         $("#siderbar li a").removeClass("current");
         $("#menu_indicator_setting").addClass("current");
         $('#person_responsible').multiSelect();
-        $("#component_responsible").multiSelect();
+        // $("#component_responsible").multiSelect();
          $("#btnSave").click(function(){
             $("#save_status").val("0");
             frm.submit();
+        });
+        $("#start_date, #end_date").datepicker({
+            orientation: 'bottom',
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true
         });
         $("#btnSave1").click(function(){
             $("#save_status").val("1");

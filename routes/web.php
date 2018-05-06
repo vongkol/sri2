@@ -73,7 +73,7 @@ Route::get('/project/delete/{id}', "ProjectController@delete");
 Route::post('/project/save', "ProjectController@save");
 Route::post('/project/update', "ProjectController@update");
 Route::get('/project/get/{id}', "ProjectController@get");
-
+Route::get('/ngo-project/get/{id}', "ProjectController@ngo_project");
 /// activity type
 Route::get('/activity_type', "ActivityTypeController@index");
 Route::get('/activity_type/get/{id}', "ActivityTypeController@get");
