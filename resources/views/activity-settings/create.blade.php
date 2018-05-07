@@ -138,7 +138,7 @@
                             <div class="form-group row">
                                 <label for="location" class="control-label col-sm-4 lb">{{trans('labels.location')}}</label>
                                 <div class="col-sm-8">
-                                    <select name="location" id="location" class="form-control " style="height: 37px" multiple>
+                                    <select name="location" id="location" class="form-control " style="height: 37px">
                                         <option value=""> </option>
                                     @foreach($provinces as $pro)
                                         <option value="{{$pro->name}}">{{$pro->name}}</option>

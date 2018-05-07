@@ -231,4 +231,4 @@ Route::post('/indicator-type/update', "IndicatorTypeController@update");
 Route::get('/report', "ReportController@index");
 // dashboard report
 Route::get('/dashboard', "DashboardController@index");
-Route::get('/dashboard/view', "DashboardController@search");
+Route::get("/dashobard/search", "DashboardController@search");
